@@ -1,0 +1,156 @@
+rxnID	rev	GPR	rxn_name_seed	EC	rxnID_kegg	Source;reason
+MNXR98598	1		glycerol 2-phosphate(2-) transport			bigg:EX_glyc2p_e;glycerol 2-phosphate(2-)_P Source
+MNXR99852	0		Glycerol-2-phosphate phosphohydrolase	3.1.3.19	R01043	rhea:13105;glycerol 2-phosphate(2-)_P Source
+MNXR136678	1		L-Threonine phosphate transport in via proton symport			seed:rxn11407;O-phospho-L-threonine_P Source
+MNXR103332	0		acid phosphatase / phosphotransferase	3.1.3.-		rhea:30579;O-phospho-L-threonine_P Source
+MNXR118732	0		alkaline phosphatase	3.1.3.-		metacyc:RXN-14512;guanosine 2'-monophosphate_P Source
+Guanosine transport via proton symport	1		Guanosine transport via proton symport			NA;guanosine 2'-monophosphate_P Source
+MNXR94936	0		Guanosine 3'-phosphate phosphohydrolase	3.1.3.6	R02148	rhea:27862;3'-GMP_P Source
+Guanosine transport via proton symport(for 3'-GMP)	1		Guanosine transport via proton symport(for 3'-GMP)			NA;3'-GMP_P Source
+MNXR94822	1		2-Phosphoglycolate transport in/out via proton symport			seed:rxn05473;2-phosphoglycolate_P Source
+MNXR102543	0		2-phosphoglycolate phosphohydrolase	3.1.3.18	R01334	rhea:14369;2-phosphoglycolate_P Source
+MNXR118734	0		alkaline phosphatase	3.1.3.-		rhea:37251;cysteamine S-phosphate_P Source
+cysteamine S-phosphate transport via proton symport	1		cysteamine S-phosphate transport via proton symport			NA;cysteamine S-phosphate_P Source
+MNXR107528	0		Cysteamine:oxygen oxidoreductase	1.13.11.19	R02467	rhea:14409;cysteamine S-phosphate_P Source
+MNXR107116	0		hypotaurine:NAD+ oxidoreductase	1.8.1.3	R01681	rhea:17385;cysteamine S-phosphate_P Source
+MNXR103594	1		2-aminobutanoate:2-oxoglutarate aminotransferase	2.6.1.42	R10991	bigg:RE2034C;2-aminobutanoate_N Source
+2-aminobutyrate transport	1		2-aminobutyrate transport			NA;2-aminobutanoate_N Source
+MNXR118730	0		alkaline phosphatase	3.1.3.-		rhea:37355;uridine 2'-phosphate_P Source
+MNXR136675	1		Uridine 2'-phosphate transport in via proton symport			seed:rxn11403;uridine 2'-phosphate_P Source
+MNXR94932	0		Uridine 3'-monophosphate phosphohydrolase	3.1.3.6	R01877	rhea:27890;3'-UMP_P Source
+MNXR94982	1		3'-UMP transport in via proton symport			seed:rxn05480;3'-UMP_P Source
+MNXR137072	1		Gly-Met transport via proton symport			seed:rxn12552;Gly-Met_N Source
+MNXR123343	0		dipeptidase	3.4.13.18		rhea:37323;Gly-Met_N Source
+MNXR111061	0		R07420		R07420	seed:rxn05129;N-phosphocreatine_P Source
+N-phosphocreatine transport	1		N-phosphocreatine transport			NA;N-phosphocreatine_P Source
+creatinine transport	1		creatinine transport			NA;N-phosphocreatine_P Source
+MNXR95943	1		ATP:L-arginine Nomega-phosphotransferase	2.7.3.3	R00554	rhea:22940;N(omega)-phospho-L-arginine_P Source
+MNXR95947	1		L-arginine phosphate transport in/out via proton symport			seed:rxn05502;N(omega)-phospho-L-arginine_P Source
+MNXR104998	0		acid phosphatase / phosphotransferase			rhea:30863;O(4)-phospho-L-tyrosine_P Source
+MNXR135003	1		Tripolyphosphate transport in via proton symport			seed:rxn05717;triphosphate_P Source
+MNXR118731	0		alkaline phosphatase	3.1.3.-		rhea:37351;cytidine 2'-phosphate_P Source
+MNXR135010	1		Cytidine- 2'- Monophosphate transport in via proton symport			seed:rxn05724;cytidine 2'-phosphate_P Source
+MNXR117327	0		cyclic phosphodiesterase	3.1.4.37		rhea:37239;2',3'-cyclic UMP_P Source
+MNXR136674	1		2',3'-Cyclic UMP transport in via proton symport			seed:rxn11402;2',3'-cyclic UMP_P Source
+MNXR123155	0		3-Sulfino-L-alanine 4-carboxy-lyase	3.13.1.-	R00863	rhea:28278;3-sulfino-L-alanine_S Source
+MNXR137086	1		3-Sulfino-L-alanine transport via proton antiport			seed:rxn12567;3-sulfino-L-alanine_S Source
+MNXR94935	0		adenosine 3'-phosphate phosphohydrolase	3.1.3.6	R01562	rhea:27898;3'-AMP_P Source
+MNXR94857	1		3AMP transport via diffusion (extracellular to periplasm)			seed:rxn07973;3'-AMP_P Source
+MNXR130717	0		alpha-glucosidase	3.2.1.20		sabiork:11700;6-O-alpha-D-glucopyranosyl-D-fructofuranose_C Source
+MNXR102339	1		Palatinose transport in via proton symport			seed:rxn05629;6-O-alpha-D-glucopyranosyl-D-fructofuranose_C Source
+MNXR103637	1		Amino-Acid N-Acetyltransferase			bigg:RE2223M;N-acetyl-L-cysteine_S Source
+MNXR137052	1		Acetylcysteine transport via proton symport			seed:rxn12528;N-acetyl-L-cysteine_S Source
+MNXR106345	1		thiosulfate:ferricytochrome-c oxidoreductase	1.8.2.2		R00029;tetrathionate_S Source
+MNXR104796	1		etrathionate transport via diffusion			bigg:TETtex;tetrathionate_S Source
+MNXR95065	0		D-Gluconate:NADP+ 5-oxidoreductase	1.1.1.-;1.1.1.69	R01740	rhea:23936;5-dehydro-D-gluconate_C Source
+MNXR95066	1		5-Dehydro-D-gluconate transport via proton symport			rhea:28819;5-dehydro-D-gluconate_C Source
+MNXR123344	0		dipeptidase	3.4.13.18		rhea:37267;Ala-Asp_N Source
+MNXR137135	1		ala-L-asp-L transport via proton symport			seed:rxn12628;Ala-Asp_N Source
+MNXR117326	0		cyclic phosphodiesterase	3.1.4.37		rhea:41956;cytidine 2'-phosphate_P Source
+MNXR136673	1		2',3'-Cyclic CMP transport in via proton symport			seed:rxn11401;2',3'-cyclic CMP_P Source
+MNXR96247	1		beta-glucosidase (methyl-alpha-D-glucoside)	3.2.1.21		seed:rxn09978;methyl alpha-D-glucopyranoside_C Source
+MNXR101464	0		Methanol diffusion			rhea:34871;methyl alpha-D-glucopyranoside_C Source
+MNXR137048	1		alpha-Methyl-D-glucoside transport via proton symport			seed:rxn12524;methyl alpha-D-glucopyranoside_C Source
+MNXR107830	0		ATP:D-tagatose 6-phosphotransferase	2.7.1.101		seed:rxn02094;D-tagatose_C Source
+R11623	1		D-tagatose 6-phosphate 4-epimerase			NA;D-tagatose_C Source
+MNXR104707	1		D-tagatose uptake via diffusion			bigg:TAGAT_Dt;D-tagatose_C Source
+MNXR95136	0		Acetoacetate:CoA ligase (AMP-forming)	6.2.1.16	R01357	rhea:16117;acetoacetate_C Source
+MNXR103709	1		N-Acyl-Aliphatic-L-Amino Acid Amidohydrolase	3.5.1.14		bigg:RE2640C;N(alpha)-acetyl-L-methionine_S Source
+MNXR137087	1		Ala-Gln transport via proton symport			seed:rxn12568;Ala-Gln_N Source
+MNXR101006_cv	1		L-alanyl-L-glutamate transport in via proton symport			rhea:35131;Ala-Glu_N Source
+MNXR101619	0		Maltodextrin glucosidase (maltotriose)	3.2.1.20		seed:rxn05746;alpha-maltotriose_C Source
+Ala-Thr transport via proton symport (cytosol to vacuole)	1		Ala-Thr transport via proton symport			NA;Ala-Thr_N Source
+Ala-Thr transport via proton symport (extracellular to cytosol)	1		Ala-Thr transport via proton symport (extracellular to cytosol)			NA;Ala-Thr_N Source
+MNXR103069	0	( YHR201C or YDR452W )	Triphosphate phosphohydrolase	3.6.1.25	R00138	rhea:14157;triphosphate_P Source
+Gly-Asn transport via proton symport (extracellular to cytosol)	1		Gly-Asn transport via proton symport (extracellular to cytosol)			NA;Gly-Asn_N Source
+glycerol 1-phosphate transport	1		glycerol 1-phosphate transport			NA;glycerol 1-phosphate_P Source
+MNXR103244	1		D-O-Phosphoserine transport in/out via proton symport			seed:rxn05639;O-phosphonatooxy-D-serine(2-)_P Source
+MNXR103265	1		D-O-Phosphoserine phosphohydrolase	3.1.3.3	R02853	rhea:24873;O-phosphonatooxy-D-serine(2-)_P Source
+MNXR101006	1		L-alanyl-L-glutamate transport in via proton symport			rhea:35131;Ala-Glu_N Source
+MNXR101011	0		L-alanyl-gamma-L-glutamate peptidase	3.4.13.18		rhea:29335;Ala-Glu_N Source
+MNXR106549	1		3-oxalomalate glyoxylate-lyase (oxaloacetate-forming)	4.1.3.13	R00477	rhea:22032;3-oxalomalate(3-)_C Source
+MNXR111236	0		L-cysteate bisulfite-lyase (deaminating)	4.4.1.25	R07634	rhea:13441;L-cysteate_S Source
+MNXR117325	0		cyclic phosphodiesterase	3.1.4.37		rhea:37211;guanosine 2'-monophosphate_P Source
+MNXR118741	0		deoxynucleotide 3'-phosphatase	3.1.3.34		rhea:37247;thymidine 3'-monophosphate_P Source
+MNXR123345	0		cytosol nonspecific dipeptidase	3.4.13.18		rhea:37275;Ala-Gln_N Source
+MNXR123347	0		Cytosol non-specific dipeptidase	3.4.13.18		rhea:37283;Ala-His_N Source
+MNXR123349	0		Cytosol non-specific dipeptidase	3.4.13.18		rhea:37299;Ala-Thr_N Source
+MNXR123350	0		Cytosol non-specific dipeptidase	3.4.13.18		rhea:37307;Gly-Asn_N Source
+MNXR123351	0		Cytosol non-specific dipeptidase	3.4.13.18		rhea:37315;Gly-Gln_N Source
+MNXR124424	1		L-Cysteate transport via proton symport			seed:rxn12602;L-cysteate_S Source
+MNXR130716	1		alpha-glucosidase	3.2.1.20		sabiork:11699;turanose_C Source
+MNXR137058	1		2-Hydroxyethanesulfonate transport via proton symport			seed:rxn12535;2-hydroxyethane-1-sulfonate_S Source
+MNXR137067	1		3-Oxalomalate transport via proton symport			seed:rxn12545;3-oxalomalate(3-)_C Source
+MNXR137072_cv	1		Gly-Met transport via proton symport			seed:rxn12552;Gly-Met_N Source
+MNXR137074	1		Gly-Gln transport via proton symport			seed:rxn12555;Gly-Gln_N Source
+MNXR137074_cv	1		Gly-Gln transport via proton symport			seed:rxn12555;Gly-Gln_N Source
+MNXR137087_cv	1		Ala-Gln transport via proton symport			seed:rxn12568;Ala-Gln_N Source
+MNXR137089	1		N-Acetylmethionine transport via proton symport			seed:rxn12570;N(alpha)-acetyl-L-methionine_S Source
+MNXR137095	1		Phosphotyrosine transport via proton symport			seed:rxn12580;O(4)-phospho-L-tyrosine_P Source
+MNXR137107	1		Ala-His transport via proton symport			seed:rxn12594;Ala-His_N Source
+MNXR137107_cv	1		Ala-His transport via proton symport			seed:rxn12594;Ala-His_N Source
+MNXR137135_cv	1		ala-L-asp-L transport via proton symport			seed:rxn12628;Ala-Asp_N Source
+MNXR99485	0		FMNH2-dependent alkanesulfonate monooxygenase	1.14.14.5		rhea:29715;2-hydroxyethane-1-sulfonate_S Source
+thymidine 3'-monophosphate transport	1		thymidine 3-monophosphate transport			NA;thymidine 3'-monophosphate_P Source
+thymidine 5'-monophosphate transport	1		thymidine 5-monophosphate transport			NA;thymidine 5'-monophosphate_P Source
+RHEA:11477	0	( YIL053W or YER062C )	glycerol-1-phosphate phosphohydrolase		R08658	NA;glycerol 1-phosphate_P Source
+nucleotide-specific phosphatase (thymidine 5'-monophosphate)	0		nucleotide-specific phosphatase (thymidine 5'-monophosphate)			NA;thymidine 5'-monophosphate_P Source
+Gly-Glu transport via proton symport (extracellular to cytosol)	1		Gly-Glu transport via proton symport (extracellular to cytosol)			NA;Gly-Glu_N Source
+Gly-Glu transport via proton symport (cytosol to vacuole)	1		Gly-Glu transport via proton symport (cytosol to vacuole)			NA;Gly-Glu_N Source
+MNXR123352	0		cytosol nonspecific dipeptidase	3.4.13.18		rhea:36463;Gly-Glu_N Source
+L-methionine transport, vacuoluar	1		L-methionine transport, vacuoluar			NA;L-methionine_N Source
+L-threonine transport, vacuoluar	1		L-threonine transport, vacuoluar			NA;L-threonine_N Source
+cysteamine exchange	1		cysteamine exchange			NA;cysteamine S-phosphate_P Source
+MNXR94721	1		23cGMP transport via diffusion (extracellular to periplasm)			seed:rxn07927;2',3'-cyclic GMP_P Source
+MNXR94824	1		D-Glycerate 2-phosphate transport in/out via proton symport			seed:rxn05474;2-phospho-D-glyceric acid_P Source
+MNXR94973	1		3-Phospho-D-glycerate transport in/out via proton symport			seed:rxn05479;3-phosphonato-D-glycerate(3-)_P Source
+MNXR99849	1		D-glucose 1-phosphate transport via diffusion			seed:rxn08545;D-glucose 1-phosphate_P Source
+MNXR96488	1		carbamoyl phosphate nuclear transport via diffusion			seed:rxn09823;carbamoyl phosphate_P Source
+Met-Ala transport via proton symport (extracellular to cytosol)	1		Met-Ala transport via proton symport (extracellular to cytosol)			NA;Met-Ala_N Source
+Met-Ala transport via proton symport (cytosol to vacuole)	1		Met-Ala transport via proton symport (cytosol to vacuole)			NA;Met-Ala_N Source
+MNXR103245	1		O-Phospho-L-serine transport in via proton symport			seed:rxn05640;3-phospho-serine_P Source
+MNXR100385	1		GMP transport via proton symport			seed:rxn05471;GMP_P Source
+MNXR101585	1		myo-inositol phosphate transport via diffusion (extracellular to periplasm)			seed:rxn08925;myo-inositol hexakisphosphate_P Source
+MNXR98531	1		D-glucose 6-phosphate transport			bigg:EX_g6p_e;D-glucose 6-phosphate_P Source
+MNXR105127	1		UMP transport			rhea:27926;UMP_P Source
+MNXR102493	1		Phosphoenolpyruvate transport in via proton symport			seed:rxn05630;phosphoenolpyruvate_P Source
+MNXR101385	1		Mannose 6-phosphate transport via diffusion (extracellular to periplasm)			seed:rxn08880;D-mannose 6-phosphate_P Source
+MNXR135002	1		O-Phosphoryl-Ethanolamine transport in via proton symport			seed:rxn05716;O-phosphoethanolamine_P Source
+MNXR95102	1		6-Phospho-D-gluconate transport in/out via proton symport			seed:rxn05482;6-phospho-D-gluconate_P Source
+MNXR101377	1		MAN1P transport in/out via proton symport			seed:rxn05609;D-mannose 1-phosphate_P Source
+MNXR136667	1		Pyrophosphate transport in via proton symport			seed:rxn11395;diphosphate_P Source
+MNXR96703	1		Choline phosphate intracellular transport			bigg:CHOLPtg;choline phosphate_P Source
+MNXR104966	1		thiosulfate transport			rhea:32807;thiosulfate_S Source
+MNXR95831	1		AMP transport in/out via proton symport			seed:rxn05497;AMP_P Source
+MNXR94718	1		23cAMP transport via diffusion (extracellular to periplasm)			seed:rxn07925;2',3'-cyclic AMP_P Source
+MNXR135007	1		Adenosine- 2'-Monophosphate transport in via proton symport			seed:rxn05721;CMP_P Source
+MNXR96805	1		CMP transport in/out via proton symport			seed:rxn05525;CMP_P Source
+MNXR100035	1		D-glucosamine transport via diffusion (extracellular to periplasm)			seed:rxn08593;D-Glucosamine_C Source
+2-deoxy-D-ribose transport	1		2-deoxy-D-ribose transport			NA;2-deoxy-D-ribose_C Source
+MNXR96737	1		L-Citrulline transport in via proton symport			seed:rxn05674;L-citrulline_N Source
+MNXR97367	1		Dihydroxyacetone transport via facilitated diffusion			seed:rxn05532;glycerone_C Source
+Ala-Leu transport via proton symport (extracellular to cytosol)	1		Ala-Leu transport via proton symport (extracellular to cytosol)			NA;Ala-Leu_N Source
+Ala-Leu transport via proton symport (cytosol to vacuole)	1		Ala-Leu transport via proton symport (cytosol to vacuole)			NA;Ala-Leu_N Source
+MNXR137133	1		L-alanylglycine transport via proton antiport			seed:rxn12625;Ala-Gly_N Source
+MNXR137133_cv	1		L-alanylglycine transport via proton antiport			seed:rxn12625;Ala-Gly_N Source
+N-acetyl-L-glutamate transport	1		N-acetyl-L-glutamate transport			NA;N-acetyl-L-glutamate_N Source
+N-acetyl-L-glutamate transport, mitochondrion	1		N-acetyl-L-glutamate transport			NA;N-acetyl-L-glutamate_N Source
+MNXR137094	1		Lipoamide transport via proton symport			seed:rxn12577;lipoamide_S Source
+MNXR101483	1		L-methionine S-oxide transport via diffusion (extracellular)			seed:rxn08915;L-Methionine S-oxide_S Source
+Gly-Asn transport via proton symport (cytosol to vacuole)	1		Gly-Asn transport via proton symport			NA;Gly-Asn_N Source
+MNXR137130	1		Cysteamine transport via proton antiport			seed:rxn12622;cysteamine S-phosphate_P Source
+Hydrogen sulfide oxidation	0		Hydrogen sulfide oxidation			NA;general sulfur metabolism_S Source
+MNXR95704	1		L-alanine transport in via proton symport			rhea:29443;L-alanine_N Source
+MNXR100368	1		Glycine transport (vacuole)			rhea:28899;L-glycine_N Source
+MNXR104382	1	( YJR130C or YLL058W or YML082W )	O4-succinyl-L-homoserine:hydrogen sulfide S-(3-amino-3-carboxypropyl)transferase; O-succinyl-L-homoserine succinate-lyase (adding hydrogen sulfide)	2.5.1.-;2.5.1.48	R01288	rhea:27826;L-methionine_N Source
+MNXR94843	0		4-Hydroxyphenylpyruvate:oxygen oxidoreductase (hydroxylating,decarboxylating)	1.13.11.27	R02521	rhea:16189;L-tyrosine_N Source
+MNXR100628	0		Homogentisate:oxygen 1,2-oxidoreductase (decyclizing)	1.13.11.5	R02519	rhea:15449;L-tyrosine_N Source
+MNXR101325	0		4-Maleylacetoacetate cis-trans-isomerase	5.2.1.2	R03181	rhea:14817;L-tyrosine_N Source
+MNXR99706	0		4-fumarylacetoacetate fumarylhydrolase	3.7.1.2	R01364	rhea:10244;L-tyrosine_N Source
+MNXR95187	0		L-arabinitol:NAD+ 4-oxidoreductase (L-xylulose-forming)	1.1.1.12	R01903	rhea:16381;D-arabinose_C Source
+MNXR105265	1		Xylitol:NADP+ 4-oxidoreductase (L-xylulose-forming)	1.1.1.10	R01904	rhea:17025;D-arabinose_C Source
+arabinose reductase (D-arabinose)	0		arabinose reductase (D-arabinose)			NA;D-arabinose_C Source
+MNXR95188	0		D-arabinitol:NAT 4-oxidoreductase	1.1.1.11	R05604	rhea:17921;D-arabinose_C Source
+MNXR95208	1		Acetoacetate transport via diffusion			rhea:29751;acetoacetate_C Source
+MNXR98748	1		methanol exchange			bigg:EX_meoh_e;methyl alpha-D-glucopyranoside_C Source
+MNXR118733	0		alkaline phosphatase	3.1.3.-		rhea:37343;adenosine 2'-phosphate_P Source

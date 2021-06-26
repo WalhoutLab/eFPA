@@ -1,0 +1,13 @@
+rxnID	rev	GPR	rxn_name_seed	EC	rxnID_kegg	Source;reason
+MNXR96437	1	YOL122C	Ca(2+) transport 			bigg:CAt4; gRrules come from TCDB, not included in the DBnewAnnotaiton update (PR #142)
+MNXR96797	1	YNL275W	chloride transport			bigg:Clt; gRrules come from TCDB, not included in the DBnewAnnotaiton update (PR #142)
+MNXR126350	1	YOL122C	Cu2(+) transport			rhea:28727; gRrules come from TCDB, not included in the DBnewAnnotaiton update (PR #142)
+MNXR101669	1	YGR191W	Mn(2+) transport			seed:rxn08946; gRrules come from TCDB, not included in the DBnewAnnotaiton update (PR #142)
+MNXR105278	1	( YGL255W or YLR130C )	Zn(2+) transport			bigg:ZN2t3pp; gRrules come from TCDB, not included in the DBnewAnnotaiton update (PR #142)
+MNXR101553	1	( GR191W or YOL130W )	Mg(2+) transport			bigg:MGt2pp; gRrules come from TCDB, not included in the DBnewAnnotaiton update (PR #142)
+chloride exchange	1		chloride exchange
+Cu2(+) exchange	1		Cu2(+) exchange
+Mn(2+) exchange	1		Mn(2+) exchange
+Zn(2+) exchange	1		Zn(2+) exchange
+Mg(2+) exchange	1		Mg(2+) exchange
+Ca(2+) exchange	1		Ca(2+) exchange

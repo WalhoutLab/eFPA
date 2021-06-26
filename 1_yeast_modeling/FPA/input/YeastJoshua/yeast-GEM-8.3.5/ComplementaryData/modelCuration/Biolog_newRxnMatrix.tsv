@@ -1,0 +1,571 @@
+rxnID	coefficient	Metabolite standard name	Metabolite_type	compartment
+MNXR137087	1	Ala-Gln	reactant	extracellular
+MNXR137087	1	H+	reactant	extracellular
+MNXR137087	1	H+	product	cytoplasm
+MNXR137087	1	Ala-Gln	product	cytoplasm
+MNXR137087_cv	1	H+	reactant	cytoplasm
+MNXR137087_cv	1	Ala-Gln	reactant	cytoplasm
+MNXR137087_cv	1	H+	product	vacuole
+MNXR137087_cv	1	Ala-Gln	product	vacuole
+MNXR123345	1	Ala-Gln	reactant	vacuole
+MNXR123345	1	H2O	reactant	vacuole
+MNXR123345	1	L-glutamine	product	vacuole
+MNXR123345	1	L-alanine	product	vacuole
+MNXR101006	1	Ala-Glu	reactant	extracellular
+MNXR101006	1	H+	reactant	extracellular
+MNXR101006	1	H+	product	cytoplasm
+MNXR101006	1	Ala-Glu	product	cytoplasm
+MNXR101006_cv	1	H+	reactant	cytoplasm
+MNXR101006_cv	1	Ala-Glu	reactant	cytoplasm
+MNXR101006_cv	1	H+	product	vacuole
+MNXR101006_cv	1	Ala-Glu	product	vacuole
+MNXR101011	1	Ala-Glu	reactant	vacuole
+MNXR101011	1	H2O	reactant	vacuole
+MNXR101011	1	L-glutamate	product	vacuole
+MNXR101011	1	L-alanine	product	vacuole
+Ala-Thr transport via proton symport (extracellular to cytosol)	1	Ala-Thr	reactant	extracellular
+Ala-Thr transport via proton symport (extracellular to cytosol)	1	H+	reactant	extracellular
+Ala-Thr transport via proton symport (extracellular to cytosol)	1	H+	product	cytoplasm
+Ala-Thr transport via proton symport (extracellular to cytosol)	1	Ala-Thr	product	cytoplasm
+Ala-Thr transport via proton symport (cytosol to vacuole)	1	H+	reactant	cytoplasm
+Ala-Thr transport via proton symport (cytosol to vacuole)	1	Ala-Thr	reactant	cytoplasm
+Ala-Thr transport via proton symport (cytosol to vacuole)	1	H+	product	vacuole
+Ala-Thr transport via proton symport (cytosol to vacuole)	1	Ala-Thr	product	vacuole
+MNXR123349	1	Ala-Thr	reactant	vacuole
+MNXR123349	1	H2O	reactant	vacuole
+MNXR123349	1	L-threonine	product	vacuole
+L-threonine transport, vacuoluar	1	L-threonine	reactant	cytoplasm
+L-threonine transport, vacuoluar	1	L-threonine	product	vacuole
+MNXR123349	1	L-alanine	product	vacuole
+MNXR118741	1	thymidine 3'-monophosphate	reactant	cytoplasm
+MNXR118741	1	H2O	reactant	cytoplasm
+MNXR118741	1	thymidine	product	cytoplasm
+MNXR118741	1	phosphate	product	cytoplasm
+thymidine 3'-monophosphate transport	1	thymidine 3'-monophosphate	reactant	extracellular
+thymidine 3'-monophosphate transport	1	thymidine 3'-monophosphate	product	cytoplasm
+nucleotide-specific phosphatase (thymidine 5'-monophosphate)	1	thymidine 5'-monophosphate	reactant	cytoplasm
+nucleotide-specific phosphatase (thymidine 5'-monophosphate)	1	H2O	reactant	cytoplasm
+nucleotide-specific phosphatase (thymidine 5'-monophosphate)	1	thymidine	product	cytoplasm
+nucleotide-specific phosphatase (thymidine 5'-monophosphate)	1	phosphate	product	cytoplasm
+thymidine 5'-monophosphate transport	1	thymidine 5'-monophosphate	reactant	extracellular
+thymidine 5'-monophosphate transport	1	thymidine 5'-monophosphate	product	cytoplasm
+RHEA:11477	1	glycerol 1-phosphate	reactant	cytoplasm
+RHEA:11477	1	H2O	reactant	cytoplasm
+RHEA:11477	1	glycerol	product	cytoplasm
+RHEA:11477	1	phosphate	product	cytoplasm
+glycerol 1-phosphate transport	1	glycerol 1-phosphate	reactant	extracellular
+glycerol 1-phosphate transport	1	glycerol 1-phosphate	product	cytoplasm
+MNXR137107	1	Ala-His	reactant	extracellular
+MNXR137107	1	H+	reactant	extracellular
+MNXR137107	1	H+	product	cytoplasm
+MNXR137107	1	Ala-His	product	cytoplasm
+MNXR137107_cv	1	H+	reactant	cytoplasm
+MNXR137107_cv	1	Ala-His	reactant	cytoplasm
+MNXR137107_cv	1	H+	product	vacuole
+MNXR137107_cv	1	Ala-His	product	vacuole
+MNXR123347	1	Ala-His	reactant	vacuole
+MNXR123347	1	H2O	reactant	vacuole
+MNXR123347	1	L-histidine	product	vacuole
+MNXR123347	1	L-alanine	product	vacuole
+Gly-Asn transport via proton symport (extracellular to cytosol)	1	Gly-Asn	reactant	extracellular
+Gly-Asn transport via proton symport (extracellular to cytosol)	1	H+	reactant	extracellular
+Gly-Asn transport via proton symport (extracellular to cytosol)	1	H+	product	cytoplasm
+Gly-Asn transport via proton symport (extracellular to cytosol)	1	Gly-Asn	product	cytoplasm
+Gly-Asn transport via proton symport (cytosol to vacuole)	1	H+	reactant	cytoplasm
+Gly-Asn transport via proton symport (cytosol to vacuole)	1	Gly-Asn	reactant	cytoplasm
+Gly-Asn transport via proton symport (cytosol to vacuole)	1	H+	product	vacuole
+Gly-Asn transport via proton symport (cytosol to vacuole)	1	Gly-Asn	product	vacuole
+MNXR123350	1	Gly-Asn	reactant	vacuole
+MNXR123350	1	H2O	reactant	vacuole
+MNXR123350	1	L-glycine	product	vacuole
+MNXR123350	1	L-asparagine	product	vacuole
+MNXR137074	1	Gly-Gln	reactant	extracellular
+MNXR137074	1	H+	reactant	extracellular
+MNXR137074	1	H+	product	cytoplasm
+MNXR137074	1	Gly-Gln	product	cytoplasm
+MNXR137074_cv	1	H+	reactant	cytoplasm
+MNXR137074_cv	1	Gly-Gln	reactant	cytoplasm
+MNXR137074_cv	1	H+	product	vacuole
+MNXR137074_cv	1	Gly-Gln	product	vacuole
+MNXR123351	1	Gly-Gln	reactant	vacuole
+MNXR123351	1	H2O	reactant	vacuole
+MNXR123351	1	L-glycine	product	vacuole
+MNXR123351	1	L-glutamine	product	vacuole
+Gly-Glu transport via proton symport (extracellular to cytosol)	1	Gly-Glu	reactant	extracellular
+Gly-Glu transport via proton symport (extracellular to cytosol)	1	H+	reactant	extracellular
+Gly-Glu transport via proton symport (extracellular to cytosol)	1	H+	product	cytoplasm
+Gly-Glu transport via proton symport (extracellular to cytosol)	1	Gly-Glu	product	cytoplasm
+Gly-Glu transport via proton symport (cytosol to vacuole)	1	H+	reactant	cytoplasm
+Gly-Glu transport via proton symport (cytosol to vacuole)	1	Gly-Glu	reactant	cytoplasm
+Gly-Glu transport via proton symport (cytosol to vacuole)	1	H+	product	vacuole
+Gly-Glu transport via proton symport (cytosol to vacuole)	1	Gly-Glu	product	vacuole
+MNXR123352	1	Gly-Glu	reactant	vacuole
+MNXR123352	1	H2O	reactant	vacuole
+MNXR123352	1	L-glycine	product	vacuole
+MNXR123352	1	L-glutamate	product	vacuole
+MNXR99852	1	glycerol 2-phosphate(2-)	reactant	cytoplasm
+MNXR99852	1	H2O	reactant	cytoplasm
+MNXR99852	1	glycerol	product	cytoplasm
+MNXR99852	1	phosphate	product	cytoplasm
+MNXR98598	1	glycerol 2-phosphate(2-)	reactant	extracellular
+MNXR98598	1	glycerol 2-phosphate(2-)	product	cytoplasm
+MNXR103332	1	O-phospho-L-threonine	reactant	cytoplasm
+MNXR103332	1	H2O	reactant	cytoplasm
+MNXR103332	1	phosphate	product	cytoplasm
+MNXR103332	1	L-threonine	product	cytoplasm
+MNXR136678	1	H+	reactant	extracellular
+MNXR136678	1	O-phospho-L-threonine	reactant	extracellular
+MNXR136678	1	O-phospho-L-threonine	product	cytoplasm
+MNXR136678	1	H+	product	cytoplasm
+MNXR118732	1	guanosine 2'-monophosphate	reactant	cytoplasm
+MNXR118732	1	H2O	reactant	cytoplasm
+MNXR118732	1	guanosine	product	cytoplasm
+MNXR118732	1	phosphate	product	cytoplasm
+Guanosine transport via proton symport	1	H+	reactant	extracellular
+Guanosine transport via proton symport	1	guanosine 2'-monophosphate	reactant	extracellular
+Guanosine transport via proton symport	1	guanosine 2'-monophosphate	product	cytoplasm
+Guanosine transport via proton symport	1	H+	product	cytoplasm
+MNXR94936	1	3'-GMP	reactant	cytoplasm
+MNXR94936	1	H2O	reactant	cytoplasm
+MNXR94936	1	guanosine	product	cytoplasm
+MNXR94936	1	phosphate	product	cytoplasm
+Guanosine transport via proton symport(for 3'-GMP)	1	H+	reactant	extracellular
+Guanosine transport via proton symport(for 3'-GMP)	1	3'-GMP	reactant	extracellular
+Guanosine transport via proton symport(for 3'-GMP)	1	3'-GMP	product	cytoplasm
+Guanosine transport via proton symport(for 3'-GMP)	1	H+	product	cytoplasm
+MNXR94822	1	H+	reactant	extracellular
+MNXR94822	1	2-phosphoglycolate	reactant	extracellular
+MNXR94822	1	2-phosphoglycolate	product	cytoplasm
+MNXR94822	1	H+	product	cytoplasm
+MNXR102543	1	2-phosphoglycolate	reactant	cytoplasm
+MNXR102543	1	H2O	reactant	cytoplasm
+MNXR102543	1	phosphate	product	cytoplasm
+MNXR102543	1	glycolate	product	cytoplasm
+MNXR118734	1	cysteamine S-phosphate	reactant	cytoplasm
+MNXR118734	1	H2O	reactant	cytoplasm
+MNXR118734	1	cysteamine	product	cytoplasm
+MNXR137130	1	H+	reactant	extracellular
+MNXR137130	1	cysteamine	reactant	extracellular
+MNXR137130	1	cysteamine	product	cytoplasm
+cysteamine exchange	1	cysteamine	reactant	extracellular
+MNXR137130	1	H+	product	cytoplasm
+MNXR118734	1	phosphate	product	cytoplasm
+cysteamine S-phosphate transport via proton symport	1	cysteamine S-phosphate	reactant	extracellular
+cysteamine S-phosphate transport via proton symport	1	cysteamine S-phosphate	product	cytoplasm
+MNXR107528	1	cysteamine	reactant	cytoplasm
+MNXR107528	1	oxygen	reactant	cytoplasm
+MNXR107528	1	hypotaurine	product	cytoplasm
+MNXR107528	1	H+	product	cytoplasm
+MNXR107116	1	hypotaurine	reactant	cytoplasm
+MNXR107116	1	H2O	reactant	cytoplasm
+MNXR107116	1	NAD	reactant	cytoplasm
+MNXR107116	1	taurine	product	cytoplasm
+MNXR107116	1	H+	product	cytoplasm
+MNXR107116	1	NADH	product	cytoplasm
+MNXR103265	1	H2O	reactant	cytoplasm
+MNXR103265	1	O-phosphonatooxy-D-serine(2-)	reactant	cytoplasm
+MNXR103265	1	D-Serine	product	cytoplasm
+MNXR103265	1	phosphate	product	cytoplasm
+MNXR103244	1	O-phosphonatooxy-D-serine(2-)	reactant	extracellular
+MNXR103244	1	H+	reactant	extracellular
+MNXR103244	1	H+	product	cytoplasm
+MNXR103244	1	O-phosphonatooxy-D-serine(2-)	product	cytoplasm
+MNXR103594	1	2-oxobutanoate	reactant	cytoplasm
+MNXR103594	1	L-glutamate	reactant	cytoplasm
+MNXR103594	1	2-aminobutanoate	product	cytoplasm
+MNXR103594	1	2-oxoglutarate	product	cytoplasm
+2-aminobutyrate transport	1	H+	reactant	extracellular
+2-aminobutyrate transport	1	2-aminobutanoate	reactant	extracellular
+2-aminobutyrate transport	1	2-aminobutanoate	product	cytoplasm
+2-aminobutyrate transport	1	H+	product	cytoplasm
+MNXR118730	1	uridine 2'-phosphate	reactant	cytoplasm
+MNXR118730	1	H2O	reactant	cytoplasm
+MNXR118730	1	uridine	product	cytoplasm
+MNXR118730	1	phosphate	product	cytoplasm
+MNXR136675	1	H+	reactant	extracellular
+MNXR136675	1	uridine 2'-phosphate	reactant	extracellular
+MNXR136675	1	uridine 2'-phosphate	product	cytoplasm
+MNXR136675	1	H+	product	cytoplasm
+MNXR94932	1	3'-UMP	reactant	cytoplasm
+MNXR94932	1	H2O	reactant	cytoplasm
+MNXR94932	1	uridine	product	cytoplasm
+MNXR94932	1	phosphate	product	cytoplasm
+MNXR94982	1	H+	reactant	extracellular
+MNXR94982	1	3'-UMP	reactant	extracellular
+MNXR94982	1	3'-UMP	product	cytoplasm
+MNXR94982	1	H+	product	cytoplasm
+MNXR137072	1	Gly-Met	reactant	extracellular
+MNXR137072	1	H+	reactant	extracellular
+MNXR137072	1	H+	product	cytoplasm
+MNXR137072	1	Gly-Met	product	cytoplasm
+MNXR137072_cv	1	H+	reactant	cytoplasm
+MNXR137072_cv	1	Gly-Met	reactant	cytoplasm
+MNXR137072_cv	1	H+	product	vacuole
+MNXR137072_cv	1	Gly-Met	product	vacuole
+MNXR123343	1	Gly-Met	reactant	vacuole
+MNXR123343	1	H2O	reactant	vacuole
+MNXR123343	1	L-methionine	product	vacuole
+MNXR123343	1	L-glycine	product	vacuole
+MNXR111061	1	N-phosphocreatine	reactant	cytoplasm
+MNXR111061	1	creatinine	product	cytoplasm
+MNXR111061	1	phosphate	product	cytoplasm
+N-phosphocreatine transport	1	H+	reactant	extracellular
+N-phosphocreatine transport	1	N-phosphocreatine	reactant	extracellular
+N-phosphocreatine transport	1	N-phosphocreatine	product	cytoplasm
+N-phosphocreatine transport	1	H+	product	cytoplasm
+creatinine transport	1	H+	reactant	extracellular
+creatinine transport	1	creatinine	reactant	extracellular
+creatinine transport	1	creatinine	product	cytoplasm
+creatinine transport	1	H+	product	cytoplasm
+MNXR95943	1	H+	reactant	cytoplasm
+MNXR95943	1	N(omega)-phospho-L-arginine	reactant	cytoplasm
+MNXR95943	1	ADP	reactant	cytoplasm
+MNXR95943	1	ATP	product	cytoplasm
+MNXR95943	1	L-arginine	product	cytoplasm
+MNXR95947	1	H+	reactant	extracellular
+MNXR95947	1	N(omega)-phospho-L-arginine	reactant	extracellular
+MNXR95947	1	N(omega)-phospho-L-arginine	product	cytoplasm
+MNXR95947	1	H+	product	cytoplasm
+MNXR117325	1	2',3'-cyclic GMP	reactant	cytoplasm
+MNXR117325	1	H2O	reactant	cytoplasm
+MNXR117325	1	H+	product	cytoplasm
+MNXR117325	1	guanosine 2'-monophosphate	product	cytoplasm
+MNXR94721	1	2',3'-cyclic GMP	reactant	extracellular
+MNXR94721	1	2',3'-cyclic GMP	product	cytoplasm
+MNXR104998	1	H2O	reactant	cytoplasm
+MNXR104998	1	O(4)-phospho-L-tyrosine	reactant	cytoplasm
+MNXR104998	1	L-tyrosine	product	cytoplasm
+MNXR104998	1	phosphate	product	cytoplasm
+MNXR137095	1	H+	reactant	extracellular
+MNXR137095	1	O(4)-phospho-L-tyrosine	reactant	extracellular
+MNXR137095	1	O(4)-phospho-L-tyrosine	product	cytoplasm
+MNXR137095	1	H+	product	cytoplasm
+MNXR103069	1	triphosphate	reactant	cytoplasm
+MNXR103069	1	H2O	reactant	cytoplasm
+MNXR103069	1	phosphate	product	cytoplasm
+MNXR103069	1	diphosphate	product	cytoplasm
+MNXR135003	1	H+	reactant	extracellular
+MNXR135003	1	triphosphate	reactant	extracellular
+MNXR135003	1	triphosphate	product	cytoplasm
+MNXR135003	1	H+	product	cytoplasm
+MNXR118731	1	cytidine 2'-phosphate	reactant	cytoplasm
+MNXR118731	1	H2O	reactant	cytoplasm
+MNXR118731	1	cytidine	product	cytoplasm
+MNXR118731	1	phosphate	product	cytoplasm
+MNXR135010	1	H+	reactant	extracellular
+MNXR135010	1	cytidine 2'-phosphate	reactant	extracellular
+MNXR135010	1	cytidine 2'-phosphate	product	cytoplasm
+MNXR135010	1	H+	product	cytoplasm
+MNXR117327	1	2',3'-cyclic UMP	reactant	cytoplasm
+MNXR117327	1	H2O	reactant	cytoplasm
+MNXR117327	1	uridine 2'-phosphate	product	cytoplasm
+MNXR117327	1	H+	product	cytoplasm
+MNXR136674	1	H+	reactant	extracellular
+MNXR136674	1	2',3'-cyclic UMP	reactant	extracellular
+MNXR136674	1	2',3'-cyclic UMP	product	cytoplasm
+MNXR136674	1	H+	product	cytoplasm
+MNXR123155	1	3-sulfino-L-alanine	reactant	cytoplasm
+MNXR123155	1	H2O	reactant	cytoplasm
+MNXR123155	1	L-alanine	product	cytoplasm
+MNXR123155	1	sulphite	product	cytoplasm
+MNXR137086	1	H+	reactant	extracellular
+MNXR137086	1	3-sulfino-L-alanine	reactant	extracellular
+MNXR137086	1	3-sulfino-L-alanine	product	cytoplasm
+MNXR137086	1	H+	product	cytoplasm
+MNXR94935	1	3'-AMP	reactant	cytoplasm
+MNXR94935	1	H2O	reactant	cytoplasm
+MNXR94935	1	adenosine	product	cytoplasm
+MNXR94935	1	phosphate	product	cytoplasm
+MNXR94857	1	3'-AMP	reactant	extracellular
+MNXR94857	1	3'-AMP	product	cytoplasm
+MNXR130717	1	6-O-alpha-D-glucopyranosyl-D-fructofuranose	reactant	cytoplasm
+MNXR130717	1	H2O	reactant	cytoplasm
+MNXR130717	1	D-fructose	product	cytoplasm
+MNXR130717	1	D-glucose	product	cytoplasm
+MNXR102339	1	H+	reactant	extracellular
+MNXR102339	1	6-O-alpha-D-glucopyranosyl-D-fructofuranose	reactant	extracellular
+MNXR102339	1	6-O-alpha-D-glucopyranosyl-D-fructofuranose	product	cytoplasm
+MNXR102339	1	H+	product	cytoplasm
+MNXR103637	1	N-acetyl-L-cysteine	reactant	cytoplasm
+MNXR103637	1	coenzyme A	reactant	cytoplasm
+MNXR103637	1	H+	reactant	cytoplasm
+MNXR103637	1	acetyl-CoA	product	cytoplasm
+MNXR103637	1	L-cysteine	product	cytoplasm
+MNXR137052	1	H+	reactant	extracellular
+MNXR137052	1	N-acetyl-L-cysteine	reactant	extracellular
+MNXR137052	1	N-acetyl-L-cysteine	product	cytoplasm
+MNXR137052	1	H+	product	cytoplasm
+MNXR106345	1	tetrathionate	reactant	cytoplasm
+MNXR106345	2	ferricytochrome c	reactant	mitochondrion
+MNXR106345	2	thiosulfate	product	cytoplasm
+MNXR106345	2	ferrocytochrome c	product	mitochondrion
+MNXR104796	1	tetrathionate	reactant	extracellular
+MNXR104796	1	tetrathionate	product	cytoplasm
+L-methionine transport, vacuoluar	1	L-methionine	reactant	cytoplasm
+L-methionine transport, vacuoluar	1	L-methionine	product	vacuole
+MNXR99485	1	2-hydroxyethane-1-sulfonate	reactant	cytoplasm
+MNXR99485	1	FMNH2	reactant	cytoplasm
+MNXR99485	1	oxygen	reactant	cytoplasm
+MNXR99485	1	H+	product	cytoplasm
+MNXR99485	1	sulphite	product	cytoplasm
+MNXR99485	1	H2O	product	cytoplasm
+MNXR99485	1	FMN	product	cytoplasm
+MNXR99485	1	glycolaldehyde	product	cytoplasm
+MNXR137058	1	H+	reactant	extracellular
+MNXR137058	1	2-hydroxyethane-1-sulfonate	reactant	extracellular
+MNXR137058	1	2-hydroxyethane-1-sulfonate	product	cytoplasm
+MNXR137058	1	H+	product	cytoplasm
+MNXR95065	1	H+	reactant	cytoplasm
+MNXR95065	1	NADPH	reactant	cytoplasm
+MNXR95065	1	5-dehydro-D-gluconate	reactant	cytoplasm
+MNXR95065	1	D-gluconate	product	cytoplasm
+MNXR95065	1	NADP(+)	product	cytoplasm
+MNXR95066	1	H+	reactant	extracellular
+MNXR95066	1	5-dehydro-D-gluconate	reactant	extracellular
+MNXR95066	1	5-dehydro-D-gluconate	product	cytoplasm
+MNXR95066	1	H+	product	cytoplasm
+MNXR137135	1	Ala-Asp	reactant	extracellular
+MNXR137135	1	H+	reactant	extracellular
+MNXR137135	1	H+	product	cytoplasm
+MNXR137135	1	Ala-Asp	product	cytoplasm
+MNXR137135_cv	1	H+	reactant	cytoplasm
+MNXR137135_cv	1	Ala-Asp	reactant	cytoplasm
+MNXR137135_cv	1	H+	product	vacuole
+MNXR137135_cv	1	Ala-Asp	product	vacuole
+MNXR123344	1	Ala-Asp	reactant	vacuole
+MNXR123344	1	H2O	reactant	vacuole
+MNXR123344	1	L-alanine	product	vacuole
+MNXR123344	1	L-aspartate	product	vacuole
+MNXR96247	1	methyl alpha-D-glucopyranoside	reactant	cytoplasm
+MNXR96247	1	H2O	reactant	cytoplasm
+MNXR96247	1	D-glucose	product	cytoplasm
+MNXR96247	1	methanol	product	cytoplasm
+MNXR101464	1	methanol	reactant	cytoplasm
+MNXR101464	1	methanol	product	extracellular
+MNXR98748	1	methanol	reactant	extracellular
+MNXR137048	1	H+	reactant	extracellular
+MNXR137048	1	methyl alpha-D-glucopyranoside	reactant	extracellular
+MNXR137048	1	methyl alpha-D-glucopyranoside	product	cytoplasm
+MNXR137048	1	H+	product	cytoplasm
+MNXR117326	1	2',3'-cyclic CMP	reactant	cytoplasm
+MNXR117326	1	H2O	reactant	cytoplasm
+MNXR117326	1	cytidine 2'-phosphate	product	cytoplasm
+MNXR117326	1	H+	product	cytoplasm
+MNXR136673	1	H+	reactant	extracellular
+MNXR136673	1	2',3'-cyclic CMP	reactant	extracellular
+MNXR136673	1	2',3'-cyclic CMP	product	cytoplasm
+MNXR136673	1	H+	product	cytoplasm
+MNXR107830	1	D-tagatose	reactant	cytoplasm
+MNXR107830	1	ATP	reactant	cytoplasm
+MNXR107830	1	ADP	product	cytoplasm
+MNXR107830	1	D-tagatofuranose 6-phosphate	product	cytoplasm
+MNXR107830	1	H+	product	cytoplasm
+R11623	1	D-tagatofuranose 6-phosphate	reactant	cytoplasm
+R11623	1	D-fructose 6-phosphate	product	cytoplasm
+MNXR104707	1	D-tagatose	reactant	extracellular
+MNXR104707	1	D-tagatose	product	cytoplasm
+MNXR130716	1	turanose	reactant	extracellular
+MNXR130716	1	H2O	reactant	extracellular
+MNXR130716	1	D-fructose	product	extracellular
+MNXR130716	1	D-glucose	product	extracellular
+MNXR95136	1	acetoacetate	reactant	cytoplasm
+MNXR95136	1	ATP	reactant	cytoplasm
+MNXR95136	1	coenzyme A	reactant	cytoplasm
+MNXR95136	1	AMP	product	cytoplasm
+MNXR95136	1	diphosphate	product	cytoplasm
+MNXR95136	1	acetoacetyl-CoA	product	cytoplasm
+MNXR95208	1	acetoacetate	reactant	extracellular
+MNXR95208	1	acetoacetate	product	cytoplasm
+MNXR103709	1	N(alpha)-acetyl-L-methionine	reactant	cytoplasm
+MNXR103709	1	H2O	reactant	cytoplasm
+MNXR103709	1	acetate	product	cytoplasm
+MNXR103709	1	L-methionine	product	cytoplasm
+MNXR137089	1	H+	reactant	extracellular
+MNXR137089	1	N(alpha)-acetyl-L-methionine	reactant	extracellular
+MNXR137089	1	N(alpha)-acetyl-L-methionine	product	cytoplasm
+MNXR137089	1	H+	product	cytoplasm
+MNXR106549	1	3-oxalomalate(3-)	reactant	cytoplasm
+MNXR106549	1	oxaloacetate	product	cytoplasm
+MNXR106549	1	glyoxylate	product	cytoplasm
+MNXR137067	1	H+	reactant	extracellular
+MNXR137067	1	3-oxalomalate(3-)	reactant	extracellular
+MNXR137067	1	3-oxalomalate(3-)	product	cytoplasm
+MNXR137067	1	H+	product	cytoplasm
+MNXR111236	1	L-cysteate	reactant	cytoplasm
+MNXR111236	1	H2O	reactant	cytoplasm
+MNXR111236	1	pyruvate	product	cytoplasm
+MNXR111236	1	ammonium	product	cytoplasm
+MNXR111236	1	sulphite	product	cytoplasm
+MNXR124424	1	H+	reactant	extracellular
+MNXR124424	1	L-cysteate	reactant	extracellular
+MNXR124424	1	L-cysteate	product	cytoplasm
+MNXR124424	1	H+	product	cytoplasm
+MNXR101619	1	alpha-maltotriose	reactant	extracellular
+MNXR101619	1	H2O	reactant	extracellular
+MNXR101619	1	maltose	product	extracellular
+MNXR101619	1	D-glucose	product	extracellular
+MNXR94824	1	H+	reactant	extracellular
+MNXR94824	1	2-phospho-D-glyceric acid	reactant	extracellular
+MNXR94824	1	2-phospho-D-glyceric acid	product	cytoplasm
+MNXR94824	1	H+	product	cytoplasm
+MNXR94973	1	H+	reactant	extracellular
+MNXR94973	1	3-phosphonato-D-glycerate(3-)	reactant	extracellular
+MNXR94973	1	3-phosphonato-D-glycerate(3-)	product	cytoplasm
+MNXR94973	1	H+	product	cytoplasm
+Met-Ala transport via proton symport (extracellular to cytosol)	1	Met-Ala	reactant	extracellular
+Met-Ala transport via proton symport (extracellular to cytosol)	1	H+	reactant	extracellular
+Met-Ala transport via proton symport (extracellular to cytosol)	1	H+	product	cytoplasm
+Met-Ala transport via proton symport (extracellular to cytosol)	1	Met-Ala	product	cytoplasm
+Met-Ala transport via proton symport (cytosol to vacuole)	1	H+	reactant	cytoplasm
+Met-Ala transport via proton symport (cytosol to vacuole)	1	Met-Ala	reactant	cytoplasm
+Met-Ala transport via proton symport (cytosol to vacuole)	1	H+	product	vacuole
+Met-Ala transport via proton symport (cytosol to vacuole)	1	Met-Ala	product	vacuole
+MNXR99849	1	D-glucose 1-phosphate	reactant	extracellular
+MNXR99849	1	D-glucose 1-phosphate	product	cytoplasm
+MNXR96488	1	carbamoyl phosphate	reactant	extracellular
+MNXR96488	1	carbamoyl phosphate	product	cytoplasm
+MNXR103245	1	3-phospho-serine	reactant	extracellular
+MNXR103245	1	H+	reactant	extracellular
+MNXR103245	1	H+	product	cytoplasm
+MNXR103245	1	3-phospho-serine	product	cytoplasm
+MNXR100385	1	GMP	reactant	extracellular
+MNXR100385	1	H+	reactant	extracellular
+MNXR100385	1	H+	product	cytoplasm
+MNXR100385	1	GMP	product	cytoplasm
+MNXR101585	1	myo-inositol hexakisphosphate	reactant	extracellular
+MNXR101585	1	myo-inositol hexakisphosphate	product	cytoplasm
+MNXR98531	1	D-glucose 6-phosphate	reactant	extracellular
+MNXR98531	1	D-glucose 6-phosphate	product	cytoplasm
+MNXR105127	1	UMP	reactant	extracellular
+MNXR105127	1	UMP	product	cytoplasm
+MNXR102493	1	phosphoenolpyruvate	reactant	extracellular
+MNXR102493	1	H+	reactant	extracellular
+MNXR102493	1	H+	product	cytoplasm
+MNXR102493	1	phosphoenolpyruvate	product	cytoplasm
+MNXR101385	1	D-mannose 6-phosphate	reactant	extracellular
+MNXR101385	1	D-mannose 6-phosphate	product	cytoplasm
+MNXR135002	1	O-phosphoethanolamine	reactant	extracellular
+MNXR135002	1	H+	reactant	extracellular
+MNXR135002	1	H+	product	cytoplasm
+MNXR135002	1	O-phosphoethanolamine	product	cytoplasm
+MNXR95102	1	6-phospho-D-gluconate	reactant	extracellular
+MNXR95102	1	H+	reactant	extracellular
+MNXR95102	1	H+	product	cytoplasm
+MNXR95102	1	6-phospho-D-gluconate	product	cytoplasm
+MNXR101377	1	D-mannose 1-phosphate	reactant	extracellular
+MNXR101377	1	H+	reactant	extracellular
+MNXR101377	1	H+	product	cytoplasm
+MNXR101377	1	D-mannose 1-phosphate	product	cytoplasm
+MNXR136667	1	diphosphate	reactant	extracellular
+MNXR136667	2	H+	reactant	extracellular
+MNXR136667	2	H+	product	cytoplasm
+MNXR136667	1	diphosphate	product	cytoplasm
+MNXR96703	1	choline phosphate	reactant	extracellular
+MNXR96703	1	choline phosphate	product	cytoplasm
+MNXR104966	1	thiosulfate	reactant	extracellular
+MNXR104966	1	thiosulfate	product	cytoplasm
+MNXR95831	1	AMP	reactant	extracellular
+MNXR95831	1	H+	reactant	extracellular
+MNXR95831	1	H+	product	cytoplasm
+MNXR95831	1	AMP	product	cytoplasm
+MNXR94718	1	2',3'-cyclic AMP	reactant	extracellular
+MNXR94718	1	2',3'-cyclic AMP	product	cytoplasm
+MNXR135007	1	adenosine 2'-phosphate	reactant	extracellular
+MNXR135007	1	H+	reactant	extracellular
+MNXR135007	1	H+	product	cytoplasm
+MNXR135007	1	adenosine 2'-phosphate	product	cytoplasm
+MNXR96805	1	CMP	reactant	extracellular
+MNXR96805	1	H+	reactant	extracellular
+MNXR96805	1	H+	product	cytoplasm
+MNXR96805	1	CMP	product	cytoplasm
+MNXR100035	1	D-Glucosamine	reactant	extracellular
+MNXR100035	1	D-Glucosamine	product	cytoplasm
+2-deoxy-D-ribose transport	1	2-deoxy-D-ribose	reactant	extracellular
+2-deoxy-D-ribose transport	1	2-deoxy-D-ribose	product	cytoplasm
+MNXR96737	1	L-citrulline	reactant	extracellular
+MNXR96737	1	H+	reactant	extracellular
+MNXR96737	1	H+	product	cytoplasm
+MNXR96737	1	L-citrulline	product	cytoplasm
+MNXR97367	1	glycerone	reactant	extracellular
+MNXR97367	1	glycerone	product	cytoplasm
+Ala-Leu transport via proton symport (extracellular to cytosol)	1	Ala-Leu	reactant	extracellular
+Ala-Leu transport via proton symport (extracellular to cytosol)	1	H+	reactant	extracellular
+Ala-Leu transport via proton symport (extracellular to cytosol)	1	H+	product	cytoplasm
+Ala-Leu transport via proton symport (extracellular to cytosol)	1	Ala-Leu	product	cytoplasm
+Ala-Leu transport via proton symport (cytosol to vacuole)	1	H+	reactant	cytoplasm
+Ala-Leu transport via proton symport (cytosol to vacuole)	1	Ala-Leu	reactant	cytoplasm
+Ala-Leu transport via proton symport (cytosol to vacuole)	1	H+	product	vacuole
+Ala-Leu transport via proton symport (cytosol to vacuole)	1	Ala-Leu	product	vacuole
+MNXR137133	1	Ala-Gly	reactant	extracellular
+MNXR137133	1	H+	reactant	extracellular
+MNXR137133	1	H+	product	cytoplasm
+MNXR137133	1	Ala-Gly	product	cytoplasm
+MNXR137133_cv	1	H+	reactant	cytoplasm
+MNXR137133_cv	1	Ala-Gly	reactant	cytoplasm
+MNXR137133_cv	1	H+	product	vacuole
+MNXR137133_cv	1	Ala-Gly	product	vacuole
+N-acetyl-L-glutamate transport	1	N-acetyl-L-glutamate	reactant	extracellular
+N-acetyl-L-glutamate transport	1	N-acetyl-L-glutamate	product	cytoplasm
+N-acetyl-L-glutamate transport, mitochondrion	1	N-acetyl-L-glutamate	reactant	cytoplasm
+N-acetyl-L-glutamate transport, mitochondrion	1	N-acetyl-L-glutamate	product	mitochondrion
+MNXR137094	1	lipoamide	reactant	extracellular
+MNXR137094	1	H+	reactant	extracellular
+MNXR137094	1	H+	product	cytoplasm
+MNXR137094	1	lipoamide	product	cytoplasm
+MNXR101483	1	L-Methionine S-oxide	reactant	extracellular
+MNXR101483	1	L-Methionine S-oxide	product	cytoplasm
+Hydrogen sulfide oxidation	1	hydrogen sulfide	reactant	cytoplasm
+Hydrogen sulfide oxidation	2	oxygen	reactant	cytoplasm
+Hydrogen sulfide oxidation	1	H+	product	cytoplasm
+Hydrogen sulfide oxidation	1	sulphate	product	cytoplasm
+MNXR95704	1	H+	reactant	cytoplasm
+MNXR95704	1	L-alanine	reactant	cytoplasm
+MNXR95704	1	L-alanine	product	vacuole
+MNXR95704	1	H+	product	vacuole
+MNXR100368	1	H+	reactant	cytoplasm
+MNXR100368	1	L-glycine	reactant	cytoplasm
+MNXR100368	1	L-glycine	product	vacuole
+MNXR100368	1	H+	product	vacuole
+MNXR104382	1	O-succinyl-L-homoserine	reactant	cytoplasm
+MNXR104382	1	hydrogen sulfide	reactant	cytoplasm
+MNXR104382	1	L-homocysteine	product	cytoplasm
+MNXR104382	1	succinate	product	cytoplasm
+MNXR94843	1	oxygen	reactant	cytoplasm
+MNXR94843	1	3-(4-hydroxyphenyl)pyruvate	reactant	cytoplasm
+MNXR94843	1	homogentisate	product	cytoplasm
+MNXR94843	1	carbon dioxide	product	cytoplasm
+MNXR100628	1	homogentisate	reactant	cytoplasm
+MNXR100628	1	oxygen	reactant	cytoplasm
+MNXR100628	1	4-maleylacetoacetate	product	cytoplasm
+MNXR100628	1	H+	product	cytoplasm
+MNXR101325	1	4-maleylacetoacetate	reactant	cytoplasm
+MNXR101325	1	4-fumarylacetoacetate	product	cytoplasm
+MNXR99706	1	4-fumarylacetoacetate	reactant	cytoplasm
+MNXR99706	1	H2O	reactant	cytoplasm
+MNXR99706	1	fumarate	product	cytoplasm
+MNXR99706	1	acetoacetate	product	cytoplasm
+MNXR99706	1	H+	product	cytoplasm
+MNXR95187	1	L-arabinitol	reactant	cytoplasm
+MNXR95187	1	NAD	reactant	cytoplasm
+MNXR95187	1	H+	product	cytoplasm
+MNXR95187	1	NADH	product	cytoplasm
+MNXR95187	1	L-xylulose	product	cytoplasm
+MNXR105265	1	L-xylulose	reactant	cytoplasm
+MNXR105265	1	NADPH	reactant	cytoplasm
+MNXR105265	1	H+	reactant	cytoplasm
+MNXR105265	1	xylitol	product	cytoplasm
+MNXR105265	1	NADP(+)	product	cytoplasm
+arabinose reductase (D-arabinose)	1	D-arabinose	reactant	cytoplasm
+arabinose reductase (D-arabinose)	1	NADPH	reactant	cytoplasm
+arabinose reductase (D-arabinose)	1	H+	reactant	cytoplasm
+arabinose reductase (D-arabinose)	1	D-arabinitol	product	cytoplasm
+arabinose reductase (D-arabinose)	1	NADP(+)	product	cytoplasm
+MNXR95188	1	D-arabinitol	reactant	cytoplasm
+MNXR95188	1	NAD	reactant	cytoplasm
+MNXR95188	1	H+	product	cytoplasm
+MNXR95188	1	NADH	product	cytoplasm
+MNXR95188	1	D-xylulose	product	cytoplasm
+MNXR118733	1	adenosine 2'-phosphate	reactant	cytoplasm
+MNXR118733	1	H2O	reactant	cytoplasm
+MNXR118733	1	adenosine	product	cytoplasm
+MNXR118733	1	phosphate	product	cytoplasm

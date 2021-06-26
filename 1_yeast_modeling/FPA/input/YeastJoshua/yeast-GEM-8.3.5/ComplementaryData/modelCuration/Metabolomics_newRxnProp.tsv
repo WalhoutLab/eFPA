@@ -1,0 +1,22 @@
+RxnID	rev	RxnName	EC	rxnID_kegg	Source
+MNXR100390	0	ATP:D-Gluconate 6-phosphotransferase	2.7.1.12	R01737	rhea:19433
+MNXR123213	0	6-phosphogluconate phosphatase	3.1.3.-;3.1.3.2;3.1.3.29		metacyc:RXN0-5185
+MNXR110535	0	R06790		R06790	seed:rxn04605
+MNXR110621	0	Carboxylic ester hydrolases	3.1.1.-;3.1.1.2		rhea:47384
+MNXR111769	1	phosphoglycerate dehydrogenase	1.1.1.95	R08198	rhea:13449
+MNXR134240	1	seed:rxn00681			seed:rxn00681
+MNXR95862	1	beta-alanine:2-oxoglutarate aminotransferase	2.6.1.19;2.6.1.55	R00908	rhea:30699
+MNXR101665	0	3-Oxopropanoate:NAD+ oxidoreductase (decarboxylating, CoA-acetylating)	1.2.1.-;1.2.1.18;1.2.1.27	R00705	rhea:22992
+MNXR106650	0	3-Oxopropanoate:NADP+ oxidoreductase (decarboxylating, CoA-acetylating)	1.2.1.-;1.2.1.18	R00706	rhea:22988
+MNXR110693	0	3-oxopropanoate carboxy-lyase	4.1.1.-;4.2.1.155	R06973	rhea:45160
+MNXR100904	1	(R)-2,3-Dihydroxy-3-methylbutanoate:NADP+ oxidoreductase (isomerizing)	1.1.1.86	R04440	rhea:31139
+MNXR137278	0	Dihydroxy-acid dehydratase, mitochondrial			seed:rxn13007
+MNXR137279	0	Ketol-acid reductoisomerase, mitochondrial			seed:rxn13008
+MNXR95271	0	pyruvate:pyruvate acetaldehydetransferase (decarboxylating); (S)-2-acetolactate pyruvate-lyase (carboxylating)	2.2.1.6	R00226	rhea:25249
+MNXR97523	1	(R)-2,3-dihydroxy-3-methylbutanoate:NADP+ oxidoreductase (isomerizing)	1.1.1.383;1.1.1.86	R04439	rhea:22068
+MNXR106779	0	(2R,3S)-3-methylmalate:NAD+ oxidoreductase	1.1.1.-;1.1.1.85	R00994	rhea:32715
+MNXR121603	0	malate/beta-methylmalate synthase	2.3.3.-		metacyc:RXN-18333
+MNXR99136	0	palmitoyl-CoA hydrolase	3.1.2.-;3.1.2.2		rhea:40143
+MNXR99175	0	long-chain-fatty-acid---CoA ligase	6.2.1.3		rhea:33651
+MNXR100010	0	a-galactosidase (stachyose)	3.2.1.22		seed:rxn02596
+MNXR122225	0	stachyose synthase	2.4.1.-		metacyc:RXN-8287

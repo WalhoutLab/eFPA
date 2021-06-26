@@ -1,0 +1,7 @@
+NewMetName	Charged formula	Charge	compartment	KEGG ID	CHEBI ID	Remark
+Ca(2+) [extracellular]	Ca	2	extracellular	C00076	CHEBI:29108
+chloride [extracellular]	Cl	-1	extracellular	C00698	CHEBI:17996
+Cu2(+) [extracellular]	Cu	2	extracellular	C00070	CHEBI:29036
+Mn(2+) [extracellular]	Mn	2	extracellular	C19610	CHEBI:29035
+Zn(2+) [extracellular]	Zn	2	extracellular	C00038	CHEBI:29105
+Mg(2+) [extracellular]	Mg	2	extracellular	C00305	CHEBI:18420		

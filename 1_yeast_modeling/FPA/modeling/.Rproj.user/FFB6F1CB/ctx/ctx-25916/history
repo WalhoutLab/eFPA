@@ -1,0 +1,512 @@
+str_replace(toupper(str_replace(allTF$TFnames[str_replace(toupper(str_replace(allTF$TFnames,'p$','')),'-','_') %in% str_replace(toupper(name2ID$name),'-','_')],'p$','')),'-','_'),
+str_replace(toupper(name2ID$name),'-','_'))]
+rownames(GRN) = allTF$TFid
+rownames(GRN)
+targetTF = 'YER040W'
+outName = 'gln3'
+targetTF_expression = t(RNAallExp[targetTF,3:ncol(RNAallExp)])
+hist(cor(targetTF_expression,rxnExpMat))
+corV = t(cor(targetTF_expression, rxnExpMat))
+annotation2[rownames(corV),'TF_coexpression_r'] = corV[,1]
+colorList$TF_coexpression_r = c('#00FF00','#ff0000')
+names(colorList$TF_coexpression_r) = c('-1','1')
+pval = numeric()
+for (i in 1:ncol(rxnExpMat)){
+if (!all(is.na(rxnExpMat[,i]))){
+tmp  = cor.test(targetTF_expression, rxnExpMat[,i])
+pval[i] = tmp$p.value
+}else{
+pval[i] = NA
+}
+}
+fdrVal = p.adjust(pval,method = 'BH')
+annotation2$is_coexpressed = ifelse(fdrVal < 0.05, 'Yes','No')
+colorList$is_coexpressed = c('#FD8D3CFF','#370335FF')
+names(colorList$is_coexpressed) = c('Yes','No')
+TF_expression_rxn = colnames(GRN)[GRN[targetTF,] == 1]
+annotation2$is_target = ifelse(colnames(rows.cor) %in% TF_expression_rxn, 'Yes','No')
+colorList$is_target = c('#FD8D3CFF','#370335FF')
+names(colorList$is_target) = c('Yes','No')
+dev.off()
+pdf(paste('figures/',outName,'_co-expression_coFlux.pdf',sep = ''),width = 24,height = 16)
+pheatmap(rows.cor, breaks = seq(-1,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+"RdYlBu")))(2000),
+# clustering_distance_rows = as.dist(1 - rows.cor),
+annotation_row = annotation[,c("pathway_major"),drop = F],
+annotation_colors = colorList,labels_col = labels_col,
+annotation_col = annotation2[,c('pathway_major','isPredicted','isCorrelated','is_target','is_coexpressed','TF_coexpression_r')],
+gaps_col = 1,
+# legend_breaks = seq2,legend_labels = legend_labels,
+border_color = 'black',
+fontsize = 8,fontsize_row = 2, fontsize_col = 4,
+#cellwidth = 8, cellheight = 4,
+cluster_rows = TRUE,cluster_cols = TRUE,
+fontsize_number = 5)
+dev.off()
+targetTF = 'YCL030C'
+outName = 'his4'
+targetTF_expression = t(RNAallExp[targetTF,3:ncol(RNAallExp)])
+hist(cor(targetTF_expression,rxnExpMat))
+corV = t(cor(targetTF_expression, rxnExpMat))
+annotation2[rownames(corV),'TF_coexpression_r'] = corV[,1]
+colorList$TF_coexpression_r = c('#00FF00','#ff0000')
+names(colorList$TF_coexpression_r) = c('-1','1')
+pval = numeric()
+for (i in 1:ncol(rxnExpMat)){
+if (!all(is.na(rxnExpMat[,i]))){
+tmp  = cor.test(targetTF_expression, rxnExpMat[,i])
+pval[i] = tmp$p.value
+}else{
+pval[i] = NA
+}
+}
+fdrVal = p.adjust(pval,method = 'BH')
+annotation2$is_coexpressed = ifelse(fdrVal < 0.05, 'Yes','No')
+colorList$is_coexpressed = c('#FD8D3CFF','#370335FF')
+names(colorList$is_coexpressed) = c('Yes','No')
+TF_expression_rxn = colnames(GRN)[GRN[targetTF,] == 1]
+annotation2$is_target = ifelse(colnames(rows.cor) %in% TF_expression_rxn, 'Yes','No')
+colorList$is_target = c('#FD8D3CFF','#370335FF')
+names(colorList$is_target) = c('Yes','No')
+dev.off()
+pdf(paste('figures/',outName,'_co-expression_coFlux.pdf',sep = ''),width = 24,height = 16)
+pheatmap(rows.cor, breaks = seq(-1,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+"RdYlBu")))(2000),
+# clustering_distance_rows = as.dist(1 - rows.cor),
+annotation_row = annotation[,c("pathway_major"),drop = F],
+annotation_colors = colorList,labels_col = labels_col,
+annotation_col = annotation2[,c('pathway_major','isPredicted','isCorrelated','is_target','is_coexpressed','TF_coexpression_r')],
+gaps_col = 1,
+# legend_breaks = seq2,legend_labels = legend_labels,
+border_color = 'black',
+fontsize = 8,fontsize_row = 2, fontsize_col = 4,
+#cellwidth = 8, cellheight = 4,
+cluster_rows = TRUE,cluster_cols = TRUE,
+fontsize_number = 5)
+dev.off()
+targetTF = 'YKR099W'
+outName = 'bas1'
+targetTF_expression = t(RNAallExp[targetTF,3:ncol(RNAallExp)])
+hist(cor(targetTF_expression,rxnExpMat))
+corV = t(cor(targetTF_expression, rxnExpMat))
+annotation2[rownames(corV),'TF_coexpression_r'] = corV[,1]
+colorList$TF_coexpression_r = c('#00FF00','#ff0000')
+names(colorList$TF_coexpression_r) = c('-1','1')
+pval = numeric()
+for (i in 1:ncol(rxnExpMat)){
+if (!all(is.na(rxnExpMat[,i]))){
+tmp  = cor.test(targetTF_expression, rxnExpMat[,i])
+pval[i] = tmp$p.value
+}else{
+pval[i] = NA
+}
+}
+fdrVal = p.adjust(pval,method = 'BH')
+annotation2$is_coexpressed = ifelse(fdrVal < 0.05, 'Yes','No')
+colorList$is_coexpressed = c('#FD8D3CFF','#370335FF')
+names(colorList$is_coexpressed) = c('Yes','No')
+TF_expression_rxn = colnames(GRN)[GRN[targetTF,] == 1]
+annotation2$is_target = ifelse(colnames(rows.cor) %in% TF_expression_rxn, 'Yes','No')
+colorList$is_target = c('#FD8D3CFF','#370335FF')
+names(colorList$is_target) = c('Yes','No')
+dev.off()
+pdf(paste('figures/',outName,'_co-expression_coFlux.pdf',sep = ''),width = 24,height = 16)
+pheatmap(rows.cor, breaks = seq(-1,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+"RdYlBu")))(2000),
+# clustering_distance_rows = as.dist(1 - rows.cor),
+annotation_row = annotation[,c("pathway_major"),drop = F],
+annotation_colors = colorList,labels_col = labels_col,
+annotation_col = annotation2[,c('pathway_major','isPredicted','isCorrelated','is_target','is_coexpressed','TF_coexpression_r')],
+gaps_col = 1,
+# legend_breaks = seq2,legend_labels = legend_labels,
+border_color = 'black',
+fontsize = 8,fontsize_row = 2, fontsize_col = 4,
+#cellwidth = 8, cellheight = 4,
+cluster_rows = TRUE,cluster_cols = TRUE,
+fontsize_number = 5)
+dev.off()
+targetTF = 'YLR451W'
+outName = 'leu3'
+targetTF_expression = t(RNAallExp[targetTF,3:ncol(RNAallExp)])
+hist(cor(targetTF_expression,rxnExpMat))
+corV = t(cor(targetTF_expression, rxnExpMat))
+annotation2[rownames(corV),'TF_coexpression_r'] = corV[,1]
+colorList$TF_coexpression_r = c('#00FF00','#ff0000')
+names(colorList$TF_coexpression_r) = c('-1','1')
+pval = numeric()
+for (i in 1:ncol(rxnExpMat)){
+if (!all(is.na(rxnExpMat[,i]))){
+tmp  = cor.test(targetTF_expression, rxnExpMat[,i])
+pval[i] = tmp$p.value
+}else{
+pval[i] = NA
+}
+}
+fdrVal = p.adjust(pval,method = 'BH')
+annotation2$is_coexpressed = ifelse(fdrVal < 0.05, 'Yes','No')
+colorList$is_coexpressed = c('#FD8D3CFF','#370335FF')
+names(colorList$is_coexpressed) = c('Yes','No')
+TF_expression_rxn = colnames(GRN)[GRN[targetTF,] == 1]
+annotation2$is_target = ifelse(colnames(rows.cor) %in% TF_expression_rxn, 'Yes','No')
+colorList$is_target = c('#FD8D3CFF','#370335FF')
+names(colorList$is_target) = c('Yes','No')
+dev.off()
+pdf(paste('figures/',outName,'_co-expression_coFlux.pdf',sep = ''),width = 24,height = 16)
+pheatmap(rows.cor, breaks = seq(-1,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+"RdYlBu")))(2000),
+# clustering_distance_rows = as.dist(1 - rows.cor),
+annotation_row = annotation[,c("pathway_major"),drop = F],
+annotation_colors = colorList,labels_col = labels_col,
+annotation_col = annotation2[,c('pathway_major','isPredicted','isCorrelated','is_target','is_coexpressed','TF_coexpression_r')],
+gaps_col = 1,
+# legend_breaks = seq2,legend_labels = legend_labels,
+border_color = 'black',
+fontsize = 8,fontsize_row = 2, fontsize_col = 4,
+#cellwidth = 8, cellheight = 4,
+cluster_rows = TRUE,cluster_cols = TRUE,
+fontsize_number = 5)
+dev.off()
+targetTF = 'YDR034C'
+outName = 'lys14'
+targetTF_expression = t(RNAallExp[targetTF,3:ncol(RNAallExp)])
+hist(cor(targetTF_expression,rxnExpMat))
+corV = t(cor(targetTF_expression, rxnExpMat))
+annotation2[rownames(corV),'TF_coexpression_r'] = corV[,1]
+colorList$TF_coexpression_r = c('#00FF00','#ff0000')
+names(colorList$TF_coexpression_r) = c('-1','1')
+pval = numeric()
+for (i in 1:ncol(rxnExpMat)){
+if (!all(is.na(rxnExpMat[,i]))){
+tmp  = cor.test(targetTF_expression, rxnExpMat[,i])
+pval[i] = tmp$p.value
+}else{
+pval[i] = NA
+}
+}
+fdrVal = p.adjust(pval,method = 'BH')
+annotation2$is_coexpressed = ifelse(fdrVal < 0.05, 'Yes','No')
+colorList$is_coexpressed = c('#FD8D3CFF','#370335FF')
+names(colorList$is_coexpressed) = c('Yes','No')
+TF_expression_rxn = colnames(GRN)[GRN[targetTF,] == 1]
+annotation2$is_target = ifelse(colnames(rows.cor) %in% TF_expression_rxn, 'Yes','No')
+colorList$is_target = c('#FD8D3CFF','#370335FF')
+names(colorList$is_target) = c('Yes','No')
+dev.off()
+pdf(paste('figures/',outName,'_co-expression_coFlux.pdf',sep = ''),width = 24,height = 16)
+pheatmap(rows.cor, breaks = seq(-1,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+"RdYlBu")))(2000),
+# clustering_distance_rows = as.dist(1 - rows.cor),
+annotation_row = annotation[,c("pathway_major"),drop = F],
+annotation_colors = colorList,labels_col = labels_col,
+annotation_col = annotation2[,c('pathway_major','isPredicted','isCorrelated','is_target','is_coexpressed','TF_coexpression_r')],
+gaps_col = 1,
+# legend_breaks = seq2,legend_labels = legend_labels,
+border_color = 'black',
+fontsize = 8,fontsize_row = 2, fontsize_col = 4,
+#cellwidth = 8, cellheight = 4,
+cluster_rows = TRUE,cluster_cols = TRUE,
+fontsize_number = 5)
+dev.off()
+allTF
+##############search for the TF that is pos corr with purine and - use greedy TF list - known metabolic regulator#######
+# search for the TF that is pos corr with puring - use greedy TF list - known metabolic regulator
+allTF_ID = allTF$TFid
+allTF_ID = intersect(allTF_ID, rownames(RNAallExp))
+puringrxns = rownames(annotation)[annotation$pathway_major == 'Purine metabolism']
+# intersect the selected TF and assign rownames
+# check for correlation
+aveCorr = numeric()
+for (i in 1:length(allTF_ID)){
+targetTF = allTF_ID[i]
+targetTF_expression = t(RNAallExp[targetTF,3:ncol(RNAallExp)])
+corV = t(cor(targetTF_expression,rxnExpMat[,puringrxns]))
+# weight the cor r by the GRN
+#corV = corV * exp(GRN[targetTF,rownames(corV)])
+aveCorr = c(aveCorr,sum(as.numeric(corV)))
+}
+names(aveCorr) = allTF_ID
+aveCorr = sort(aveCorr,decreasing = T)
+aveCorr[1:10]
+targetTF = 'YIL131C'
+outName = 'FKH1'
+targetTF_expression = t(RNAallExp[targetTF,3:ncol(RNAallExp)])
+hist(cor(targetTF_expression,rxnExpMat))
+corV = t(cor(targetTF_expression, rxnExpMat))
+annotation2[rownames(corV),'TF_coexpression_r'] = corV[,1]
+colorList$TF_coexpression_r = c('#00FF00','#ff0000')
+names(colorList$TF_coexpression_r) = c('-1','1')
+pval = numeric()
+for (i in 1:ncol(rxnExpMat)){
+if (!all(is.na(rxnExpMat[,i]))){
+tmp  = cor.test(targetTF_expression, rxnExpMat[,i])
+pval[i] = tmp$p.value
+}else{
+pval[i] = NA
+}
+}
+fdrVal = p.adjust(pval,method = 'BH')
+annotation2$is_coexpressed = ifelse(fdrVal < 0.05, 'Yes','No')
+colorList$is_coexpressed = c('#FD8D3CFF','#370335FF')
+names(colorList$is_coexpressed) = c('Yes','No')
+TF_expression_rxn = colnames(GRN)[GRN[targetTF,] == 1]
+annotation2$is_target = ifelse(colnames(rows.cor) %in% TF_expression_rxn, 'Yes','No')
+colorList$is_target = c('#FD8D3CFF','#370335FF')
+names(colorList$is_target) = c('Yes','No')
+dev.off()
+pdf(paste('figures/',outName,'_co-expression_coFlux.pdf',sep = ''),width = 24,height = 16)
+pheatmap(rows.cor, breaks = seq(-1,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+"RdYlBu")))(2000),
+# clustering_distance_rows = as.dist(1 - rows.cor),
+annotation_row = annotation[,c("pathway_major"),drop = F],
+annotation_colors = colorList,labels_col = labels_col,
+annotation_col = annotation2[,c("pathway_major",'isPredicted','isCorrelated','is_target','is_coexpressed','TF_coexpression_r')],
+gaps_col = 1,
+# legend_breaks = seq2,legend_labels = legend_labels,
+border_color = 'black',
+fontsize = 8,fontsize_row = 2, fontsize_col = 4,
+#cellwidth = 8, cellheight = 4,
+cluster_rows = TRUE,cluster_cols = TRUE,
+fontsize_number = 5)
+dev.off()
+r_mat = read.csv('output/crossCorrelation_rMat.csv',row.names = 1) # the pearson r of expression (row) -> flux (col)
+colnames(r_mat) = rownames(r_mat)
+pheatmap(r_mat, breaks = seq(-1,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+"RdYlBu")))(2000),
+#clustering_distance_rows = 'correlation',
+#clustering_distance_cols = 'correlation',
+annotation_row = annotation2[,c("pathway_major",'isPredicted','isCorrelated'),drop = F],
+annotation_col = annotation2[,c("pathway_major",'isPredicted','isCorrelated'),drop = F],
+annotation_colors = colorList,
+gaps_col = 1,
+# legend_breaks = seq2,legend_labels = legend_labels,
+border_color = 'black',
+fontsize = 8,fontsize_row = 5, fontsize_col = 8,
+#cellwidth = 8, cellheight = 4,
+cluster_rows = TRUE,cluster_cols = TRUE)
+# by p-value
+p_mat = read.csv('output/crossCorrelation_pMat.csv',row.names = 1) # the pearson r of expression (row) -> flux (col)
+colnames(p_mat) = rownames(p_mat)
+p_mat = -log10(p_mat) * sign(r_mat)
+pheatmap(p_mat, breaks = seq(-5,5,0.1),color = colorRampPalette(rev(brewer.pal(n = 7, name = "RdYlBu")))(101),
+#clustering_distance_rows = rows.dist,
+#clustering_distance_cols = rows.dist,
+annotation_row = annotation2[,c("pathway_major",'isPredicted','isCorrelated'),drop = F],
+annotation_col = annotation2[,c("pathway_major",'isPredicted','isCorrelated'),drop = F],
+annotation_colors = colorList,
+gaps_col = 1,
+# legend_breaks = seq2,legend_labels = legend_labels,
+border_color = 'black',
+fontsize = 8,fontsize_row = 5, fontsize_col = 8,
+#cellwidth = 8, cellheight = 4,
+cluster_rows = TRUE,cluster_cols = TRUE)
+colnames(r_mat)
+View(r_mat)
+labels_col2 = paste(colnames(r_mat),annotation[colnames(r_mat),'pathway'])
+labels_row2 = paste(rownames(r_mat),annotation[rownames(r_mat),'pathway'])
+dev.off()
+labels_col2 = paste(colnames(r_mat),annotation[colnames(r_mat),'pathway'])
+labels_row2 = paste(rownames(r_mat),annotation[rownames(r_mat),'pathway'])
+pdf('figures/cross-flux-expression-correlation.pdf',width = 28,height = 20)
+pheatmap(r_mat, breaks = seq(-1,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+"RdYlBu")))(2000),
+#clustering_distance_rows = 'correlation',
+#clustering_distance_cols = 'correlation',
+annotation_row = annotation2[,c("pathway_major",'isPredicted','isCorrelated'),drop = F],
+annotation_col = annotation2[,c("pathway_major",'isPredicted','isCorrelated'),drop = F],
+labels_col = labels_col2, labels_row = labels_row2,
+annotation_colors = colorList,
+gaps_col = 1,
+# legend_breaks = seq2,legend_labels = legend_labels,
+border_color = 'black',
+fontsize = 8,fontsize_row = 3, fontsize_col = 7,
+#cellwidth = 8, cellheight = 4,
+cluster_rows = TRUE,cluster_cols = TRUE,
+fontsize_number = 5)
+dev.off()
+# by p-value
+p_mat = read.csv('output/crossCorrelation_pMat.csv',row.names = 1) # the pearson r of expression (row) -> flux (col)
+dev.off()
+labels_col2 = paste(colnames(r_mat),annotation[colnames(r_mat),'pathway'])
+labels_row2 = paste(rownames(r_mat),annotation[rownames(r_mat),'pathway'])
+pdf('figures/cross-flux-expression-correlation.pdf',width = 28,height = 20)
+pheatmap(r_mat, breaks = seq(-1,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+"RdYlBu")))(2000),
+#clustering_distance_rows = 'correlation',
+#clustering_distance_cols = 'correlation',
+annotation_row = annotation2[,c("pathway_major",'isPredicted','isCorrelated'),drop = F],
+annotation_col = annotation2[,c("pathway_major",'isPredicted','isCorrelated'),drop = F],
+labels_col = labels_col2, labels_row = labels_row2,
+annotation_colors = colorList,
+gaps_col = 1,
+# legend_breaks = seq2,legend_labels = legend_labels,
+border_color = 'black',
+fontsize = 8,fontsize_row = 7, fontsize_col = 7,
+#cellwidth = 8, cellheight = 4,
+cluster_rows = TRUE,cluster_cols = TRUE,
+fontsize_number = 5)
+dev.off()
+library(pheatmap)
+library(RColorBrewer)
+mat = read.csv('output/heatmapTbl.csv')
+sig = read.csv('output/heatmapTbl_sigLabel.csv')
+boundary = read.csv('output/heatmapTbl_boundaries.csv')
+heatTbl = mat[,2:ncol(mat)]
+colnames(heatTbl) = boundary$Var1[1:(ncol(mat)-1)]
+rownames(heatTbl) = mat$Row
+sigTbl = ifelse(sig[,2:ncol(mat)]==1, '+','')
+#heatTbl = heatTbl / apply(heatTbl, 1,max)
+# Pairwise correlation between rows (genes)
+# rows.cor <- cor(t(heatTbl), use = "pairwise.complete.obs", method = "pearson")
+library(stringr)
+annotation = read.csv('manualPathwayAnnotation.csv')
+colors = read.csv('figures/simpsons_color.csv',header = F)
+#annotationList = table(annotation$pathway_major)
+#annotationList = sort(annotationList,decreasing = T)
+annotationList = c('Purine metabolism','Phenylalanine, tyrosine and tryptophan biosynthesis','Histidine metabolism','Lysine biosynthesis',
+'Arginine biosynthesis','Methionine, folate and sulfur metabolism','Proline biosynthesis','Pyrimidine metabolism',
+'central carbon metabolism','Other amino acids', 'transporter [exchange]',
+'Fructose, mannose, sucrose, trahelose and glucan metabolism','FA and PL metabolism',
+'transporter [inner]','Others')
+colorList = colors$V1[2:(1+length(annotationList))]
+#names(colorList) = c(names(annotationList)[2:(length(annotationList)-1)],names(annotationList)[1],names(annotationList)[(length(annotationList))])
+names(colorList) = annotationList
+colorList = list(pathway_major = colorList)
+rownames(annotation) = annotation$rxn
+dev.off()
+pdf('figures/boundary_heatmap.pdf',width = 24,height = 14)
+pheatmap(heatTbl, breaks = seq(0,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+"RdYlBu")))(1000),
+# clustering_distance_rows = as.dist(1 - rows.cor),
+annotation_row = annotation[,c("pathway_major"),drop = F],
+annotation_colors = colorList,
+gaps_col = 1,
+# legend_breaks = seq2,legend_labels = legend_labels,
+border_color = 'black',
+fontsize = 8,fontsize_row = 5, fontsize_col = 8,
+cellwidth = 12, cellheight = 5,
+cluster_rows = TRUE,cluster_cols = FALSE,
+display_numbers = sigTbl, number_color = 'Black',fontsize_number = 5)
+dev.off()
+library(pheatmap)
+library(RColorBrewer)
+mat = read.csv('output/heatmapTbl.csv')
+sig = read.csv('output/heatmapTbl_sigLabel.csv')
+boundary = read.csv('output/heatmapTbl_boundaries.csv')
+heatTbl = mat[,2:ncol(mat)]
+colnames(heatTbl) = boundary$Var1[1:(ncol(mat)-1)]
+rownames(heatTbl) = mat$Row
+sigTbl = ifelse(sig[,2:ncol(mat)]==1, '+','')
+#heatTbl = heatTbl / apply(heatTbl, 1,max)
+# Pairwise correlation between rows (genes)
+# rows.cor <- cor(t(heatTbl), use = "pairwise.complete.obs", method = "pearson")
+library(stringr)
+annotation = read.csv('manualPathwayAnnotation.csv')
+colors = read.csv('figures/simpsons_color.csv',header = F)
+#annotationList = table(annotation$pathway_major)
+#annotationList = sort(annotationList,decreasing = T)
+annotationList = c('Purine metabolism','Phenylalanine, tyrosine and tryptophan biosynthesis','Histidine metabolism','Lysine biosynthesis',
+'Arginine biosynthesis','Methionine, folate and sulfur metabolism','Proline biosynthesis','Pyrimidine metabolism',
+'central carbon metabolism','Other amino acids', 'transporter [exchange]',
+'Fructose, mannose, sucrose, trahelose and glucan metabolism','FA and PL metabolism',
+'transporter [inner]','Others')
+colorList = colors$V1[2:(1+length(annotationList))]
+#names(colorList) = c(names(annotationList)[2:(length(annotationList)-1)],names(annotationList)[1],names(annotationList)[(length(annotationList))])
+names(colorList) = annotationList
+colorList = list(pathway_major = colorList)
+rownames(annotation) = annotation$rxn
+dev.off()
+pdf('figures/boundary_heatmap.pdf',width = 24,height = 14)
+labels_row0 = paste(rownames(heatTbl),annotation[rownames(heatTbl),'pathway'])
+pheatmap(heatTbl, breaks = seq(0,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+"RdYlBu")))(1000),
+# clustering_distance_rows = as.dist(1 - rows.cor),
+annotation_row = annotation[,c("pathway_major"),drop = F],
+annotation_colors = colorList, labels_row = labels_row0,
+gaps_col = 1,
+# legend_breaks = seq2,legend_labels = legend_labels,
+border_color = 'black',
+fontsize = 8,fontsize_row = 5, fontsize_col = 8,
+cellwidth = 12, cellheight = 5,
+cluster_rows = TRUE,cluster_cols = FALSE,
+display_numbers = sigTbl, number_color = 'Black',fontsize_number = 5)
+dev.off()
+library(pheatmap)
+library(RColorBrewer)
+mat = read.csv('output/heatmapTbl.csv')
+sig = read.csv('output/heatmapTbl_sigLabel.csv')
+boundary = read.csv('output/heatmapTbl_boundaries.csv')
+heatTbl = mat[,2:ncol(mat)]
+colnames(heatTbl) = boundary$Var1[1:(ncol(mat)-1)]
+rownames(heatTbl) = mat$Row
+sigTbl = ifelse(sig[,2:ncol(mat)]==1, '+','')
+#heatTbl = heatTbl / apply(heatTbl, 1,max)
+# Pairwise correlation between rows (genes)
+# rows.cor <- cor(t(heatTbl), use = "pairwise.complete.obs", method = "pearson")
+library(stringr)
+annotation = read.csv('manualPathwayAnnotation.csv')
+colors = read.csv('figures/simpsons_color.csv',header = F)
+#annotationList = table(annotation$pathway_major)
+#annotationList = sort(annotationList,decreasing = T)
+annotationList = c('Purine metabolism','Phenylalanine, tyrosine and tryptophan biosynthesis','Histidine metabolism','Lysine biosynthesis',
+'Arginine biosynthesis','Methionine, folate and sulfur metabolism','Proline biosynthesis','Pyrimidine metabolism',
+'central carbon metabolism','Other amino acids', 'transporter [exchange]',
+'Fructose, mannose, sucrose, trahelose and glucan metabolism','FA and PL metabolism',
+'transporter [inner]','Others')
+colorList = colors$V1[2:(1+length(annotationList))]
+#names(colorList) = c(names(annotationList)[2:(length(annotationList)-1)],names(annotationList)[1],names(annotationList)[(length(annotationList))])
+names(colorList) = annotationList
+colorList = list(pathway_major = colorList)
+rownames(annotation) = annotation$rxn
+dev.off()
+pdf('figures/boundary_heatmap.pdf',width = 24,height = 14)
+labels_row0 = paste(rownames(heatTbl),annotation[rownames(heatTbl),'pathway'])
+pheatmap(heatTbl, breaks = seq(0,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+"RdYlBu")))(1000),
+# clustering_distance_rows = as.dist(1 - rows.cor),
+annotation_row = annotation[,c("pathway_major"),drop = F],
+annotation_colors = colorList, labels_row = labels_row0,
+gaps_col = 1,
+# legend_breaks = seq2,legend_labels = legend_labels,
+border_color = 'black',
+fontsize = 8,fontsize_row = 5, fontsize_col = 8,
+cellwidth = 12, cellheight = 5,
+cluster_rows = TRUE,cluster_cols = FALSE,
+display_numbers = sigTbl, number_color = 'Black',fontsize_number = 5)
+dev.off()
+setwd('./../6.humanTissue_MERGE/input/MSEA_dataset/')
+metanr_packages <- function(){
+metr_pkgs <- c("impute", "pcaMethods", "globaltest", "GlobalAncova", "Rgraphviz", "preprocessCore", "genefilter", "SSPA", "sva", "limma", "KEGGgraph", "siggenes","BiocParallel", "MSnbase", "multtest","RBGL","edgeR","fgsea","devtools","crmn")
+list_installed <- installed.packages()
+new_pkgs <- subset(metr_pkgs, !(metr_pkgs %in% list_installed[, "Package"]))
+if(length(new_pkgs)!=0){if (!requireNamespace("BiocManager", quietly = TRUE))
+install.packages("BiocManager")
+BiocManager::install(new_pkgs)
+print(c(new_pkgs, " packages added..."))
+}
+if((length(new_pkgs)<1)){
+print("No new packages added...")
+}
+}
+metanr_packages()
+install.packages("devtools")
+library(devtools)
+# Step 2: Install MetaboAnalystR without documentation
+devtools::install_github("xia-lab/MetaboAnalystR", build = TRUE, build_vignettes = FALSE)
+# Step 2: Install MetaboAnalystR with documentation
+devtools::install_github("xia-lab/MetaboAnalystR", build = TRUE, build_vignettes = TRUE, build_manual =T)
+library(MetaboAnalystR)
+install.packages("Cairo")
+# Step 2: Install MetaboAnalystR without documentation
+devtools::install_github("xia-lab/MetaboAnalystR", build = FALSE, build_vignettes = FALSE)
+install.packages('Cairo')
+library(Cairo)
+# Step 2: Install MetaboAnalystR without documentation
+devtools::install_github("xia-lab/MetaboAnalystR", build = FALSE, build_vignettes = FALSE)
+install.packages('Cairo')
+install.packages('Cairo')
+# Step 2: Install MetaboAnalystR without documentation
+devtools::install_github("xia-lab/MetaboAnalystR", build = FALSE, build_vignettes = FALSE)
+install.packages('Cairo')
+# Step 2: Install MetaboAnalystR without documentation
+devtools::install_github("xia-lab/MetaboAnalystR", build = FALSE, build_vignettes = FALSE)
+install.packages('Cairo')

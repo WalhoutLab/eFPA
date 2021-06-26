@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1619392634485.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1173026220",
+    "id" : "1173C91D",
+    "lastKnownWriteTime" : 1619392998,
+    "last_content_update" : 1619392998020,
+    "path" : "~/Documents/GitHub/MERGE2/3_FPA/6.humanTissue_MERGE/plotHeatmap_subsys.R",
+    "project_path" : "plotHeatmap_subsys.R",
+    "properties" : {
+        "cursorPosition" : "13,52",
+        "scrollLine" : "2"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

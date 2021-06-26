@@ -1,0 +1,475 @@
+name_original	name_correct	CHEBI	KEGG	charge	remark
+(R)-3-hydroxybutanoyl-CoA	(R)-3-hydroxybutanoyl-CoA	CHEBI:15452	C03561	0	wrong chebiID and keggid. update keggid, formula. has formula in charge of -4.
+(R)-3-hydroxy-cis-dodec-5-enoyl-CoA	(R)-3-hydroxy-cis-dodec-5-enoyl-CoA			0	wrong chebiID and keggid. Can't find from database
+(R)-3-hydroxy-cis-hexadec-7-enoyl-CoA	(R)-3-hydroxy-cis-hexadec-7-enoyl-CoA	CHEBI:88087		0	wrong chebiID and keggid. CHEBI:88087 for  (3S.7Z)-3-hydroxyhexadecenoyl-CoA
+(R)-3-hydroxy-cis-hexadec-9-enoyl-CoA	(R)-3-hydroxy-cis-hexadec-9-enoyl-CoA			0	"wrong chebiID and keggid. CHEBI:87781 for   (3S)-3-hydroxyoleoyl-CoA. (3S.9Z)-3-hydroxyoctadec-9-enoyl-CoA;remove duplicated chebiID"
+(R)-3-hydroxy-cis-octadec-9-enoyl-CoA	(R)-3-hydroxy-cis-octadec-9-enoyl-CoA	CHEBI:87781		0	wrong chebiID and keggid. CHEBI:87781 for (3S)-3-hydroxyoleoyl-CoA. (3S.9Z)-3-hydroxyoctadec-9-enoyl-CoA
+(R)-3-hydroxy-cis-tetradec-5-enoyl-CoA	(R)-3-hydroxy-cis-tetradec-5-enoyl-CoA	CHEBI:88072		0	wrong chebiID and keggid. CHEBI:88072 for (3S.5Z)-3-hydroxytetradec-5-enoyl-CoA
+(R)-3-hydroxy-cis-tetradec-7-enoyl-CoA	(R)-3-hydroxy-cis-tetradec-7-enoyl-CoA			0	wrong chebiID and keggid. No chebiID. (3S)-Hydroxy-cis-tetradec-7-enoyl-CoA. C35H56N7O18P3S. https://webapps.molecular-networks.com/biopath3/biopath/mols/(3S)-Hydroxy-cis-tetradec-7-enoyl-CoA
+(R)-3-hydroxydocosanoyl-CoA	(R)-3-hydroxydocosanoyl-CoA	CHEBI:76375		-4	wrong chebiID and keggid. Update charge
+(R)-3-hydroxyhexanoyl-CoA	(R)-3-hydroxyhexanoyl-CoA	CHEBI:74474		0	wrong chebiID and keggid
+(R)-3-hydroxyicosanoyl-CoA	(R)-3-hydroxyicosanoyl-CoA	CHEBI:76453		0	wrong chebiID and keggid
+(R)-3-hydroxyoctanoyl-CoA	(R)-3-hydroxyoctanoyl-CoA	CHEBI:28573	C05278	0	wrong chebiID and wrong keggid
+(R)-3-hydroxytetracosanoyl-CoA	(R)-3-hydroxytetracosanoyl-CoA	CHEBI:76463		0	wrong chebiID and keggid
+(S)-3-hydroxyhexacosanoyl-CoA	(S)-3-hydroxyhexacosanoyl-CoA	CHEBI:52976		0	Wrong CHEBI in erm. Wrong KEGG in erm.
+(S)-3-hydroxypalmitoyl-CoA	(S)-3-hydroxypalmitoyl-CoA	CHEBI:27402	C05258	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+(S)-3-hydroxytetradecanoyl-CoA	(S)-3-hydroxytetradecanoyl-CoA	CHEBI:27466	C05260	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+1-(sn-glycero-3-phospho)-1D-myo-inositol	1-(sn-glycero-3-phospho)-1D-myo-inositol	CHEBI:58444	C01225	-1	Wrong CHEBI in ce. Wrong KEGG in ce.
+1,2-diacylglycerol 3-diphosphate (1-16:0, 2-16:1)	1,2-diacylglycerol 3-diphosphate (1-16:0, 2-16:1)			0	Wrong charge in vm/gm.
+1,2-diacylglycerol 3-diphosphate (1-16:0, 2-18:1)	1,2-diacylglycerol 3-diphosphate (1-16:0, 2-18:1)	CHEBI:34087	C13890	0	new chebiID. new keggid. CHEBI:34087 for 1-O-hexadecanoyl-2-O-[(Z)-octadec-9-enoyl]-sn-glycerol 3-diphosphate has charge of 0 the chain of chebi 34087 is same to this metabolite.Manually calculated based on 1.2-diacylglycerol 3-diphosphate
+1,2-diacylglycerol 3-diphosphate (1-16:1, 2-16:1)	1,2-diacylglycerol 3-diphosphate (1-16:1, 2-16:1)			0	Wrong charge in vm/gm.
+1,2-diacylglycerol 3-diphosphate (1-16:1, 2-18:1)	1,2-diacylglycerol 3-diphosphate (1-16:1, 2-18:1)			0	Wrong charge in vm/gm.
+1,2-diacylglycerol 3-diphosphate (1-18:0, 2-16:1)	1,2-diacylglycerol 3-diphosphate (1-18:0, 2-16:1)			0	Wrong charge in vm/gm.
+1,2-diacylglycerol 3-diphosphate (1-18:0, 2-18:1)	1,2-diacylglycerol 3-diphosphate (1-18:0, 2-18:1)			0	Wrong charge in vm/gm.
+1,2-diacylglycerol 3-diphosphate (1-18:1, 2-16:1)	1,2-diacylglycerol 3-diphosphate (1-18:1, 2-16:1)			0	Wrong charge in vm/gm.
+1,2-diacylglycerol 3-diphosphate (1-18:1, 2-18:1)	1,2-diacylglycerol 3-diphosphate (1-18:1, 2-18:1)			0	Wrong charge in vm/gm.
+14-demethyllanosterol	14-demethyllanosterol	CHEBI:18364	C05108	0	Wrong CHEBI in e. Wrong KEGG in e.
+1-acylglycerophosphocholine (16:0)	1-acylglycerophosphocholine (16:0)			1	Update charge. Manually calculated based on 1-acylglycerophosphocholine(1+)
+1-acylglycerophosphocholine (16:1)	1-acylglycerophosphocholine (16:1)			1	Update charge. Manually calculated based on 1-acylglycerophosphocholine(1+)
+1-acylglycerophosphocholine (18:0)	1-acylglycerophosphocholine (18:0)			1	Update charge. Manually calculated based on 1-acylglycerophosphocholine(1+)
+1-acylglycerophosphocholine (18:1)	1-acylglycerophosphocholine (18:1)			1	Update charge. Manually calculated based on 1-acylglycerophosphocholine(1+)
+1-acylglycerophosphoethanolamine (16:0)	1-acylglycerophosphoethanolamine (16:0)	CHEBI:90452		0	new chebiID. CHEBI:90452 for lysophosphatidylethanolamine 16:0. has charge of 0. based on chebi:136148Manually calculated based on 1-O-acylglycerophosphoethanolamine
+1-acylglycerophosphoethanolamine (16:1)	1-acylglycerophosphoethanolamine (16:1)			0	Wrong charge in erm/ce/lp.
+1-acylglycerophosphoethanolamine (18:0)	1-acylglycerophosphoethanolamine (18:0)	CHEBI:64576		0	new chebiID. CHEBI:64576 for lysophosphatidylethanolamine 18:0. has charge of 0. Manually calculated based on 1-O-acylglycerophosphoethanolamine
+1-acylglycerophosphoethanolamine (18:1)	1-acylglycerophosphoethanolamine (18:1)	CHEBI:64575		0	new chebiID. CHEBI:64575 for lysophosphatidylethanolamine 18:1. has charge of 0. Manually calculated based on 1-O-acylglycerophosphoethanolamine
+1-acylglycerophosphoinositol (16:0)	1-acylglycerophosphoinositol (16:0)	CHEBI:73218		0	new chebiID. CHEBI:73218 for  1-hexadecanoyl-sn-glycero-3-phospho-D-myo-inositol PI(16:0/0:0) has new chebiID. charge of 0. Manually calculated based on 1-acylglycerophosphoinositol
+1-acylglycerophosphoinositol (16:1)	1-acylglycerophosphoinositol (16:1)	CHEBI:138108		0	new chebiID. CHEBI:138108 for  2-palmitoleoyl-sn-glycero-3-phospho-D-myo-inositol. has charge of 0.Manually calculated based on 1-acylglycerophosphoinositol
+1-acylglycerophosphoinositol (18:0)	1-acylglycerophosphoinositol (18:0)	CHEBI:83054		0	new chebiID. CHEBI:83054 for  1-stearoyl-sn-glycero-3-phospho-1D-myo-inositol PI(18:0/0:0). has charge of 0. Manually calculated based on 1-acylglycerophosphoinositol
+1-acylglycerophosphoinositol (18:1)	1-acylglycerophosphoinositol (18:1)	CHEBI:82753		0	new chebiID. CHEBI:82753 for 1-oleoyl-sn-glycero-3-phospho-D-myo-inositol PI(18:1/0:0). has charge of 0. Manually calculated based on 1-acylglycerophosphoinositol
+1-acylglycerophosphoserine (16:0)	1-acylglycerophosphoserine (16:0)			0	Wrong charge in ce.
+1-acylglycerophosphoserine (16:1)	1-acylglycerophosphoserine (16:1)			0	Wrong charge in ce.
+1-acylglycerophosphoserine (18:0)	1-acylglycerophosphoserine (18:0)			0	Wrong charge in ce.
+1-acylglycerophosphoserine (18:1)	1-acylglycerophosphoserine (18:1)			0	Wrong charge in ce.
+1-acyl-sn-glycerol 3-phosphate (16:0)	1-acyl-sn-glycerol 3-phosphate (16:0)	CHEBI:15799	C04036	0	new chebiID. new keggid
+1-acyl-sn-glycerol 3-phosphate (16:1)	1-acyl-sn-glycerol 3-phosphate (16:1)	CHEBI:75070		0	new chebiID
+1-acyl-sn-glycerol 3-phosphate (18:0)	1-acyl-sn-glycerol 3-phosphate (18:0)	CHEBI:74850		0	new chebiID
+1-acyl-sn-glycerol 3-phosphate (18:1)	1-acyl-sn-glycerol 3-phosphate (18:1)	CHEBI:62837		0	new chebiID
+1D-myo-inositol 1,4,5-trisphosphate	1D-myo-inositol 1,4,5-trisphosphate	CHEBI:203600	C01245	-6	Wrong CHEBI in c. Wrong KEGG in c.
+1-monoglyceride (16:0)	1-monoglyceride (16:0)	CHEBI:134127		0	new chebiID
+1-monoglyceride (16:1)	1-monoglyceride (16:1)	CHEBI:134128		0	new chebiID
+1-monoglyceride (18:0)	1-monoglyceride (18:0)	CHEBI:134129		0	new chebiID
+1-monoglyceride (18:1)	1-monoglyceride (18:1)	CHEBI:134130		0	new chebiID
+1-phosphatidyl-1D-myo-inositol (1-16:0, 2-16:1)	1-phosphatidyl-1D-myo-inositol (1-16:0, 2-16:1)	CHEBI:88396		0	new chebiID. CHEBI:16749 for 1-phosphatidyl-1D-myo-inositol. has charge of -1
+1-phosphatidyl-1D-myo-inositol (1-16:0, 2-18:1)	1-phosphatidyl-1D-myo-inositol (1-16:0, 2-18:1)	CHEBI:73215	C13888	0	new chebiID. new keggid
+1-phosphatidyl-1D-myo-inositol (1-16:1, 2-16:1)	1-phosphatidyl-1D-myo-inositol (1-16:1, 2-16:1)			0	Wrong charge in erm/ce/vm/gm/n/c.
+1-phosphatidyl-1D-myo-inositol (1-16:1, 2-18:1)	1-phosphatidyl-1D-myo-inositol (1-16:1, 2-18:1)	CHEBI:88562		0	new chebiID
+1-phosphatidyl-1D-myo-inositol (1-18:0, 2-16:1)	1-phosphatidyl-1D-myo-inositol (1-18:0, 2-16:1)	CHEBI:88557		0	new chebiID
+1-phosphatidyl-1D-myo-inositol (1-18:0, 2-18:1)	1-phosphatidyl-1D-myo-inositol (1-18:0, 2-18:1)	CHEBI:77346		0	new chebiID
+1-phosphatidyl-1D-myo-inositol (1-18:1, 2-16:1)	1-phosphatidyl-1D-myo-inositol (1-18:1, 2-16:1)	CHEBI:88626		0	new chebiID
+1-phosphatidyl-1D-myo-inositol (1-18:1, 2-18:1)	1-phosphatidyl-1D-myo-inositol (1-18:1, 2-18:1)	CHEBI:88612		0	new chebiID
+1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-16:0, 2-16:1)	1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-16:0, 2-16:1)			0	Wrong charge in vm/ce/c.
+1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-16:0, 2-18:1)	1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-16:0, 2-18:1)			0	Wrong charge in vm/ce/c.
+1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-16:1, 2-16:1)	1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-16:1, 2-16:1)			0	Wrong charge in vm/ce/c.
+1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-16:1, 2-18:1)	1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-16:1, 2-18:1)			0	Wrong charge in vm/ce/c.
+1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-18:0, 2-16:1)	1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-18:0, 2-16:1)			0	Wrong charge in vm/ce/c.
+1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-18:0, 2-18:1)	1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-18:0, 2-18:1)			0	Wrong charge in vm/ce/c.
+1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-18:1, 2-16:1)	1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-18:1, 2-16:1)			0	Wrong charge in vm/ce/c.
+1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-18:1, 2-18:1)	1-phosphatidyl-1D-myo-inositol 3,5-bisphosphate (1-18:1, 2-18:1)			0	Wrong charge in vm/ce/c.
+1-phosphatidyl-1D-myo-inositol 3-phosphate (1-16:0, 2-16:1)	1-phosphatidyl-1D-myo-inositol 3-phosphate (1-16:0, 2-16:1)			0	Wrong charge in vm/ce/c/erm/gm.
+1-phosphatidyl-1D-myo-inositol 3-phosphate (1-16:0, 2-18:1)	1-phosphatidyl-1D-myo-inositol 3-phosphate (1-16:0, 2-18:1)			0	Wrong charge in vm/ce/c/erm/gm.
+1-phosphatidyl-1D-myo-inositol 3-phosphate (1-16:1, 2-16:1)	1-phosphatidyl-1D-myo-inositol 3-phosphate (1-16:1, 2-16:1)			0	Wrong charge in vm/ce/c/erm/gm.
+1-phosphatidyl-1D-myo-inositol 3-phosphate (1-16:1, 2-18:1)	1-phosphatidyl-1D-myo-inositol 3-phosphate (1-16:1, 2-18:1)			0	Wrong charge in vm/ce/c/erm/gm.
+1-phosphatidyl-1D-myo-inositol 3-phosphate (1-18:0, 2-16:1)	1-phosphatidyl-1D-myo-inositol 3-phosphate (1-18:0, 2-16:1)			0	Wrong charge in vm/ce/c/erm/gm.
+1-phosphatidyl-1D-myo-inositol 3-phosphate (1-18:0, 2-18:1)	1-phosphatidyl-1D-myo-inositol 3-phosphate (1-18:0, 2-18:1)	CHEBI:77347		0	new chebiID. CHEBI:77347 for 1-stearoyl-2-oleoyl-sn-glycero-3-phospho-1D-myo-inositol 5-phosphate Phosphatidylinositol Phosphate(18:0/18:1). has charge of 0.  in structure 3-phosphate is like 5 -phosphate in Benzene ring. Manually calculated based on 1-phosphatidyl-1D-myo-inositol 3-phosphate
+1-phosphatidyl-1D-myo-inositol 3-phosphate (1-18:1, 2-16:1)	1-phosphatidyl-1D-myo-inositol 3-phosphate (1-18:1, 2-16:1)			0	Wrong charge in vm/ce/c/erm/gm.
+1-phosphatidyl-1D-myo-inositol 3-phosphate (1-18:1, 2-18:1)	1-phosphatidyl-1D-myo-inositol 3-phosphate (1-18:1, 2-18:1)	CHEBI:77344		0	new chebiID. CHEBI:7734 for1-stearoyl-2-linoleoyl-sn-glycero-3-phospho-1D-myo-inositol 5-phosphate  Phosphatidylinositol Phosphate(18:0/18:2). has charge of 0. Manually calculated based on 1-phosphatidyl-1D-myo-inositol 3-phosphate
+1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-16:0, 2-16:1)	1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-16:0, 2-16:1)			0	Wrong charge in n/ce/c/erm.
+1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-16:0, 2-18:1)	1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-16:0, 2-18:1)			0	Wrong charge in n/ce/c/erm.
+1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-16:1, 2-16:1)	1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-16:1, 2-16:1)			0	Wrong charge in n/ce/c/erm.
+1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-16:1, 2-18:1)	1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-16:1, 2-18:1)			0	Wrong charge in n/ce/c/erm.
+1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-18:0, 2-16:1)	1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-18:0, 2-16:1)			0	Wrong charge in n/ce/c/erm.
+1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-18:0, 2-18:1)	1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-18:0, 2-18:1)	CHEBI:77279		0	new chebiID. CHEBI:77279 for 1-stearoyl-2-oleoyl-sn-glycero-3-phospho-1D-myo-inositol 4.5-biphosphate. has charge of 0. Manually calculated based on 1-phosphatidyl-1D-myo-inositol 4.5-phosphate
+1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-18:1, 2-16:1)	1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-18:1, 2-16:1)			0	Wrong charge in n/ce/c/erm.
+1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-18:1, 2-18:1)	1-phosphatidyl-1D-myo-inositol 4,5-bisphosphate (1-18:1, 2-18:1)			0	Wrong charge in n/ce/c/erm.
+1-phosphatidyl-1D-myo-inositol 4-phosphate (1-16:0, 2-16:1)	1-phosphatidyl-1D-myo-inositol 4-phosphate (1-16:0, 2-16:1)			0	Wrong charge in ce/vm/gm/n/c/erm.
+1-phosphatidyl-1D-myo-inositol 4-phosphate (1-16:0, 2-18:1)	1-phosphatidyl-1D-myo-inositol 4-phosphate (1-16:0, 2-18:1)			0	Wrong charge in ce/vm/gm/n/c/erm.
+1-phosphatidyl-1D-myo-inositol 4-phosphate (1-16:1, 2-16:1)	1-phosphatidyl-1D-myo-inositol 4-phosphate (1-16:1, 2-16:1)			0	Wrong charge in ce/vm/gm/n/c/erm.
+1-phosphatidyl-1D-myo-inositol 4-phosphate (1-16:1, 2-18:1)	1-phosphatidyl-1D-myo-inositol 4-phosphate (1-16:1, 2-18:1)			0	Wrong charge in ce/vm/gm/n/c/erm.
+1-phosphatidyl-1D-myo-inositol 4-phosphate (1-18:0, 2-16:1)	1-phosphatidyl-1D-myo-inositol 4-phosphate (1-18:0, 2-16:1)			0	Wrong charge in ce/vm/gm/n/c/erm.
+1-phosphatidyl-1D-myo-inositol 4-phosphate (1-18:0, 2-18:1)	1-phosphatidyl-1D-myo-inositol 4-phosphate (1-18:0, 2-18:1)	CHEBI:77277		0	new chebiID. CHEBI:77277 for 1-stearoyl-2-oleoyl-sn-glycero-3-phospho-1D-myo-inositol 4-phosphate. has charge of 0. Manually calculated based on 1-phosphatidyl-1D-myo-inositol 4-phosphate
+1-phosphatidyl-1D-myo-inositol 4-phosphate (1-18:1, 2-16:1)	1-phosphatidyl-1D-myo-inositol 4-phosphate (1-18:1, 2-16:1)			0	Wrong charge in ce/vm/gm/n/c/erm.
+1-phosphatidyl-1D-myo-inositol 4-phosphate (1-18:1, 2-18:1)	1-phosphatidyl-1D-myo-inositol 4-phosphate (1-18:1, 2-18:1)			0	Wrong charge in ce/vm/gm/n/c/erm.
+2-isopropylmalate	2-isopropylmalate	CHEBI:28107	C02504	-2	Wrong chebiID.
+3-(3-sn-phosphatidyl)-sn-glycerol 1-phosphate (1-16:0, 2-16:1)	3-(3-sn-phosphatidyl)-sn-glycerol 1-phosphate (1-16:0, 2-16:1)			0	Wrong charge in mm.
+3-(3-sn-phosphatidyl)-sn-glycerol 1-phosphate (1-16:0, 2-18:1)	3-(3-sn-phosphatidyl)-sn-glycerol 1-phosphate (1-16:0, 2-18:1)			0	Wrong charge in mm.
+3-(3-sn-phosphatidyl)-sn-glycerol 1-phosphate (1-16:1, 2-16:1)	3-(3-sn-phosphatidyl)-sn-glycerol 1-phosphate (1-16:1, 2-16:1)			0	Wrong charge in mm.
+3-(3-sn-phosphatidyl)-sn-glycerol 1-phosphate (1-16:1, 2-18:1)	3-(3-sn-phosphatidyl)-sn-glycerol 1-phosphate (1-16:1, 2-18:1)			0	Wrong charge in mm.
+3-(3-sn-phosphatidyl)-sn-glycerol 1-phosphate (1-18:0, 2-16:1)	3-(3-sn-phosphatidyl)-sn-glycerol 1-phosphate (1-18:0, 2-16:1)			0	Wrong charge in mm.
+3-(3-sn-phosphatidyl)-sn-glycerol 1-phosphate (1-18:1, 2-16:1)	3-(3-sn-phosphatidyl)-sn-glycerol 1-phosphate (1-18:1, 2-16:1)			0	Wrong charge in mm.
+3-hydroxybutanoyl-ACP	3-hydroxybutanoyl-ACP		C04618	0	Wrong chebiID and keggid. Can't find such a metabolite in chebi
+3-hydroxydocosanoyl-CoA	3-hydroxydocosanoyl-CoA	CHEBI:52325		0	wrong chebiID and keggid
+3-hydroxyhexanoyl-ACP	3-hydroxyhexanoyl-ACP	CHEBI:326	C05747	0	wrong chebiID and fullname and keggid
+3-hydroxyicosanoyl-CoA	3-hydroxyicosanoyl-CoA	CHEBI:52324		0	wrong chebiID and charge and keggid
+3-hydroxyoctadecanoyl-CoA	3-hydroxyoctadecanoyl-CoA	CHEBI:50583	C16217	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+3-hydroxyoctanoyl-ACP	3-hydroxyoctanoyl-ACP	CHEBI:80387	C16220	0	wrong chebiID and keggid.  Not standard fullname
+3-hydroxytetracosanoyl-CoA	3-hydroxytetracosanoyl-CoA	CHEBI:52326		0	wrong chebiID and keggid
+3-oxo-cis-dodec-5-enoyl-CoA	3-oxo-cis-dodec-5-enoyl-CoA			0	wrong chebiID and keggid. PubChem CID: 90658857 for  (5E)-3-oxo-dodecenoyl-CoA. https://pubchem.ncbi.nlm.nih.gov/compound/90658857#section=Top  C33H50N7O18P3S(-4)
+3-oxo-cis-hexadec-7-enoyl-CoA	3-oxo-cis-hexadec-7-enoyl-CoA			0	"wrong chebiID and keggid. CHEBI:88008 for (7Z)-hexadecenoyl-CoA;remove duplicated chebiID"
+3-oxo-cis-hexadec-9-enoyl-CoA	3-oxo-cis-hexadec-9-enoyl-CoA	CHEBI:53152		0	wrong chebiID and keggid. CHEBI:53152 for palmitoleoyl-CoA cis-9-hexadecenoyl-CoA
+3-oxo-cis-octadec-9-enoyl-CoA	3-oxo-cis-octadec-9-enoyl-CoA	CHEBI:78146		0	wrong chebiID and keggID. CHEBI:78146 for trans-9-octadecenoyl-CoA. Has charge of -4
+3-oxo-cis-tetradec-5-enoyl-CoA	3-oxo-cis-tetradec-5-enoyl-CoA			0	"wrong chebiID and keggid. CHEBI:70712 for (5Z)-tetradecenoyl-CoA.  cis-5-tetradecenoyl-CoA;remove duplicated chebiID"
+3-oxo-cis-tetradec-7-enoyl-CoA	3-oxo-cis-tetradec-7-enoyl-CoA			0	"wrong chebiID and keggid. CHEBI:62014 for cis-tetradec-3-enoyl-CoA. No cis-tetradec-7-enoyl-CoA;remove duplicated chebiID"
+3-oxodocosanoyl-CoA	3-oxodocosanoyl-CoA	CHEBI:52328		0	wrong chebiID and keggid
+3-oxohexacosanoyl-CoA	3-oxohexacosanoyl-CoA	CHEBI:52977		0	Wrong CHEBI in erm. Wrong KEGG in erm.
+3-oxo-hexanoyl-ACP	3-oxo-hexanoyl-ACP	CHEBI:1642	C05746	0	wrong chebiID and keggid
+3-oxohexanoyl-CoA	3-oxohexanoyl-CoA	CHEBI:27648	C05269	0	wrong chebiID and keggid. update keggid, formula. has formula in charge of -4.
+3-oxoicosanoyl-CoA	3-oxoicosanoyl-CoA	CHEBI:52327		0	wrong chebiID and keggid
+3-oxooctadecanoyl-CoA	3-oxooctadecanoyl-CoA	CHEBI:50571	C16216	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+3-oxo-octanoyl-ACP	3-oxo-octanoyl-ACP	CHEBI:1646	C05750	0	wrong chebiID and keggid
+3-oxooctanoyl-CoA	3-oxooctanoyl-CoA	CHEBI:28264	C05267	0	wrong chebiID and keggid. update keggid, formula. has formula in charge of -4.
+3-oxopalmitoyl-CoA	3-oxopalmitoyl-CoA	CHEBI:57349	C05259	-4	Wrong CHEBI in erm. Wrong KEGG in erm.
+3-oxotetracosanoyl-CoA	3-oxotetracosanoyl-CoA	CHEBI:52329		0	wrong chebiID and keggid
+3-oxotetradecanoyl-CoA	3-oxotetradecanoyl-CoA	CHEBI:28726	C05261	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+3-phosphoglycerate	3-phosphonato-D-glycerate(3-)	CHEBI:58272	C00197	-3	update fullname. the old keggid is for the molecular form
+4beta-methylzymosterol-4alpha-carboxylic acid	4beta-methylzymosterol-4alpha-carboxylic acid	CHEBI:50591	C15808	0	New keggid
+6-(alpha-D-glucosaminyl)-O-acyl-1-phosphatidyl-1D-myo-inositol	6-(alpha-D-glucosaminyl)-O-acyl-1-phosphatidyl-1D-myo-inositol	CHEBI:53055		0	Wrong charge in er.
+6-[6-(2-aminoethylphosphoryl)-alpha-mannosyl-(1->6)-2-(2-aminoethylphosphoryl)-alpha-mannosyl-(1->6)-alpha-2-(2-aminoethylphosphoryl)mannosyl-(1->4)-alpha-glucosaminyl]-O-acyl-1-phosphatidyl-1D-myo-inositol	6-[6-(2-aminoethylphosphoryl)-alpha-mannosyl-(1->6)-2-(2-aminoethylphosphoryl)-alpha-mannosyl-(1->6)-alpha-2-(2-aminoethylphosphoryl)mannosyl-(1->4)-alpha-glucosaminyl]-O-acyl-1-phosphatidyl-1D-myo-inositol	CHEBI:53060		0	Wrong charge in er.
+6-O-[alpha-D-mannosyl-(1->4)-alpha-D-glucosaminyl]-O-acyl-1-phosphatidyl-1D-myo-inositol	6-O-[alpha-D-mannosyl-(1->4)-alpha-D-glucosaminyl]-O-acyl-1-phosphatidyl-1D-myo-inositol	CHEBI:53056		0	Wrong charge in er.
+6-O-{2-O-[(2-aminoethyl)phosphoryl]-alpha-D-mannosyl-(1->4)-alpha-D-glucosaminyl}-O-acyl-1-phosphatidyl-1D-myo-inositol	6-O-{2-O-[(2-aminoethyl)phosphoryl]-alpha-D-mannosyl-(1->4)-alpha-D-glucosaminyl}-O-acyl-1-phosphatidyl-1D-myo-inositol	CHEBI:53057		0	Wrong charge in er.
+6-O-{alpha-D-mannosyl-(1->2)-alpha-D-mannosyl-(1->6)-2-O-[(2-aminoethyl)phosphoryl]-alpha-D-mannosyl-(1->4)-alpha-D-glucosaminyl}-O-acyl-1-phosphatidyl-1D-myo-inositol	6-O-{alpha-D-mannosyl-(1->2)-alpha-D-mannosyl-(1->6)-2-O-[(2-aminoethyl)phosphoryl]-alpha-D-mannosyl-(1->4)-alpha-D-glucosaminyl}-O-acyl-1-phosphatidyl-1D-myo-inositol	CHEBI:53059		0	Wrong charge in er.
+6-O-{alpha-D-mannosyl-(1->6)-2-O-[(2-aminoethyl)phosphoryl]-alpha-D-mannosyl-(1->4)-alpha-D-glucosaminyl}-O-acyl-1-phosphatidyl-1D-myo-inositol	6-O-{alpha-D-mannosyl-(1->6)-2-O-[(2-aminoethyl)phosphoryl]-alpha-D-mannosyl-(1->4)-alpha-D-glucosaminyl}-O-acyl-1-phosphatidyl-1D-myo-inositol	CHEBI:53058		0	Wrong charge in er.
+acetoacetyl-ACP	acetoacetyl-ACP	CHEBI:2393	C05744	0	wrong cheibID and keggid
+acetoacetyl-CoA	acetoacetyl-CoA	CHEBI:57286	C00332	-4	Wrong CHEBI in p. Wrong KEGG in p.
+ACP1	ACP1	CHEBI:18359	C00229	0	Wrong chebiID. Wrong full name. should be: holo-[acyl-carrier protein]
+acylglycerone phosphate (16:0)	acylglycerone phosphate (16:0)	CHEBI:17868	C01192	0	new chebiID. new keggid
+acylglycerone phosphate (16:1)	acylglycerone phosphate (16:1)	CHEBI:74694		-2	new chebiID. Update charge. CHEBI:74694  for 1-palmitoleoyl-sn-glycerol 3-phosphate(2-)
+acylglycerone phosphate (18:0)	acylglycerone phosphate (18:0)	CHEBI:36476	C03805	-2	new chebiID. new keggid. Update charge. chebi has some problem.this is a charged chebi id 2-
+acylglycerone phosphate (18:1)	acylglycerone phosphate (18:1)	CHEBI:36475	C03630	0	new chebiID. new keggid
+ADP	ADP	CHEBI:456216	C00008	-3	Wrong CHEBI in ce/vm/gm. Wrong KEGG in ce/vm/gm.
+Ala-tRNA(Ala)	Ala-tRNA(Ala)	CHEBI:17732	C00886	0	Wrong charge in c.
+alpha-D-ribose 1-phosphate	alpha-D-ribose 1-phosphate(2-)	CHEBI:57720	C00620	-2	update fullname and kegg id. the new keggid is for the molecular form
+AMP	AMP	CHEBI:456215	C00020	-2	Wrong CHEBI in erm/lp/ce. Wrong KEGG in erm/lp/ce.
+arachidate	arachidate	CHEBI:32360		-1	Wrong chebiID and keggid. Update formula and charge
+Arg-tRNA(Arg)	Arg-tRNA(Arg)	CHEBI:18366	C02163	0	Wrong charge in c/m.
+Asn-tRNA(Asn)	Asn-tRNA(Asn)	CHEBI:29265	C03402	0	Wrong charge in c/m.
+Asp-tRNA(Asp)	Asp-tRNA(Asp)	CHEBI:29158	C02984	0	Wrong charge in c/m.
+ATP	ATP	CHEBI:30616	C00002	-4	Wrong CHEBI in erm/lp/ce/vm/gm. Wrong KEGG in erm/lp/ce/vm/gm.
+behenate	behenate	CHEBI:23858	C08281	-1	wrong chebiID and keggid. Update charge
+biomass	biomass			0	Wrong charge in c.
+butanoyl-ACP	butanoyl-ACP	CHEBI:3247	C05745	0	wrong chebiID and keggid.  Not standard fullname
+butanoyl-CoA	butanoyl-CoA	CHEBI:15517	C00136	0	wrong chebiID and keggid. Has charge of -4
+butyrate	butyrate	CHEBI:17968	C00246	-1	wrong chebiID and keggid. update keggid, formula and charge
+carbon dioxide	carbon dioxide	CHEBI:16526	C00011	0	Wrong CHEBI in erm/mm/gm/vm. Wrong KEGG in erm/mm/gm/vm.
+cardiolipin (1-16:0, 2-16:1, 3-16:0, 4-16:1)	cardiolipin (1-16:0, 2-16:1, 3-16:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:0, 2-16:1, 3-16:0, 4-18:1)	cardiolipin (1-16:0, 2-16:1, 3-16:0, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-16:0, 2-16:1, 3-16:1, 4-16:1)	cardiolipin (1-16:0, 2-16:1, 3-16:1, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:0, 2-16:1, 3-16:1, 4-18:1)	cardiolipin (1-16:0, 2-16:1, 3-16:1, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-16:0, 2-16:1, 3-18:0, 4-16:1)	cardiolipin (1-16:0, 2-16:1, 3-18:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:0, 2-16:1, 3-18:1, 4-16:1)	cardiolipin (1-16:0, 2-16:1, 3-18:1, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:0, 2-16:1, 3-18:1, 4-18:1)	cardiolipin (1-16:0, 2-16:1, 3-18:1, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-16:0, 2-18:1, 3-16:0, 4-16:1)	cardiolipin (1-16:0, 2-18:1, 3-16:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:0, 2-18:1, 3-16:0, 4-18:1)	cardiolipin (1-16:0, 2-18:1, 3-16:0, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-16:0, 2-18:1, 3-16:1, 4-16:1)	cardiolipin (1-16:0, 2-18:1, 3-16:1, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:0, 2-18:1, 3-16:1, 4-18:1)	cardiolipin (1-16:0, 2-18:1, 3-16:1, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-16:0, 2-18:1, 3-18:0, 4-16:1)	cardiolipin (1-16:0, 2-18:1, 3-18:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:0, 2-18:1, 3-18:1, 4-16:1)	cardiolipin (1-16:0, 2-18:1, 3-18:1, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:0, 2-18:1, 3-18:1, 4-18:1)	cardiolipin (1-16:0, 2-18:1, 3-18:1, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-16:1, 2-16:1, 3-16:0, 4-16:1)	cardiolipin (1-16:1, 2-16:1, 3-16:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:1, 2-16:1, 3-16:0, 4-18:1)	cardiolipin (1-16:1, 2-16:1, 3-16:0, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-16:1, 2-16:1, 3-16:1, 4-16:1)	cardiolipin (1-16:1, 2-16:1, 3-16:1, 4-16:1)	CHEBI:104873		0	new chebiID. CHEBI:104873 for tetrahexadec-9-enoyl cardiolipin CL(16:1/16:1/16:1/16:1). has charge of 0. Manually calculated based on cardiolipin
+cardiolipin (1-16:1, 2-16:1, 3-16:1, 4-18:1)	cardiolipin (1-16:1, 2-16:1, 3-16:1, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-16:1, 2-16:1, 3-18:0, 4-16:1)	cardiolipin (1-16:1, 2-16:1, 3-18:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:1, 2-16:1, 3-18:1, 4-16:1)	cardiolipin (1-16:1, 2-16:1, 3-18:1, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:1, 2-16:1, 3-18:1, 4-18:1)	cardiolipin (1-16:1, 2-16:1, 3-18:1, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-16:1, 2-18:1, 3-16:0, 4-16:1)	cardiolipin (1-16:1, 2-18:1, 3-16:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:1, 2-18:1, 3-16:0, 4-18:1)	cardiolipin (1-16:1, 2-18:1, 3-16:0, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-16:1, 2-18:1, 3-16:1, 4-16:1)	cardiolipin (1-16:1, 2-18:1, 3-16:1, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:1, 2-18:1, 3-16:1, 4-18:1)	cardiolipin (1-16:1, 2-18:1, 3-16:1, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-16:1, 2-18:1, 3-18:0, 4-16:1)	cardiolipin (1-16:1, 2-18:1, 3-18:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:1, 2-18:1, 3-18:1, 4-16:1)	cardiolipin (1-16:1, 2-18:1, 3-18:1, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-16:1, 2-18:1, 3-18:1, 4-18:1)	cardiolipin (1-16:1, 2-18:1, 3-18:1, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-18:0, 2-16:1, 3-16:0, 4-16:1)	cardiolipin (1-18:0, 2-16:1, 3-16:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-18:0, 2-16:1, 3-16:0, 4-18:1)	cardiolipin (1-18:0, 2-16:1, 3-16:0, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-18:0, 2-16:1, 3-16:1, 4-16:1)	cardiolipin (1-18:0, 2-16:1, 3-16:1, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-18:0, 2-16:1, 3-16:1, 4-18:1)	cardiolipin (1-18:0, 2-16:1, 3-16:1, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-18:0, 2-16:1, 3-18:0, 4-16:1)	cardiolipin (1-18:0, 2-16:1, 3-18:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-18:0, 2-16:1, 3-18:1, 4-16:1)	cardiolipin (1-18:0, 2-16:1, 3-18:1, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-18:0, 2-16:1, 3-18:1, 4-18:1)	cardiolipin (1-18:0, 2-16:1, 3-18:1, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-18:1, 2-16:1, 3-16:0, 4-16:1)	cardiolipin (1-18:1, 2-16:1, 3-16:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-18:1, 2-16:1, 3-16:0, 4-18:1)	cardiolipin (1-18:1, 2-16:1, 3-16:0, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-18:1, 2-16:1, 3-16:1, 4-16:1)	cardiolipin (1-18:1, 2-16:1, 3-16:1, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-18:1, 2-16:1, 3-16:1, 4-18:1)	cardiolipin (1-18:1, 2-16:1, 3-16:1, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-18:1, 2-16:1, 3-18:0, 4-16:1)	cardiolipin (1-18:1, 2-16:1, 3-18:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-18:1, 2-16:1, 3-18:1, 4-16:1)	cardiolipin (1-18:1, 2-16:1, 3-18:1, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-18:1, 2-16:1, 3-18:1, 4-18:1)	cardiolipin (1-18:1, 2-16:1, 3-18:1, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-18:1, 2-18:1, 3-16:0, 4-16:1)	cardiolipin (1-18:1, 2-18:1, 3-16:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-18:1, 2-18:1, 3-16:0, 4-18:1)	cardiolipin (1-18:1, 2-18:1, 3-16:0, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-18:1, 2-18:1, 3-16:1, 4-16:1)	cardiolipin (1-18:1, 2-18:1, 3-16:1, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-18:1, 2-18:1, 3-16:1, 4-18:1)	cardiolipin (1-18:1, 2-18:1, 3-16:1, 4-18:1)			0	Wrong charge in mm.
+cardiolipin (1-18:1, 2-18:1, 3-18:0, 4-16:1)	cardiolipin (1-18:1, 2-18:1, 3-18:0, 4-16:1)			0	Wrong charge in mm.
+cardiolipin (1-18:1, 2-18:1, 3-18:1, 4-16:1)	cardiolipin (1-18:1, 2-18:1, 3-18:1, 4-16:1)			0	Wrong charge in mm.
+CDP	CDP	CHEBI:58069	C00112	-3	Wrong CHEBI in erm. Wrong KEGG in erm.
+CDP-choline	CDP-choline	CHEBI:16436	C00307	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+CDP-diacylglycerol (1-16:0, 2-16:1)	CDP-diacylglycerol (1-16:0, 2-16:1)			0	Wrong charge in erm/mm.
+CDP-diacylglycerol (1-16:0, 2-18:1)	CDP-diacylglycerol (1-16:0, 2-18:1)	CHEBI:34077	C13892	0	new keggid
+CDP-diacylglycerol (1-16:1, 2-16:1)	CDP-diacylglycerol (1-16:1, 2-16:1)	CHEBI:104012		0	new chebiID
+CDP-diacylglycerol (1-16:1, 2-18:1)	CDP-diacylglycerol (1-16:1, 2-18:1)			0	Wrong charge in erm/mm.
+CDP-diacylglycerol (1-18:0, 2-16:1)	CDP-diacylglycerol (1-18:0, 2-16:1)			0	No chebi id found. ECMDB23374
+CDP-diacylglycerol (1-18:0, 2-18:1)	CDP-diacylglycerol (1-18:0, 2-18:1)			0	Wrong charge in erm.
+CDP-diacylglycerol (1-18:1, 2-16:1)	CDP-diacylglycerol (1-18:1, 2-16:1)			0	Wrong charge in erm/mm.
+CDP-diacylglycerol (1-18:1, 2-18:1)	CDP-diacylglycerol (1-18:1, 2-18:1)	CHEBI:104362		0	new chebiID. CHEBI:104362 for 1.2-dioctadec-11-enoyl-sn-glycero-3-cytidine 5'-diphosphate CDP-DG(18:1/18:1)
+CDP-ethanolamine	CDP-ethanolamine	CHEBI:57876	C00570	-1	Wrong CHEBI in erm. Wrong KEGG in erm.
+cerotic acid	cerotic acid	CHEBI:31013		-1	Wrong CHEBI in ce/erm/lp. Wrong KEGG in ce/erm/lp.
+cis-dec-3-enoyl-CoA	cis-dec-3-enoyl-CoA			0	"wrong chebiID and keggid. CHEBI:10723 for trans-dec-2-enoyl-CoA;remove duplicated chebiID;remove duplicated keggID"
+cis-dodec-3-enoyl-CoA	cis-dodec-3-enoyl-CoA	CHEBI:27989		0	"wrong chebiID and keggid;remove duplicated keggID"
+cis-dodec-5-enoyl-CoA	cis-dodec-5-enoyl-CoA			0	"wrong chebiID and keggid.  CHEBI:27989 for cis-dodec-3-enoyl-CoA;remove duplicated chebiID;remove duplicated keggID"
+cis-hexadec-7-enoyl-CoA	cis-hexadec-7-enoyl-CoA	CHEBI:88008		0	wrong chebiID and keggid
+cis-tetradec-5-enoyl-CoA	cis-tetradec-5-enoyl-CoA	CHEBI:70712		0	wrong chebiID and keggid
+cis-tetradec-7-enoyl-CoA	cis-tetradec-7-enoyl-CoA			0	"Wrong chebiID and keggid .CHEBI:62014 for  cis-tetradec-3-enoyl-CoA;remove duplicated chebiID"
+CMP	CMP	CHEBI:60377	C00055	-2	Wrong CHEBI in erm/mm. Wrong KEGG in erm/mm.
+coenzyme A	coenzyme A	CHEBI:57287	C00010	-4	Wrong CHEBI in erm/ce/mm. Wrong KEGG in erm/ce/mm.
+CTP	CTP	CHEBI:37563	C00063	-4	Wrong CHEBI in erm/mm. Wrong KEGG in erm/mm.
+Cys-tRNA(Cys)	Cys-tRNA(Cys)	CHEBI:29152	C03125	0	Wrong charge in c.
+diglyceride (1-16:0, 2-16:1)	diglyceride (1-16:0, 2-16:1)	CHEBI:82929		0	new chebiID
+diglyceride (1-16:0, 2-18:1)	diglyceride (1-16:0, 2-18:1)	CHEBI:88454		0	new chebiID. chebi has some problem. this is 11z
+diglyceride (1-16:1, 2-16:1)	diglyceride (1-16:1, 2-16:1)	CHEBI:84417		0	new chebiID
+diglyceride (1-16:1, 2-18:1)	diglyceride (1-16:1, 2-18:1)	CHEBI:88500		0	new chebiID
+diglyceride (1-18:0, 2-16:1)	diglyceride (1-18:0, 2-16:1)	CHEBI:88527		0	new chebiID
+diglyceride (1-18:0, 2-18:1)	diglyceride (1-18:0, 2-18:1)	CHEBI:75468		0	new chebiID
+diglyceride (1-18:1, 2-16:1)	diglyceride (1-18:1, 2-16:1)	CHEBI:89229		0	new chebiID
+diglyceride (1-18:1, 2-18:1)	diglyceride (1-18:1, 2-18:1)	CHEBI:52333		0	new chebiID
+dihydrolipoylprotein	dihydrolipoylprotein	CHEBI:16194	C02972	0	Wrong charge in m.
+dihydroxyacetone phosphate	dihydroxyacetone phosphate	CHEBI:57642	C00111	-2	Wrong CHEBI in erm. Wrong KEGG in erm.
+diphosphate	diphosphate	CHEBI:33019	C00013	-3	Wrong CHEBI in erm/ce/mm. Wrong KEGG in erm/ce/mm.
+D-mannose 6-phosphate	D-mannose 6-phosphate	CHEBI:17369	C00275	0	Wrong charge in c.
+docosanoyl-CoA	docosanoyl-CoA	CHEBI:65088	C16528	0	Wrong chebiID and keggid. Has charge of -4
+episterol	episterol	CHEBI:23929	C15777	0	Wrong CHEBI in erm/lp. Wrong KEGG in erm/lp.
+episteryl oleate	episteryl oleate	CHEBI:52375		0	new chebiID
+episteryl palmitoleate	episteryl palmitoleate	CHEBI:52376		0	new chebiID
+ergosta-5,7,22,24(28)-tetraen-3beta-ol	ergosta-5,7,22,24(28)-tetraen-3beta-ol	CHEBI:18249	C05440	0	Wrong CHEBI in e. Wrong KEGG in e.
+ergosta-5,7,24(28)-trien-3beta-ol	ergosta-5,7,24(28)-trien-3beta-ol	CHEBI:52972	C15780	0	new keggid
+ergosterol	ergosterol	CHEBI:16933	C01694	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+ergosteryl oleate	ergosteryl oleate	CHEBI:52377		0	new chebiID
+ergosteryl palmitoleate	ergosteryl palmitoleate	CHEBI:52378		0	new chebiID
+fecosterol	fecosterol	CHEBI:17038	C04525	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+fecosteryl oleate	fecosteryl oleate	CHEBI:52379		0	new chebiID
+fecosteryl palmitoleate	fecosteryl palmitoleate	CHEBI:52380		0	new chebiID
+ferricytochrome c	ferricytochrome c	CHEBI:15991	C00125	0	Wrong charge in m.
+ferrocytochrome c	ferrocytochrome c	CHEBI:16928	C00126	0	Wrong charge in m.
+fMet-tRNA(fMet)	fMet-tRNA(fMet)	CHEBI:17119	C03294	0	Wrong charge in m.
+Gln-tRNA(Gln)	Gln-tRNA(Gln)	CHEBI:29166	C02282	0	Wrong charge in c.
+Glu-tRNA(Glu)	Glu-tRNA(Glu)	CHEBI:29157	C02987	0	Wrong charge in c/m.
+glycerol	glycerol	CHEBI:17754	C00116	0	Wrong CHEBI in lp. Wrong KEGG in lp.
+glycerol 3-phosphate	glycerol 3-phosphate	CHEBI:57597	C00093	-2	Wrong CHEBI in erm/mm. Wrong KEGG in erm/mm.
+glycogen	glycogen	CHEBI:28087	C00182	0	Wrong charge in c/v.
+Gly-tRNA(Gly)	Gly-tRNA(Gly)	CHEBI:29156	C02412	0	Wrong charge in c.
+H+	H+	CHEBI:24636	C00080	1	Wrong CHEBI in erm/mm/gm/vm. Wrong KEGG in erm/mm/gm/vm.
+H2O	H2O	CHEBI:15377	C00001	0	Wrong CHEBI in erm/vm/gm/mm/ce/lp. Wrong KEGG in erm/vm/gm/mm/ce/lp.
+heme a	heme a	CHEBI:24479	C15670	0	Wrong CHEBI in c. Wrong KEGG in c. Wrong charge in m/c.
+heme o	heme o	CHEBI:24480	C15672	0	Wrong charge in m.
+hexacosanoyl-CoA	hexacosanoyl-CoA	CHEBI:52966		0	Wrong CHEBI in erm/ce/lp. Wrong KEGG in erm/ce/lp.
+hexanoate	hexanoate	CHEBI:17120	C01585	-1	Wrong chebiID and keggid. update keggid, formula and charge
+hexanoyl-ACP	hexanoyl-ACP	CHEBI:5704	C05749	0	wrong chebiID and keggid
+hexanoyl-CoA	hexanoyl-CoA	CHEBI:27540	C05270	0	wrong chebiID and keggid.
+His-tRNA(His)	His-tRNA(His)	CHEBI:29155	C02988	0	Wrong charge in c/m.
+icosanoyl-CoA	icosanoyl-CoA	CHEBI:15527	C02041	0	Wrong chebiID and keggid
+Ile-tRNA(Ile)	Ile-tRNA(Ile)	CHEBI:29160	C03127	0	Wrong charge in c/m.
+iron	iron(2+)	CHEBI:29033	C14818	2	update fullname
+lanosterol	lanosterol	CHEBI:16521	C01724	0	Wrong CHEBI in erm/lp. Wrong KEGG in erm/lp.
+lanosteryl oleate	lanosteryl oleate	CHEBI:52382		0	new chebiID
+lanosteryl palmitoleate	lanosteryl palmitoleate	CHEBI:52383		0	new chebiID
+laurate	laurate	CHEBI:18262	C02679	-1	Wrong CHEBI in erm/lp. Wrong KEGG in erm/lp.
+lauroyl-CoA	lauroyl-CoA	CHEBI:57375	C01832	-4	Wrong CHEBI in erm/lp. Wrong KEGG in erm/lp.
+Leu-tRNA(Leu)	Leu-tRNA(Leu)	CHEBI:16624	C02047	0	Wrong charge in c/m.
+lignoceric acid	lignoceric acid	CHEBI:31014	C08320	-1	Wrong CHEBI in ce/erm/lp. Wrong KEGG in ce/erm/lp.
+lipid	lipid	CHEBI:18059	C01356	0	Wrong charge in c.
+lipoylprotein	lipoylprotein	CHEBI:15804	C02051	0	Wrong charge in m.
+L-serine	L-serine	CHEBI:17115	C00065	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+Lys-tRNA(Lys)	Lys-tRNA(Lys)	CHEBI:16047	C01931	0	Wrong charge in c/m.
+malonyl-CoA	malonyl-CoA	CHEBI:57384	C00083	-5	Wrong CHEBI in erm. Wrong KEGG in erm.
+mannan	mannan	CHEBI:28808	C00464	0	Wrong charge in c/er.
+melibiose	melibiose	CHEBI:28053	C05402	0	new chebiID. New keggid
+Met-tRNA(Met)	Met-tRNA(Met)	CHEBI:16635	C02430	0	Wrong charge in c/m.
+monolysocardiolipin (1-16:0, 2-16:1, 4-16:1)	monolysocardiolipin (1-16:0, 2-16:1, 4-16:1)			0	Wrong charge in mm.
+monolysocardiolipin (1-16:0, 2-16:1, 4-18:1)	monolysocardiolipin (1-16:0, 2-16:1, 4-18:1)			0	Wrong charge in mm.
+monolysocardiolipin (1-16:0, 2-18:1, 4-16:1)	monolysocardiolipin (1-16:0, 2-18:1, 4-16:1)			0	Wrong charge in mm.
+monolysocardiolipin (1-16:0, 2-18:1, 4-18:1)	monolysocardiolipin (1-16:0, 2-18:1, 4-18:1)			0	Wrong charge in mm.
+monolysocardiolipin (1-16:1, 2-16:1, 4-16:1)	monolysocardiolipin (1-16:1, 2-16:1, 4-16:1)			0	Wrong charge in mm.
+monolysocardiolipin (1-16:1, 2-16:1, 4-18:1)	monolysocardiolipin (1-16:1, 2-16:1, 4-18:1)			0	Wrong charge in mm.
+monolysocardiolipin (1-16:1, 2-18:1, 4-16:1)	monolysocardiolipin (1-16:1, 2-18:1, 4-16:1)			0	Wrong charge in mm.
+monolysocardiolipin (1-16:1, 2-18:1, 4-18:1)	monolysocardiolipin (1-16:1, 2-18:1, 4-18:1)			0	Wrong charge in mm.
+monolysocardiolipin (1-18:0, 2-16:1, 4-16:1)	monolysocardiolipin (1-18:0, 2-16:1, 4-16:1)			0	Wrong charge in mm.
+monolysocardiolipin (1-18:0, 2-16:1, 4-18:1)	monolysocardiolipin (1-18:0, 2-16:1, 4-18:1)			0	Wrong charge in mm.
+monolysocardiolipin (1-18:1, 2-16:1, 4-16:1)	monolysocardiolipin (1-18:1, 2-16:1, 4-16:1)			0	Wrong charge in mm.
+monolysocardiolipin (1-18:1, 2-16:1, 4-18:1)	monolysocardiolipin (1-18:1, 2-16:1, 4-18:1)			0	Wrong charge in mm.
+monolysocardiolipin (2-16:1, 3-16:0, 4-16:1)	monolysocardiolipin (2-16:1, 3-16:0, 4-16:1)			0	Wrong charge in mm.
+monolysocardiolipin (2-16:1, 3-16:0, 4-18:1)	monolysocardiolipin (2-16:1, 3-16:0, 4-18:1)			0	Wrong charge in mm.
+monolysocardiolipin (2-16:1, 3-16:1, 4-16:1)	monolysocardiolipin (2-16:1, 3-16:1, 4-16:1)			0	Wrong charge in mm.
+monolysocardiolipin (2-16:1, 3-16:1, 4-18:1)	monolysocardiolipin (2-16:1, 3-16:1, 4-18:1)			0	Wrong charge in mm.
+monolysocardiolipin (2-16:1, 3-18:0, 4-16:1)	monolysocardiolipin (2-16:1, 3-18:0, 4-16:1)			0	Wrong charge in mm.
+monolysocardiolipin (2-16:1, 3-18:1, 4-16:1)	monolysocardiolipin (2-16:1, 3-18:1, 4-16:1)			0	Wrong charge in mm.
+monolysocardiolipin (2-18:1, 3-16:0, 4-16:1)	monolysocardiolipin (2-18:1, 3-16:0, 4-16:1)			0	Wrong charge in mm.
+monolysocardiolipin (2-18:1, 3-16:0, 4-18:1)	monolysocardiolipin (2-18:1, 3-16:0, 4-18:1)			0	Wrong charge in mm.
+monolysocardiolipin (2-18:1, 3-16:1, 4-16:1)	monolysocardiolipin (2-18:1, 3-16:1, 4-16:1)			0	Wrong charge in mm.
+monolysocardiolipin (2-18:1, 3-16:1, 4-18:1)	monolysocardiolipin (2-18:1, 3-16:1, 4-18:1)			0	Wrong charge in mm.
+monolysocardiolipin (2-18:1, 3-18:0, 4-16:1)	monolysocardiolipin (2-18:1, 3-18:0, 4-16:1)			0	Wrong charge in mm.
+monolysocardiolipin (2-18:1, 3-18:1, 4-16:1)	monolysocardiolipin (2-18:1, 3-18:1, 4-16:1)			0	Wrong charge in mm.
+myo-inositol	myo-inositol	CHEBI:17268	C00137	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+myristate	myristate	CHEBI:30807	C06424	-1	Wrong CHEBI in erm/lp. Wrong KEGG in erm/lp.
+myristoyl-CoA	myristoyl-CoA	CHEBI:57385	C02593	-4	Wrong CHEBI in erm/lp. Wrong KEGG in erm/lp.
+NAD	NAD	CHEBI:57540	C00003	-1	Wrong CHEBI in erm. Wrong KEGG in erm.
+NADH	NADH	CHEBI:57945	C00004	-2	Wrong CHEBI in erm. Wrong KEGG in erm.
+NADP(+)	NADP(+)	CHEBI:58349	C00006	-3	Wrong CHEBI in erm/lp. Wrong KEGG in erm/lp.
+NADPH	NADPH	CHEBI:57783	C00005	-4	Wrong CHEBI in erm/lp. Wrong KEGG in erm/lp.
+oleate	oleate	CHEBI:30823	C00712	-1	Wrong CHEBI in e/erm/lp/p/ce/m. Wrong KEGG in e/erm/lp/p/ce/m.
+oleoyl-CoA	oleoyl-CoA	CHEBI:57387	C00510	-4	Wrong CHEBI in erm/lp/mm. Wrong KEGG in erm/lp/mm.
+oxygen	oxygen	CHEBI:15379	C00007	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+palmitate	palmitate	CHEBI:7896	C00249	-1	Wrong CHEBI in erm/lp/mm/ce. Wrong KEGG in erm/lp/mm/ce.
+palmitoleate	palmitoleate	CHEBI:32372	C08362	-1	Wrong CHEBI in erm/lp/ce. Wrong KEGG in erm/lp/ce.
+palmitoleoyl-CoA	palmitoleoyl-CoA(4-)	CHEBI:61540	C21072	-4	wrong chebiID and keggid. update fullname, keggid and full name in chebi
+palmitoyl-CoA	palmitoyl-CoA	CHEBI:57379	C00154	-4	Wrong CHEBI in erm/lp. Wrong KEGG in erm/lp.
+Phe-tRNA(Phe)	Phe-tRNA(Phe)	CHEBI:29153	C03511	0	Wrong charge in c/m.
+phosphate	phosphate	CHEBI:43474	C00009	-2	Wrong CHEBI in erm/vm/gm/mm/ce. Wrong KEGG in erm/vm/gm/mm/ce.
+phosphatidate (1-16:0, 2-16:1)	phosphatidate (1-16:0, 2-16:1)	CHEBI:73998		-2	new chebiID. Update charge. chebi has some problemthis is a charged chebi id 2-
+phosphatidate (1-16:0, 2-18:1)	phosphatidate (1-16:0, 2-18:1)	CHEBI:64844	C13889	0	new chebiID. new keggid
+phosphatidate (1-16:1, 2-16:1)	phosphatidate (1-16:1, 2-16:1)	CHEBI:75071		0	new chebiID
+phosphatidate (1-16:1, 2-18:1)	phosphatidate (1-16:1, 2-18:1)			0	"new chebiID. standard fullname: 1-(9Z)-octadecenoyl-2-(9Z)-hexadecenoyl-sn-glycero-3-phosphate  Synonyms: PA(18:1(9Z)/16:1(9Z));remove duplicated chebiID"
+phosphatidate (1-18:0, 2-16:1)	phosphatidate (1-18:0, 2-16:1)	CHEBI:75073		0	new chebiID
+phosphatidate (1-18:0, 2-18:1)	phosphatidate (1-18:0, 2-18:1)	CHEBI:74847		0	new chebiID
+phosphatidate (1-18:1, 2-16:1)	phosphatidate (1-18:1, 2-16:1)	CHEBI:75074		0	new chebiID
+phosphatidate (1-18:1, 2-18:1)	phosphatidate (1-18:1, 2-18:1)	CHEBI:83775		0	new chebiID
+phosphatidylcholine (1-16:0, 2-16:1)	phosphatidylcholine (1-16:0, 2-16:1)	CHEBI:134592		0	new chebiID
+phosphatidylcholine (1-16:0, 2-18:1)	phosphatidylcholine (1-16:0, 2-18:1)	CHEBI:134594		0	new chebiID
+phosphatidylcholine (1-16:1, 2-16:1)	phosphatidylcholine (1-16:1, 2-16:1)	CHEBI:134637		0	new chebiID
+phosphatidylcholine (1-16:1, 2-18:1)	phosphatidylcholine (1-16:1, 2-18:1)	CHEBI:89668		0	new chebiID
+phosphatidylcholine (1-18:0, 2-16:1)	phosphatidylcholine (1-18:0, 2-16:1)	CHEBI:89972		0	new chebiID
+phosphatidylcholine (1-18:0, 2-18:1)	phosphatidylcholine (1-18:0, 2-18:1)	CHEBI:89679		0	new chebiID
+phosphatidylcholine (1-18:1, 2-16:1)	phosphatidylcholine (1-18:1, 2-16:1)	CHEBI:89506		0	new chebiID
+phosphatidylcholine (1-18:1, 2-18:1)	phosphatidylcholine (1-18:1, 2-18:1)	CHEBI:89504		0	new chebiID
+phosphatidylethanolamine (1-16:0, 2-16:1)	phosphatidylethanolamine (1-16:0, 2-16:1)	CHEBI:136147		0	new chebiID
+phosphatidylethanolamine (1-16:0, 2-18:1)	phosphatidylethanolamine (1-16:0, 2-18:1)	CHEBI:136148		0	new chebiID
+phosphatidylethanolamine (1-16:1, 2-16:1)	phosphatidylethanolamine (1-16:1, 2-16:1)	CHEBI:138792		0	new chebiID
+phosphatidylethanolamine (1-16:1, 2-18:1)	phosphatidylethanolamine (1-16:1, 2-18:1)	CHEBI:90464		0	new chebiID
+phosphatidylethanolamine (1-18:0, 2-16:1)	phosphatidylethanolamine (1-18:0, 2-16:1)	CHEBI:136155		0	new chebiID. CHEBI:136155 for  phosphatidylethanolamine (16:1/18:0). has charge of 0
+phosphatidylethanolamine (1-18:0, 2-18:1)	phosphatidylethanolamine (1-18:0, 2-18:1)	CHEBI:136162		0	new chebiID
+phosphatidylethanolamine (1-18:1, 2-16:1)	phosphatidylethanolamine (1-18:1, 2-16:1)	CHEBI:82837		0	new chebiID
+phosphatidylethanolamine (1-18:1, 2-18:1)	phosphatidylethanolamine (1-18:1, 2-18:1)	CHEBI:136170		0	new chebiID
+phosphatidylglycerol (1-16:0, 2-16:1)	phosphatidylglycerol (1-16:0, 2-16:1)	CHEBI:136224		0	new chebiID. CHEBI:17517 for phosphatidylglycerol. has charge of -1
+phosphatidylglycerol (1-16:0, 2-18:1)	phosphatidylglycerol (1-16:0, 2-18:1)	CHEBI:34080	C13833	0	new keggid
+phosphatidylglycerol (1-16:1, 2-16:1)	phosphatidylglycerol (1-16:1, 2-16:1)			0	Wrong charge in mm.
+phosphatidylglycerol (1-16:1, 2-18:1)	phosphatidylglycerol (1-16:1, 2-18:1)	CHEBI:89398		0	new chebiID
+phosphatidylglycerol (1-18:0, 2-16:1)	phosphatidylglycerol (1-18:0, 2-16:1)	CHEBI:89270		0	new chebiID
+phosphatidylglycerol (1-18:1, 2-16:1)	phosphatidylglycerol (1-18:1, 2-16:1)	CHEBI:89093		0	new chebiID
+phosphatidyl-L-serine (1-16:0, 2-16:1)	phosphatidyl-L-serine (1-16:0, 2-16:1)	CHEBI:89824		0	new chebiID. CHEBI:18303 for  phosphatidyl-L-serine
+phosphatidyl-L-serine (1-16:0, 2-18:1)	phosphatidyl-L-serine (1-16:0, 2-18:1)	CHEBI:134541		0	new chebiID
+phosphatidyl-L-serine (1-16:1, 2-16:1)	phosphatidyl-L-serine (1-16:1, 2-16:1)			0	Wrong charge in erm/mm/gm/vm/ce.
+phosphatidyl-L-serine (1-16:1, 2-18:1)	phosphatidyl-L-serine (1-16:1, 2-18:1)	CHEBI:90032		0	new chebiID
+phosphatidyl-L-serine (1-18:0, 2-16:1)	phosphatidyl-L-serine (1-18:0, 2-16:1)	CHEBI:90036		0	new chebiID
+phosphatidyl-L-serine (1-18:0, 2-18:1)	phosphatidyl-L-serine (1-18:0, 2-18:1)	CHEBI:90433		0	new chebiID
+phosphatidyl-L-serine (1-18:1, 2-16:1)	phosphatidyl-L-serine (1-18:1, 2-16:1)	CHEBI:75101		0	new chebiID
+phosphatidyl-L-serine (1-18:1, 2-18:1)	phosphatidyl-L-serine (1-18:1, 2-18:1)	CHEBI:60568		0	new chebiID
+phosphatidyl-N,N-dimethylethanolamine (1-16:0, 2-16:1)	phosphatidyl-N,N-dimethylethanolamine (1-16:0, 2-16:1)			0	Wrong charge in erm.
+phosphatidyl-N,N-dimethylethanolamine (1-16:0, 2-18:1)	phosphatidyl-N,N-dimethylethanolamine (1-16:0, 2-18:1)			0	Wrong charge in erm.
+phosphatidyl-N,N-dimethylethanolamine (1-16:1, 2-16:1)	phosphatidyl-N,N-dimethylethanolamine (1-16:1, 2-16:1)			0	Wrong charge in erm.
+phosphatidyl-N,N-dimethylethanolamine (1-16:1, 2-18:1)	phosphatidyl-N,N-dimethylethanolamine (1-16:1, 2-18:1)			0	Wrong charge in erm.
+phosphatidyl-N,N-dimethylethanolamine (1-18:0, 2-16:1)	phosphatidyl-N,N-dimethylethanolamine (1-18:0, 2-16:1)			0	Wrong charge in erm.
+phosphatidyl-N,N-dimethylethanolamine (1-18:0, 2-18:1)	phosphatidyl-N,N-dimethylethanolamine (1-18:0, 2-18:1)			0	Wrong charge in erm.
+phosphatidyl-N,N-dimethylethanolamine (1-18:1, 2-16:1)	phosphatidyl-N,N-dimethylethanolamine (1-18:1, 2-16:1)			0	Wrong charge in erm.
+phosphatidyl-N,N-dimethylethanolamine (1-18:1, 2-18:1)	phosphatidyl-N,N-dimethylethanolamine (1-18:1, 2-18:1)	CHEBI:85963		0	new chebiID. CHEBI:85963 for 1.2-dioleoyl-sn-glycero-3-phospho-N.N-dimethylethanolamine. PE-NMe2(18:1/18:1) has charge of 0
+phosphatidyl-N-methylethanolamine (1-16:0, 2-16:1)	phosphatidyl-N-methylethanolamine (1-16:0, 2-16:1)			0	Wrong charge in erm.
+phosphatidyl-N-methylethanolamine (1-16:0, 2-18:1)	phosphatidyl-N-methylethanolamine (1-16:0, 2-18:1)			0	Wrong charge in erm.
+phosphatidyl-N-methylethanolamine (1-16:1, 2-16:1)	phosphatidyl-N-methylethanolamine (1-16:1, 2-16:1)			0	Wrong charge in erm.
+phosphatidyl-N-methylethanolamine (1-16:1, 2-18:1)	phosphatidyl-N-methylethanolamine (1-16:1, 2-18:1)			0	Wrong charge in erm.
+phosphatidyl-N-methylethanolamine (1-18:0, 2-16:1)	phosphatidyl-N-methylethanolamine (1-18:0, 2-16:1)			0	Wrong charge in erm.
+phosphatidyl-N-methylethanolamine (1-18:0, 2-18:1)	phosphatidyl-N-methylethanolamine (1-18:0, 2-18:1)			0	Wrong charge in erm.
+phosphatidyl-N-methylethanolamine (1-18:1, 2-16:1)	phosphatidyl-N-methylethanolamine (1-18:1, 2-16:1)			0	Wrong charge in erm.
+phosphatidyl-N-methylethanolamine (1-18:1, 2-18:1)	phosphatidyl-N-methylethanolamine (1-18:1, 2-18:1)	CHEBI:85962		0	new chebiID. CHEBI:85962 for 1.2-dioleoyl-sn-glycero-3-phospho-N-methylethanolamine. PE-NMe(18:1/18:1) has charge of 0
+prenyl diphosphate	prenyl diphosphate(3-)	CHEBI:57623	C00235	-3	update fullname
+Pro-tRNA(Pro)	Pro-tRNA(Pro)	CHEBI:29154	C02702	0	Wrong charge in c.
+raffinose	raffinose	CHEBI:16634	C00492	0	new chebiID. New keggid
+S(8)-aminomethyldihydrolipoylprotein	S(8)-aminomethyldihydrolipoylprotein	CHEBI:16882	C01242	0	Wrong charge in m.
+S-adenosyl-L-homocysteine	S-adenosyl-L-homocysteine	CHEBI:16680	C00021	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+S-adenosyl-L-methionine	S-adenosyl-L-methionine	CHEBI:15414	C00019	1	Wrong CHEBI in erm. Wrong KEGG in erm.
+Ser-tRNA(Ser)	Ser-tRNA(Ser)	CHEBI:29162	C02553	0	Wrong charge in c.
+sn-2-acyl-1-lysophosphatidylinositol (16:1)	sn-2-acyl-1-lysophosphatidylinositol (16:1)			0	Wrong charge in erm.
+sn-2-acyl-1-lysophosphatidylinositol (18:1)	sn-2-acyl-1-lysophosphatidylinositol (18:1)			0	Wrong charge in erm.
+sn-glycero-3-phosphocholine	sn-glycero-3-phosphocholine	CHEBI:16870	C00670	0	Update charge. Wrong standard formula and charge according to the chebiID
+sn-glycero-3-phosphoethanolamine	sn-glycero-3-phosphoethanolamine	CHEBI:16929	C01233	0	new chebiID. New keggid
+sn-glycero-3-phosphoserine	sn-glycero-3-phosphoserine	CHEBI:64945		0	new chebiID. has charge of -1
+stearate	stearate	CHEBI:25629	C01530	-1	Wrong CHEBI in erm/lp/mm/ce. Wrong KEGG in erm/lp/mm/ce.
+stearoyl-CoA	stearoyl-CoA	CHEBI:57394	C00412	-4	Wrong CHEBI in erm/lp. Wrong KEGG in erm/lp.
+tetracosanoyl-CoA	tetracosanoyl-CoA	CHEBI:52974	C16529	0	Wrong CHEBI in erm/ce/lp. Wrong KEGG in erm/ce/lp.
+Thr-tRNA(Thr)	Thr-tRNA(Thr)	CHEBI:29163	C02992	0	Wrong charge in c/m.
+trans-2,cis-5-dodecadienoyl-CoA	trans-2,cis-5-dodecadienoyl-CoA			0	wrong chebiID and keggid.  Can't find chebiID according to the fullname
+trans-2,cis-5-tetradecadienoyl-CoA	trans-2,cis-5-tetradecadienoyl-CoA			0	"wrong chebiID and keggid. CHEBI:72001 for  (3E.5Z)-tetradecadienoyl-CoA. Has charge of -4;remove duplicated chebiID"
+trans-2,cis-7-hexadecadienoyl-CoA	trans-2,cis-7-hexadecadienoyl-CoA	CHEBI:88086		0	wrong chebiID and keggid. CHEBI:88086 for (2E.7Z)-hexadecadienoyl-CoA. Has charge of -4
+trans-2,cis-7-tetradecadienoyl-CoA	trans-2,cis-7-tetradecadienoyl-CoA	CHEBI:88067		0	wrong chebiID and keggid.  CHEBI:88067 for  (2E.5Z)-tetradecadienoyl-CoA
+trans-2,cis-9-hexadecadienoyl-CoA	trans-2,cis-9-hexadecadienoyl-CoA	CHEBI:76889		0	wrong chebiID and keggid. CHEBI:76889 for (9Z.12Z)-hexadecadienoyl-CoA?? Has charge of -4
+trans-2,cis-9-octadecadienoyl-CoA	trans-2,cis-9-octadecadienoyl-CoA	CHEBI:15530	C02050	0	wrong chebiID and wrong keggid. CHEBI:15530 for (9Z.12Z)-Octadecadienoyl-CoA   linoleoyl-CoA is the standard fullname
+trans-2,trans-4-dodecadienoyl-CoA	trans-2,trans-4-dodecadienoyl-CoA	CHEBI:28002	C05280	0	new chebiID. new keggid. CHEBI:28002 for (3Z.6Z)-dodecadienoyl-CoA has charge of 0
+trans-2,trans-4-tetradecadienoyl-CoA	trans-2,trans-4-tetradecadienoyl-CoA	CHEBI:88084		0	new chebiID
+trans-3,cis-5-dodecadienoyl-CoA	trans-3,cis-5-dodecadienoyl-CoA	CHEBI:139121		0	new chebiID. Has charge of -4
+trans-3,cis-5-tetradecadienoyl-CoA	trans-3,cis-5-tetradecadienoyl-CoA	CHEBI:72001		0	new chebiID
+trans-but-2-enoyl-ACP	trans-but-2-enoyl-ACP	CHEBI:132146		0	wrong chebiID and keggid
+trans-but-2-enoyl-CoA	but-2-enoyl-CoA	CHEBI:36926	C00877	0	new keggid, formula & fullname. Wrong chebiID.
+trans-docos-2-enoyl-CoA	trans-docos-2-enoyl-CoA			0	"Wrong chebiID and keggid. Not standard fullname;remove duplicated chebiID;remove duplicated keggID"
+trans-dodec-3-enoyl-CoA	trans-dodec-3-enoyl-CoA			0	"new chebiID. new keggid. CHEBI:15471 for  trans-dodec-2-enoyl-CoA has charge of 0.;remove duplicated chebiID;remove duplicated keggID"
+trans-hex-2-enoyl-ACP	trans-hex-2-enoyl-ACP	CHEBI:10727	C05748	0	wrong chebiID and keggid
+trans-hex-2-enoyl-CoA	trans-hex-2-enoyl-CoA	CHEBI:28706	C05271	0	wrong chebiID and keggid. update keggid, formula. has formula in charge of -4.
+trans-hexacos-2-enoyl-CoA	trans-hexacos-2-enoyl-CoA	CHEBI:52975		0	Wrong CHEBI in erm. Wrong KEGG in erm.
+trans-hexadec-2-enoyl-CoA	trans-hexadec-2-enoyl-CoA		C05272	0	"Wrong chebiID and keggid;remove duplicated chebiID"
+trans-icos-2-enoyl-CoA	trans-icos-2-enoyl-CoA			0	Wrong chebiID and keggid. Can't find such a metabolite in chebi
+trans-oct-2-enoyl-ACP	trans-oct-2-enoyl-ACP		C05751	0	wrong chebiID. can't find such a metabolite in chebi. Not standard fullname
+trans-oct-2-enoyl-CoA	trans-oct-2-enoyl-CoA	CHEBI:27537	C05276	0	wrong chebiID and keggid. update keggid, formula. has formula in charge of -4.
+trans-octadec-2-enoyl-CoA	trans-octadec-2-enoyl-CoA	CHEBI:50570	C16218	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+trans-tetracos-2-enoyl-CoA	trans-tetracos-2-enoyl-CoA	CHEBI:75068		0	Wrong chebiID and keggid.  Not standard fullname. should be trans-2-tetracosenoyl-CoA   has charge of -4 according to YMDB
+trans-tetradec-2-enoyl-CoA	trans-tetradec-2-enoyl-CoA	CHEBI:61405	C05273	-4	Wrong CHEBI in erm. Wrong KEGG in erm.
+trans-tetradec-3-enoyl-CoA	trans-tetradec-3-enoyl-CoA	CHEBI:88083		0	new chebiID. CHEBI:88083 for (3E)-tetradecenoyl-CoA trans-3-tetradecenoyl-CoA has charge of 0
+triglyceride (1-16:0, 2-16:1, 3-16:0)	triglyceride (1-16:0, 2-16:1, 3-16:0)	CHEBI:85427		0	new chebiID. chebi has some problem. this is 16:0.16:0.16:1
+triglyceride (1-16:0, 2-16:1, 3-16:1)	triglyceride (1-16:0, 2-16:1, 3-16:1)	CHEBI:89765		0	new chebiID
+triglyceride (1-16:0, 2-16:1, 3-18:0)	triglyceride (1-16:0, 2-16:1, 3-18:0)	CHEBI:89763		0	new chebiID
+triglyceride (1-16:0, 2-16:1, 3-18:1)	triglyceride (1-16:0, 2-16:1, 3-18:1)			0	"new chebiID. chebi has some problem. this is 11z;remove duplicated chebiID"
+triglyceride (1-16:0, 2-18:1, 3-16:0)	triglyceride (1-16:0, 2-18:1, 3-16:0)	CHEBI:89759		0	new chebiID
+triglyceride (1-16:0, 2-18:1, 3-16:1)	triglyceride (1-16:0, 2-18:1, 3-16:1)			0	"new chebiID. chebi has some problem. this is 11z;remove duplicated chebiID"
+triglyceride (1-16:0, 2-18:1, 3-18:0)	triglyceride (1-16:0, 2-18:1, 3-18:0)	CHEBI:88998		0	new chebiID
+triglyceride (1-16:0, 2-18:1, 3-18:1)	triglyceride (1-16:0, 2-18:1, 3-18:1)			0	"new chebiID;remove duplicated chebiID"
+triglyceride (1-16:1, 2-16:1, 3-16:0)	triglyceride (1-16:1, 2-16:1, 3-16:0)			0	"new chebiID;remove duplicated chebiID"
+triglyceride (1-16:1, 2-16:1, 3-16:1)	triglyceride (1-16:1, 2-16:1, 3-16:1)	CHEBI:75841		0	new chebiID
+triglyceride (1-16:1, 2-16:1, 3-18:0)	triglyceride (1-16:1, 2-16:1, 3-18:0)			0	"new chebiID. chebi has some problem. this is 11z;remove duplicated chebiID"
+triglyceride (1-16:1, 2-16:1, 3-18:1)	triglyceride (1-16:1, 2-16:1, 3-18:1)	CHEBI:90051		0	new chebiID
+triglyceride (1-16:1, 2-18:1, 3-16:0)	triglyceride (1-16:1, 2-18:1, 3-16:0)			0	"new chebiID. chebi has some problem. this is 11z;remove duplicated chebiID"
+triglyceride (1-16:1, 2-18:1, 3-16:1)	triglyceride (1-16:1, 2-18:1, 3-16:1)			0	"new chebiID;remove duplicated chebiID"
+triglyceride (1-16:1, 2-18:1, 3-18:0)	triglyceride (1-16:1, 2-18:1, 3-18:0)			0	"new chebiID;remove duplicated chebiID"
+triglyceride (1-16:1, 2-18:1, 3-18:1)	triglyceride (1-16:1, 2-18:1, 3-18:1)	CHEBI:90048		0	new chebiID
+triglyceride (1-18:0, 2-16:1, 3-16:0)	triglyceride (1-18:0, 2-16:1, 3-16:0)			0	"new chebiID;remove duplicated chebiID"
+triglyceride (1-18:0, 2-16:1, 3-16:1)	triglyceride (1-18:0, 2-16:1, 3-16:1)	CHEBI:90053		0	new chebiID
+triglyceride (1-18:0, 2-16:1, 3-18:0)	triglyceride (1-18:0, 2-16:1, 3-18:0)	CHEBI:89958		0	new chebiID
+triglyceride (1-18:0, 2-16:1, 3-18:1)	triglyceride (1-18:0, 2-16:1, 3-18:1)			0	"new chebiID. chebi has some problem. this is 11z;remove duplicated chebiID"
+triglyceride (1-18:0, 2-18:1, 3-16:0)	triglyceride (1-18:0, 2-18:1, 3-16:0)	CHEBI:89755		0	new chebiID
+triglyceride (1-18:0, 2-18:1, 3-16:1)	triglyceride (1-18:0, 2-18:1, 3-16:1)			0	"new chebiID;remove duplicated chebiID"
+triglyceride (1-18:0, 2-18:1, 3-18:0)	triglyceride (1-18:0, 2-18:1, 3-18:0)	CHEBI:90305		0	new chebiID. CHEBI:90305 for triacylglycerol 54:1 . has charge of 0
+triglyceride (1-18:0, 2-18:1, 3-18:1)	triglyceride (1-18:0, 2-18:1, 3-18:1)			0	"new chebiID. chebi has some problem. this is 11z;remove duplicated chebiID"
+triglyceride (1-18:1, 2-16:1, 3-16:0)	triglyceride (1-18:1, 2-16:1, 3-16:0)			0	"new chebiID;remove duplicated chebiID"
+triglyceride (1-18:1, 2-16:1, 3-16:1)	triglyceride (1-18:1, 2-16:1, 3-16:1)			0	"new chebiID;remove duplicated chebiID"
+triglyceride (1-18:1, 2-16:1, 3-18:0)	triglyceride (1-18:1, 2-16:1, 3-18:0)			0	"new chebiID;remove duplicated chebiID"
+triglyceride (1-18:1, 2-16:1, 3-18:1)	triglyceride (1-18:1, 2-16:1, 3-18:1)	CHEBI:88984		0	new chebiID
+triglyceride (1-18:1, 2-18:1, 3-16:0)	triglyceride (1-18:1, 2-18:1, 3-16:0)	CHEBI:88999		0	new chebiID. chebi has some problem. this is 11z
+triglyceride (1-18:1, 2-18:1, 3-16:1)	triglyceride (1-18:1, 2-18:1, 3-16:1)			0	"new chebiID. chebi has some problem. this is 11z;remove duplicated chebiID"
+triglyceride (1-18:1, 2-18:1, 3-18:0)	triglyceride (1-18:1, 2-18:1, 3-18:0)			0	"new chebiID. chebi has some problem. this is 11z;remove duplicated chebiID"
+triglyceride (1-18:1, 2-18:1, 3-18:1)	triglyceride (1-18:1, 2-18:1, 3-18:1)	CHEBI:88970		0	new chebiID. chebi has some problem. this is 11z
+tRNA(Arg)	tRNA(Arg)	CHEBI:29171	C01636	0	New keggid
+tRNA(Asn)	tRNA(Asn)	CHEBI:29172	C01637	0	New keggid
+tRNA(Asp)	tRNA(Asp)	CHEBI:29186	C01638	0	New keggid
+tRNA(Glu)	tRNA(Glu)	CHEBI:29175	C01641	0	New keggid
+tRNA(His)	tRNA(His)	CHEBI:29178	C01643	0	New keggid
+tRNA(Ile)	tRNA(Ile)	CHEBI:29174	C01644	0	New keggid
+tRNA(Leu)	tRNA(Leu)	CHEBI:29169	C01645	0	New keggid
+tRNA(Lys)	tRNA(Lys)	CHEBI:29185	C01646	0	New keggid
+tRNA(Met)	tRNA(Met)	CHEBI:29173	C01647	0	New keggid
+tRNA(Phe)	tRNA(Phe)	CHEBI:29184	C01648	0	New keggid
+tRNA(Thr)	tRNA(Thr)	CHEBI:29180	C01651	0	New keggid
+tRNA(Trp)	tRNA(Trp)	CHEBI:29181	C01652	0	New keggid
+tRNA(Tyr)	tRNA(Tyr)	CHEBI:29182	C00787	0	New keggid
+tRNA(Val)	tRNA(Val)	CHEBI:29183	C01653	0	New keggid
+Trp-tRNA(Trp)	Trp-tRNA(Trp)	CHEBI:29159	C03512	0	Wrong charge in c/m.
+TRX1	TRX1	CHEBI:15967	C00342	0	Wrong charge in c/m/n/p.
+TRX1 disulphide	TRX1 disulphide	CHEBI:18191	C00343	0	Wrong charge in c/m/n/p.
+TTP	thiamine(1+) triphosphate(4-)	CHEBI:58938	C03028	-3	update fullname
+Tyr-tRNA(Tyr)	Tyr-tRNA(Tyr)	CHEBI:29161	C02839	0	Wrong charge in c/m.
+Val-tRNA(Val)	Val-tRNA(Val)	CHEBI:29164	C02554	0	Wrong charge in c/m.
+zymosterol	zymosterol	CHEBI:18252	C05437	0	Wrong CHEBI in erm. Wrong KEGG in erm.
+zymosteryl oleate	zymosteryl oleate	CHEBI:52384		0	new chebiID
+zymosteryl palmitoleate	zymosteryl palmitoleate	CHEBI:52385		0	new chebiID
+trans-dec-2-enoyl-CoA	trans-dec-2-enoyl-CoA		C05275	-4	remove duplicated chebiID
+trans-dodec-2-enoyl-CoA	trans-dodec-2-enoyl-CoA		C03221	-4	remove duplicated chebiID
+hexadec-2-enoyl-CoA	hexadec-2-enoyl-CoA			0	"remove duplicated chebiID;remove duplicated keggID"

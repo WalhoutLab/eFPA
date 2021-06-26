@@ -1,0 +1,152 @@
+NewMetName	Charged formula	Charge	compartment	KEGG ID	CHEBI ID	Remark
+Ala-Gln [extracellular]	C8H15N3O4	0	extracellular		CHEBI:73788	MNXM40495
+Ala-Gln [cytoplasm]	C8H15N3O4	0	cytoplasm		CHEBI:73788	MNXM40495
+Ala-Gln [vacuole]	C8H15N3O4	0	vacuole		CHEBI:73788	MNXM40495
+Ala-Glu [extracellular]	C8H13N2O5	-1	extracellular	C20958	CHEBI:61396	MNXM4026
+Ala-Glu [cytoplasm]	C8H13N2O5	-1	cytoplasm	C20958	CHEBI:61396	MNXM4026
+Ala-Glu [vacuole]	C8H13N2O5	-1	vacuole	C20958	CHEBI:61396	MNXM4026
+Ala-Thr [extracellular]	C7H14N2O4	0	extracellular		CHEBI:73762	MNXM40497
+Ala-Thr [cytoplasm]	C7H14N2O4	0	cytoplasm		CHEBI:73762	MNXM40497
+Ala-Thr [vacuole]	C7H14N2O4	0	vacuole		CHEBI:73762	MNXM40497
+L-threonine [vacuole]	C4H9NO3	0	vacuole	C00188	CHEBI:16857	MNXM142
+thymidine 3'-monophosphate [cytoplasm]	C10H13N2O8P	-2	cytoplasm		CHEBI:77843	MNXM87165
+thymidine 3'-monophosphate [extracellular]	C10H13N2O8P	-2	extracellular		CHEBI:77843	MNXM87165
+thymidine 5'-monophosphate [cytoplasm]	C10H13N2O8P	-2	cytoplasm		CHEBI:15245	MNXM87167
+thymidine 5'-monophosphate [extracellular]	C10H13N2O8P	-2	extracellular		CHEBI:15245	MNXM87167
+glycerol 1-phosphate [cytoplasm]	C3H7O6P	-2	cytoplasm	C03189	CHEBI:231935	MNXM682
+glycerol 1-phosphate [extracellular]	C3H7O6P	-2	extracellular	C03189	CHEBI:231935	MNXM682
+Ala-His [extracellular]	C9H14N4O3	0	extracellular		CHEBI:73771	MNXM40496
+Ala-His [cytoplasm]	C9H14N4O3	0	cytoplasm		CHEBI:73771	MNXM40496
+Ala-His [vacuole]	C9H14N4O3	0	vacuole		CHEBI:73771	MNXM40496
+Gly-Asn [extracellular]	C6H11N3O4	0	extracellular		CHEBI:73888	MNXM55268
+Gly-Asn [cytoplasm]	C6H11N3O4	0	cytoplasm		CHEBI:73888	MNXM55268
+Gly-Asn [vacuole]	C6H11N3O4	0	vacuole		CHEBI:73888	MNXM55268
+Gly-Gln [extracellular]	C7H13N3O4	0	extracellular		CHEBI:73898	MNXM55276
+Gly-Gln [cytoplasm]	C7H13N3O4	0	cytoplasm		CHEBI:73898	MNXM55276
+Gly-Gln [vacuole]	C7H13N3O4	0	vacuole		CHEBI:73898	MNXM55276
+Gly-Glu [extracellular]	C7H11N2O5	-1	extracellular		CHEBI:73784	MNXM55454
+Gly-Glu [cytoplasm]	C7H11N2O5	-1	cytoplasm		CHEBI:73784	MNXM55454
+Gly-Glu [vacuole]	C7H11N2O5	-1	vacuole		CHEBI:73784	MNXM55454
+glycerol 2-phosphate(2-) [cytoplasm]	C3H7O6P	-2	cytoplasm	C02979	CHEBI:58083	MNXM2527
+glycerol 2-phosphate(2-) [extracellular]	C3H7O6P	-2	extracellular	C02979	CHEBI:58083	MNXM2527
+O-phospho-L-threonine [cytoplasm]	C4H8NO6P	-2	cytoplasm	C12147	CHEBI:58675	MNXM1492
+O-phospho-L-threonine [extracellular]	C4H8NO6P	-2	extracellular	C12147	CHEBI:58675	MNXM1492
+guanosine 2'-monophosphate [cytoplasm]	C10H12N5O8P	-2	cytoplasm		CHEBI:74604	MNXM18285
+guanosine 2'-monophosphate [extracellular]	C10H12N5O8P	-2	extracellular		CHEBI:74604	MNXM18285
+3'-GMP [cytoplasm]	C10H12N5O8P	-2	cytoplasm	C06193	CHEBI:60732	MNXM2183
+3'-GMP [extracellular]	C10H12N5O8P	-2	extracellular	C06193	CHEBI:60732	MNXM2183
+2-phosphoglycolate [extracellular]	C2H2O6P	-3	extracellular	C00988	CHEBI:58033	MNXM2074
+2-phosphoglycolate [cytoplasm]	C2H2O6P	-3	cytoplasm	C00988	CHEBI:58033	MNXM2074
+cysteamine S-phosphate [cytoplasm]	C2H7NO3PS	-1	cytoplasm		CHEBI:74631	MNXM48297
+cysteamine [cytoplasm]	C2H8NS	1	cytoplasm	C01678	CHEBI:58029	MNXM1226
+cysteamine [extracellular]	C2H8NS	1	extracellular	C01678	CHEBI:58029	MNXM1226
+cysteamine S-phosphate [extracellular]	C2H7NO3PS	-1	extracellular		CHEBI:74631	MNXM48297
+hypotaurine [cytoplasm]	C2H7NO2S	0	cytoplasm	C00519	CHEBI:16668	MNXM726
+O-phosphonatooxy-D-serine(2-) [cytoplasm]	C3H6NO6P	-2	cytoplasm	C02532	CHEBI:58680	MNXM4752
+O-phosphonatooxy-D-serine(2-) [extracellular]	C3H6NO6P	-2	extracellular	C02532	CHEBI:58680	MNXM4752
+2-aminobutanoate [cytoplasm]	C4H9NO2	0	cytoplasm		CHEBI:35621	MNXM15850
+2-aminobutanoate [extracellular]	C4H9NO2	0	extracellular		CHEBI:35621	MNXM15850
+uridine 2'-phosphate [cytoplasm]	C9H11N2O9P	-2	cytoplasm	C03031	CHEBI:77802	MNXM13238
+uridine 2'-phosphate [extracellular]	C9H11N2O9P	-2	extracellular	C03031	CHEBI:77802	MNXM13238
+3'-UMP [cytoplasm]	C9H11N2O9P	-2	cytoplasm	C01368	CHEBI:60784	MNXM2184
+3'-UMP [extracellular]	C9H11N2O9P	-2	extracellular	C01368	CHEBI:60784	MNXM2184
+Gly-Met [extracellular]	C7H14N2O3S	0	extracellular		CHEBI:74393	MNXM55287
+Gly-Met [cytoplasm]	C7H14N2O3S	0	cytoplasm		CHEBI:74393	MNXM55287
+Gly-Met [vacuole]	C7H14N2O3S	0	vacuole		CHEBI:74393	MNXM55287
+N-phosphocreatine [cytoplasm]	C4H8N3O5P	-2	cytoplasm		CHEBI:58092	MNXM819
+creatinine [cytoplasm]	C4H7N3O	0	cytoplasm	C00791	CHEBI:16737	MNXM1470
+N-phosphocreatine [extracellular]	C4H8N3O5P	-2	extracellular		CHEBI:58092	MNXM819
+creatinine [extracellular]	C4H7N3O	0	extracellular	C00791	CHEBI:16737	MNXM1470
+N(omega)-phospho-L-arginine [cytoplasm]	C6H14N4O5P	-1	cytoplasm	C05945	CHEBI:58477	MNXM3663
+N(omega)-phospho-L-arginine [extracellular]	C6H14N4O5P	-1	extracellular	C05945	CHEBI:58477	MNXM3663
+2',3'-cyclic GMP [cytoplasm]	C10H11N5O7P	-1	cytoplasm	C06194	CHEBI:60837	MNXM3149
+2',3'-cyclic GMP [extracellular]	C10H11N5O7P	-1	extracellular	C06194	CHEBI:60837	MNXM3149
+O(4)-phospho-L-tyrosine [cytoplasm]	C9H10NO6P	-2	cytoplasm	C06501	CHEBI:62338	MNXM3323
+O(4)-phospho-L-tyrosine [extracellular]	C9H10NO6P	-2	extracellular	C06501	CHEBI:62338	MNXM3323
+triphosphate [cytoplasm]	O10P3	-5	cytoplasm	C00536	CHEBI:18036	MNXM332
+triphosphate [extracellular]	O10P3	-5	extracellular	C00536	CHEBI:18036	MNXM332
+cytidine 2'-phosphate [cytoplasm]	C9H12N3O8P	-2	cytoplasm	C03104	CHEBI:77766	MNXM11237
+cytidine 2'-phosphate [extracellular]	C9H12N3O8P	-2	extracellular	C03104	CHEBI:77766	MNXM11237
+2',3'-cyclic UMP [cytoplasm]	C9H10N2O8P	-1	cytoplasm	C02355	CHEBI:60873	MNXM3150
+2',3'-cyclic UMP [extracellular]	C9H10N2O8P	-1	extracellular	C02355	CHEBI:60873	MNXM3150
+3-sulfino-L-alanine [cytoplasm]	C3H6NO4S	-1	cytoplasm	C00606	CHEBI:61085	MNXM498
+3-sulfino-L-alanine [extracellular]	C3H6NO4S	-1	extracellular	C00606	CHEBI:61085	MNXM498
+3'-AMP [cytoplasm]	C10H12N5O7P	-2	cytoplasm	C01367	CHEBI:60880	MNXM1985
+3'-AMP [extracellular]	C10H12N5O7P	-2	extracellular	C01367	CHEBI:60880	MNXM1985
+6-O-alpha-D-glucopyranosyl-D-fructofuranose [cytoplasm]	C12H22O11	0	cytoplasm	C01742	CHEBI:18394	MNXM3518
+6-O-alpha-D-glucopyranosyl-D-fructofuranose [extracellular]	C12H22O11	0	extracellular	C01742	CHEBI:18394	MNXM3518
+N-acetyl-L-cysteine [cytoplasm]	C5H8NO3S	-1	cytoplasm	C06809	CHEBI:78236	MNXM98606
+N-acetyl-L-cysteine [extracellular]	C5H8NO3S	-1	extracellular	C06809	CHEBI:78236	MNXM98606
+tetrathionate [cytoplasm]	O6S4	-2	cytoplasm	C02084	CHEBI:15226	MNXM1781
+thiosulfate [cytoplasm]	HO3S2	-1	cytoplasm	C00320	CHEBI:33542	MNXM323
+tetrathionate [extracellular]	O6S4	-2	extracellular	C02084	CHEBI:15226	MNXM1781
+glycyl-L-methionine [extracellular]	C7H14N2O3S	0	extracellular		CHEBI:74393	MNXM55287
+glycyl-L-methionine [cytoplasm]	C7H14N2O3S	0	cytoplasm		CHEBI:74393	MNXM55287
+glycyl-L-methionine [vacuole]	C7H14N2O3S	0	vacuole		CHEBI:74393	MNXM55287
+2-hydroxyethane-1-sulfonate [cytoplasm]	C2H5O4S	-1	cytoplasm	C05123	CHEBI:61904	MNXM1630
+2-hydroxyethane-1-sulfonate [extracellular]	C2H5O4S	-1	extracellular	C05123	CHEBI:61904	MNXM1630
+5-dehydro-D-gluconate [cytoplasm]	C6H9O7	-1	cytoplasm	C01062	CHEBI:58143	MNXM963
+5-dehydro-D-gluconate [extracellular]	C6H9O7	-1	extracellular	C01062	CHEBI:58143	MNXM963
+Ala-Asp [extracellular]	C7H11N2O5	-1	extracellular		CHEBI:74363	MNXM40494
+Ala-Asp [cytoplasm]	C7H11N2O5	-1	cytoplasm		CHEBI:74363	MNXM40494
+Ala-Asp [vacuole]	C7H11N2O5	-1	vacuole		CHEBI:74363	MNXM40494
+methyl alpha-D-glucopyranoside [cytoplasm]	C7H14O6	0	cytoplasm		CHEBI:320061	MNXM61741
+methanol [cytoplasm]	CH4O	0	cytoplasm	C00132	CHEBI:17790	MNXM157
+methanol [extracellular]	CH4O	0	extracellular	C00132	CHEBI:17790	MNXM157
+methyl alpha-D-glucopyranoside [extracellular]	C7H14O6	0	extracellular		CHEBI:320061	MNXM61741
+2',3'-cyclic CMP [cytoplasm]	C9H11N3O7P	-1	cytoplasm	C02354	CHEBI:60877	MNXM3148
+2',3'-cyclic CMP [extracellular]	C9H11N3O7P	-1	extracellular	C02354	CHEBI:60877	MNXM3148
+D-tagatose [cytoplasm]	C6H12O6	0	cytoplasm	C00795	CHEBI:4249	MNXM92401
+D-tagatofuranose 6-phosphate [cytoplasm]	C6H11O9P	-2	cytoplasm	C01097	CHEBI:58695	MNXM795
+D-tagatose [extracellular]	C6H12O6	0	extracellular	C00795	CHEBI:4249	MNXM92401
+turanose [extracellular]	C12H22O11	0	extracellular	C19636	CHEBI:32528	MNXM161984
+acetoacetate [cytoplasm]	C4H5O3	-1	cytoplasm	C00164	CHEBI:13705	MNXM154
+acetoacetate [extracellular]	C4H5O3	-1	extracellular	C00164	CHEBI:13705	MNXM154
+N(alpha)-acetyl-L-methionine [cytoplasm]	C7H12NO3S	-1	cytoplasm	C02712	CHEBI:132957	MNXM7576
+N(alpha)-acetyl-L-methionine [extracellular]	C7H12NO3S	-1	extracellular	C02712	CHEBI:132957	MNXM7576
+3-oxalomalate(3-) [cytoplasm]	C6H3O8	-3	cytoplasm	C01990	CHEBI:15593	MNXM3850
+3-oxalomalate(3-) [extracellular]	C6H3O8	-3	extracellular	C01990	CHEBI:15593	MNXM3850
+L-cysteate [cytoplasm]	C3H6NO5S	-1	cytoplasm	C00506	CHEBI:58090	MNXM713
+L-cysteate [extracellular]	C3H6NO5S	-1	extracellular	C00506	CHEBI:58090	MNXM713
+alpha-maltotriose [extracellular]	C18H32O16	0	extracellular	C01835	CHEBI:61993	MNXM468
+2-phospho-D-glyceric acid [extracellular]	C3H4O7P	-3	extracellular	C00631	CHEBI:58289	MNXM275
+3-phosphonato-D-glycerate(3-) [extracellular]	C3H4O7P	-3	extracellular	C00197	CHEBI:58272	MNXM126
+Met-Ala [extracellular]	C8H16N2O3S	0	extracellular		CHEBI:73610	MNXM61647
+Met-Ala [cytoplasm]	C8H16N2O3S	0	cytoplasm		CHEBI:73610	MNXM61647
+D-glucose 1-phosphate [extracellular]	C6H11O9P	-2	extracellular	C00103	CHEBI:57629	MNXM89588
+carbamoyl phosphate [extracellular]	CH2NO5P	-2	extracellular	C00169	CHEBI:58228	MNXM138
+3-phospho-serine [extracellular]	C3H6NO6P	-2	extracellular	C01005	CHEBI:57524	MNXM379
+GMP [extracellular]	C10H12N5O8P	-2	extracellular	C00144	CHEBI:58115	MNXM113
+myo-inositol hexakisphosphate [extracellular]	C6H6O24P6	-12	extracellular	C01204	CHEBI:58130	MNXM491
+D-glucose 6-phosphate [extracellular]	C6H11O9P	-2	extracellular	C00092	CHEBI:61548	MNXM160
+UMP [extracellular]	C9H11N2O9P	-2	extracellular	C00105	CHEBI:57865	MNXM80
+phosphoenolpyruvate [extracellular]	C3H2O6P	-3	extracellular	C00074	CHEBI:58702	MNXM73
+D-mannose 6-phosphate [extracellular]	C6H11O9P	-2	extracellular	C00275	CHEBI:58735	MNXM427
+O-phosphoethanolamine [extracellular]	C2H7NO4P	-1	extracellular	C00346	CHEBI:58190	MNXM187
+6-phospho-D-gluconate [extracellular]	C6H10O10P	-3	extracellular	C00345	CHEBI:58759	MNXM325
+D-mannose 1-phosphate [extracellular]	C6H11O9P	-2	extracellular	C00636	CHEBI:58409	MNXM721
+diphosphate [extracellular]	HO7P2	-3	extracellular	C00013	CHEBI:33019	MNXM11
+choline phosphate [extracellular]	C5H13NO4P	-1	extracellular	C00588	CHEBI:295975	MNXM229
+thiosulfate [extracellular]	HO3S2	-1	extracellular	C00320	CHEBI:33542	MNXM323
+AMP [extracellular]	C10H12N5O7P	-2	extracellular	C00020	CHEBI:456215	MNXM14
+2',3'-cyclic AMP [extracellular]	C10H11N5O6P	-1	extracellular	C02353	CHEBI:60879	MNXM2598
+adenosine 2'-phosphate [extracellular]	C10H12N5O7P	-2	extracellular	C00946	CHEBI:77740	MNXM7028
+CMP [extracellular]	C9H12N3O8P	-2	extracellular	C00055	CHEBI:60377	MNXM31
+D-Glucosamine [extracellular]	C6H14NO5	1	extracellular	C00329	CHEBI:58723	MNXM533
+2-deoxy-D-ribose [extracellular]	C5H10O4	0	extracellular	C08347	CHEBI:28816	MNXM2474
+L-citrulline [extracellular]	C6H13N3O3	0	extracellular	C00327	CHEBI:16349	MNXM211
+glycerone [extracellular]	C3H6O3	0	extracellular	C00184	CHEBI:16016	MNXM460
+Ala-Leu [extracellular]	C9H18N2O3	0	extracellular		CHEBI:73770	MNXM15786
+Ala-Leu [cytoplasm]	C9H18N2O3	0	cytoplasm		CHEBI:73770	MNXM15786
+Ala-Gly [extracellular]	C5H10N2O3	0	extracellular		CHEBI:73757	MNXM15783
+Ala-Gly [cytoplasm]	C5H10N2O3	0	cytoplasm		CHEBI:73757	MNXM15783
+N-acetyl-L-glutamate [extracellular]	C7H9NO5	-2	extracellular	C00624	CHEBI:44337	MNXM730
+N-acetyl-L-glutamate [cytoplasm]	C7H9NO5	-2	cytoplasm	C00624	CHEBI:44337	MNXM730
+lipoamide [extracellular]	C8H15NOS2	0	extracellular	C00248	CHEBI:17460	MNXM1024
+lipoamide [cytoplasm]	C8H15NOS2	0	cytoplasm	C00248	CHEBI:17460	MNXM1024
+L-Methionine S-oxide [extracellular]	C5H11NO3S	0	extracellular	C02989	CHEBI:17016	MNXM2246
+homogentisate [cytoplasm]	C8H7O4	-1	cytoplasm	C00544	CHEBI:16169	MNXM345
+4-maleylacetoacetate [cytoplasm]	C8H6O6	-2	cytoplasm	C01036	CHEBI:17105	MNXM691
+4-fumarylacetoacetate [cytoplasm]	C8H6O6	-2	cytoplasm	C01061	CHEBI:18034	MNXM708
+L-xylulose [cytoplasm]	C5H10O5	0	cytoplasm	C00310	CHEBI:17140	MNXM597
+D-arabinitol [cytoplasm]	C5H12O5	0	cytoplasm	C01904	CHEBI:18333	MNXM1018

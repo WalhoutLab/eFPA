@@ -1,0 +1,76 @@
+ID	coefficient	standard_name	type	compartment
+MNXR94845	1	H+	reactant	cytoplasm
+MNXR94845	1	3-(4-hydroxyphenyl)pyruvate	reactant	cytoplasm
+MNXR94845	1	H+	product	peroxisome
+MNXR94845	1	3-(4-hydroxyphenyl)pyruvate	product	peroxisome
+MNXR95431	1	acetate	reactant	cytoplasm
+MNXR95431	1	acetate	product	endoplasmic reticulum
+MNXR95481	1	ADP-ribose	reactant	cytoplasm
+MNXR95481	1	ADP-ribose	product	nucleus
+MNXR99646	1	farnesyl diphosphate	reactant	cytoplasm
+MNXR99646	1	farnesyl diphosphate	product	lipid particle
+MNXR101858	1	H+	reactant	cytoplasm
+MNXR101858	1	nicotinate	reactant	cytoplasm
+MNXR101858	1	H+	product	mitochondrion
+MNXR101858	1	nicotinate	product	mitochondrion
+MNXR135002	1	H+	reactant	cytoplasm
+MNXR135002	1	O-phosphoethanolamine	reactant	cytoplasm
+MNXR135002	1	H+	product	endoplasmic reticulum
+MNXR135002	1	O-phosphoethanolamine	product	endoplasmic reticulum
+MNXR102871	1	phosphate	reactant	cytoplasm
+MNXR102871	1	phosphate	product	Golgi
+MNXR106312	1	H2O	reactant	cytoplasm
+MNXR106312	1	ATP	reactant	cytoplasm
+MNXR106312	1	propionyl-CoA	reactant	cytoplasm
+MNXR106312	1	H+	product	mitochondrion
+MNXR106312	1	ADP	product	mitochondrion
+MNXR106312	1	propionyl-CoA	product	mitochondrion
+MNXR106312	1	phosphate	product	mitochondrion
+MNXR105076	1	UDP	reactant	cytoplasm
+MNXR105076	1	UDP	product	Golgi
+MNXR105076_2	1	UDP	reactant	cytoplasm
+MNXR105076_2	1	UDP	product	nucleus
+MNXR105127	1	UMP	reactant	cytoplasm
+MNXR105127	1	UMP	product	Golgi
+MNXR104921	1	TRX1 disulphide	reactant	cytoplasm
+MNXR104921	1	TRX1 disulphide	product	nucleus
+MNXR99110	1	oleate	reactant	cytoplasm
+MNXR99110	1	oleate	product	mitochondrion
+MNXR95426	1	H+	reactant	cytoplasm
+MNXR95426	1	(R)-acetoin	reactant	cytoplasm
+MNXR95426	1	H+	product	nucleus
+MNXR95426	1	(R)-acetoin	product	nucleus
+MNXR100259	1	L-glutamine	reactant	cytoplasm
+MNXR100259	1	L-glutamine	product	mitochondrion
+MNXR105127_2	1	UMP	reactant	cytoplasm
+MNXR105127_2	1	UMP	product	endoplasmic reticulum
+MNXR95809	1	S-adenosyl-L-methionine	reactant	cytoplasm
+MNXR95809	1	S-adenosyl-L-methionine	product	nucleus
+MNXR100449	1	glutathione	reactant	cytoplasm
+MNXR100449	1	glutathione	product	endoplasmic reticulum
+MNXR96123	1	ATP	reactant	cytoplasm
+MNXR96123	1	ADP	reactant	vacuole
+MNXR96123	1	ATP	product	vacuole
+MNXR96123	1	ADP	product	cytoplasm
+MNXR101385	1	D-mannose 6-phosphate	reactant	cytoplasm
+MNXR101385	1	D-mannose 6-phosphate	product	vacuole
+MNXR95416	1	O-acetyl-L-serine	reactant	cytoplasm
+MNXR95416	1	O-acetyl-L-serine	product	mitochondrion
+MNXR100494	1	hydrogen sulfide	reactant	cytoplasm
+MNXR100494	1	hydrogen sulfide	product	mitochondrion
+MNXR97002	1	H+	reactant	cytoplasm
+MNXR97002	1	L-cysteinylglycine	reactant	cytoplasm
+MNXR97002	1	H+	product	mitochondrion
+MNXR97002	1	L-cysteinylglycine	product	mitochondrion
+MNXR96123_2	1	ATP	reactant	cytoplasm
+MNXR96123_2	1	ADP	reactant	endoplasmic reticulum membrane
+MNXR96123_2	1	ATP	product	endoplasmic reticulum membrane
+MNXR96123_2	1	ADP	product	cytoplasm
+MNXR104966	1	thiosulfate	reactant	cytoplasm
+MNXR104966	1	thiosulfate	product	mitochondrion
+MNXR104460	1	sulphite	reactant	cytoplasm
+MNXR104460	1	sulphite	product	mitochondrion
+MNXR105071	1	UDP-D-glucose	reactant	cytoplasm
+MNXR105071	1	UDP-D-glucose	product	endoplasmic reticulum
+MNXR105021	1	UDP-N-acetyl-alpha-D-glucosamine	reactant	cytoplasm
+MNXR105021	1	UDP-N-acetyl-alpha-D-glucosamine	product	Golgi

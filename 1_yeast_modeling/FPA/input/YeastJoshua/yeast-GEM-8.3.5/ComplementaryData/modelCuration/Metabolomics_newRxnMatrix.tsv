@@ -1,0 +1,96 @@
+ID	coefficient	standard_name	type	compartment
+MNXR111769	1	2-hydroxyglutarate	reactant	cytoplasm
+MNXR111769	1	NAD	reactant	cytoplasm
+MNXR111769	1	H+	product	cytoplasm
+MNXR111769	1	NADH	product	cytoplasm
+MNXR111769	1	2-oxoglutarate	product	cytoplasm
+MNXR134240	1	2-hydroxyglutarate	reactant	cytoplasm
+MNXR134240	3	H+	product	cytoplasm
+MNXR134240	1	glyoxylate	product	cytoplasm
+MNXR134240	1	propionyl-CoA	product	cytoplasm
+MNXR95862	1	beta-alanine	reactant	cytoplasm
+MNXR95862	1	2-oxoglutarate	reactant	cytoplasm
+MNXR95862	1	3-oxopropanoate	product	cytoplasm
+MNXR95862	1	L-glutamate	product	cytoplasm
+MNXR101665	1	coenzyme A	reactant	cytoplasm
+MNXR101665	1	3-oxopropanoate	reactant	cytoplasm
+MNXR101665	1	NAD	reactant	cytoplasm
+MNXR101665	1	NADH	product	cytoplasm
+MNXR101665	1	carbon dioxide	product	cytoplasm
+MNXR101665	1	acetyl-CoA	product	cytoplasm
+MNXR106650	1	coenzyme A	reactant	cytoplasm
+MNXR106650	1	3-oxopropanoate	reactant	cytoplasm
+MNXR106650	1	NADP(+)	reactant	cytoplasm
+MNXR106650	1	carbon dioxide	product	cytoplasm
+MNXR106650	1	acetyl-CoA	product	cytoplasm
+MNXR106650	1	NADPH	product	cytoplasm
+MNXR110693	1	H+	reactant	cytoplasm
+MNXR110693	1	3-oxopropanoate	reactant	cytoplasm
+MNXR110693	1	carbon dioxide	product	cytoplasm
+MNXR110693	1	acetaldehyde	product	cytoplasm
+MNXR100904	1	(R)-2,3-dihydroxy-3-methylbutanoate	reactant	cytoplasm
+MNXR100904	1	NADP(+)	reactant	cytoplasm
+MNXR100904	1	H+	product	cytoplasm
+MNXR100904	1	3-hydroxy-3-methyl-2-oxobutanoate	product	cytoplasm
+MNXR100904	1	NADPH	product	cytoplasm
+MNXR137278	1	3-methyl-2-oxobutanoate	reactant	cytoplasm
+MNXR137278	1	3-hydroxy-3-methyl-2-oxobutanoate	product	cytoplasm
+MNXR137279	1	2-acetyllactic acid	reactant	cytoplasm
+MNXR137279	1	NADPH	reactant	cytoplasm
+MNXR137279	1	H+	product	cytoplasm
+MNXR137279	1	3-hydroxy-3-methyl-2-oxobutanoate	product	cytoplasm
+MNXR137279	1	NADP(+)	product	cytoplasm
+MNXR95271	1	H+	reactant	cytoplasm
+MNXR95271	2	pyruvate	reactant	cytoplasm
+MNXR95271	1	(2S)-2-acetolactate	product	cytoplasm
+MNXR95271	1	carbon dioxide	product	cytoplasm
+MNXR100390	1	H+	reactant	cytoplasm
+MNXR100390	1	6-phospho-D-gluconate	reactant	cytoplasm
+MNXR100390	1	ADP	reactant	cytoplasm
+MNXR100390	1	ATP	product	cytoplasm
+MNXR100390	1	D-gluconate	product	cytoplasm
+MNXR97523	1	(R)-2,3-dihydroxy-3-methylbutanoate	reactant	cytoplasm
+MNXR97523	1	NADP(+)	reactant	cytoplasm
+MNXR97523	1	H+	product	cytoplasm
+MNXR97523	1	(2S)-2-acetolactate	product	cytoplasm
+MNXR97523	1	NADPH	product	cytoplasm
+MNXR106779	1	(2R,3S)-3-methylmalate	reactant	cytoplasm
+MNXR106779	1	NAD	reactant	cytoplasm
+MNXR106779	1	NADH	product	cytoplasm
+MNXR106779	1	carbon dioxide	product	cytoplasm
+MNXR106779	1	2-oxobutanoate	product	cytoplasm
+MNXR121603	1	H2O	reactant	cytoplasm
+MNXR121603	1	glyoxylate	reactant	cytoplasm
+MNXR121603	1	propionyl-CoA	reactant	cytoplasm
+MNXR121603	1	H+	product	cytoplasm
+MNXR121603	1	coenzyme A	product	cytoplasm
+MNXR121603	1	(2R,3S)-3-methylmalate	product	cytoplasm
+MNXR99136	1	H2O	reactant	cytoplasm
+MNXR99136	1	trans-2,cis-9-octadecadienoyl-CoA	reactant	cytoplasm
+MNXR99136	1	H+	product	cytoplasm
+MNXR99136	1	coenzyme A	product	cytoplasm
+MNXR99136	1	(9Z,12Z)-octadecadienoate	product	cytoplasm
+MNXR99175	1	coenzyme A	reactant	cytoplasm
+MNXR99175	1	(9Z,12Z)-octadecadienoate	reactant	cytoplasm
+MNXR99175	1	ATP	reactant	cytoplasm
+MNXR99175	1	diphosphate	product	cytoplasm
+MNXR99175	1	AMP	product	cytoplasm
+MNXR99175	1	trans-2,cis-9-octadecadienoyl-CoA	product	cytoplasm
+MNXR100010	1	stachyose	reactant	cytoplasm
+MNXR100010	1	H2O	reactant	cytoplasm
+MNXR100010	1	D-galactose	product	cytoplasm
+MNXR100010	1	raffinose	product	cytoplasm
+MNXR122225	2	raffinose	product	cytoplasm
+MNXR122225	1	stachyose	reactant	cytoplasm
+MNXR122225	1	sucrose	reactant	cytoplasm
+MNXR123213	1	6-phospho-D-gluconate	reactant	cytoplasm
+MNXR123213	1	D-gluconate	product	cytoplasm
+MNXR123213	1	phosphate	product	cytoplasm
+MNXR110535	1	H+	reactant	cytoplasm
+MNXR110535	1	phenylacetic acid	reactant	cytoplasm
+MNXR110535	1	4-hydroxyphenyl acetate	product	cytoplasm
+MNXR110621	1	H+	reactant	cytoplasm
+MNXR110621	1	acetate	reactant	cytoplasm
+MNXR110621	1	Hydroquinone	reactant	cytoplasm
+MNXR110621	1	H2O	product	cytoplasm
+MNXR110621	1	4-hydroxyphenyl acetate	product	cytoplasm

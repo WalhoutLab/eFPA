@@ -1,0 +1,29 @@
+rxnID	rev	GPR	standard_name	EC	rxnID_kegg	rxnID_MNX	Source;reason
+MNXR94845	1		3-(4-hydroxyphenyl)pyruvate transport			MNXR94845	seed:rxn09802; unknown transporter
+MNXR95431	1		acetate transport			MNXR95431	rhea:27814; unknown transporter
+MNXR95481	1		ADP-ribose transport			MNXR95481	bigg:ADPRIBt; unknown transporter
+MNXR99646	1		farnesyl diphosphate transport			MNXR99646	seed:rxn13290; unknown transporter
+MNXR101858	1		nicotinate transport			MNXR101858	seed:rxn12806; unknown transporter
+MNXR135002	1		O-phosphoethanolamine transport			MNXR135002	seed:rxn05716; unknown transporter
+MNXR102871	1		phosphate transport			MNXR102871	rhea:32823; bigg:PItg; unknown transporter
+MNXR106312	0		propionyl-CoA transport			MNXR106312	bigg:r2499; unknown transporter
+MNXR105076	1		UDP transport			MNXR105076	bigg:UDPtg; unknown transporter
+MNXR105076_2	1		UDP transport			MNXR105076	bigg:UDPtg; unknown transporter
+MNXR105127	1		UMP transport			MNXR105127	rhea:27926; unknown transporter
+MNXR104921	1		TRX1 disulphide transport			MNXR104921	seed:rxn13406; unknown transporter
+MNXR99110	1		oleate transport			MNXR99110	rhea:33655; unknown transporter
+MNXR95426	1		(R)-acetoin transport			MNXR95426	bigg:ACTNt2r; unknown transporter
+MNXR100259	1		L-glutamine transport			MNXR100259	seed:rxn08625; bigg:GLNtm; unknown transporter
+MNXR105127_2	1		UMP transport			MNXR105127	rhea:27926; unknown transporter
+MNXR95809	1		S-adenosyl-L-methionine transport			MNXR95809	seed:rxn09784; bigg:AMETtn; unknown transporter
+MNXR100449	1		glutathione transport			MNXR100449	seed:rxn08677; unknown transporter
+MNXR96123	1		ATP transport	2.7.4.6		MNXR96123	rhea:34999; unknown transporter
+MNXR101385	1		D-mannose 6-phosphate transport			MNXR101385	seed:rxn08880; unknown transporter
+MNXR95416	1		O-acetyl-L-serine transport			MNXR95416	rhea:29659; bigg:ACSERtmi; unknown transporter
+MNXR100494	1		hydrogen sulfide transport			MNXR100494	seed:rxn08689; unknown transporter
+MNXR97002	1		L-cysteinylglycine transport			MNXR97002	seed:rxn05529; unknown transporter
+MNXR96123_2	1		ATP transport	2.7.4.6		MNXR96123	rhea:34999; unknown transporter
+MNXR104966	1		thiosulfate transport			MNXR104966	rhea:32807; unknown transporter
+MNXR104460	1		sulphite transport			MNXR104460	seed:rxn09260; unknown transporter
+MNXR105071	1		UDP-D-glucose transport			MNXR105071	seed:rxn09353; unknown transporter
+MNXR105021	1		UDP-N-acetyl-alpha-D-glucosamine transport			MNXR105021	seed:rxn09342; unknown transporter

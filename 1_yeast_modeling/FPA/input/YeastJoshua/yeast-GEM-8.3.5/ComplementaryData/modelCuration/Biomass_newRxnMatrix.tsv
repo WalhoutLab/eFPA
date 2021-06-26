@@ -1,0 +1,29 @@
+rxnID	coefficient	Metabolite standard name	Metabolite_type	compartment
+MNXR96437	1	Ca(2+)	reactant	extracellular
+MNXR96437	1	H+	reactant	extracellular
+MNXR96437	1	Ca(2+)	product	cytoplasm
+MNXR96437	1	H+	product	cytoplasm
+MNXR96797	1	chloride	reactant	extracellular
+MNXR96797	1	chloride	product	cytoplasm
+MNXR126350	1	Cu2(+)	reactant	extracellular
+MNXR126350	1	H+	reactant	extracellular
+MNXR126350	1	Cu2(+)	product	cytoplasm
+MNXR126350	1	H+	product	cytoplasm
+MNXR101669	1	Mn(2+)	reactant	extracellular
+MNXR101669	1	H+	reactant	extracellular
+MNXR101669	1	Mn(2+)	product	cytoplasm
+MNXR101669	1	H+	product	cytoplasm
+MNXR105278	1	Zn(2+)	reactant	extracellular
+MNXR105278	1	H+	reactant	extracellular
+MNXR105278	1	Zn(2+)	product	cytoplasm
+MNXR105278	1	H+	product	cytoplasm
+MNXR101553	1	Mg(2+)	reactant	extracellular
+MNXR101553	1	H+	reactant	extracellular
+MNXR101553	1	Mg(2+)	product	cytoplasm
+MNXR101553	1	H+	product	cytoplasm
+chloride exchange	1	chloride	reactant	extracellular
+Cu2(+) exchange	1	Cu2(+)	reactant	extracellular
+Mn(2+) exchange	1	Mn(2+)	reactant	extracellular
+Zn(2+) exchange	1	Zn(2+)	reactant	extracellular
+Mg(2+) exchange	1	Mg(2+)	reactant	extracellular
+Ca(2+) exchange	1	Ca(2+)	reactant	extracellular

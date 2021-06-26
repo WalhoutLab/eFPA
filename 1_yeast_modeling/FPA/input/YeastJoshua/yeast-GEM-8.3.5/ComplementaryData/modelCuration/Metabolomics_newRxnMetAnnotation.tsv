@@ -1,0 +1,15 @@
+NewMetName	Charged formula	Charge	compartment	KEGG ID	CHEBI ID	Remark	Ref
+2-hydroxyglutarate [cytoplasm]	C5H6O5	-2	cytoplasm	C02630	CHEBI:11596	MNXM1210	DOI: 10.1002/biot.201500613; DOI: 10.1021/ac302881e; DOI: 10.1186/jbiol54
+propionyl-CoA [cytoplasm]	C24H36N7O17P3S	-4	cytoplasm	C00100	CHEBI:57392	MNXM86	exist in model, but in another compartment
+3-oxopropanoate [cytoplasm]	C3H3O3	-1	cytoplasm	C00222	CHEBI:33190	MNXM244	DOI: 10.1186/s12918-016-0350-8; DOI: 10.1007/s11306-017-1195-x
+(R)-2,3-dihydroxy-3-methylbutanoate [cytoplasm]	C5H9O4	-1	cytoplasm	C04272	CHEBI:49072	MNXM114097	exist in model, but in another compartment
+3-hydroxy-3-methyl-2-oxobutanoate [cytoplasm]	C5H7O4	-1	cytoplasm	C04181	CHEBI:11812	MNXM1638	DOI: 10.1186/s12918-016-0350-8; DOI: 10.1007/s11306-017-1195-x
+2-acetyllactic acid [cytoplasm]	C5H7O4	-1	cytoplasm	C00900	CHEBI:57774	MNXM426	exist in model, but in another compartment
+(2S)-2-acetolactate [cytoplasm]	C5H7O4	-1	cytoplasm	C06010	CHEBI:58476	MNXM114079	DOI: 10.1186/s12918-016-0350-8; DOI: 10.1007/s11306-017-1195-x
+(2R,3S)-3-methylmalate [cytoplasm]	C5H6O5	-2	cytoplasm	C06032	CHEBI:58511	MNXM2512	DOI: 10.1186/s12918-016-0350-8; DOI: 10.1007/s11306-017-1195-x
+trans-2,cis-9-octadecadienoyl-CoA [cytoplasm]	C39H62N7O17P3S	-4	cytoplasm	C02050	CHEBI:57383	MNXM638	exist in model, but in another compartment
+(9Z,12Z)-octadecadienoate [cytoplasm]	C18H31O2	-1	cytoplasm	C01595	CHEBI:30245	MNXM293	DOI: 10.1186/s12918-016-0350-8; DOI: 10.1007/s11306-017-1195-x; DOI: 10.1016/j.procbio.2017.04.003; DOI: 10.1038/srep42659
+stachyose [cytoplasm]	C24H42O21	0	cytoplasm	C01613	CHEBI:17164	MNXM1503	DOI: 10.1186/s12918-016-0350-8; DOI: 10.1007/s11306-017-1195-x
+raffinose [cytoplasm]	C18H32O16	0	cytoplasm	C00492	CHEBI:16634	MNXM621	exist in model, but in another compartment
+4-hydroxyphenyl acetate [cytoplasm]	C8H8O3	0	cytoplasm	C00642	CHEBI:18101	MNXM3863	DOI: 10.1186/s12918-016-0350-8; DOI: 10.1007/s11306-017-1195-x
+Hydroquinone [cytoplasm]	C6H6O2	0	cytoplasm	C00530	CHEBI:17594	MNXM376	exist in model, but in another compartment
