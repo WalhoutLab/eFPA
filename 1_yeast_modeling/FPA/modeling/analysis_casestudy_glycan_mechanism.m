@@ -153,15 +153,20 @@ bar(categorical(conditions),faMat_subsys','stacked')
 subsys(strcmp(subsys,'Gluconeogenesis')) = {'Gluconeogenesis/glycolysis'};
 legend(subsys)
 plt = Plot(); % create a Plot object and grab the current figure
-plt.BoxDim = [10, 7.5];
-plt.LineWidth = 1;
-plt.FontSize = 12;
+plt.BoxDim = [5, 4];
+plt.LineWidth = 0.75;
 plt.FontName = 'Arial';
-ylabel('Flux allowance',  'FontSize',15)
+ylabel('Flux allowance',  'FontSize',7)
 plt.Interpreter = 'none';
 plt.LegendLoc = 'eastoutside';
 plt.TickLength = [0.01; 0.02];
-plt.export(['figures/FPA_glycan_mechanism_',targetRxns{i},'.tiff']);
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.ShowBox = 'off';
+plt.LegendLoc = 'eastoutside';
+plt.FontSize = 7;
+plt.export(['figures/FPA_glycan_mechanism_',targetRxns{i},'.pdf']);
 
 %% plot the flux distribution barplots 
 % first make the table for the 25 conditions
@@ -235,26 +240,67 @@ for j = 1:size(glycolysisSet,1)
         myLevel = normalizedLevel_pro_perPro(strcmp(valid_rxns_pro_perPro,rxnID),:);
         myFluxLevel = abs(fluxMat_normalized(strcmp(rxnLabel,targetRxn),:));
         figure(7)
-        plot(myLevel,myFluxLevel,'.','MarkerSize',12)
-        text(myLevel,myFluxLevel,labels2,'VerticalAlignment','bottom','HorizontalAlignment','right')
+        plot(myLevel,myFluxLevel,'.','MarkerSize',10,'Color','k')
+        text(myLevel,myFluxLevel,labels2,'VerticalAlignment','bottom','HorizontalAlignment','right','FontSize',7)
         xlabel(['Relative expression of ',rxnID])
-        ylabel(['Relative flux of ',targetRxns{i}])
+        ylabel(['Relative flux of ',targetRxn])
         [corrR,corrP] = corr(myFluxLevel',myLevel')
         plt = Plot(); % create a Plot object and grab the current figure
-        plt.BoxDim = [6, 5];
-        plt.LineWidth = 2;
-        plt.FontSize = 15;
+        plt.BoxDim = [3, 2.5];
+        plt.LineWidth = 1;
+        plt.FontSize = 7;
         plt.XTick = -1:0.2:1;
         plt.LegendLoc = 'NorthWest';
         plt.FontName = 'Arial';
         plt.Interpreter = 'none';
-        plt.export(['figures/FPA_glycan_mechanism_expression_',rxnID,'_flux_',targetRxns{i},'.tiff']);
+        plt.ShowBox = 'off';
+        plt.XMinorTick = 'off';
+        plt.YMinorTick = 'off';
+        plt.TickDir = 'out';
+        plt.export(['figures/FPA_glycan_mechanism_expression_',rxnID,'_flux_',targetRxn,'.pdf']);
     else
         fprintf('not measured!\n')
     end
 end
+%% target expression vs flux 
+% rxnID = 'r_0362';
+% figure;
+% myLevel = normalizedLevel_pro_perPro(strcmp(valid_rxns_pro_perPro,rxnID),:);
+% myFlux = abs(fluxMat_normalized(strcmp(rxnLabel,targetRxn),:));
+% fit = fitlm(myLevel,myFlux);
+% h = plot(fit);
+% xlim1 = xlim;
+% ylim1 = ylim;
+% lgd = legend();
+% set(lgd,'visible','off')
+% set(h(1), {'color'},{'k'}) 
+% set(h(1),'Marker','.')
+% set(h(1),'MarkerSize',15)
+% set(h(2), {'color'},{'#808080'}) 
+% set(h(2), {'LineStyle'},{'--'}) 
+% set(h(3), {'visible'},{'off'}) 
+% set(h(4), {'visible'},{'off'}) 
+% xlabel('Relative Protein Expression');
+% ylabel('Relative Flux (absolute value)');
+% text(0.6,max(myFlux)*0.93,['r = ',num2str(corr(myLevel',myFlux'),2)],'FontSize',15)
+% plt = Plot(); % create a Plot object and grab the current figure
+% plt.BoxDim = [2, 1.75];
+% plt.LineWidth = 1;
+% plt.FontSize = 7;
+% plt.LegendLoc = 'NorthWest';
+% plt.FontName = 'Arial';
+% plt.Title = rxnID;
+% plt.ShowBox = 'off';
+% plt.XMinorTick = 'off';
+% plt.YMinorTick = 'off';
+% plt.TickDir = 'out';
+% plt.Interpreter = 'None';
+% plt.XLim = xlim1;
+% plt.YLim = ylim1;
+% plt.export(['figures/FPA_glycan_mechanism_exp2flux_',rxnID,'.pdf']);
 %% plot rFP vs flux
 targetRxn = 'r_0362';
+rxnID = 'r_0362';
 dist = 25.5;
 
 load('output/Titration_relativeExp_wtdDist_expDecay_FineGrained.mat');
@@ -295,26 +341,36 @@ myLevel = relFP(strcmp(valid_rxns,targetRxn),:);
 figure;
 fit = fitlm(myLevel,myFlux);
 h = plot(fit);
+xlim1 = xlim;
+ylim1 = ylim;
 lgd = legend();
 set(lgd,'visible','off')
 set(h(1), {'color'},{'k'}) 
-set(h(1),'Marker','o')
-set(h(1),'MarkerSize',7)
-set(h(2), {'color'},{'k'}) 
-set(h(3), {'color'},{'k'}) 
-set(h(4), {'color'},{'k'}) 
-text(myLevel,myFlux,labels2,'VerticalAlignment','bottom','HorizontalAlignment','right')
+set(h(1),'Marker','.')
+set(h(1),'MarkerSize',10)
+set(h(2), {'color'},{'#808080'}) 
+set(h(2), {'LineStyle'},{'--'}) 
+set(h(3), {'visible'},{'off'}) 
+set(h(4), {'visible'},{'off'}) 
+text(myLevel,myFlux,labels2,'VerticalAlignment','bottom','HorizontalAlignment','right','FontSize',7)
 xlabel(['rFP of ',targetRxn]);
 ylabel(['Relative Flux (absolute value) of ',targetRxn]);
-text(0.4,max(myFlux)*0.93,['r = ',num2str(corr(myLevel',myFlux'),2)],'FontSize',15)
+text(0.4,max(myFlux)*0.93,['r = ',num2str(corr(myLevel',myFlux'),2)],'FontSize',7)
 plt = Plot(); % create a Plot object and grab the current figure
-plt.BoxDim = [7, 6];
-plt.LineWidth = 2;
-plt.FontSize = 15;
+plt.BoxDim = [2.25, 2];
+plt.LineWidth = 1;
+plt.FontSize = 7;
 plt.LegendLoc = 'NorthWest';
 plt.FontName = 'Arial';
-plt.Interpreter = 'none';
-plt.export(['figures/FPA_glycan_flux_rFP_',targetRxn,'_d_',num2str(dist),'.tiff']);
+plt.Title = rxnID;
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.Interpreter = 'None';
+plt.XLim = xlim1;
+plt.YLim = ylim1;
+plt.export(['figures/FPA_glycan_flux_rFP_',targetRxn,'_d_',num2str(dist),'.pdf']);
 
 
 %% calculate the coexpression 
@@ -327,26 +383,32 @@ coeff = pca(expMat);
 myLevel = coeff(:,1);
 fit = fitlm(myLevel,myFlux);
 h = plot(fit);
+xlim1 = xlim;
+ylim1 = ylim;
 lgd = legend();
 set(lgd,'visible','off')
 set(h(1), {'color'},{'k'}) 
-set(h(1),'Marker','o')
-set(h(1),'MarkerSize',7)
-set(h(2), {'color'},{'k'}) 
-set(h(3), {'color'},{'k'}) 
-set(h(4), {'color'},{'k'}) 
-text(myLevel,myFlux,labels2,'VerticalAlignment','bottom','HorizontalAlignment','right')
+set(h(1),'Marker','.')
+set(h(1),'MarkerSize',10)
+set(h(2), {'color'},{'#808080'}) 
+set(h(2), {'LineStyle'},{'--'}) 
+set(h(3), {'visible'},{'off'}) 
+set(h(4), {'visible'},{'off'}) 
+text(myLevel,myFlux,labels2,'VerticalAlignment','bottom','HorizontalAlignment','right','FontSize',7)
 xlabel(['PC1 from the expression matrix of 18 involved glycolysis reactions']);
 ylabel(['Relative Flux (absolute value) of ',targetRxn]);
-text(-0.1,max(myFlux)*0.93,['r = ',num2str(corr(myLevel,myFlux'),2)],'FontSize',15)
+text(-0.1,max(myFlux)*0.93,['r = ',num2str(corr(myLevel,myFlux'),2)],'FontSize',7)
 plt = Plot(); % create a Plot object and grab the current figure
-plt.BoxDim = [7, 6];
-plt.LineWidth = 2;
-plt.FontSize = 15;
+plt.BoxDim = [3, 2.5];
+plt.LineWidth = 1;
+plt.FontSize = 7;
 plt.LegendLoc = 'NorthWest';
 plt.FontName = 'Arial';
 plt.Interpreter = 'none';
-plt.export(['figures/FPA_glycan_flux_glycolysis_PC1_',targetRxn,'.tiff']);
-
-
-    
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.XLim = xlim1;
+plt.YLim = ylim1;
+plt.export(['figures/FPA_glycan_flux_glycolysis_PC1_',targetRxn,'.pdf']);

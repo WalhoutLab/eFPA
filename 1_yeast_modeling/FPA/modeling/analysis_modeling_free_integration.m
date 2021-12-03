@@ -337,24 +337,28 @@ perc_sigCorr_in_highCV_wtdDist_expDecay2 = perc_sigCorr_in_highCV(:,2);
 
 figure;
 hold on
-plot(dorders_wtdDist_expDecay2(1:end),N_sigCorr_highCV_wtdDist_expDecay2(1:end) ,'o-','LineWidth',2,'Color','#D95319')
-plot(dorders_wtdDist_expDecay100(1:end),N_sigCorr_highCV_wtdDist_expDecay100(1:end) ,'o-','LineWidth',2,'Color','#EDB120')
-plot(dorders_wtd(1:end),N_sigCorr_highCV_wtd(1:end) ,'o-','LineWidth',2,'Color','#0072BD')
-plot(dorders_ori(1:end),N_sigCorr_highCV_ori(1:end) ,'o-','LineWidth',2)
+plot(dorders_wtdDist_expDecay2(1:end),N_sigCorr_highCV_wtdDist_expDecay2(1:end) ,'o-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
+plot(dorders_wtdDist_expDecay100(1:end),N_sigCorr_highCV_wtdDist_expDecay100(1:end) ,'o-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
+plot(dorders_wtd(1:end),N_sigCorr_highCV_wtd(1:end) ,'o-','LineWidth',2,'Color','#0072BD','MarkerSize', 3)
+plot(dorders_ori(1:end),N_sigCorr_highCV_ori(1:end) ,'o-','LineWidth',2,'MarkerSize', 3)
 % plot(dorders_expDecay100(1:13),N_sigCorr_highCV_expDecay100(1:13) ,'.--','LineWidth',2)
 % plot(dorders_expDecay2(1:13),N_sigCorr_highCV_expDecay2(1:13) ,'.--','LineWidth',2)
 yline(baseline,'--','LineWidth',2,'Color',[0.5 0.5 0.5])
 xlabel('Distance order/boundary');
 ylabel('Number of significantly correlated reactions ');
 ylim([20 80])
-legend({'improved FPA (base = 2)','improved FPA (base = 100)','local expression average (weighted dist)','local expression average (naive dist)','target expression only'},'Location','northeast','FontSize',12);
+legend({'improved FPA (base = 2)','improved FPA (base = 100)','local expression average (weighted dist)','local expression average (naive dist)','target expression only'},'FontSize',7);
 plt = Plot(); % create a Plot object and grab the current figure
-plt.BoxDim = [5.7, 4.7];
-plt.LineWidth = 2;
-plt.FontSize = 15;
+plt.BoxDim = [2.85, 2.35];
+plt.LineWidth = 1;
+plt.FontSize = 7;
 plt.FontName = 'Arial';
-plt.export(['figures/modeling_free_integration.tiff']);
-
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.LegendLoc = 'NorthEast';
+plt.export(['figures/modeling_free_integration.pdf']);
 %% plot the titration heatmap
 load('output/modeling_free_integration.mat')
 dorders = 0:0.5:40;

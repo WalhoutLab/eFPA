@@ -77,6 +77,8 @@ pheatmap(heatTbl[,1:ncol(heatTbl)], breaks = seq(0,10,1),color = colorRampPalett
 dev.off()
 
 ################plot3: realDist and rel corr##########
+# the new annotation rule:
+# the manual connected pathway was used; pathways with reactions less than 3 were grouped to others; isolated transporters are labeled out (inner and exchange)
 mat = read.csv('output/relCorr_heatmapTbl_realDist.csv')
 sig = read.csv('output/heatmapTbl_sigLabel_realDist.csv')
 boundary = read.csv('output/heatmapTbl_boundaries_realDist.csv')
@@ -86,7 +88,7 @@ colnames(heatTbl) = boundary$Var1[1:(ncol(mat)-1)]
 rownames(heatTbl) = mat$Row
 sigTbl = ifelse(sig[,2:ncol(mat)]==1, '+','')
 dev.off()
-pdf('figures/boundary_heatmap_realDist.pdf',width = 24,height = 14)
+pdf('figures/boundary_heatmap_realDist.pdf',width = 30,height = 17.5)
 # we do row-wise left nearest impute: the prediction should be same to the left-most one if no new reaction can be seen as the distance boundary increase
 for (i in 1:nrow(heatTbl)){
   for (j in 1:(ncol(heatTbl))){
@@ -102,30 +104,120 @@ for (i in 1:nrow(heatTbl)){
     }
   }
 }
+
 #heatTbl[is.na(heatTbl)] = 0
 # reorder according to annotation table 
 library(xlsx)
-annTbl = read.xlsx('./output/predictionMechanism_annotation.xlsx','Sheet1',header = T)
+annTbl = read.xlsx('./output/predictionMechanism_annotation_oct17.xlsx','all',header = T)
+rownames(annTbl) = annTbl$rxn
+annTbl = annTbl[rownames(annTbl) %in% rownames(heatTbl),]
+       
+annotationList = c('Purine metabolism','Phenylalanine, tyrosine and tryptophan biosynthesis','Histidine metabolism','Lysine biosynthesis',
+                   'Arginine biosynthesis','Threonine, methionine and cysteine synthesis','Proline biosynthesis','Pyrimidine metabolism',
+                   'Glycolysis','TCA cycle', 'Mannan synthesis',
+                   'UDP-D-glucose metabolism','Fatty acid biosynthesis',
+                   'transporter [inner]','transporter [exchange]','Others')
+colorList2 = colors$V1[2:(1+length(annotationList))]
+#names(colorList) = c(names(annotationList)[2:(length(annotationList)-1)],names(annotationList)[1],names(annotationList)[(length(annotationList))])
+names(colorList2) = annotationList
+colorList2 = list(functional_annotation = colorList2)
+colorList2$functional_annotation = colorList2$functional_annotation[unique(annTbl[,c("functional_annotation")])]
+
 rownames(sigTbl) = rownames(heatTbl)
 heatTbl = heatTbl[annTbl$rxn,]
 sigTbl = sigTbl[annTbl$rxn,]
-labels_row0 = paste(rownames(heatTbl),annotation[rownames(heatTbl),'pathway'])
-pheatmap(heatTbl[,1:38], breaks = seq(0,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+ann2 = annTbl[rownames(annTbl),"connected_pathway"]
+ann2[ann2 == 'NA'] = annTbl$pathway[ann2 == 'NA']
+labels_row0 = paste(rownames(annTbl),ann2)
+
+pheatmap(heatTbl[,1:23], breaks = seq(0,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
                                                                                                       "RdYlBu")))(1000),
          # clustering_distance_rows = as.dist(1 - rows.cor),
-         annotation_row = annotation[,c("pathway_major"),drop = F],
-         annotation_colors = colorList, labels_row = labels_row0,
-         gaps_col = 1,
+         annotation_row = annTbl[,c("functional_annotation"),drop = F],
+         annotation_colors = colorList2, labels_row = labels_row0,
+         gaps_col = c(1,2),
          # legend_breaks = seq2,legend_labels = legend_labels,
          border_color = 'black',
-         fontsize = 8,fontsize_row = 5, fontsize_col = 8,
-         cellwidth = 12, cellheight = 5,
+         fontsize = 8,fontsize_row = 6, fontsize_col = 8,
+         cellwidth = 12, cellheight = 6,
          cluster_rows = FALSE,cluster_cols = FALSE
-         ,display_numbers = sigTbl[,1:38], number_color = 'Black',fontsize_number = 5
+         ,display_numbers = sigTbl[,1:23], number_color = 'Black',fontsize_number = 6
 )
 
 dev.off()
-
+# # plot the curves
+# subTbl = heatTbl[,3:38]
+# distSeq = as.numeric(colnames(subTbl))
+# plot(distSeq, subTbl[1,],type = 'l')
+# for (i in 1:nrow(subTbl)){
+#   lines(distSeq, subTbl[i,])
+# }
+library(parallel)
+smooth.expr <- function(mat, x, x.pred) {
+  n <- length(x.pred)
+  nd <- data.frame(x=x.pred)
+  tmp <- mclapply(1:nrow(mat), function(i) {
+    fit <- loess(mat[i, ] ~ x, span=0.1, degree=2)
+    predict(fit, newdata=nd, se=FALSE)
+  })
+  expr.fit <- t(matrix(unlist(tmp), n))
+  rownames(expr.fit) <- rownames(mat)
+  colnames(expr.fit) <- nd$x
+  return(expr.fit)
+}
+library(lsa)
+tg_fit <- smooth.expr(as.matrix(heatTbl[,3:23]),as.numeric(colnames(heatTbl)[3:23]),seq(0,20,0.01))
+#as.dist(1 - cosine(t(tg_fit)))
+dev.off()
+png('figures/boundary_heatmap_realDist_small.png',width = 600,height = 600)
+pheatmap(tg_fit, breaks = seq(0,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+                                                                                           "RdYlBu")))(1000),
+         #clustering_distance_rows = as.dist(1 - cosine(t(as.matrix(heatTbl[,3:23])))),
+         annotation_row = annTbl[,c("functional_annotation"),drop = F],
+         annotation_colors = colorList2,
+         border_color = 0,
+         cluster_rows = F,cluster_cols = FALSE,show_rownames = F,show_colnames = F
+)
+dev.off()
+# smooth heattbl for better interpretability
+#load package and define smooth function
+annTbl = read.xlsx('./output/predictionMechanism_annotation_oct17.xlsx','selected',header = T)
+rownames(annTbl) = annTbl$rxn
+annTbl = annTbl[rownames(annTbl) %in% rownames(heatTbl),]
+heatTbl = heatTbl[annTbl$rxn,]
+sigTbl = sigTbl[annTbl$rxn,]
+labels_row0 = paste(rownames(annTbl),annTbl[rownames(annTbl),"functional_annotation"])
+# library(fields)
+# library(heatmaps)
+# hm = Heatmap(as.matrix(heatTbl[,1:38]))
+# smoothHeatmap(hm)
+# plotHeatmapList(hm)
+tg_fit <- smooth.expr(as.matrix(heatTbl[,3:23]),as.numeric(colnames(heatTbl)[3:23]),seq(0,20,0.01))
+gaps = c(0)
+for (i in 1:(nrow(annTbl)-1)){
+  if(annTbl$functional_annotation[i] != annTbl$functional_annotation[i+1]){
+    gaps = c(gaps, i)
+  }
+}
+colorList3 = colorList2
+colorList3$functional_annotation = colorList3$functional_annotation[unique(annTbl[,c("functional_annotation")])]
+dev.off()
+png('figures/boundary_heatmap_realDist_smooth.png',width = 1200,height = 800)
+pheatmap(tg_fit, breaks = seq(0,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+                                                                                           "RdYlBu")))(1000),
+         # clustering_distance_rows = as.dist(1 - rows.cor),
+         annotation_row = annTbl[,c("functional_annotation"),drop = F],
+         annotation_colors = colorList3, #labels_row = labels_row0,
+         show_colnames = F, show_rownames = F,
+         # legend_breaks = seq2,legend_labels = legend_labels,
+         border_color = 0,
+         #fontsize = 8,fontsize_row = 5, fontsize_col = 8,
+         #cellwidth = 12, cellheight = 5,
+         gaps_row = gaps,
+         cluster_rows = FALSE,cluster_cols = FALSE
+         #,display_numbers = sigTbl[,1:38], number_color = 'Black',fontsize_number = 5
+)
+dev.off()
 
 ################plot4: realDist and rel corr -- target Out##########
 mat = read.csv('output/relCorr_heatmapTbl_realDist_targetOut.csv')

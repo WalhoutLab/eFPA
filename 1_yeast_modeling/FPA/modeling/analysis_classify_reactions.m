@@ -165,7 +165,7 @@ end
             
 fdr_r_FPA = mafdr(p_FPA,'BHFDR', true);% BHFDR adjustment is chosen to keep strigency (control FDR instead of estimate FDR (which is used in pFDR(qvalue)))
 fprintf('%d rxns give significant positive correlation by pearson\n',sum(r_FPA(fdr_r_FPA<0.05)>0));
-sig_rxn_FPA = testedRxn_FPA(r_FPA>0 & fdr_r_FPA<0.05);
+sig_rxn_FPA = testedRxn_FPA(r_FPA>0 & fdr_r_FPA<0.05 & deltaminmax > 0.2);
 
 
 %% supp1 A: reaction information

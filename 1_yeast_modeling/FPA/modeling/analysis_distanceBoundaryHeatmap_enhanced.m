@@ -193,9 +193,9 @@ for j = 1:length(rxnLabel)
     end
 end
 % fdr_rho = mafdr(p_rho,'BHFDR', true);% BHFDR adjustment is chosen to keep strigency (control FDR instead of estimate FDR (which is used in pFDR(qvalue)))
-% fdr_r = mafdr(p_r,'BHFDR', true);% BHFDR adjustment is chosen to keep strigency (control FDR instead of estimate FDR (which is used in pFDR(qvalue)))
+fdr_r = mafdr(p_r,'BHFDR', true);% BHFDR adjustment is chosen to keep strigency (control FDR instead of estimate FDR (which is used in pFDR(qvalue)))
 control_r = r;
-control_p = p_r;
+control_fdr = fdr_r;
 control_testedRxns = testedRxn;
 
 %% load the control2 - base 2 boundary 6
@@ -250,7 +250,7 @@ fdr_r = mafdr(p_r,'BHFDR', true);% BHFDR adjustment is chosen to keep strigency 
 fprintf('%d rxns give significant positive correlation by pearson\n',sum(r(fdr_r<0.05)>0));
 
 control_r_2 = r;
-control_p_2 = p_r;
+control_fdr_2 = fdr_r;
 control_testedRxns_2 = testedRxn;
 control_cv_2 = deltaminmax;
 %% make the heatmap 
@@ -319,11 +319,12 @@ for nn = 1: length(dorders)
 end
 
 %% bin by real distance - mmIRS
+% now we use fdr cutoff
 [A B] = ismember(targetRxns,control_testedRxns);
 ctrVp = ones(length(targetRxns),1);
 ctrVr = zeros(length(targetRxns),1);
 ctrVcv = zeros(length(targetRxns),1);
-ctrVp(A) = control_p(B(A));
+ctrVp(A) = control_fdr(B(A)); % actually fdr
 ctrVr(A) = control_r(B(A));
 ctrVcv(A) = 1;
 
@@ -331,16 +332,64 @@ ctrVcv(A) = 1;
 ctrVp2 = ones(length(targetRxns),1);
 ctrVr2 = zeros(length(targetRxns),1);
 ctrVcv2 = zeros(length(targetRxns),1);
-ctrVp2(A) = control_p_2(B(A));
+ctrVp2(A) = control_fdr_2(B(A));
 ctrVr2(A) = control_r_2(B(A));
 ctrVcv2(A) = control_cv_2(B(A));
 
-pMat_valid = [ctrVp2, ctrVp, pMat];
+pMat_valid = [ctrVp2, ctrVp, FDRmat];
 rMat_valid = [ctrVr2, ctrVr, rMat];
 CVmat_valid = [ctrVcv2, ctrVcv, CVmat];
 % FDRmat_valid(CVmat<0.1) = 1;
 % rMat_valid(CVmat<0.1) = 0;
-
+t = array2table(rMat_valid);
+t.Properties.RowNames = targetRxns;
+writetable(t,'output/PCC_titration_all.csv','WriteRowNames',1);
+%% save histogram of max PCC
+r_max = [];
+r_max_sig = [];
+%keep = any(pMat_valid < 0.05 & rMat_valid > 0 & CVmat_valid > 0.2,2);
+for i = 1:size(rMat,1)
+    if all(rMat(i,:) == 0)
+        r_max(i) = NaN;
+        r_max_sig(i) = NaN;
+    else
+        r_pass = rMat(i,CVmat(i,:) > 0.2);
+        fdr_pass = FDRmat(i,CVmat(i,:) > 0.2);
+        if(length(r_pass)> 0)
+            r_max(i) = max(r_pass);
+            r_max_sig(i) = min(fdr_pass(r_pass == max(r_pass)));
+        else
+            r_max(i) = max(rMat(i,:));
+            r_max_sig(i) = 1;
+        end
+    end
+end
+figure;
+hold on
+histogram(r_max,'FaceColor','#0072BD','BinEdges',-1:0.2:1)
+xlim([-1,1]);
+xlabel('Correlation coefficient');
+ylabel('Number of reactions');
+histogram(r_max(r_max_sig<0.05 & r_max >0),'FaceColor','#D95319','BinEdges',-1:0.2:1)
+legend({'all testable reactions',sprintf('significantly correlated \nreactions')})
+hold off
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [1.95, 1.6125];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+plt.XTick = -1:0.2:1;
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.ShowBox = 'off';
+plt.LegendLoc = 'NorthWest';
+plt.FontName = 'Arial';
+plt.export('figures/optimal_boundary_FPA_flux_correlation_pearson.pdf');
+% S = hgexport('readstyle','default_sci');
+% style.Format = 'svg';
+% style.ApplyStyle = '1';
+% hgexport(gcf,'test',S,'applystyle',true);
+% set(gca,'FontSize',15);
+%% filter
 keep = any(pMat_valid < 0.05 & rMat_valid > 0 & CVmat_valid > 0.2,2);
 
 rMat_valid = rMat_valid(keep,:);
@@ -370,13 +419,14 @@ for i = 1:(length(dorders)-1)
 end
 rMat_valid_normalized_binned(:,1:2) = rMat_valid_normalized(:,1:2);
 rMat_valid_normalized = rMat_valid_normalized_binned;
+IDs = [{'base 2 - boundary 6','expression only'},strsplit(num2str(dorders))];
+
 %% make the mmIRS annotation matrix 
 % load the mmIRS of the base 2 
 load('output/mmIRS_base2n6.mat');
 mmIRSmat = [mmIRS_b2n6(keep), zeros(size(rMat_valid_normalized,1),1), mmIRS];
 %% plot - skip
 distMethod = 'euclidean';
-IDs = [{'base 2 - boundary 6','expression only'},strsplit(num2str(dorders))];
 
 cgo=clustergram(rMat_valid_normalized(:,1:end),'RowLabels',targetRxns_valid,'ColumnLabels',IDs(1:end),'RowPDist',distMethod,'Cluster', 'Column');
 c=get(cgo,'ColorMap');
@@ -404,12 +454,7 @@ for i = 1:size(rMat_valid_normalized,1)
     plot(mmIRS(i,:), rMat_valid_normalized(i,3:end),'.-');
 end
 hold off
-%% save figure
-% S = hgexport('readstyle','default_sci');
-% style.Format = 'svg';
-% style.ApplyStyle = '1';
-% hgexport(gcf,'test',S,'applystyle',true);
-% set(gca,'FontSize',15);
+
 %% label the significant interval 
 rxns = targetRxns_valid;
 sigMat = pMat_valid < 0.05 & rMat_valid > 0 & CVmat_valid > 0.2;

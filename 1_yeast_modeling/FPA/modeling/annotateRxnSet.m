@@ -41,9 +41,10 @@ for i = 1:length(subsystemInfo(:,1))
         end
     end
     subsystemInfo{i,2} = n_obs;
+    subsystemInfo{i,3} = n_trueInPop;
     pvals(i) = 1-hygecdf(n_obs-1,n_pop,n_trueInPop,n_sample);
 end
 fdr = mafdr(pvals,'BHFDR',1);
-subsystemInfo(:,3) = mat2cell(fdr',ones(size(subsystemInfo,1),1),1);
-subsystemInfo = sortrows(subsystemInfo,3);
+subsystemInfo(:,4) = mat2cell(fdr',ones(size(subsystemInfo,1),1),1);
+subsystemInfo = sortrows(subsystemInfo,4);
 end

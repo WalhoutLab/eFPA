@@ -255,7 +255,7 @@ ROI_annotated(:,8) = repmat({''},size(ROI_annotated,1),1);
 ROI_annotated(A,8) = mat2cell(corrTbl_FPA{B(A),3},ones(sum(A),1),1); % p
 
 ROI_annotated = [{'rxnID','formula','GPR','firstSubsystem','exp2flux pearson r','exp2flux FDR','rFP2flux pearson r','rFP2flux FDR'};ROI_annotated];
-ROI_enrichment = [{'SubSystems','number of significantly correlated rxns','FDR'};ROI_enrichment];
+ROI_enrichment = [{'SubSystems','number of significantly correlated rxns','total num','FDR'};ROI_enrichment];
 
 % ROI_annotated = cell2table(ROI_annotated);
 size(unique(model.rxnGeneMat(ismember(model.rxns,newRxns),:),'rows'),1)
@@ -306,16 +306,19 @@ Y = myFP(order0);
 Y = normalize(Y,'range',[0.01 1]);
 plot(X,Y,'o-','Color','#4DBEEE','LineWidth',3)
 plt = Plot(); % create a Plot object and grab the current figure
-plt.BoxDim = [13, 8];
-plt.LineWidth = [1.5 1.5 1.5 2.5 2.5];
-plt.FontSize = 12;
+plt.BoxDim = [5.5, 4];
+plt.LineWidth = [1 1 1 1.5 1.5];
 plt.FontName = 'Arial';
 legend({'relative expression of r_0468','relative expression of r_0473','relative expression of r_0957','relative flux of r_1887','rFP of r_1887'},'FontSize',12)
-ylabel('Relative level',  'FontSize',15)
+ylabel('Relative level',  'FontSize',7)
 plt.Interpreter = 'none';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
 plt.LegendLoc = 'eastoutside';
-plt.export('figures/FPA_showcase_r_1887_mechanism.tiff');
-
+plt.FontSize = 7;
+plt.export('figures/FPA_showcase_r_1887_mechanism.pdf');
 % plot(X, normalize(mean([Y1;Y2]),'range',[0.01 1]),'go-')
 %% plot the correlation of FPA-flux and exp-flux for rxn1, rxn2 and rxn3
 figure;
@@ -477,7 +480,7 @@ plt.export(['figures/FPA_showcase_r_1887_flux_FP_r_0957.tiff']);
 %% make the figure of any reaction
 %% load the FPA data 
 load(['output/Titration_relativeExp_oriDist_oriDecay.mat'])
-rxnID1 = 'r_0485';
+rxnID1 = 'r_0908';
 nn = 4;
 FP = FP_collection{nn};
 relFP = nan(size(FP,1),size(FP,2)-1);%we choose one from f and r as a prediction
@@ -533,24 +536,33 @@ h = plot(fit);
 lgd = legend();
 set(lgd,'visible','off')
 set(h(1), {'color'},{'k'}) 
-set(h(1),'Marker','o')
-set(h(1),'MarkerSize',7)
-set(h(2), {'color'},{'k'}) 
-set(h(3), {'color'},{'k'}) 
-set(h(4), {'color'},{'k'}) 
+set(h(1),'Marker','.')
+set(h(1),'MarkerSize',15)
+set(h(2), {'color'},{'#808080'}) 
+set(h(2), {'LineStyle'},{'--'}) 
+set(h(3), {'visible'},{'off'}) 
+set(h(4), {'visible'},{'off'}) 
 xlabel('Relative Protein Expression');
 ylabel('Relative Flux (absolute value)');
 load('output/sig_corr_rxns_rel2rel.mat');
 text(0.4,max(myFlux)*0.93,['r = ',num2str(corrTbl.Var2(strcmp(corrTbl.Var1,rxnID1)),2)],'FontSize',15)
 text(0.4,max(myFlux)*0.85,['FDR = ',num2str(corrTbl.Var3(strcmp(corrTbl.Var1,rxnID1)),2)],'FontSize',15)
+
 plt = Plot(); % create a Plot object and grab the current figure
-plt.BoxDim = [5.2, 4.3];
-plt.LineWidth = 2;
-plt.FontSize = 15;
+plt.BoxDim = [2, 1.75];
+plt.LineWidth = 1;
+plt.FontSize = 10;
+plt.XTick = -1:0.2:1;
+plt.LegendLoc = 'NorthWest';
 plt.FontName = 'Arial';
 plt.Title = rxnID1;
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
 plt.Interpreter = 'None';
-plt.export(['figures/others/flux_expression_',rxnID1,'.tiff']);
+
+plt.export(['figures/others/flux_expression_',rxnID1,'.pdf']);
 
 figure;
 myLevel = relFP(strcmp(valid_rxns,rxnID1),:);
@@ -559,23 +571,30 @@ h = plot(fit);
 lgd = legend();
 set(lgd,'visible','off')
 set(h(1), {'color'},{'k'}) 
-set(h(1),'Marker','o')
-set(h(1),'MarkerSize',7)
-set(h(2), {'color'},{'k'}) 
-set(h(3), {'color'},{'k'}) 
-set(h(4), {'color'},{'k'}) 
+set(h(1),'Marker','.')
+set(h(1),'MarkerSize',15)
+set(h(2), {'color'},{'#808080'}) 
+set(h(2), {'LineStyle'},{'--'}) 
+set(h(3), {'visible'},{'off'}) 
+set(h(4), {'visible'},{'off'}) 
+xlabel('Relative Protein Expression');
+ylabel('Relative Flux (absolute value)');
 text(0.47,max(myFlux)*0.93,['r = ',num2str(r(strcmp(testedRxn,rxnID1)),2)],'FontSize',15)
 text(0.47,max(myFlux)*0.85,['FDR = ',num2str(fdr_r(strcmp(testedRxn,rxnID1)),2)],'FontSize',15)
-xlabel('Relative Flux Potential');
-ylabel('Relative Flux (absolute value)');
 plt = Plot(); % create a Plot object and grab the current figure
-plt.BoxDim = [5.2, 4.3];
-plt.LineWidth = 2;
-plt.FontSize = 15;
+plt.BoxDim = [2, 1.75];
+plt.LineWidth = 1;
+plt.FontSize = 10;
+plt.XTick = -1:0.2:1;
+plt.LegendLoc = 'NorthWest';
 plt.FontName = 'Arial';
 plt.Title = rxnID1;
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
 plt.Interpreter = 'None';
-plt.export(['figures/others/original_rFP_expression_',rxnID1,'.tiff']);
+plt.export(['figures/others/original_rFP_expression_',rxnID1,'.pdf']);
 
 % third plot
 load(['output/Titration_relativeExp_wtdDist_expDecay.mat']);
@@ -632,28 +651,36 @@ figure;
 myLevel = relFP(strcmp(valid_rxns,rxnID1),:);
 fit = fitlm(myLevel,myFlux);
 h = plot(fit);
+xlim1 = xlim;
+ylim1 = ylim;
 lgd = legend();
 set(lgd,'visible','off')
 set(h(1), {'color'},{'k'}) 
-set(h(1),'Marker','o')
-set(h(1),'MarkerSize',7)
-set(h(2), {'color'},{'k'}) 
-set(h(3), {'color'},{'k'}) 
-set(h(4), {'color'},{'k'}) 
-xlabel('Relative Flux Potential');
+set(h(1),'Marker','.')
+set(h(1),'MarkerSize',15)
+set(h(2), {'color'},{'#808080'}) 
+set(h(2), {'LineStyle'},{'--'}) 
+set(h(3), {'visible'},{'off'}) 
+set(h(4), {'visible'},{'off'}) 
+xlabel('Relative Protein Expression');
 ylabel('Relative Flux (absolute value)');
 text(0.6,max(myFlux)*0.93,['r = ',num2str(corr(myLevel',myFlux'),2)],'FontSize',15)
 text(0.6,max(myFlux)*0.85,['FDR = ',num2str(fdr_r(strcmp(testedRxn,rxnID1)),2)],'FontSize',15)
 plt = Plot(); % create a Plot object and grab the current figure
-plt.BoxDim = [5.2, 4.3];
-plt.LineWidth = 2;
-plt.FontSize = 15;
-% plt.XTick = -1:0.2:1;
-% plt.LegendLoc = 'NorthWest';
+plt.BoxDim = [2, 1.75];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+plt.LegendLoc = 'NorthWest';
 plt.FontName = 'Arial';
 plt.Title = rxnID1;
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
 plt.Interpreter = 'None';
-plt.export(['figures/others/new_rFP_expression_',rxnID1,'.tiff']);
+plt.XLim = xlim1;
+plt.YLim = ylim1;
+plt.export(['figures/others/new_rFP_expression_',rxnID1,'.pdf']);
 
 %% check expression consistency - discountinued
 myrxn1 = {'r_0915'};
