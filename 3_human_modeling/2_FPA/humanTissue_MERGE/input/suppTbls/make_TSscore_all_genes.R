@@ -29,4 +29,6 @@ for (i in 1:nrow(data)){
 
 write.csv(zMat,paste('additional_RNA_TS_scores_input.csv',sep = ''))
 write.csv(fittingRes,paste('additional_RNA_TS_scores_populationMetrics.csv',sep = ''))
+IDtbl = data.frame(data$gene.id.full, data$gene.id)
+write.csv(IDtbl,paste('additional_RNA_TS_IDtbl.csv',sep = ''))
 

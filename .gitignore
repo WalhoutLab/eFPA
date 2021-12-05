@@ -1,6 +1,5 @@
 1_yeast_modeling/FPA/modeling/fine_titration_targetOut/
 3_human_modeling/2_FPA/humanTissue_MERGE/input/suppTbls/1-s2.0-S0092867420310783-mmc3.xlsx
-1_yeast_modeling/FPA/modeling/fine_titration/
 2_C_elegans_modeling/FPA/C.elegansTissue_dataset/newFPA/input/distanceMatrix_plain.txt
 2_C_elegans_modeling/FPA/C.elegansTissue_dataset/newFPA/input/distanceMatrix_weighted.txt
 2_C_elegans_modeling/FPA/C.elegansTissue_dataset/newFPA/distance_inputs/
@@ -20,3 +19,4 @@
 3_human_modeling/2_FPA/humanTissue_MERGE/input/distanceMatrix.txt
 3_human_modeling/2_FPA/humanTissue_MERGE/input/distanceMatrix_weighted.txt
 3_human_modeling/2_FPA/distance_inputs/iHuman1/Smatrix_regular.txt
+1_yeast_modeling/FPA/modeling/output/fine_titration/

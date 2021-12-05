@@ -22,5 +22,3 @@ else
         type = 'High Diversity';
     end
 end
-
-%%  seperate out the jummping fluxes (for precision)

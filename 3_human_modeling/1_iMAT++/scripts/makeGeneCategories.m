@@ -2,39 +2,21 @@
 % This is an interactive gene category builder that helps user to fit and
 % build the categories for iMAT++. The expression quantifications (TPM
 % or FPKM) could be provided as a csv table.
+% it is a equivalent of CatExp algorithm in Yilmaz at al 2020. We made
+% minor modifications here. 
 % ..Author: Xuhang Li, Mar 2020
 mkdir(['input/humanModel/GeneCategories']);
 %% part I: load the expression data and adjust the format
 TPM = readtable('./input/humanModel/RNATissueMedian_log2TPM.xlsx');
 TPM{:,2:end} = 2.^TPM{:,2:end};
 load('./input/humanModel/ihuman_COBRA.mat');
-% (specific to worm model)
 
 metGenesInd = ismember(TPM.gene_id,model.genes);
 geneInfo = readtable('./input/humanModel/humanGeneInfo.xlsx');
 proteinCodingGenes = geneInfo.EnsemblGeneID(strcmp(geneInfo.LocusType,'gene with protein product'));
 proteinCodingInd = ismember(TPM.gene_id,proteinCodingGenes);
-% for other models or inputs, please make sure:
-% 1. the columns are conditions to be analyzed
-% 2. the rows are genes with gene ID used in the model
 %% part II: the classification based on absolute value
-% Rationale:
-% user can perform the fitting both by all protein coding genes or only
-% metabolic genes.
-
-% Please note that the distribution of TPM (FPKM) varies from dataset to
-% dataset, so it is not necessary that the categorization thresholds we used in
-% the tissue modeling is uniformly best choices for all dataset. In fact, our
-% experience suggests that it is best to use ALL PROTEIN CODING GENES for
-% SINGLE CELL RNA-SEQ DATA, but just METABOLIC GENES for BULK RNA-SEQ data,
-% in C. elegans. The possible reason is that the bulk RNA-seq of the whole
-% animal lacks the resolution to seperate the lowly expressed, tissue-specific genes
-% from the expression noise (the actual "lowly expressed subpop") into distinct subpopulations.
-% However, because metabolic genes are generally highly expressed, so the actual
-% "lowly expressed subpop" still gets seperated if only uses metabolic genes. 
-
-% fitData = TPM{proteinCodingInd,5:end};
-fitData = TPM{proteinCodingInd,2:end};% we perform guassian fitting only on metabolic genes
+fitData = TPM{proteinCodingInd,2:end};
 fitData = fitData(:);
 %fitData = fitData(:);
 histogram(log2(fitData))
@@ -73,24 +55,16 @@ xline(fit.mu(3) + 2*sqrt(fit.Sigma(3)),'--k');
 %% build the gene catagories
 zero2low = min(fit.mu) %set thresholds
 low2dynamic = median(fit.mu) %set thresholds
-% set the refinement boundary
-% ind = median(fit.mu)==fit.mu;
-% low_tail = fit.mu(ind) + 2*sqrt(fit.Sigma(ind))
 dynamic2high = max(fit.mu) %set thresholds
 names = TPM.Properties.VariableNames(2:end);%choose all the sample names
 metgenes = model.genes;
 TPM = TPM(ismember(TPM.gene_id,model.genes),:);%we only keep the genes in the model
- % specifically, we need to convert the gene ID for C. elegans model
-% [A,B] = ismember(TPM.gene_id,lookupTbl.WormBase_Gene_ID);
-% TPM.GeneID(A) = lookupTbl.ICELgene(B(A));
 for myName = names
     myTPM = log2(TPM.(myName{:}));
     GeneID = TPM.gene_id;
     ExpCateg.zero = GeneID(myTPM < zero2low);
     ExpCateg.low = GeneID(myTPM >= zero2low & myTPM < low2dynamic);
     ExpCateg.dynamic = GeneID(myTPM >= low2dynamic & myTPM < dynamic2high);
-    % ExpCateg.dynamic_low_tail = GeneID(myTPM >= low2dynamic & myTPM < low_tail);
-    % ExpCateg.dynamic_high_tail = GeneID(myTPM >= low_tail & myTPM < dynamic2high);
     ExpCateg.high = GeneID(myTPM >= dynamic2high);
     % the uncalled genes (i.e., NA and ND)are in dynamic (moderately expressed)
     ExpCateg.dynamic = [ExpCateg.dynamic; metgenes(~ismember(metgenes,GeneID))];
@@ -148,10 +122,3 @@ stackN = [N_zero,N_low,N_dynamic,N_high];
 bar(1:size(stackN,1),stackN,'stacked')
 xlabel('condition No.')
 legend({'zero','low','dynamic','high'});
-%% notice
-% Now you already have a rough gene category for each conditions. However,
-% as mentioned in the paper, we further used a heuristic algorithm to
-% refine the moderately expressed genes (aka, dynamic category).
-% This simple categorier is for users who want to have a quick and rough
-% gene categorization. Please use the CatExp in our GitHub repo for best
-% categorization result.

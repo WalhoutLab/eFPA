@@ -35,16 +35,14 @@ intRxns = model.rxns(~ismember(model.subSystems,exludeSys) & ~ismember(model.rxn
 model = creategrRulesField(model);
 %% other inputs
 % ```load the distance matrix```
-% Users can uncomment the following command to load from the distance 
-% calculator output. Here we load directly from saved matlab variable,
-% because of the file size restriction of GitHub
-% distance_raw = readtable('./../MetabolicDistance/Output/distanceMatrix_recon2_2.txt','FileType','text','ReadRowNames',true); % we load from the output of the distance calculator. For usage of distance calculator, please refer to the MetabolicDistance folder
 if strcmp(distanceMat,'original')
     distance_raw = readtable('./input/distanceMatrix.txt','FileType','text','ReadRowNames',true); % we load from the output of the distance calculator. For usage of distance calculator, please refer to the MetabolicDistance folder
 elseif strcmp(distanceMat,'weighted')
     distance_raw = readtable('./input/distanceMatrix_weighted.txt','FileType','text','ReadRowNames',true); % we load from the output of the distance calculator. For usage of distance calculator, please refer to the MetabolicDistance folder
-    % there are some NaN. seems related to transport rxns; unknown why. assume
-    % inf for now! 11252020
+    % there are some NaN. seems related to transport rxns; unknown why, but
+    % manually checking a few indicates those reactions are very distal
+    % (eg, one is drug metabolism one is ER lipid transporter). so, as a
+    % workaround, we set all these distances to inf
     Dmat = table2array(distance_raw);
     Dmat(isnan(Dmat)) = inf;
     distance_raw{:,:} = Dmat;
@@ -63,49 +61,17 @@ for i = 1:size(distMat_min,1)
 end
 distMat = distMat_min;
 
-% we fixed a few bugs but didnt rerun the progam. so it may produce
-% different result in the next round of rerun (12282020)
 
-% recover the distances for uptakes -- no need since the penalty is zero
-% anyways
-% extRxnsInd = findExcRxns_XL(model);
-% uptakes = setdiff([model.rxns(model.S(strcmp(model.mets,'sideNutr'),:)~=0);...
-%                model.rxns(model.S(strcmp(model.mets,'majorNutr'),:)~=0)],{'EX_majorNutr','EX_sideNutr'});
-% distMat = [distMat inf(size(distMat,1),length(uptakes))
-%           inf(length(uptakes), size(distMat,2)) inf(length(uptakes),length(uptakes))];
-% distMat_raw = [distMat_raw inf(size(distMat_raw,1),length(uptakes))
-%   inf(length(uptakes), size(distMat_raw,2)) inf(length(uptakes),length(uptakes))];
-% 
-% for i = 1:length(uptakes)
-%    theMet = setdiff(model.mets(model.S(:,strcmp(model.rxns,uptakes{i}))~=0),{'sideNutr','majorNutr'});
-%    theEXrxn = setdiff(model.rxns((model.S(strcmp(model.mets,theMet{:}),:)~=0)' & extRxnsInd),uptakes{i});
-%    theExInd = strcmp(labels,[theEXrxn{:},'_r']);
-%    if any(theExInd)
-%        distMat(size(distMat_min,1)+i,1:size(distMat_min,2)) = distMat_raw(theExInd,1:length(labels));
-%        distMat(1:size(distMat_min,1), size(distMat_min,2)+i) = distMat_raw(theExInd,1:length(labels))';
-%        
-%        distMat_raw(size(distMat_min,1)+i,1:size(distMat_min,2)) = distMat_raw(theExInd,1:length(labels));
-%    else
-%        fprintf('uptake of met %s has no distance!\n',model.metNames{strcmp(model.mets,theMet{:})});
-%    end
-%    distMat(size(distMat_min,1)+i, size(distMat_min,2)+i) = 0;
-%    distMat_raw(size(distMat_min,1)+i, size(distMat_min,2)+i) = 0;
-% end
-% labels = [labels,cellfun(@(x) [x,'_r'],uptakes, 'UniformOutput',0)'];
+
+% note that the distance matrix dont have distances for uptake reactions as 
+% the distance was calculated by the original human1 model. but there is no 
+% need to add distances for uptake reactions since their penalty is zero
 
 % ```set the special penalties (if desired)```
 extRxns = model.rxns(findExcRxns_XL(model));
-% sideUptake = model.rxns(model.S(strcmp(model.mets,'sideNutr'),:)~=0);
-% majorUptake = model.rxns(model.S(strcmp(model.mets,'majorNutr'),:)~=0);
-
-manualPenalty = [extRxns];%;sideUptake;majorUptake];
-manualPenalty(:,2) = [mat2cell(zeros(length(extRxns),1),ones(length(extRxns),1))];%;...
-                      %mat2cell(10.*ones(length(sideUptake),1),ones(length(sideUptake),1));...
-                      %mat2cell(zeros(length(majorUptake),1),ones(length(majorUptake),1))];
-                  
-% special distance for side - to penalize distal side usage
-manualDist = {};%sideUptake;
-%manualDist(:,2) = mat2cell(10.*ones(length(sideUptake),1),ones(length(sideUptake),1));
+manualPenalty = [extRxns];
+manualPenalty(:,2) = [mat2cell(zeros(length(extRxns),1),ones(length(extRxns),1))];
+manualDist = {};
 %% ```load expression files```
 if strcmp(expressionDataType,'RNA_TS_common')
     % only look at common genes between RNA and protein dataset 
@@ -125,6 +91,60 @@ if strcmp(expressionDataType,'RNA_TS_common')
     % align the tables
     colLabels = logTPMTbl.Properties.VariableNames(2:end);
     rowlabels = intersect(intersect(intersect(logTPMTbl.gene_id,TsTbl.ensembl_id),popMean.ensembl_id),TsTbl_pro.ensembl_id);
+    logTPMmat = logTPMTbl{:,colLabels};
+    [A B] = ismember(rowlabels,logTPMTbl.gene_id);
+    logTPMmat = logTPMmat(B(A),:);
+    TSmat = TsTbl{:,colLabels};
+    [A B] = ismember(rowlabels,TsTbl.ensembl_id);
+    TSmat = TSmat(B(A),:);
+    [A B] = ismember(rowlabels,popMean.ensembl_id);
+    popMeanRNA = popMean.rna_fitted_mu0(B(A));
+
+    % weight the fold change by TS score
+    FCmat = logTPMmat - popMeanRNA;
+    % set NA to 0 (no FC)
+    FCmat(isnan(FCmat)) = 0;
+    % weight
+    FCmat_weighted = (2.*normcdf(abs(TSmat))-1) .* FCmat;
+    % make the output table
+    [A B] = ismember(rowlabels, TsTbl.ensembl_id);
+    expTbl = TsTbl(B(A),[{'ensembl_id','entrez_id','hgnc_name','hgnc_symbol'},colLabels]);
+    % make the hypothetical count based on shrunk FC
+    expTbl{:,5:end} = 2.^(popMeanRNA+FCmat_weighted);
+    
+elseif strcmp(expressionDataType,'RNA_TS_all') 
+    % load the TS score
+    TsTbl = readtable('input/suppTbls/RNATSscore.xlsx');
+    TsTbl_homemade = readtable('input/suppTbls/RNATS_score_homemade.xlsx');
+    % combine the tables
+    % first align the colnames 
+    TsTbl_homemade.Properties.VariableNames(strcmp(TsTbl_homemade.Properties.VariableNames,'GEjunction')) = {'GEJunction'};
+    TsTbl_homemade = TsTbl_homemade(:,[TsTbl_homemade.Properties.VariableNames(1),TsTbl.Properties.VariableNames(5:end)]);
+    % then merge
+    TsTbl_homemade = TsTbl_homemade(~ismember(TsTbl_homemade.Row,TsTbl.ensembl_id),:);
+    TsTbl_homemade.Properties.VariableNames(1) = {'ensembl_id'};
+    TsTbl_homemade.entrez_id = repmat(NaN,size(TsTbl_homemade,1),1);
+    TsTbl_homemade.hgnc_name = repmat({'Not Determined'},size(TsTbl_homemade,1),1);
+    TsTbl_homemade.hgnc_symbol = repmat({'Not Determined'},size(TsTbl_homemade,1),1);
+    TsTbl_homemade = TsTbl_homemade(:,TsTbl.Properties.VariableNames);
+    TsTbl = [TsTbl;TsTbl_homemade];
+    
+    % set NA to 0 (population mean)
+    tmp = TsTbl{:,5:end};
+    tmp(isnan(tmp)) = 0;
+    TsTbl{:,5:end} = tmp;
+    % load the median abundance
+    logTPMTbl = readtable('input/suppTbls/RNATissueMedian_log2TPM.xlsx');
+    popMean = readtable('input/suppTbls/populationMeans.xlsx','Sheet','RNA');
+    popMean_homemade = readtable('input/suppTbls/RNATS_fitting_homemade.xlsx');
+    popMean = popMean(:,[{'ensembl_id'},{'rna_fitted_mu0'},{'rna_fitted_sd0'}]);
+    popMean_homemade = popMean_homemade(:,2:4);
+    popMean_homemade.Properties.VariableNames = popMean.Properties.VariableNames;
+    popMean = [popMean;popMean_homemade(~ismember(popMean_homemade.ensembl_id, popMean.ensembl_id),:)];
+    
+    % align the tables
+    colLabels = logTPMTbl.Properties.VariableNames(2:end);
+    rowlabels = intersect(intersect(logTPMTbl.gene_id,TsTbl.ensembl_id),popMean.ensembl_id);
     logTPMmat = logTPMTbl{:,colLabels};
     [A B] = ismember(rowlabels,logTPMTbl.gene_id);
     logTPMmat = logTPMmat(B(A),:);
