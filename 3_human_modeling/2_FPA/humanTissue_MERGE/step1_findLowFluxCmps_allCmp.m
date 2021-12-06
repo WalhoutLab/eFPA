@@ -1,3 +1,6 @@
+%% About
+% same as for HMDB reference set mets, this is to find low flux cmp for all
+% human1 compoud 
 %% set up the env variables
 addpath ~/cobratoolbox/
 addpath ./input/
@@ -57,8 +60,8 @@ parfor i = 1: length(cmps)
     
     fprintf('\b|\n');%for simple progress monitor
 end
-save('FVA_cmp_all.mat','FVA_f','FVA_r')
+save('input/FVA_cmp_all.mat','FVA_f','FVA_r')
 lowFluxCmps = cmps( FVA_f > 1e-9 & FVA_f < 1);
 lowFluxCmps = union(lowFluxCmps, cmps( FVA_r < -1e-9 & FVA_r > -1));
-save('lowFluxCmp_all.mat','lowFluxCmps')
+save('input/lowFluxCmp_all.mat','lowFluxCmps')
 

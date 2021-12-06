@@ -1,7 +1,11 @@
-%% the p-value of boxplots should be changed to rank-sum test
+%% About 
+% systematically benchmark FPA (the principle of local expression
+% dictating metabolic flux/functions) and compare protein data with RNA
+% data as the input, based on HMDB reference tissue-enriched metabolite
+% dataset
 %%
 setEnvForAnalysis
-addpath('PlotPub/lib')
+addpath('./PlotPub/lib')
 targetExRxns = model.rxns(ismember(model.subSystems,{'Transport reactions'}));
 metComp = regexp(model.metNames,'\[(\w|\s)*\]$','match');
 metComp = [metComp{:}]';

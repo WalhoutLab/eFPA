@@ -1,9 +1,43 @@
-%% the p-value of boxplots should be changed to rank-sum test
+%% About
+% prepare the objective functions for further analysis of metabolite
+% benchmarking 
 %%
+addpath ./../scripts/
 setEnvForAnalysis
-%% EX transporter and DM for these metabolites and nearest network
+%% prepare the metID 
+% load the HMDB reference dataset
+metTissueTbl = readtable('input/MSEA_dataset/met_tissue_set_processed.xlsx','Sheet','met_tissue_set_processed');
+TissueAligTbl = readtable('input/MSEA_dataset/met_tissue_set_processed.xlsx','Sheet','tissueAlignment');
+cmpTbl = readtable('input/MSEA_dataset/met_tissue_set_processed.xlsx','Sheet','metName');
+allCmp = {};
+validTissues = {};
+for i = 1:length(TissueAligTbl.HMDBtissues)
+    validTissues = [validTissues; strsplit(TissueAligTbl.HMDBtissues{i},'; ')'];
+end
+validTissues = unique(validTissues);
+for i = 1:size(metTissueTbl,1)
+    if any(strcmp(metTissueTbl.name{i},validTissues))
+        cmplist = metTissueTbl{i,5};
+        cmplist = strsplit(cmplist{:},'; ')';
+        allCmp = union(allCmp,cmplist);
+    end
+end
+% map the cmp in HMDB and in the model
+load('input/metTbl.mat');
+metNames = regexprep(model.metNames,' \[(\w|\s)*\]$','');
+% match HMDB cmp to Human1 cmp by their ID in metaboanalyst and the HMDB ID
+[A B] = ismember(allCmp,cmpTbl.name); 
+allCmp_MSEAname = allCmp(A);
+allCmp_HMDB = cmpTbl.hmdb_id(B(A));
+[A B] = ismember(allCmp_HMDB,metTbl.HMDB);
+allCmp_iHumanName = metTbl.name(B(A));
+allCmp_MSEAname = allCmp_MSEAname(A);
+specialMatch = readtable('input/MSEA_dataset/met_tissue_set_processed.xlsx','Sheet','directMatch');
+allCmp_iHumanName = [allCmp_iHumanName;specialMatch.ihumanName];
+save('input/allCmp_iHumanName.mat');
+%% obj functions include EX transporter and DM for these metabolites and asscoiated internal rxns
 % target DM
-load('allCmp_iHumanName.mat');
+load('input/allCmp_iHumanName.mat');
 allCmp_iHumanName = unique(allCmp_iHumanName);
 targetRxns_DM = cellfun(@(x) ['NewMet_',x],allCmp_iHumanName,'UniformOutput',false);
 
@@ -14,16 +48,16 @@ metComp = [metComp{:}]';
 EXmets = strcmp(metComp,'[Extracellular]');
 EXinvolvedRxns = model.rxns(any(model.S(EXmets,:)~=0,1));
 targetExRxns = intersect(targetExRxns,EXinvolvedRxns);
-targetExRxns = [targetExRxns;{'MI1Pt'}];
+targetExRxns = [targetExRxns;{'MI1Pt'}];% this rxn seems have incorrect cmp label
 targetRxns = targetExRxns;
 targetRxns_all_transporter = targetRxns;
 
 metNames = regexprep(model.metNames,' \[(\w|\s)*\]$','');
 metInd = ismember(metNames, allCmp_iHumanName);
 myRxns = model.rxns(any(model.S(metInd,:),1));
-targetRxns_TSP = intersect(targetRxns_all_transporter,myRxns);
+targetRxns_TSP = intersect(targetRxns_all_transporter,myRxns); % only for HMDB reference metabolites
 
-% nearest network reactions for these metabolites 
+% directly associated internal reactions for the metabolites
 allCmp_iHumanName = setdiff(allCmp_iHumanName,{'Side Nutrient in Blood Serum','Major Nutrient in Blood Serum'});
 metNames = regexprep(model.metNames,' \[(\w|\s)*\]$','');
 S_logical = full(logical(model.S~=0));
@@ -41,5 +75,5 @@ for i = 1:length(allCmp_iHumanName)
 end
 targetRxns_INT = unique(targetRxns_INT);
 
-save('HMDB_objectives.mat','targetRxns_DM','targetRxns_TSP','targetRxns_INT');
+save('input/HMDB_objectives.mat','targetRxns_DM','targetRxns_TSP','targetRxns_INT');
    

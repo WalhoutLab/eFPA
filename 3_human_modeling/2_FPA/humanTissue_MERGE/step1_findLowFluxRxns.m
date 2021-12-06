@@ -1,3 +1,6 @@
+%% About
+% same as find low flux cmps, this is to find the reactions whose FVA limit
+% is lower than the flux allowance constant
 %% set up the env variables
 addpath ~/cobratoolbox/
 addpath ./input/

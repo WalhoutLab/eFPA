@@ -1,3 +1,6 @@
+%% About
+% some HMDB reference set metabolite (compound) has very low FVA limit, so we need to use a
+% smaller total flux allowance for them in the FPA. we first find these out
 %% set up the env variables
 addpath ~/cobratoolbox/
 addpath ./input/
@@ -56,8 +59,8 @@ parfor i = 1: length(cmps)
     
     fprintf('\b|\n');%for simple progress monitor
 end
-save('FVA_cmp.mat','FVA_f','FVA_r')
+save('input/FVA_cmp.mat','FVA_f','FVA_r')
 lowFluxCmps = cmps( FVA_f > 1e-9 & FVA_f < 1);
 lowFluxCmps = union(lowFluxCmps, cmps( FVA_r < -1e-9 & FVA_r > -1));
-save('lowFluxCmp.mat','lowFluxCmps')
+save('input/lowFluxCmp.mat','lowFluxCmps')
 

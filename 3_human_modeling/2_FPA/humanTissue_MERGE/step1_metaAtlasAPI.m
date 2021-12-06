@@ -1,3 +1,7 @@
+%% About
+% grab metabolite information for mapping the metabolite in HMDB reference
+% dataset to the metabolites in the model 
+%%
 load('input/Human-GEM-RIVEN.mat');
 metName = {};
 metID = {};
