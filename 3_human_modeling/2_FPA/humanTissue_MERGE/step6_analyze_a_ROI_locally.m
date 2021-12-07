@@ -5,17 +5,17 @@ expressionDataType = 'protein_TS_common';
 networkType = 'tissue';
 targetType = 'rxn';
 n = 6;
-targetRxns = {'r1316'}; % production of stearate
+targetRxns = {'HMR_3078'}; % production of stearate
 
-%% This is to reproduce the C. elegans tissue FPA results in supp table S7 and S8
-%% set up the env variables
+%% set up the environment
 addpath ~/cobratoolbox/
 addpath ./input/
 addpath ./../scripts/
 addpath ./../scripts/oriMERGE/
 addpath ./../../bins/
 initCobraToolbox(false)
-%% prepare model
+
+% prepare model
 load('input/ihuman_serum.mat','model');
 model.subSystems = [model.subSystems{:}]';
 % the default constraints are unlimited, so we dont change anything
@@ -39,12 +39,8 @@ intRxns = model.rxns(~ismember(model.subSystems,exludeSys) & ~ismember(model.rxn
 
 % create missing field
 model = creategrRulesField(model);
-%% other inputs
+% other inputs
 % ```load the distance matrix```
-% Users can uncomment the following command to load from the distance 
-% calculator output. Here we load directly from saved matlab variable,
-% because of the file size restriction of GitHub
-% distance_raw = readtable('./../MetabolicDistance/Output/distanceMatrix_recon2_2.txt','FileType','text','ReadRowNames',true); % we load from the output of the distance calculator. For usage of distance calculator, please refer to the MetabolicDistance folder
 if strcmp(distanceMat,'original')
     distance_raw = readtable('./input/distanceMatrix.txt','FileType','text','ReadRowNames',true); % we load from the output of the distance calculator. For usage of distance calculator, please refer to the MetabolicDistance folder
 elseif strcmp(distanceMat,'weighted')
@@ -71,22 +67,19 @@ distMat = distMat_min;
 
 % ```set the special penalties (if desired)```
 extRxns = model.rxns(findExcRxns_XL(model));
-% sideUptake = model.rxns(model.S(strcmp(model.mets,'sideNutr'),:)~=0);
-% majorUptake = model.rxns(model.S(strcmp(model.mets,'majorNutr'),:)~=0);
-
 manualPenalty = [extRxns];%;sideUptake;majorUptake];
 manualPenalty(:,2) = [mat2cell(zeros(length(extRxns),1),ones(length(extRxns),1))];%;...
-                      %mat2cell(10.*ones(length(sideUptake),1),ones(length(sideUptake),1));...
-                      %mat2cell(zeros(length(majorUptake),1),ones(length(majorUptake),1))];
-                  
+                 
 % special distance for side - to penalize distal side usage
-manualDist = {};%sideUptake;
-%manualDist(:,2) = mat2cell(10.*ones(length(sideUptake),1),ones(length(sideUptake),1));
-%% ```load expression files```
+manualDist = {};
+
+% ```load expression files```
 if strcmp(expressionDataType,'RNA_TS_common')
     % only look at common genes between RNA and protein dataset 
-    % the lowly expressed gene in RNA is also filtered due to lack of pop
-    % mean estimation
+    % this is the parsimonious set that we only looked at genes passing the
+    % filters in the original Cell paper (i.e., low expressed genes are
+    % gone)
+    % the tissue medians were compressed by TS scores
      
     % load the TS score
     TsTbl = readtable('input/suppTbls/RNATSscore.xlsx');
@@ -120,9 +113,70 @@ if strcmp(expressionDataType,'RNA_TS_common')
     [A B] = ismember(rowlabels, TsTbl.ensembl_id);
     expTbl = TsTbl(B(A),[{'ensembl_id','entrez_id','hgnc_name','hgnc_symbol'},colLabels]);
     % make the hypothetical count based on shrunk FC
-    expTbl{:,5:end} = 2.^(popMeanRNA+FCmat_weighted);
+    expTbl{:,5:end} = 2.^(popMeanRNA+FCmat_weighted);% no need to add pseudocount since TPM<1 were filtered
+    
+elseif strcmp(expressionDataType,'RNA_TS_all') 
+    % look at all genes detected by RNA and the expression were compressed
+    % by TS score
+    
+    % load the TS score
+    TsTbl = readtable('input/suppTbls/RNATSscore.xlsx');
+    TsTbl_homemade = readtable('input/suppTbls/RNATS_score_homemade.xlsx');
+    % combine the tables
+    % first align the colnames 
+    TsTbl_homemade.Properties.VariableNames(strcmp(TsTbl_homemade.Properties.VariableNames,'GEjunction')) = {'GEJunction'};
+    TsTbl_homemade = TsTbl_homemade(:,[TsTbl_homemade.Properties.VariableNames(1),TsTbl.Properties.VariableNames(5:end)]);
+    % then merge
+    TsTbl_homemade = TsTbl_homemade(~ismember(TsTbl_homemade.Row,TsTbl.ensembl_id),:);
+    TsTbl_homemade.Properties.VariableNames(1) = {'ensembl_id'};
+    TsTbl_homemade.entrez_id = repmat(NaN,size(TsTbl_homemade,1),1);
+    TsTbl_homemade.hgnc_name = repmat({'Not Determined'},size(TsTbl_homemade,1),1);
+    TsTbl_homemade.hgnc_symbol = repmat({'Not Determined'},size(TsTbl_homemade,1),1);
+    TsTbl_homemade = TsTbl_homemade(:,TsTbl.Properties.VariableNames);
+    TsTbl = [TsTbl;TsTbl_homemade];
+    
+    % set NA to 0 (population mean)
+    tmp = TsTbl{:,5:end};
+    tmp(isnan(tmp)) = 0;
+    TsTbl{:,5:end} = tmp;
+    % load the median abundance
+    logTPMTbl = readtable('input/suppTbls/RNATissueMedian_log2TPM.xlsx');
+    popMean = readtable('input/suppTbls/populationMeans.xlsx','Sheet','RNA');
+    popMean_homemade = readtable('input/suppTbls/RNATS_fitting_homemade.xlsx');
+    popMean = popMean(:,[{'ensembl_id'},{'rna_fitted_mu0'},{'rna_fitted_sd0'}]);
+    popMean_homemade = popMean_homemade(:,2:4);
+    popMean_homemade.Properties.VariableNames = popMean.Properties.VariableNames;
+    popMean = [popMean;popMean_homemade(~ismember(popMean_homemade.ensembl_id, popMean.ensembl_id),:)];
+    
+    % align the tables
+    colLabels = logTPMTbl.Properties.VariableNames(2:end);
+    rowlabels = intersect(intersect(logTPMTbl.gene_id,TsTbl.ensembl_id),popMean.ensembl_id);
+    logTPMmat = logTPMTbl{:,colLabels};
+    [A B] = ismember(rowlabels,logTPMTbl.gene_id);
+    logTPMmat = logTPMmat(B(A),:);
+    TSmat = TsTbl{:,colLabels};
+    [A B] = ismember(rowlabels,TsTbl.ensembl_id);
+    TSmat = TSmat(B(A),:);
+    [A B] = ismember(rowlabels,popMean.ensembl_id);
+    popMeanRNA = popMean.rna_fitted_mu0(B(A));
+
+    % weight the fold change by TS score
+    FCmat = logTPMmat - popMeanRNA;
+    % set NA to 0 (no FC)
+    FCmat(isnan(FCmat)) = 0;
+    % weight
+    FCmat_weighted = (2.*normcdf(abs(TSmat))-1) .* FCmat;
+    % make the output table
+    [A B] = ismember(rowlabels, TsTbl.ensembl_id);
+    expTbl = TsTbl(B(A),[{'ensembl_id','entrez_id','hgnc_name','hgnc_symbol'},colLabels]);
+    % make the hypothetical count based on shrunk FC
+    expTbl{:,5:end} = 2.^(popMeanRNA+FCmat_weighted)+1; % we add one pseudo count in this case to offset the very lowly expressed genes
+    % since we used in-house TS score that did not filter the low expressed
+    % genes, we add a pseudo count to work around it
     
 elseif strcmp(expressionDataType,'RNA_raw_common')
+    % only look at the commonly detected genes without compression
+    
     % load the TS score
     TsTbl = readtable('input/suppTbls/RNATSscore.xlsx');
     TsTbl_pro = readtable('input/suppTbls/proteinTSscore.xlsx');
@@ -139,34 +193,27 @@ elseif strcmp(expressionDataType,'RNA_raw_common')
     logTPMmat = logTPMTbl{:,colLabels};
     [A B] = ismember(rowlabels,logTPMTbl.gene_id);
     logTPMmat = logTPMmat(B(A),:);
-%     TSmat = TsTbl{:,colLabels};
-%     [A B] = ismember(rowlabels,TsTbl.ensembl_id);
-%     TSmat = TSmat(B(A),:);
-%     [A B] = ismember(rowlabels,popMean.ensembl_id);
-    % popMeanRNA = popMean.rna_fitted_mu0(B(A));
-    % weight the fold change by TS score
-    % FCmat = logTPMmat; %- popMeanRNA;
-    % set NA to 0 (no FC)
-    % FCmat(isnan(FCmat)) = 0;
-    % weight
-    % FCmat_weighted = (1-2.^(-abs(TSmat))) .* FCmat;
     % make the output table
     [A B] = ismember(rowlabels, TsTbl.ensembl_id);
     expTbl = TsTbl(B(A),[{'ensembl_id','entrez_id','hgnc_name','hgnc_symbol'},colLabels]);
     % make the hypothetical count based on shrunk FC
-    expTbl{:,5:end} = 2.^(logTPMmat);
+    expTbl{:,5:end} = 2.^(logTPMmat); % no need to add pseudocount since TPM<1 were filtered
     
 elseif strcmp(expressionDataType,'RNA_raw_all')
+    % look at all genes detected by RNA without compression
+    
     % load the median abundance
     logTPMTbl = readtable('input/suppTbls/RNATissueMedian_log2TPM.xlsx');
     % align the tables
     colLabels = logTPMTbl.Properties.VariableNames(2:end);
     rowlabels = logTPMTbl.gene_id;
     expTbl = table(rowlabels,rowlabels,rowlabels,rowlabels);
-    expTbl{:,5:length(colLabels)+4} = 2.^(logTPMTbl{:,2:end});
+    expTbl{:,5:length(colLabels)+4} = 2.^(logTPMTbl{:,2:end})+1;% add 1 pseudocount to offset lowly expressed genes
     expTbl.Properties.VariableNames = [{'ensembl_id','ensembl_id1','ensembl_id2','ensembl_id3'},colLabels];
     
 elseif strcmp(expressionDataType,'protein_TS_common')
+    % look at the commonly detected genes with TS score compression
+    
     % load the TS score
     TsTbl = readtable('input/suppTbls/proteinTSscore.xlsx');
     % set NA to 0 (population mean)
@@ -200,16 +247,13 @@ elseif strcmp(expressionDataType,'protein_TS_common')
     % make the output table
     [A B] = ismember(rowlabels, TsTbl.ensembl_id);
     expTbl = TsTbl(B(A),[{'ensembl_id','entrez_id','hgnc_name','hgnc_symbol'},colLabels]);
-    expTbl{:,5:end} = 2.^FCmat_weighted .* (2 .^ popMeanRNA);
+    expTbl{:,5:end} = 2.^FCmat_weighted .* (2 .^ popMeanRNA);% no need to add pseudocount since TPM<1 were filtered
 
 elseif strcmp(expressionDataType,'protein_raw_common')
+    % commonly detected without TS compression
+    
     % load the TS score
     TsTbl = readtable('input/suppTbls/proteinTSscore.xlsx');
-    % set NA to 0 (population mean)
-    tmp = TsTbl{:,5:end};
-    tmp(isnan(tmp)) = 0;
-    TsTbl{:,5:end} = tmp;
-    % load the median abundance
     FcTbl = readtable('input/suppTbls/proteinTissueMedian_log2FC_againts_reference.xlsx');
     popMean_RNA = readtable('input/suppTbls/populationMeans.xlsx','Sheet','RNA');
     % align the tables
@@ -226,19 +270,20 @@ elseif strcmp(expressionDataType,'protein_raw_common')
     popMeanPro = popMean.prt_fitted_mu0(B(A));
     [A B] = ismember(rowlabels,popMean_RNA.ensembl_id);
     popMeanRNA = popMean_RNA.rna_fitted_mu0(B(A));
-
     % recenter the fc matrix
     FCmat_centered = FCmat - popMeanPro;
     % set NA to 0 (no FC)
     FCmat_centered(isnan(FCmat_centered)) = 0;
     % dont weight
-    FCmat_weighted = 1.*(TSmat~=0) .* FCmat_centered;%(1-2.^(-abs(TSmat))) .* FCmat_centered;
+    FCmat_weighted = 1.*(~isnan(TSmat)) .* FCmat_centered;% To ensure it is comparable with the compressed version, we put it to zero when TS score is not available 
     % make the output table
     [A B] = ismember(rowlabels, TsTbl.ensembl_id);
     expTbl = TsTbl(B(A),[{'ensembl_id','entrez_id','hgnc_name','hgnc_symbol'},colLabels]);
-    expTbl{:,5:end} = 2.^FCmat_weighted .* (2 .^ popMeanRNA);
+    expTbl{:,5:end} = 2.^FCmat_weighted .* (2 .^ popMeanRNA);% no need to add pseudocount since TPM<1 were filtered
 
 elseif strcmp(expressionDataType,'protein_TS_all')
+    % all detected by protein with TS compression
+    
     % load the TS score
     TsTbl = readtable('input/suppTbls/proteinTSscore.xlsx');
     % set NA to 0 (population mean)
@@ -263,7 +308,7 @@ elseif strcmp(expressionDataType,'protein_TS_all')
     [A B] = ismember(rowlabels,popMean_RNA.ensembl_id);
     popMeanRNA = popMean_RNA.rna_fitted_mu0(B(A));
 
-    % assume the expression of undetected RNA is 1 TPM
+    % assume the expression of undetected RNA (filtered) is 1 TPM
     undet = setdiff(TsTbl.ensembl_id, popMean_RNA.ensembl_id);
     rowlabels = [rowlabels;undet];
     [A B] = ismember(undet,FcTbl.gene_id);
@@ -284,15 +329,13 @@ elseif strcmp(expressionDataType,'protein_TS_all')
     % make the output table
     [A B] = ismember(rowlabels, TsTbl.ensembl_id);
     expTbl = TsTbl(B(A),[{'ensembl_id','entrez_id','hgnc_name','hgnc_symbol'},colLabels]);
-    expTbl{:,5:end} = 2.^FCmat_weighted .* (2 .^ popMeanRNA);
+    expTbl{:,5:end} = 2.^FCmat_weighted .* (2 .^ popMeanRNA);% no need to add pseudocount since TPM<1 were filtered or assumed 1
 
 elseif strcmp(expressionDataType,'protein_raw_all')
+    % all detected by protein without compression
+    
     % load the TS score
     TsTbl = readtable('input/suppTbls/proteinTSscore.xlsx');
-    % set NA to 0 (population mean)
-    tmp = TsTbl{:,5:end};
-    tmp(isnan(tmp)) = 0;
-    TsTbl{:,5:end} = tmp;
     % load the median abundance
     FcTbl = readtable('input/suppTbls/proteinTissueMedian_log2FC_againts_reference.xlsx');
     popMean_RNA = readtable('input/suppTbls/populationMeans.xlsx','Sheet','RNA');
@@ -328,16 +371,14 @@ elseif strcmp(expressionDataType,'protein_raw_all')
     % set NA to 0 (no FC)
     FCmat_centered(isnan(FCmat_centered)) = 0;
     % dont weight
-    FCmat_weighted = 1.*(TSmat~=0) .* FCmat_centered;%(1-2.^(-abs(TSmat))) .* FCmat_centered;
+    FCmat_weighted = 1.*(~isnan(TSmat)) .* FCmat_centered;% To ensure it is comparable with the compressed version, we put it to zero when TS score is not available
     % make the output table
     [A B] = ismember(rowlabels, TsTbl.ensembl_id);
     expTbl = TsTbl(B(A),[{'ensembl_id','entrez_id','hgnc_name','hgnc_symbol'},colLabels]);
-    expTbl{:,5:end} = 2.^FCmat_weighted .* (2 .^ popMeanRNA);
+    expTbl{:,5:end} = 2.^FCmat_weighted .* (2 .^ popMeanRNA); % no need to add pseudocount since TPM<1 were filtered or assumed 1
 else
     error('unknown expression data type!');
 end
-
- 
 
 % Make the master_expression for human tissues
 master_expression = {};
@@ -351,7 +392,7 @@ for i = 1:length(conditions)
     expression.value = expTbl.(conditions{i})(B(A));
     master_expression{i} = expression;
 end
-%% ```setup the block list (context-specific network)```
+% ```setup the block list (context-specific network)```
 if strcmp(networkType,'tissue')
     expDataID = strsplit(expressionDataType,'_');
     expDataID = expDataID{1};
@@ -373,7 +414,6 @@ end
 %% prepare paremeters of running FPA
 maxDist = max(distMat(~isinf(distMat))); % maximum distance
 parpool(4,'SpmdEnabled',false); % we run this code on a 40-core lab server
-%% PART I: FPA for normal reactions (reaction-centered FPA)
 penalty = calculatePenalty(model,master_expression,manualPenalty);
 %% PART I: FPA for normal reactions (reaction-centered FPA)
 if strcmp(targetType,'rxn')
@@ -486,7 +526,6 @@ elseif strcmp(targetType,'allMetDemand')
     end
 
     % FPA for low flux rxns ==> to be done (need to do FVA first) 
-    smallTarget = {};
     changeCobraSolverParams('LP','optTol', 10e-9);
     changeCobraSolverParams('LP','feasTol', 10e-9);
     smallTarget = intersect(lowFluxRxns,targetRxns);
@@ -499,7 +538,8 @@ elseif strcmp(targetType,'allMetDemand')
                                                     {},1,{},0.0003);
     end
 end
-%% get the final result of reltaive flux potential
+
+% get the final result of reltaive flux potential
 relFP_f = nan(size(FP,1),length(master_expression));% flux potential for forward rxns
 relFP_r = nan(size(FP,1),length(master_expression));% flux potential for reverse rxns
 for i = 1:size(FP,1)
@@ -543,7 +583,7 @@ plt.Interpreter = 'none';
 %% save plot
 plt.export(['figures/FPA_peroxi_beta_palmito_example.tiff']);
 
-%%
+%% delta rfp
 figure(1)
 c = categorical(conditions);
 bar(c, relFP_r(1,:))
@@ -571,9 +611,9 @@ plt.FontName = 'Arial';
 plt.Interpreter = 'none';
 %% save plot
 plt.export(['figures/FPA_peroxi_beta_palmito_example_expression_',name2,'.tiff']);
-%% check a genes' impact
-model.rxns(logical(model.rxnGeneMat(:,strcmp(model.genes,name2))))
-%% check distribution
+
+
+%% check flux distribution
 model_irr = convertToIrreversible(model);
 %%
 tissue = 'HeartAtrial';
@@ -583,21 +623,3 @@ mytbl = listFPtbl(model_irr,FP_solutions{1,strcmp(conditions,tissue)}{1});
 tissue = 'Liver';
 FP_solutions{1,strcmp(conditions,tissue)}{2}.rxns = model_irr.rxns;
 mytbl = listFPtbl(model_irr,FP_solutions{1,strcmp(conditions,tissue)}{2});
-%% track flux distirbution 
-mytbl2 = listRxn(model_irr,FP_solutions{1,strcmp(conditions,tissue)}{1}.x,'pyruvate [Extracellular]');
-
-%%
-myrxn = {'C161CPT12'};
-figure(7)
-c = categorical([conditions,{'super'}]);
-bar(c, penalty(strcmp(model.rxns,myrxn{:}),1:end))
-ylabel('rxn-level penalty')
-%% some notes
-% tyr -> dopa -> dopamine is captured 
-% tyr -> dopa --> dopamin --> noradrenaline is NOT captured. dopamine is
-% taken up directly 
-% --> 5hp --> serotonin is captured but the expression of the first step is mostly not
-% measured 
-
-% 'HMR_2259' to 'HMR_2265' 'Fatty acid elongation (odd-chain)' is a
-% pathway-level prediction 

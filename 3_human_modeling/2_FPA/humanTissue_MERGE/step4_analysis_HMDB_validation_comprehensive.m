@@ -608,7 +608,7 @@ for j = 1:length(qryMets)
         predMat_all_noNetwork_tsp = [predMat_all_noNetwork_tsp;max([relFP_sel_noNetwork(myInd,:)],[],1)];
     end
 end
-%% plot the box plots
+%% plot the box plots - benchmark the general predictor
 p = [];
 boxData = [];
 boxLabel = [];
@@ -616,7 +616,7 @@ xLabels = {};
 
 enrichedMet_rFP2 = predMat2(logical(refMat));
 boxData = [boxData;enrichedMet_rFP2;predMat_all2(:)];
-boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
+boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error (we confirmed the problem on PGLYCt_f as an example)
 boxLabel = [boxLabel;[repmat({'enriched2'},length(enrichedMet_rFP2),1);repmat({'all2'},size(predMat_all2,1)*size(predMat_all2,2),1)]];
 xLabels = [xLabels;{'enriched metabolites^{met}';'all metabolites^{met}'}];
 p(1) = ranksum(enrichedMet_rFP2,predMat_all2(:),  'Tail','right');
@@ -645,7 +645,7 @@ style.Format = 'svg';
 style.ApplyStyle = '1';
 hgexport(gcf,'test',S,'applystyle',true);
 saveas(gca,'figures/benchmarkMetabolomicsPredictor_boxplot.pdf');
-%% plot the box plots - benchmarkIntegration_boxplot
+%% plot the box plots - benchmark integration benefit by the general predictor 
 p = [];
 boxData = [];
 boxLabel = [];
@@ -691,7 +691,7 @@ style.ApplyStyle = '1';
 hgexport(gcf,'test',S,'applystyle',true);
 saveas(gca,'figures/benchmarkIntegrationBenefit_boxplot.pdf');
 
-%% plot the box plots - benchmarkProteinVsRNA_boxplot
+%% plot the box plots - benchmark Protein Vs RNA 
 p = [];
 boxData = [];
 boxLabel = [];
@@ -737,199 +737,3 @@ style.Format = 'svg';
 style.ApplyStyle = '1';
 hgexport(gcf,'test',S,'applystyle',true);
 saveas(gca,'figures/benchmarkProteinVsRNA_boxplot.pdf');
-
-%% plot the box plots - benchmarkOriginalVsNewFPA_boxplot
-p = [];
-boxData = [];
-boxLabel = [];
-xLabels = {};
-
-enrichedMet_rFP_oriMERGE = predMat_oriMERGE(logical(refMat));
-boxData = [boxData;enrichedMet_rFP_oriMERGE;predMat_all_oriMERGE(:)];
-boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
-boxLabel = [boxLabel;[repmat({'enriched_oriMERGE'},length(enrichedMet_rFP_oriMERGE),1);repmat({'all_oriMERGE'},size(predMat_all_oriMERGE,1)*size(predMat_all_oriMERGE,2),1)]];
-xLabels = [xLabels;{'enriched metabolites^{original FPA}';'all metabolites^{original FPA}'}];
-p(1) = ranksum(enrichedMet_rFP_oriMERGE,predMat_all_oriMERGE(:),  'Tail','right');
-
-enrichedMet_rFP = predMat(logical(refMat));
-boxData = [boxData;enrichedMet_rFP;predMat_all(:)];
-boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
-boxLabel = [boxLabel;[repmat({'enriched'},length(enrichedMet_rFP),1);repmat({'all'},size(predMat_all,1)*size(predMat_all,2),1)]];
-xLabels = [xLabels;{'enriched metabolites^{new FPA}';'all metabolites^{new FPA}'}];
-p(2) = ranksum(enrichedMet_rFP,predMat_all(:),  'Tail','right');
-
-figure('units','inch','position',[0,0,8,8])
-boxplot(boxData, boxLabel,'Labels',xLabels,'Colors','bkbk','Symbol','ro');
-ylim([-1.1 1.1])
-ylabel('\DeltarFP');
-xlabel('');
-set(gca, 'TickLabelInterpreter', 'tex');
-text(1.3,0.75,['p < ',num2str(p(1),2)],'fontsize', 12)
-text(3.3,0.75,['p < ',num2str(p(2),2)],'fontsize', 12)
-set(gca, 'fontsize', 14);
-lines = findobj(gcf, 'type', 'line', 'Tag', 'Median');
-set(lines, 'Color', 'r');
-xtickangle(30)
-S = hgexport('readstyle','default_sci');
-style.Format = 'svg';
-style.ApplyStyle = '1';
-hgexport(gcf,'test',S,'applystyle',true);
-saveas(gca,'figures/benchmarkOriginalVsNewFPA_boxplot.pdf');
-%% box plot of individual tissues 
-% brain is predicted by rxn FPA (i = 3) (other examples: pancreas i = 12; Adrenal Gland i = 1,skin i =5; liver i = 6, muscle i = 10, Thyroid i = 16)
-i = 16;
-
-measuredTissue(i)
-sum(logical(refMat(:,i)))
-
-p = [];
-boxData = [];
-boxLabel = [];
-xLabels = {};
-
-enrichedMet_rFP2 = predMat2(logical(refMat(:,i)),i);
-boxData = [boxData;enrichedMet_rFP2;predMat_all2(:,i)];
-boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
-boxLabel = [boxLabel;[repmat({'enriched2'},length(enrichedMet_rFP2),1);repmat({'all2'},size(predMat_all2,1),1)]];
-xLabels = [xLabels;{'enriched metabolites^{met}';'all metabolites^{met}'}];
-p(1) = ranksum(enrichedMet_rFP2,predMat_all2(:,i),  'Tail','right');
-
-enrichedMet_rFP = predMat(logical(refMat(:,i)),i);
-boxData = [boxData;enrichedMet_rFP;predMat_all(:,i)];
-boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
-boxLabel = [boxLabel;[repmat({'enriched'},length(enrichedMet_rFP),1);repmat({'all'},size(predMat_all,1),1)]];
-xLabels = [xLabels;{'enriched metabolites^{met+rxn}';'all metabolites^{met+rxn}'}];
-p(2) = ranksum(enrichedMet_rFP,predMat_all(:,i),  'Tail','right');
-
-figure('units','inch','position',[0,0,8,8])
-boxplot(boxData, boxLabel,'Labels',xLabels,'Colors','bkbk','Symbol','ro');
-ylim([-1.1 1.1])
-ylabel('\DeltarFP');
-xlabel('');
-set(gca, 'TickLabelInterpreter', 'tex');
-text(1.3,0.75,['p < ',num2str(p(1),2)],'fontsize', 12,'BackgroundColor','w')
-text(3.3,0.75,['p < ',num2str(p(2),2)],'fontsize', 12,'BackgroundColor','w')
-set(gca, 'fontsize', 14);
-lines = findobj(gcf, 'type', 'line', 'Tag', 'Median');
-set(lines, 'Color', 'r');
-xtickangle(30)
-S = hgexport('readstyle','default_sci');
-style.Format = 'svg';
-style.ApplyStyle = '1';
-hgexport(gcf,'test',S,'applystyle',true);
-%% save some desired ones
-saveas(gca,['figures/benchmarkMetabolomicsPredictor_boxplot_individualTissue_',measuredTissue{i},'.pdf']);
-
-%% box plot of individual tissues 
-% i = 1, Adrenal Gland' is predicted by expression of related rxns
-% i = 5 skin shows the benefit of integration, other examples are: lung (i
-% = 9), prostate (i = 13), testis i = 14
-% in many tissues like intestine and liver, the FPA IS NOT outperforming
-% tsp + rxn expression
-i = 17;
-
-measuredTissue(i)
-sum(logical(refMat(:,i)))
-
-p = [];
-boxData = [];
-boxLabel = [];
-xLabels = {};
-
-enrichedMet_rFP_noNetwork_tsp = predMat_noNetwork_tsp(logical(refMat(:,i)),i);
-boxData = [boxData;enrichedMet_rFP_noNetwork_tsp;predMat_all_noNetwork_tsp(:,i)];
-boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
-boxLabel = [boxLabel;[repmat({'enrich_noNetwork_tsp'},length(enrichedMet_rFP_noNetwork_tsp),1);repmat({'all_noNetwork_tsp'},size(predMat_all_noNetwork_tsp,1),1)]];
-xLabels = [xLabels;{'enriched metabolites^{tranporter expression}';'all metabolites^{tranporter expression}'}];
-p(1) = ranksum(enrichedMet_rFP_noNetwork_tsp,predMat_all_noNetwork_tsp(:,i),  'Tail','right');
-
-enrichedMet_rFP_noNetwork = predMat_noNetwork(logical(refMat(:,i)),i);
-boxData = [boxData;enrichedMet_rFP_noNetwork;predMat_all_noNetwork(:,i)];
-boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
-boxLabel = [boxLabel;[repmat({'enrich_noNetwork'},length(enrichedMet_rFP_noNetwork),1);repmat({'all_noNetwork'},size(predMat_all_noNetwork,1),1)]];
-xLabels = [xLabels;{'enriched metabolites^{tranporter+rxn expression}';'all metabolites^{tranporter+rxn expression}'}];
-p(2) = ranksum(enrichedMet_rFP_noNetwork,predMat_all_noNetwork(:,i),  'Tail','right');
-
-enrichedMet_rFP = predMat(logical(refMat(:,i)),i);
-boxData = [boxData;enrichedMet_rFP;predMat_all(:,i)];
-boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
-boxLabel = [boxLabel;[repmat({'enriched'},length(enrichedMet_rFP),1);repmat({'all'},size(predMat_all,1),1)]];
-xLabels = [xLabels;{'enriched metabolites^{FPA}';'all metabolites^{FPA}'}];
-p(3) = ranksum(enrichedMet_rFP,predMat_all(:,i),  'Tail','right');
-
-
-figure('units','inch','position',[0,0,8,8])
-boxplot(boxData, boxLabel,'Labels',xLabels,'Colors','bkbk','Symbol','ro');
-ylim([-1.1 1.1])
-ylabel('\DeltarFP');
-xlabel('');
-set(gca, 'TickLabelInterpreter', 'tex');
-text(1.3,0.75,['p < ',num2str(p(1),2)],'fontsize', 12,'BackgroundColor','w')
-text(3.3,0.75,['p < ',num2str(p(2),2)],'fontsize', 12,'BackgroundColor','w')
-text(5.3,0.75,['p < ',num2str(p(3),2)],'fontsize', 12,'BackgroundColor','w')
-set(gca, 'fontsize', 14);
-lines = findobj(gcf, 'type', 'line', 'Tag', 'Median');
-set(lines, 'Color', 'r');
-xtickangle(30)
-S = hgexport('readstyle','default_sci');
-style.Format = 'svg';
-style.ApplyStyle = '1';
-hgexport(gcf,'test',S,'applystyle',true);
-%% save some desired ones
-saveas(gca,['figures/benchmarkIntegrationBenefit_boxplot_individualTissue_',measuredTissue{i},'.pdf']);
-
-%% box plot of individual tissues 
-% i = 1, Adrenal Gland' RNA outperforms protein; also i = 2, Artery (but
-% only 2 mets)
-% i = 5, skin ; protein is better; i = 8 intestine 
-i = 16;
-
-measuredTissue(i)
-sum(logical(refMat(:,i)))
-
-p = [];
-boxData = [];
-boxLabel = [];
-xLabels = {};
-
-enrichedMet_rFP = predMat(logical(refMat(:,i)),i);
-boxData = [boxData;enrichedMet_rFP;predMat_all(:,i)];
-boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
-boxLabel = [boxLabel;[repmat({'enriched'},length(enrichedMet_rFP),1);repmat({'all'},size(predMat_all,1),1)]];
-xLabels = [xLabels;{'enriched metabolites^{protein}';'all metabolites^{protein}'}];
-p(1) = ranksum(enrichedMet_rFP,predMat_all(:,i),  'Tail','right');
-
-enrichedMet_rFP_RNAcomm = predMat_RNAcomm(logical(refMat(:,i)),i);
-boxData = [boxData;enrichedMet_rFP_RNAcomm;predMat_all_RNAcomm(:,i)];
-boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
-boxLabel = [boxLabel;[repmat({'enrich_RNAcomm'},length(enrichedMet_rFP_RNAcomm),1);repmat({'all_RNAcomm'},size(predMat_all_RNAcomm,1),1)]];
-xLabels = [xLabels;{'enriched metabolites^{RNA}';'all metabolites^{RNA}'}];
-p(2) = ranksum(enrichedMet_rFP_RNAcomm,predMat_all_RNAcomm(:,i),  'Tail','right');
-
-enrichedMet_rFP_RNAall = predMat_RNAall(logical(refMat(:,i)),i);
-boxData = [boxData;enrichedMet_rFP_RNAall;predMat_all_RNAall(:,i)];
-boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
-boxLabel = [boxLabel;[repmat({'enrich_RNAall'},length(enrichedMet_rFP_RNAall),1);repmat({'all_RNAall'},size(predMat_all_RNAall,1),1)]];
-xLabels = [xLabels;{'enriched metabolites^{RNA (all genes)}';'all metabolites^{RNA (all genes)}'}];
-p(3) = ranksum(enrichedMet_rFP_RNAall,predMat_all_RNAall(:,i),  'Tail','right');
-
-
-figure('units','inch','position',[0,0,8,8])
-boxplot(boxData, boxLabel,'Labels',xLabels,'Colors','bkbk','Symbol','ro');
-ylim([-1.1 1.1])
-ylabel('\DeltarFP');
-xlabel('');
-set(gca, 'TickLabelInterpreter', 'tex');
-text(1.3,0.75,['p < ',num2str(p(1),2)],'fontsize', 12,'BackgroundColor','w')
-text(3.3,0.75,['p < ',num2str(p(2),2)],'fontsize', 12,'BackgroundColor','w')
-text(5.3,0.75,['p < ',num2str(p(3),2)],'fontsize', 12,'BackgroundColor','w')
-set(gca, 'fontsize', 14);
-lines = findobj(gcf, 'type', 'line', 'Tag', 'Median');
-set(lines, 'Color', 'r');
-xtickangle(30)
-S = hgexport('readstyle','default_sci');
-style.Format = 'svg';
-style.ApplyStyle = '1';
-hgexport(gcf,'test',S,'applystyle',true);
-%% save some desired ones
-saveas(gca,['figures/benchmarkProteinVsRNA_boxplot_individualTissue_',measuredTissue{i},'.pdf']);
