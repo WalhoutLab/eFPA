@@ -10,31 +10,32 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-The programs were developed and tested in MATLAB R2019a/R2017a. [COnstraint-Based Reconstruction and Analysis (The COBRA Toolbox)](https://opencobra.github.io/cobratoolbox/stable/) is required to perform the analysis. Check [here](https://opencobra.github.io/cobratoolbox/stable/installation.html) for the installation guidance of COBRA Toolbox. The programs were tested for COBRA Toolbox - 2020 version, but should be compatible with an earlier version. 
+The programs were developed and tested in MATLAB R2019a/R2020b. [COnstraint-Based Reconstruction and Analysis (The COBRA Toolbox)](https://opencobra.github.io/cobratoolbox/stable/) is required to perform the analysis. Check [here](https://opencobra.github.io/cobratoolbox/stable/installation.html) for the installation guidance of COBRA Toolbox. The programs were tested for COBRA Toolbox - 2020 version, but should be compatible with an earlier version. 
 
 The Linear Program (LP) and Mixed-Integer Linear Problem (MILP) solver used in the study was [gurobi](http://gurobi.com) 8.10. The built-in solver interface of COBRA Toolbox was used, so that we expect our program to also work with other supported solver in COBRA Toolbox. Please [see here](https://opencobra.github.io/cobratoolbox/stable/installation.html#solver-installation) for furter information about solver availability. 
 
 ### Installing
 
-This package doesn't require any installation or compiling. Please see the following section for reproducing the tissue expression integration result in this study, or perform the analysis on a desired metabolic network model and gene expression dataset. 
+This package doesn't require any installation or compiling. Please see the following section for reproducing the analyses this study, or use the improved FPA as a tool for analyzing your own data.
+
 
 ## Running the tests
 
-The repo includes four independent modules, [iMAT++ algorithm](1_iMAT++), [original iMAT algorithm](2_iMAT), [Flux Potential Analysis (FPA)](3_FPA), and [metabolic distance calculator](MetabolicDistance). Please see the instruction within each module for running a test.
+The repo includes five independent parts, [yeast modeling](1_yeast_modeling), [C. elegans tissue metabolism modeling](2_C_elegans_modeling), [human tissue modeling](3_human_modeling), [metabolic distance calculator](4_distance_calculation), and [improved FPA tutorial](5_improvedFPA_tutorial). Please see the instruction within each module for running a test.
+
+Please note, if you only want to use the improved FPA tool for analyzing your own data, you may directly go to [improved FPA tutorial](5_improvedFPA_tutorial) that contains a full tutorial of FPA analysis. To reproduce our analyses presented in the paper, please refer to the sections #1-3. Please be advised that if you are going to run FPA on a model other than the models used in our study, you need to calculate the distance matrix for your model, which can be achieved by instructions in [metabolic distance calculator](4_distance_calculation). This computation may be intensive on large models (i.e., > 2000 rxns x 2000 mets). You may need to use high-performance computation resources or reach out to us for assistance. 
 
 The followings are descriptions on each module (folder) listed.
 
-[1_iMAT++](1_iMAT++): The iMAT++ module. This folder contains all the input, scripts and example codes for running the iMAT++ for <i>C. elegans</i> tissue-level integration and application on other models/datasets. 
+[yeast modeling](1_yeast_modeling): This folder contains all the input, scripts and example pipelines and results to reproduce our analyses related to the modeling in yeast.
 
-[2_iMAT](2_iMAT): The original iMAT module. This folder contains all the input, scripts and example codes for running the original iMAT for <i>C. elegans</i> tissue-level integration. 
+[C. elegans tissue metabolism modeling](2_C_elegans_modeling): This folder contains all the input, scripts and example pipelines and results to reproduce our analyses related to the modeling in C. elegans.
 
-[3_FPA](3_FPA): The Flux Potential Analysis (FPA) module. This folder contains all the input, scripts and example codes for running the FPA for <i>C. elegans</i> tissue-level integration and application on other models/datasets. 
+[human tissue modeling](3_human_modeling): This folder contains all the input, scripts and example pipelines and results to reproduce our analyses related to the modeling in human.
 
-[MetabolicDistance](MetabolicDistance): The metabolic distance calculator module. This folder contains all the input, scripts and example codes for calculating the metabolic distance for any metabolic network model. The output distance matrix is required to run FPA. The output for the <i>C. elegans</i> models used in the reference study are available in the pertaining folders. 
+[metabolic distance calculator](4_distance_calculation): This folder contains all the input, scripts and example codes for calculating the metabolic distance for any metabolic network model. The output distance matrix is required to run FPA.
 
-[bins](bins): The shared functions for running the above mentioned analysis. These functions include modified version of some COBRA Toolbox functions and common new functions such as a molecular weight calculator.
-
-[input](input): The shared input for running the above mentioned analysis. These inputs include <i>C. elegans</i> metabolic model and other input information.
+[improved FPA tutorial](5_improvedFPA_tutorial): This folder contains a full tutorial to perform FPA on a given model and expression dataset.
 
 
 ## Contributing
@@ -44,8 +45,7 @@ Please contact us for reporting bugs or contributing purposes. Email contacting 
 
 ## Authors
 
-* **Safak Yilmaz** - *Development of iMAT++, FPA and Metabolic Distance Calculator* - [lsafak](https://github.com/lsafak)
-* **Xuhang Li** - *Matlab implementation of iMAT++/iMAT/FPA* - [XuhangLi](https://github.com/XuhangLi)
+* **Xuhang Li** [XuhangLi](https://github.com/XuhangLi)
 
 ## License
 
