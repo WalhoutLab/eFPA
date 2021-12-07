@@ -128,10 +128,11 @@ elseif strcmp(expressionDataType,'RNA_TS_all')
     % then merge
     TsTbl_homemade = TsTbl_homemade(~ismember(TsTbl_homemade.Row,TsTbl.ensembl_id),:);
     TsTbl_homemade.Properties.VariableNames(1) = {'ensembl_id'};
-    TsTbl_homemade.entrez_id = repmat(NaN,size(TsTbl_homemade,1),1);
+    TsTbl_homemade.entrez_id = repmat({'NaN'},size(TsTbl_homemade,1),1);
     TsTbl_homemade.hgnc_name = repmat({'Not Determined'},size(TsTbl_homemade,1),1);
     TsTbl_homemade.hgnc_symbol = repmat({'Not Determined'},size(TsTbl_homemade,1),1);
     TsTbl_homemade = TsTbl_homemade(:,TsTbl.Properties.VariableNames);
+    TsTbl.entrez_id = mat2cell(TsTbl.entrez_id, ones(length(TsTbl.entrez_id), 1));
     TsTbl = [TsTbl;TsTbl_homemade];
     
     % set NA to 0 (population mean)
