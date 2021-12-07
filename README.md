@@ -1,8 +1,8 @@
-# Predicting tissue-relevant metabolism at system-, pathway-, reaction- and metabolite-levels using single-cell RNA-seq data
-# this tag indicates this repo is under development
-We developped the package, MERGE (MEtabolic models Reconciled with Gene Expression), to systematically integrate tissue-level gene expression data from single-cell RNAseq provided by [Cao <i>et al</i>., 2017](https://pubmed.ncbi.nlm.nih.gov/28818938/) with the metabolic network model of <i>C. elegans</i> named [iCEL1314](http://wormflux.umassmed.edu/index.html). MERGE is applicable to other expression datasets and other metabolic network models. 
+# Systematic analysis of the relation between relative enzyme expression, flux, and the metabolic network
+# NOTE: This repo is still under development! Not all functionalities are usable at present! You may encounter missing files as we are in the process of uploading and final reviewing the codes.
+We developped the improved FPA (Flux Potential Analysis) algorithm, to systematically study the quatitative relation between enzyme expression and metabolic flux in terms of their relative levels and in the context of the metabolic network. improved FPA is applicable to any expression dataset as a tool to predict the relative metabolic flux under the principle of the local-pathway proxy role discovered in our study.
 
-The package includes three modules: (1) matlab implementation of [iMAT++ algorithm](1_iMAT++), which semi-quantitatively integrates categorized gene expression data with the model at system-level; (2) matlab implementation of [original iMAT algorithm](2_iMAT) (for comparison and reproduction of results in the paper), and (3) matlab implementation of [Flux Potential Analysis (FPA)](3_FPA), which quantitatively integrates continuous gene expression data with the model at pathway- and reaction-level. Additionally, we provide a python-based metabolic distance calculator that generates the shortest path from a given reaction to any other reaction in a given metabolic network. The [metabolic distance calculator](MetabolicDistance) provides the required input for applying FPA to any metabolic network. 
+The repo includes four parts: (1) ...
 
 ## Getting Started
 
