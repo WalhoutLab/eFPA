@@ -20,3 +20,4 @@
 3_human_modeling/2_FPA/humanTissue_MERGE/input/distanceMatrix_weighted.txt
 3_human_modeling/2_FPA/distance_inputs/iHuman1/Smatrix_regular.txt
 1_yeast_modeling/FPA/modeling/output/fine_titration/
+**/NoTrack_*

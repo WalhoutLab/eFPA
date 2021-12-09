@@ -17,7 +17,6 @@ rownames(annotation) = annotation$rxn
 
 #correlation between coexpression levels and flux-expression concordance levels
 ExpMat = read.csv('output/supp1D_normalizedExpression.csv',row.names = 1)
-rows.cor.exp <- cor(t(ExpMat), use = "pairwise.complete.obs", method = "pearson")
 pathways = setdiff(unique(annotation$connected_pathways),'NA')
 cmpTbl = data.frame(pathways)
 cmpTbl$ave_coexpression = NA
@@ -30,9 +29,11 @@ cmpTbl$ave_max_corr = NA
 cmpTbl$median_max_corr = NA
 for (i in 1:length(pathways)){
   rxnset = annotation$rxn[which(annotation$connected_pathways == pathways[i])]
-  if (sum(rownames(rows.cor.exp) %in% rxnset)>1){# only analyze the valid coexpression (at least two measured rxns)
-    tmp0 = rows.cor.exp[rownames(rows.cor.exp) %in% rxnset, 
-                       colnames(rows.cor.exp) %in% rxnset]
+  subExp = ExpMat[rownames(ExpMat) %in% rxnset,]
+  subExp = subExp[!duplicated(subExp),] # we only analyze the coexpression between valid (distinct) genes (GPR)
+  
+  if (nrow(subExp)>1){# only analyze the valid coexpression (at least two measured rxns [diff genes])
+    tmp0 = cor(t(subExp), use = "pairwise.complete.obs", method = "pearson")
     tmp = c()# we avoid calculate the same PCC twice
     for (zz in 1:(ncol(tmp0)-1)){
       for (kk in (zz+1):nrow(tmp0)){
