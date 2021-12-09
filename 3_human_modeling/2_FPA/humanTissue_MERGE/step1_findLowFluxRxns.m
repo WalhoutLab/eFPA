@@ -23,11 +23,6 @@ model.rxns = regexprep(model.rxns,'(^[0-9])','x$1');
 model = changeGeneAssociation(model, 'HMR_4137',...
     'ENSG00000091140 and ENSG00000110435 and (ENSG00000131828 or ENSG00000163114) and ENSG00000150768 and ENSG00000168291');
 
-
-% find the target internal reactions 
-exludeSys = {'Transport reactions','Exchange/demand reactions'};
-intRxns = model.rxns(~ismember(model.subSystems,exludeSys));
-
 % create missing field
 model = creategrRulesField(model);
 reactions = model.rxns;

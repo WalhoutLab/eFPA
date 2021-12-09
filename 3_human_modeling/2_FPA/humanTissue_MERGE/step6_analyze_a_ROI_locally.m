@@ -31,10 +31,54 @@ model = changeGeneAssociation(model, 'HMR_4137',...
     'ENSG00000091140 and ENSG00000110435 and (ENSG00000131828 or ENSG00000163114) and ENSG00000150768 and ENSG00000168291');
 
 
-% find the target internal reactions 
-exludeSys = {'Transport reactions','Exchange/demand reactions'};
-upkrxns = model.rxns(any(model.S(ismember(model.mets,{'majorNutr','sideNutr'}),:),1));
-intRxns = model.rxns(~ismember(model.subSystems,exludeSys) & ~ismember(model.rxns,upkrxns));
+% define the target internal reactions 
+% define reaction sets
+% the exchange reactions with environment 
+excRxns = model.rxns(findExcRxns_XL(model));
+metComp = regexp(model.metNames,'\[(\w|\s)*\]$','match');
+metComp = [metComp{:}]';
+EXmets = strcmp(metComp,'[Extracellular]');
+EXinvolvedRxns = model.rxns(any(model.S(EXmets,:)~=0,1));
+excRxns = intersect(excRxns,EXinvolvedRxns);
+
+% the transporter (with env) reactions
+allCmp_iHumanName = unique(regexprep(model.metNames,' \[(\w|\s)*\]$',''));
+allCmp_iHumanName = setdiff(allCmp_iHumanName,{'Side Nutrient in Blood Serum','Major Nutrient in Blood Serum'});
+metNames = regexprep(model.metNames,' \[(\w|\s)*\]$','');
+TSP = [];
+for i = 1:length(allCmp_iHumanName)
+    myMet_e = {[allCmp_iHumanName{i},' [Extracellular]']};
+    metInd_e = ismember(model.metNames,myMet_e);
+    metInd_all = ismember(metNames,allCmp_iHumanName(i));
+    metInd_non_e = metInd_all & (~metInd_e);
+    myRxns_e = model.rxns(any(model.S(metInd_e,:),1));
+    myRxns_non_e = model.rxns(any(model.S(metInd_non_e,:),1));
+    % we define the transporter as the reactions that contain the same
+    % metabolite in [e] and another compartment (cellular) in the same
+    % reaction
+    candidate = intersect(myRxns_non_e,myRxns_e);
+    % check if is on diff side of the reaction
+    if ~isempty(candidate)
+        for j = 1:length(candidate) % check if is on diff side of the reaction
+            if(sign(model.S(metInd_e,strcmp(model.rxns,candidate(j)))) ~= sign(model.S(metInd_non_e,strcmp(model.rxns,candidate(j)))))
+                TSP = union(TSP,candidate(j));
+            end
+        end
+    end
+end
+% some special transporter will be missed, we add back 
+envTspRxns = model.rxns(ismember(model.subSystems,{'Transport reactions'}));
+envTspRxns = intersect(envTspRxns,EXinvolvedRxns);
+tspRxns = union(TSP, envTspRxns);
+
+% the internal transporters 
+% internal transporters are hard to define, since a reaction can span two
+% compartments internally but it is not a real transporter. So, we use the
+% subsys annotation as a compromise
+intTspRxns = setdiff(model.rxns(ismember(model.subSystems,{'Transport reactions'})),tspRxns);
+
+% internal regular reactions
+intRxns = setdiff(model.rxns, [excRxns; tspRxns; intTspRxns]);
 
 
 % create missing field
@@ -435,13 +479,7 @@ elseif strcmp(targetType,'transporter')
     load('lowFluxRxns.mat');
     load('FVA.mat');
     FVA_label = model.rxns;
-    targetRxns = model.rxns(ismember(model.subSystems,{'Transport reactions'}));
-    metComp = regexp(model.metNames,'\[(\w|\s)*\]$','match');
-    metComp = [metComp{:}]';
-    EXmets = strcmp(metComp,'[Extracellular]');
-    EXinvolvedRxns = model.rxns(any(model.S(EXmets,:)~=0,1));
-    targetRxns = intersect(targetRxns,EXinvolvedRxns);
-    targetRxns = [targetRxns;{'MI1Pt'}];
+    targetRxns = tspRxns;
     % the in-organic co-transportable metabilites are:
     helperMet = {'CO2';'AMP';'NADP+';'NADPH';'PPi';'O2';'NADH';'NAD+';
                 'Pi';'ADP';'CoA';'ATP';'H2O';'H+';'GTP';'GDP';

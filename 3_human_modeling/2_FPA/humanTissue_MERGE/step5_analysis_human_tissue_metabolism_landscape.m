@@ -19,6 +19,12 @@ relFP = [relFP_f;relFP_r];
 relFP(rmInd,:) = [];
 relFP_RNA = relFP;
 
+% remove numeric issues
+pass = ~any(abs(relFP_wtd)>1.01,2) & ~any(abs(relFP_RNA)>1.01,2);
+rowlabels = rowlabels(pass);
+relFP_RNA = relFP_RNA(pass,:);
+relFP_wtd = relFP_wtd(pass,:);
+
 %% filter the predictions by the delta FC cutoff of 0.2
 relFP_filtered = relFP_wtd - median(relFP_wtd,2);
 rowlabels_filtered = rowlabels;
@@ -139,6 +145,7 @@ style.ApplyStyle = '1';
 hgexport(gcf,'test',S,'applystyle',true);
 % save
 set(h, 'FontSize', 7)
+exportgraphics(gcf,'figures/clustergram_rxn_FPA.tiff','ContentType','vector')
 exportgraphics(gcf,'figures/clustergram_rxn_FPA.pdf','ContentType','vector')
 %% inspect the clusters and label information (this is interactive)
 ROI = mygroup.RowNodeNames;
@@ -175,28 +182,6 @@ subsys_enri = subsys(max(countMat,[],2) > 0);% remove housekeeping
 countMat_enri = countMat(max(countMat,[],2) > 0,:);% remove housekeeping
 countMat_enri = countMat_enri ./ max(countMat_enri,[],2); % row-wise normalize
 
-cgo=clustergram(countMat_enri,'RowLabels',subsys_enri,'ColumnLabels',conditions,'RowPDist',distMethod,'ColumnPDist',distMethod);
-c=get(cgo,'ColorMap');
-n = 100;
-tmp = [ones(n,1), linspace(1,0,n)',linspace(1,0,n)'];
-tmp = tmp(2:end,:);
-cpr=[linspace(0,1,n)',linspace(0,1,n)',ones(n,1);...
-    tmp];
-set(cgo,'ColorMap',cpr);
-set(cgo,'Symmetric',false);
-set(0,'ShowHiddenHandles','on')
-% Get all handles from root
-allhnds = get(0,'Children');
-% Find hearmap axis and change the font size
-h = findall(allhnds, 'Tag', 'HeatMapAxes');
-set(h, 'FontSize', 7)
-% save figure
-S = hgexport('readstyle','default_sci');
-style.Format = 'svg';
-style.ApplyStyle = '1';
-hgexport(gcf,'test',S,'applystyle',true);
-set(gca,'FontSize',7);
-
 % make the publishable figure in R
 t = array2table(countMat_enri);
 t.Properties.RowNames = subsys_enri;
@@ -207,7 +192,7 @@ writetable(boundaries,'output/subsys_annotation_for_enriched_rxns_colnames.csv')
 
 
 
-%% determination of the delta rFP cutoff
+%% determination of the delta rFP cutoff - why we choose to use 0.2 as cutoff
 Zcutoffs = [1.645,1.96,2.58];
 for zz = 1:length(Zcutoffs)
     z_cutoff = Zcutoffs(zz);

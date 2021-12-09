@@ -24,9 +24,6 @@ model = changeGeneAssociation(model, 'HMR_4137',...
     'ENSG00000091140 and ENSG00000110435 and (ENSG00000131828 or ENSG00000163114) and ENSG00000150768 and ENSG00000168291');
 
 
-% find the target internal reactions 
-exludeSys = {'Transport reactions','Exchange/demand reactions'};
-
 load('allCmp_iHumanName.mat');
 cmpOrder = {'[Cytosol]','[Mitochondria]','[Inner mitochondria]',...
             '[Peroxisome]','[Lysosome]','[Golgi apparatus]',...

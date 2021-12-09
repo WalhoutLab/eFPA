@@ -6,7 +6,7 @@
 
 setEnvForAnalysis
 %%
-paraStr = 'protein_TS_common_newFPA_weightedDist_order6_tissueNetwork';
+paraStr = 'protein_TS_common_originalFPA_originalDist_order100_naiveNetwork';
 % protein_TS_common_newFPA_weightedDist_order6_tissueNetwork
 % RNA_TS_common_newFPA_weightedDist_order6_tissueNetwork
 % RNA_TS_all_newFPA_weightedDist_order6_tissueNetwork
