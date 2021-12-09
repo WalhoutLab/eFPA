@@ -624,17 +624,17 @@ plt.export(['figures/FPA_peroxi_beta_palmito_example.tiff']);
 %% delta rfp
 figure(1)
 c = categorical(conditions);
-bar(c, relFP_r(1,:))
+bar(c, relFP_f(1,:))
 ylabel('raw')
 ylim([0,1])
 figure(2)
 c = categorical(conditions);
-bar(c, normalize(relFP_r(1,:),'center','median'))
+bar(c, normalize(relFP_f(1,:),'center','median'))
 ylabel('raw')
 ylim([-0.5,1])
 printGPRForRxns(model,targetRxns);
 %% check expression 
-name2 = 'ENSG00000205560';
+name2 = 'ENSG00000198721';
 %expTbl(strcmp(expTbl.ensembl_id,name2),:)
 figure(3)
 c = categorical(conditions);
@@ -647,7 +647,7 @@ plt.FontSize = 15;
 plt.LegendLoc = 'NorthWest';
 plt.FontName = 'Arial';
 plt.Interpreter = 'none';
-%% save plot
+% save plot
 plt.export(['figures/FPA_peroxi_beta_palmito_example_expression_',name2,'.tiff']);
 
 
