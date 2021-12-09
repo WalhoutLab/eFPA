@@ -228,11 +228,13 @@ rowlabels_allMetDM(rmInd) = [];
 relFP_wtd_allMetDM = relFP;
 
 % delta rFP matrix - general predictor (transporter or DM or network-FPA-nearest) - protein 
-relFP_sel_allMetDM = zeros(size(relFP_wtd_allMetDM,1),length(measuredTissue));
-relFP_wtd_ctd_allMetDM = normalize(relFP_wtd_allMetDM,2,'center','median');
-for i = 1:length(measuredTissue)
-    relFP_sel_allMetDM(:,i) = max(relFP_wtd_ctd_allMetDM(:,ismember(conditions,strsplit(TissueAligTbl.FPAtissues{i},'; '))),[],2);
-end
+% transporter rFP
+relFP_sel = normalize(relFP_wtd,2,'center','median');
+% demand rFP
+relFP_sel_allMetDM = normalize(relFP_wtd_allMetDM,2,'center','median');
+% associated internal reactions
+relFP_sel_nearest = relFP_nearest_network;
+
 metNames = regexprep(model.metNames,' \[(\w|\s)*\]$','');
 predMat_all = [];
 qryMets = unique(metNames);
@@ -258,7 +260,7 @@ end
 predMat_all(abs(predMat_all)>1.01) = NaN;% remove numeric errors
 % save the table
 relFluxPotential = array2table(predMat_all);
-relFluxPotential.Properties.VariableNames = measuredTissue;
+relFluxPotential.Properties.VariableNames = conditions;
 relFluxPotential.Properties.RowNames = qryMets;
 writetable(relFluxPotential,'output/supp_delta_rFP_met_protein.csv','WriteRowNames',true);
 
