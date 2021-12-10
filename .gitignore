@@ -1,23 +1,11 @@
-1_yeast_modeling/FPA/modeling/fine_titration_targetOut/
-3_human_modeling/2_FPA/humanTissue_MERGE/input/suppTbls/1-s2.0-S0092867420310783-mmc3.xlsx
-2_C_elegans_modeling/FPA/C.elegansTissue_dataset/newFPA/input/distanceMatrix_plain.txt
-2_C_elegans_modeling/FPA/C.elegansTissue_dataset/newFPA/input/distanceMatrix_weighted.txt
-2_C_elegans_modeling/FPA/C.elegansTissue_dataset/newFPA/distance_inputs/
-3_human_modeling/3_FPA/humanTissue_MERGE/input/distanceMatrix.txt
-3_human_modeling/3_FPA/humanTissue_MERGE/input/distanceMatrix_weighted.txt
-3_human_modeling/3_FPA/distance_inputs/
 1_yeast_modeling/FPA/input/YeastJoshua/distanceMatrix.txt
-1_yeast_modeling/FPA/input/YeastJoshua/new_complete_weightedDist_forFinalRun/distanceMatrix_plain.txt
-1_yeast_modeling/FPA/input/YeastJoshua/new_complete_weightedDist_forFinalRun/distanceMatrix_weighted.txt
-3_human_modeling/3_FPA/humanTissue_MERGE/input/suppTbls/1-s2.0-S0092867420310783-mmc3.xlsx
-1_yeast_modeling/FPA/input/YeastJoshua/distanceMatrix_plain.txt
 1_yeast_modeling/FPA/input/YeastJoshua/distanceMatrix_weighted.txt
-1_yeast_modeling/FPA/modeling/figures/GST example/FPA_GST_mechanism_fluxDist_r_0485.tiff
-1_yeast_modeling/FPA/modeling/figures/GST example/FPA_GST_mechanism_fluxDist_r_0460.tiff
-1_yeast_modeling/FPA/modeling/figures/glycan example/FPA_glycan_mechanism_r_0362.tiff
-1_yeast_modeling/FPA/modeling/figures/GST example/FPA_GST_mechanism_r_0485.tiff
+1_yeast_modeling/FPA/modeling/output/fine_titration/
+2_C_elegans_modeling/FPA/C.elegansTissue_dataset/newFPA/input/distanceMatrix_weighted.txt
+3_human_modeling/2_FPA/distance_inputs/iHuman1/Smatrix_regular.txt
 3_human_modeling/2_FPA/humanTissue_MERGE/input/distanceMatrix.txt
 3_human_modeling/2_FPA/humanTissue_MERGE/input/distanceMatrix_weighted.txt
-3_human_modeling/2_FPA/distance_inputs/iHuman1/Smatrix_regular.txt
-1_yeast_modeling/FPA/modeling/output/fine_titration/
+3_human_modeling/2_FPA/humanTissue_MERGE/input/suppTbls/1-s2.0-S0092867420310783-mmc3.xlsx
+**/*.DS_Store
+**/*.Rhistory
 **/NoTrack_*
