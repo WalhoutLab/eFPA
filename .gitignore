@@ -8,4 +8,6 @@
 3_human_modeling/2_FPA/humanTissue_MERGE/input/suppTbls/1-s2.0-S0092867420310783-mmc3.xlsx
 **/*.DS_Store
 **/*.Rhistory
+1_yeast_modeling/FPA/modeling/.Rproj.user/
+3_human_modeling/2_FPA/humanTissue_MERGE/.Rproj.user/
 **/NoTrack_*
