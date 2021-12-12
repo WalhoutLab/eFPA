@@ -72,6 +72,8 @@ end
 penalty_pro(strcmp(model.rxns,'r_2005'),1:5) = 10;
 penalty_pro(strcmp(model.rxns,'r_1714'),6:10) = 10;
 penalty_pro(strcmp(model.rxns,'r_1654'),11:15) = 10;
+%% the second evaluation set (156 rxns with expression measured)
+mySet = intersect(valid_rxns_pro_perPro, rxnLabel);
 %% evaluate different FPA
 setups = {'oriDist_oriDecay','wtdDist_oriDecay'};
 for zz = 1:2
@@ -81,6 +83,7 @@ for zz = 1:2
     rMat = zeros(length(targetRxns),length(dorders));
     N_sigCorr = zeros(length(dorders),1);
     N_sigCorr_highCV = zeros(length(dorders),1);
+    N_sigCorr_highCV2 = zeros(length(dorders),1);
     perc_sigCorr_in_highCV = zeros(length(dorders),1);
     for nn = 1: length(dorders)
         %%
@@ -158,17 +161,20 @@ for zz = 1:2
         N_sigCorr(nn) = sum(r(fdr_r<0.05)>0);
         N_sigCorr_highCV(nn) = sum(r(fdr_r<0.05 & deltaminmax > 0.2)>0);
         perc_sigCorr_in_highCV(nn) = sum(r(fdr_r<0.05 & deltaminmax > 0.2)>0) / sum(deltaminmax > 0.2);
+        N_sigCorr_highCV2(nn) = sum(fdr_r<0.05 & deltaminmax > 0.2 & r > 0 & ismember(testedRxn, mySet));
     end
     %% save data to plot four setups together: 1-d tritrations
     if zz==1
         dorders_normal = dorders;% dorders/max(dorders);
         N_sigCorr_normal = N_sigCorr;
         N_sigCorr_highCV_normal = N_sigCorr_highCV;
+        N_sigCorr_highCV_normal2 = N_sigCorr_highCV2;
         perc_sigCorr_in_highCV_normal = perc_sigCorr_in_highCV;
     elseif zz ==2
         dorders_wtdDist = dorders;% dorders/max(dorders);
         N_sigCorr_wtdDist = N_sigCorr;
         N_sigCorr_highCV_wtdDist = N_sigCorr_highCV;
+        N_sigCorr_highCV_wtdDist2 = N_sigCorr_highCV2;
         perc_sigCorr_in_highCV_wtdDist = perc_sigCorr_in_highCV;
     end
 end
@@ -182,6 +188,7 @@ for jj = 1:2
     %% correlation for 2-d titration
     N_sigCorr = zeros(length(n2),length(base));
     N_sigCorr_highCV = zeros(length(n2),length(base));
+    N_sigCorr_highCV2 = zeros(length(n2),length(base));
     perc_sigCorr_in_highCV = zeros(length(n2),length(base));
     for zz = 1:length(base)
         dorders = n2;
@@ -261,6 +268,7 @@ for jj = 1:2
             N_sigCorr(nn,zz) = sum(r(fdr_r<0.05)>0);
             N_sigCorr_highCV(nn,zz) = sum(r(fdr_r<0.05 & deltaminmax > 0.2)>0);
             perc_sigCorr_in_highCV(nn,zz) = sum(r(fdr_r<0.05 & deltaminmax > 0.2)>0) / sum(deltaminmax > 0.2);
+            N_sigCorr_highCV2(nn,zz) = sum(fdr_r<0.05 & deltaminmax > 0.2 & r > 0 & ismember(testedRxn, mySet));
         end
     end
     %% analyze some overall metric
@@ -310,32 +318,82 @@ for jj = 1:2
     plt.FontName = 'Arial';
     plt.export(['figures/FPAtitrationPlots/Nsig_vs_distanceOrder',setups{jj},'_zoomIn.pdf']);
     
+    % same plot for the second evaluation set 
+    figure;
+    hold on 
+    for zz = 1:length(base)
+        plot(dorders,N_sigCorr_highCV2(:,zz),'.-','Color',colorList{zz})
+    end
+    hold off
+    xlabel('Distance order');
+    ylabel('Number of significantly correlated reactions ');
+    legend(cellfun(@(x) ['base = ',x],strsplit(num2str(base)), 'UniformOutput',0))
+    plt = Plot(); % create a Plot object and grab the current figure
+    plt.BoxDim = [3, 2.4];
+    plt.LineWidth = 1;
+    plt.FontSize = 10;
+    plt.XMinorTick = 'off';
+    plt.YMinorTick = 'off';
+    plt.ShowBox = 'off';
+    plt.LegendLoc = 'NorthWest';
+    plt.FontName = 'Arial';
+    plt.export(['figures/FPAtitrationPlots/Nsig_vs_distanceOrder',setups{jj},'_set156.pdf']);
+    
+    figure;
+    hold on 
+    for zz = 1:length(base)
+        plot(dorders(1:13),N_sigCorr_highCV2(1:13,zz),'.-','Color',colorList{zz})
+    end
+    hold off
+    xlabel('Distance order');
+    ylabel('Number of significantly correlated reactions');
+    legend(cellfun(@(x) ['base = ',x],strsplit(num2str(base)), 'UniformOutput',0))
+    plt = Plot(); % create a Plot object and grab the current figure
+    plt.BoxDim = [3, 2.4];
+    plt.LineWidth = 1;
+    plt.FontSize = 10;
+    plt.XMinorTick = 'off';
+    plt.YMinorTick = 'off';
+    plt.ShowBox = 'off';
+    plt.FontName = 'Arial';
+    if jj ==1
+        plt.LegendLoc = 'NorthEast';
+    elseif jj ==2
+        plt.LegendLoc = 'South';
+    end
+    plt.FontName = 'Arial';
+    plt.export(['figures/FPAtitrationPlots/Nsig_vs_distanceOrder',setups{jj},'_zoomIn_set156.pdf']);
+
      if jj==1
         %% exp decay only -2d
         dorders_expDecay1000 = dorders;
         N_sigCorr_expDecay1000 = N_sigCorr(:,8);% base =1000
         N_sigCorr_highCV_expDecay1000 = N_sigCorr_highCV(:,8);
+        N_sigCorr_highCV_expDecay1000_2 = N_sigCorr_highCV2(:,8);
         perc_sigCorr_in_highCV_expDecay1000 = perc_sigCorr_in_highCV(:,8);
 
         dorders_expDecay2 = dorders;
         N_sigCorr_expDecay2 = N_sigCorr(:,2);% base =2
         N_sigCorr_highCV_expDecay2 = N_sigCorr_highCV(:,2);
+        N_sigCorr_highCV_expDecay2_2 = N_sigCorr_highCV2(:,2);
         perc_sigCorr_in_highCV_expDecay2 = perc_sigCorr_in_highCV(:,2);
      elseif jj ==2
     %% exp decay + wtd dist -2d
         dorders_wtdDist_expDecay1000 = dorders;% 
         N_sigCorr_wtdDist_expDecay1000 = N_sigCorr(:,8);% base =1000
         N_sigCorr_highCV_wtdDist_expDecay1000 = N_sigCorr_highCV(:,8);
+        N_sigCorr_highCV_wtdDist_expDecay1000_2 = N_sigCorr_highCV2(:,8);
         perc_sigCorr_in_highCV_wtdDist_expDecay1000 = perc_sigCorr_in_highCV(:,8);
 
         dorders_wtdDist_expDecay2 = dorders;% 
         N_sigCorr_wtdDist_expDecay2 = N_sigCorr(:,2);% base =2
         N_sigCorr_highCV_wtdDist_expDecay2 = N_sigCorr_highCV(:,2);
+        N_sigCorr_highCV_wtdDist_expDecay2_2 = N_sigCorr_highCV2(:,2);
         perc_sigCorr_in_highCV_wtdDist_expDecay2 = perc_sigCorr_in_highCV(:,2);
      end
 end
 
-%% plot 
+%% plot the benchmark by 232 (all) reactions
 baseline = 46; % number of correlated rxns by ROI expression only
 
 figure;
@@ -360,6 +418,55 @@ plt.YMinorTick = 'off';
 plt.TickDir = 'out';
 plt.LegendLoc = 'SouthEast';
 plt.export(['figures/FPAbenchmarking.pdf']);
+%% plot the benchmark by 156 (expression measured) reactions
+baseline = 46; % number of correlated rxns by ROI expression only
+
+figure;
+hold on
+plot(dorders_wtdDist_expDecay2(1:14),N_sigCorr_highCV_wtdDist_expDecay2_2(1:14) ,'o-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
+plot(dorders_wtdDist_expDecay1000(1:14),N_sigCorr_highCV_wtdDist_expDecay1000_2(1:14) ,'o-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
+plot(dorders_wtdDist(1:18),N_sigCorr_highCV_wtdDist2(1:18) ,'o-','LineWidth',2,'Color','#0072BD','MarkerSize', 3)
+plot(dorders_normal(1:18),N_sigCorr_highCV_normal2(1:18) ,'o-k','LineWidth',2,'MarkerSize', 3)
+yline(baseline,'--','LineWidth',2,'Color',[0.5 0.5 0.5])
+xlabel('Distance order/boundary');
+ylabel('Number of significantly correlated reactions ');
+ylim([30 60])
+legend({'improved FPA (base = 2)','improved FPA (base = 1000)','original FPA + weighted distance', 'original FPA','expression only'},'FontSize',7);
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2.85, 2.35];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.LegendLoc = 'SouthEast';
+plt.export(['figures/FPAbenchmarking_set156.pdf']);
+%% plot the combined benchmark by the 156 or 232 rxns for original FPA
+baseline = 46; % number of correlated rxns by ROI expression only
+
+figure;
+hold on
+plot(dorders_normal(1:18),N_sigCorr_highCV_normal(1:18) ,'o-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
+plot(dorders_normal(1:18),N_sigCorr_highCV_normal2(1:18) ,'o-k','LineWidth',2,'MarkerSize', 3)
+yline(baseline,'--','LineWidth',2,'Color',[0.5 0.5 0.5])
+xlabel('Distance order');
+ylabel('Number of significantly correlated reactions ');
+ylim([30 65])
+legend({'all rxn set (all flux measured rxns)', '156 rxns set (both flux and expression measured)','expression only'},'FontSize',7);
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2.85, 2.35];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.LegendLoc = 'SouthEast';
+plt.export(['figures/original_FPA_evaluation.pdf']);
+
 %% analyze the target-out integration -- local information's effect 
 % correlation of FPA prediction
 load(['output/Titration_relativeExp_wtdDist_expDecay_base2_n6_7_targetOut.mat'])

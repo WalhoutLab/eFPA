@@ -198,7 +198,7 @@ plt.export('figures/FPA_showcase_r_1887_mechanism.pdf');
 %% make the figure of other reactions
 %% load the FPA data 
 load(['output/Titration_relativeExp_oriDist_oriDecay.mat'])
-rxnID1 = 'r_0565'; % also for r_0565
+rxnID1 = 'r_0908'; % also for r_0565
 nn = 4;
 FP = FP_collection{nn};
 relFP = nan(size(FP,1),size(FP,2)-1);%we choose one from f and r as a prediction

@@ -49,6 +49,10 @@ sigTbl = sigTbl[annTbl$rxn,]
 ann2 = annTbl[rownames(annTbl),"connected_pathway"]
 ann2[ann2 == 'NA'] = annTbl$pathway[ann2 == 'NA']
 labels_row0 = paste(rownames(annTbl),ann2)
+# also add the PCC values (max PCC for each row) in the annotation
+PCCs = read.csv('output/PCC_titration_all.csv',row.names = 1)
+maxPCC = rowMaxs(as.matrix(PCCs[rownames(annTbl),3:ncol(PCCs)]))
+labels_row0 = paste(labels_row0,round(maxPCC,2))
 
 pheatmap(heatTbl[,1:23], breaks = seq(0,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
                                                                                                       "RdYlBu")))(1000),

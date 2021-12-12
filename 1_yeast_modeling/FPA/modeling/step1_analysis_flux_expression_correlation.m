@@ -259,6 +259,54 @@ plt.ShowBox = 'off';
 plt.LegendLoc = 'NorthWest';
 plt.FontName = 'Arial';
 plt.export('figures/Expression_flux_correlation_relFlux_pearson.pdf');
+%% a special look at the central carbon metabolism by their correlation
+PathwayAnn = readtable('./pathway_annotations.xlsx','Sheet','more_info');
+centralCarbon = {'Dihydroorotate production','Glycolysis','Methylglyoxal metabolism','Oxidative phosphorylation',...
+    'Pentose phosphate pathway','Pyruvate metabolism','TCA cycle'};
+for i = 1:length(centralCarbon)
+    myRxnSet = PathwayAnn.rxn(strcmp(PathwayAnn.manual_pathway,centralCarbon{i}));
+    figure;
+    hold on
+    histogram(r,'FaceColor','#0072BD','BinEdges',-1:0.2:1)
+    xlim([-1,1]);
+    xlabel('Correlation coefficient');
+    ylabel('Number of reactions');
+    histogram(r(ismember(testedRxn, myRxnSet)),'FaceColor','#D95319','BinEdges',-1:0.2:1)
+    legend({'all testable reactions',sprintf('%s',centralCarbon{i})})
+    hold off
+    plt = Plot(); % create a Plot object and grab the current figure
+    plt.BoxDim = [1.95, 1.6125];
+    plt.LineWidth = 1;
+    plt.FontSize = 10;
+    plt.XTick = -1:0.2:1;
+    plt.XMinorTick = 'off';
+    plt.YMinorTick = 'off';
+    plt.ShowBox = 'off';
+    plt.LegendLoc = 'NorthWest';
+    plt.FontName = 'Arial';
+    plt.export(['figures/centralCarbon_example/Expression_flux_correlation_relFlux_pearson_',centralCarbon{i},'.pdf']);
+end
+myRxnSet = PathwayAnn.rxn(ismember(PathwayAnn.manual_pathway,centralCarbon));
+figure;
+hold on
+histogram(r,'FaceColor','#0072BD','BinEdges',-1:0.2:1)
+xlim([-1,1]);
+xlabel('Correlation coefficient');
+ylabel('Number of reactions');
+histogram(r(ismember(testedRxn, myRxnSet)),'FaceColor','#D95319','BinEdges',-1:0.2:1)
+legend({'all testable reactions',sprintf('central carbon reactions')})
+hold off
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [1.95, 1.6125];
+plt.LineWidth = 1;
+plt.FontSize = 10;
+plt.XTick = -1:0.2:1;
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.ShowBox = 'off';
+plt.LegendLoc = 'NorthWest';
+plt.FontName = 'Arial';
+plt.export(['figures/centralCarbon_example/Expression_flux_correlation_relFlux_pearson_centralCarbon.pdf']);
 %% individual scattering plot -- save all plots 
 close all
 Candidates = testedRxn;

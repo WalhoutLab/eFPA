@@ -27,6 +27,7 @@ cmpTbl$ave_corr = NA
 cmpTbl$median_corr = NA
 cmpTbl$ave_max_corr = NA
 cmpTbl$median_max_corr = NA
+usedRxns = c()
 for (i in 1:length(pathways)){
   rxnset = annotation$rxn[which(annotation$connected_pathways == pathways[i])]
   subExp = ExpMat[rownames(ExpMat) %in% rxnset,]
@@ -40,7 +41,7 @@ for (i in 1:length(pathways)){
         tmp = c(tmp, tmp0[zz,kk])
       }
     }
-    
+    usedRxns = union(usedRxns, rownames(subExp))
     cmpTbl$ave_coexpression[i] =  mean(tmp,na.rm = T)
     cmpTbl$median_coexpression[i] =  median(tmp,na.rm = T)
     cmpTbl$ave_FPA_corr[i] = mean(FPAtbl[rxnset,'PCC_by_default_FPA'],na.rm = T)
@@ -51,6 +52,7 @@ for (i in 1:length(pathways)){
     cmpTbl$median_max_corr[i] = median(FPAtbl[rxnset,'maxPCC'],na.rm = T)
   }
 }
+write.csv(x = usedRxns,'output/rxns_used_for_coexp_analysis.csv')
 cmpTbl = cmpTbl[!is.na(cmpTbl$median_coexpression),]
 excl = c('Leucine and valine biosynthesis')
 cmpTbl_fit = cmpTbl[!(cmpTbl$pathways %in% excl), ]
@@ -78,7 +80,9 @@ pathwayCounts = data.frame(table(annotation$connected_pathways))
 pathwayCounts$valid = 0
 for (i in 1:nrow(pathwayCounts)){
   rxnset = annotation$rxn[which(annotation$connected_pathways == pathwayCounts$Var1[i])]
-  pathwayCounts$valid[i]=sum(rownames(rows.cor.exp) %in% rxnset)
+  subExp = ExpMat[rownames(ExpMat) %in% rxnset,]
+  subExp = subExp[!duplicated(subExp),] # we only analyze the coexpression between valid (distinct) genes (GPR)
+  pathwayCounts$valid[i]=nrow(subExp)
 }
 
 
