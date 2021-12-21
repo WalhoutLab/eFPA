@@ -1,0 +1,10 @@
+controlling point:
+r_0214	carbamoyl phosphate [cytoplasm] + L-aspartate [cytoplasm] 	->	H+ [cytoplasm] + N-carbamoyl-L-aspartate [cytoplasm] + phosphate [cytoplasm] 
+
+target rxns:
+r_0476	ammonium [cytoplasm] + ATP [cytoplasm] + L-glutamate [cytoplasm] 	->	ADP [cytoplasm] + H+ [cytoplasm] + L-glutamine [cytoplasm] + phosphate [cytoplasm] 
+r_1667	carbon dioxide [cytoplasm] + H2O [cytoplasm] 	<=>	bicarbonate [cytoplasm] + H+ [cytoplasm] 
+r_0214	carbamoyl phosphate [cytoplasm] + L-aspartate [cytoplasm] 	->	H+ [cytoplasm] + N-carbamoyl-L-aspartate [cytoplasm] + phosphate [cytoplasm] 
+r_0250	2 ATP [cytoplasm] + bicarbonate [cytoplasm] + H2O [cytoplasm] + L-glutamine [cytoplasm] 	->	2 ADP [cytoplasm] + carbamoyl phosphate [cytoplasm] + 2 H+ [cytoplasm] + L-glutamate [cytoplasm] + phosphate [cytoplasm] 
+r_0216	2-oxoglutarate [cytoplasm] + L-aspartate [cytoplasm] 	<=>	L-glutamate [cytoplasm] + oxaloacetate [cytoplasm] 
+r_0958	ATP [cytoplasm] + bicarbonate [cytoplasm] + pyruvate [cytoplasm] 	->	ADP [cytoplasm] + H+ [cytoplasm] + oxaloacetate [cytoplasm] + phosphate [cytoplasm] 

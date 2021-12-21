@@ -1,0 +1,10 @@
+controlling point:
+r_0215	ATP [cytoplasm] + L-aspartate [cytoplasm] 	->	4-phospho-L-aspartate [cytoplasm] + ADP [cytoplasm] 
+
+target rxns:
+r_0032	adenosine 3',5'-bismonophosphate [cytoplasm] + H2O [cytoplasm] 	->	AMP [cytoplasm] + phosphate [cytoplasm] 
+r_0154	5'-adenylyl sulfate [cytoplasm] + ATP [cytoplasm] 	->	3'-phospho-5'-adenylyl sulfate [cytoplasm] + ADP [cytoplasm] + H+ [cytoplasm] 
+r_1026	ADP [cytoplasm] + H+ [cytoplasm] + sulphate [cytoplasm] 	->	5'-adenylyl sulfate [cytoplasm] + phosphate [cytoplasm] 
+r_1027	5 H+ [cytoplasm] + 3 NADPH [cytoplasm] + sulphite [cytoplasm] 	->	3 H2O [cytoplasm] + hydrogen sulfide [cytoplasm] + 3 NADP(+) [cytoplasm] 
+r_0813	hydrogen sulfide [cytoplasm] + O-acetyl-L-homoserine [cytoplasm] 	->	acetate [cytoplasm] + H+ [cytoplasm] + L-homocysteine [cytoplasm] 
+r_0883	3'-phospho-5'-adenylyl sulfate [cytoplasm] + TRX1 [cytoplasm] 	->	adenosine 3',5'-bismonophosphate [cytoplasm] + 2 H+ [cytoplasm] + sulphite [cytoplasm] + TRX1 disulphide [cytoplasm] 

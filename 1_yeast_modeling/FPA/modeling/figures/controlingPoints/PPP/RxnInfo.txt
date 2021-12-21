@@ -1,0 +1,9 @@
+controlling point:
+r_0091	6-O-phosphono-D-glucono-1,5-lactone [cytoplasm] + H2O [cytoplasm] 	->	6-phospho-D-gluconate [cytoplasm] + H+ [cytoplasm] 
+
+target rxns:
+r_0990	sedoheptulose 1,7-bisphosphate [cytoplasm] 	<=>	D-erythrose 4-phosphate [cytoplasm] + dihydroxyacetone phosphate [cytoplasm] 
+r_0091	6-O-phosphono-D-glucono-1,5-lactone [cytoplasm] + H2O [cytoplasm] 	->	6-phospho-D-gluconate [cytoplasm] + H+ [cytoplasm] 
+r_0466	D-glucose 6-phosphate [cytoplasm] + NADP(+) [cytoplasm] 	->	6-O-phosphono-D-glucono-1,5-lactone [cytoplasm] + H+ [cytoplasm] + NADPH [cytoplasm] 
+r_1050	D-erythrose 4-phosphate [cytoplasm] + D-xylulose 5-phosphate [cytoplasm] 	<=>	D-fructose 6-phosphate [cytoplasm] + glyceraldehyde 3-phosphate [cytoplasm] 
+r_0889	6-phospho-D-gluconate [cytoplasm] + NADP(+) [cytoplasm] 	->	carbon dioxide [cytoplasm] + D-ribulose 5-phosphate [cytoplasm] + NADPH [cytoplasm] 

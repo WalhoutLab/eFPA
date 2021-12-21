@@ -1,0 +1,14 @@
+controlling point:
+r_0821	H+ [cytoplasm] + orotidine 5'-(dihydrogen phosphate) [cytoplasm] 	->	carbon dioxide [cytoplasm] + UMP [cytoplasm] 
+
+target rxns:
+r_1074	PRPP [cytoplasm] + uracil [cytoplasm] 	->	diphosphate [cytoplasm] + UMP [cytoplasm] 
+r_0307	ammonium [cytoplasm] + ATP [cytoplasm] + UTP [cytoplasm] 	->	ADP [cytoplasm] + CTP [cytoplasm] + 2 H+ [cytoplasm] + phosphate [cytoplasm] 
+r_0364	dUTP [cytoplasm] + H2O [cytoplasm] 	->	diphosphate [cytoplasm] + dUMP [cytoplasm] + H+ [cytoplasm] 
+r_1072	ATP [cytoplasm] + UMP [cytoplasm] 	->	ADP [cytoplasm] + UDP [cytoplasm] 
+r_0820	diphosphate [cytoplasm] + orotidine 5'-(dihydrogen phosphate) [cytoplasm] 	<=>	orotate [cytoplasm] + PRPP [cytoplasm] 
+r_0811	ATP [cytoplasm] + UDP [cytoplasm] 	->	ADP [cytoplasm] + UTP [cytoplasm] 
+r_0973	UTP [cytoplasm] + TRX1 [cytoplasm] 	->	dUTP [cytoplasm] + H2O [cytoplasm] + TRX1 disulphide [cytoplasm] 
+r_1045	5,10-methylenetetrahydrofolate [cytoplasm] + dUMP [cytoplasm] 	->	dihydrofolic acid [cytoplasm] + dTMP [cytoplasm] 
+r_0799	ATP [cytoplasm] + dTDP [cytoplasm] 	->	ADP [cytoplasm] + dTTP [cytoplasm] 
+r_0363	ATP [cytoplasm] + dTMP [cytoplasm] 	->	ADP [cytoplasm] + dTDP [cytoplasm] 

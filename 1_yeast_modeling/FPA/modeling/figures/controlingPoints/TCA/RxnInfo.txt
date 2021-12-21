@@ -1,0 +1,16 @@
+controlling point:
+r_1022	ADP [mitochondrion] + phosphate [mitochondrion] + succinyl-CoA [mitochondrion] 	->	ATP [mitochondrion] + coenzyme A [mitochondrion] + succinate [mitochondrion] 
+
+target rxns:
+r_0302	citrate [mitochondrion] 	<=>	cis-aconitate [mitochondrion] + H2O [mitochondrion] 
+r_0280	cis-aconitate [mitochondrion] + H2O [mitochondrion] 	<=>	isocitrate [mitochondrion] 
+r_0961	coenzyme A [mitochondrion] + NAD [mitochondrion] + pyruvate [mitochondrion] 	->	acetyl-CoA [mitochondrion] + carbon dioxide [mitochondrion] + NADH [mitochondrion] 
+r_0713	(S)-malate [mitochondrion] + NAD [mitochondrion] 	<=>	H+ [mitochondrion] + NADH [mitochondrion] + oxaloacetate [mitochondrion] 
+r_0505	dihydrolipoamide [mitochondrion] + NAD [mitochondrion] 	->	H+ [mitochondrion] + lipoamide [mitochondrion] + NADH [mitochondrion] 
+r_0451	fumarate [mitochondrion] + H2O [mitochondrion] 	<=>	(S)-malate [mitochondrion] 
+r_0773	H+ [mitochondrion] + NADH [mitochondrion] + ubiquinone-6 [mitochondrion] 	->	NAD [mitochondrion] + ubiquinol-6 [mitochondrion] 
+r_0658	isocitrate [mitochondrion] + NAD [mitochondrion] 	->	2-oxoglutarate [mitochondrion] + carbon dioxide [mitochondrion] + NADH [mitochondrion] 
+r_0832	2-oxoglutarate [mitochondrion] + H+ [mitochondrion] + lipoamide [mitochondrion] 	->	carbon dioxide [mitochondrion] + S(8)-succinyldihydrolipoamide [mitochondrion] 
+r_0831	coenzyme A [mitochondrion] + S(8)-succinyldihydrolipoamide [mitochondrion] 	->	dihydrolipoamide [mitochondrion] + succinyl-CoA [mitochondrion] 
+r_1022	ADP [mitochondrion] + phosphate [mitochondrion] + succinyl-CoA [mitochondrion] 	->	ATP [mitochondrion] + coenzyme A [mitochondrion] + succinate [mitochondrion] 
+r_0300	acetyl-CoA [mitochondrion] + H2O [mitochondrion] + oxaloacetate [mitochondrion] 	->	citrate [mitochondrion] + coenzyme A [mitochondrion] + H+ [mitochondrion] 

@@ -1,0 +1,10 @@
+controlling point:
+r_0886	ATP [cytoplasm] + D-fructose 6-phosphate [cytoplasm] 	->	ADP [cytoplasm] + D-fructose 1,6-bisphosphate [cytoplasm] + H+ [cytoplasm] 
+
+target rxns:
+r_0799	ATP [cytoplasm] + dTDP [cytoplasm] 	->	ADP [cytoplasm] + dTTP [cytoplasm] 
+r_0973	UTP [cytoplasm] + TRX1 [cytoplasm] 	->	dUTP [cytoplasm] + H2O [cytoplasm] + TRX1 disulphide [cytoplasm] 
+r_0970	ATP [cytoplasm] + TRX1 [cytoplasm] 	->	dATP [cytoplasm] + H2O [cytoplasm] + TRX1 disulphide [cytoplasm] 
+r_1045	5,10-methylenetetrahydrofolate [cytoplasm] + dUMP [cytoplasm] 	->	dihydrofolic acid [cytoplasm] + dTMP [cytoplasm] 
+r_0364	dUTP [cytoplasm] + H2O [cytoplasm] 	->	diphosphate [cytoplasm] + dUMP [cytoplasm] + H+ [cytoplasm] 
+r_0971	CTP [cytoplasm] + TRX1 [cytoplasm] 	->	dCTP [cytoplasm] + H2O [cytoplasm] + TRX1 disulphide [cytoplasm] 

@@ -1,0 +1,11 @@
+controlling point:
+r_1051	alpha,alpha-trehalose 6-phosphate [cytoplasm] + H2O [cytoplasm] 	->	phosphate [cytoplasm] + trehalose [cytoplasm] 
+
+target rxns:
+r_0109	acetyl-CoA [cytoplasm] + ATP [cytoplasm] + bicarbonate [cytoplasm] 	->	ADP [cytoplasm] + H+ [cytoplasm] + malonyl-CoA [cytoplasm] + phosphate [cytoplasm] 
+r_2141	acetyl-CoA [cytoplasm] + 24 H+ [cytoplasm] + 8 malonyl-CoA [cytoplasm] + 16 NADPH [cytoplasm] 	->	8 carbon dioxide [cytoplasm] + 8 coenzyme A [cytoplasm] + 8 H2O [cytoplasm] + 16 NADP(+) [cytoplasm] + stearoyl-CoA [cytoplasm] 
+r_2199	coenzyme A [endoplasmic reticulum membrane] + ATP [endoplasmic reticulum membrane] + oleate [endoplasmic reticulum membrane] 	<=>	oleoyl-CoA [endoplasmic reticulum membrane] + AMP [endoplasmic reticulum membrane] + diphosphate [endoplasmic reticulum membrane] 
+r_2140	acetyl-CoA [cytoplasm] + 21 H+ [cytoplasm] + 7 malonyl-CoA [cytoplasm] + 14 NADPH [cytoplasm] 	->	7 carbon dioxide [cytoplasm] + 7 coenzyme A [cytoplasm] + 7 H2O [cytoplasm] + 14 NADP(+) [cytoplasm] + palmitoyl-CoA [cytoplasm] 
+r_2197	coenzyme A [endoplasmic reticulum membrane] + ATP [endoplasmic reticulum membrane] + palmitoleate [endoplasmic reticulum membrane] 	<=>	palmitoleoyl-CoA(4-) [endoplasmic reticulum membrane] + AMP [endoplasmic reticulum membrane] + diphosphate [endoplasmic reticulum membrane] 
+r_0195	D-glucose 6-phosphate [cytoplasm] + UDP-D-glucose [cytoplasm] 	->	alpha,alpha-trehalose 6-phosphate [cytoplasm] + H+ [cytoplasm] + UDP [cytoplasm] 
+r_1051	alpha,alpha-trehalose 6-phosphate [cytoplasm] + H2O [cytoplasm] 	->	phosphate [cytoplasm] + trehalose [cytoplasm] 

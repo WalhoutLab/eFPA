@@ -1,0 +1,16 @@
+controlling point:
+r_0959	H+ [cytoplasm] + pyruvate [cytoplasm] 	->	acetaldehyde [cytoplasm] + carbon dioxide [cytoplasm] 
+
+target rxns:
+r_0697	glutathione [cytoplasm] + methylglyoxal [cytoplasm] 	->	(R)-S-lactoylglutathione [cytoplasm] 
+r_1136	(R)-lactate [extracellular] + H+ [extracellular] 	<=>	(R)-lactate [cytoplasm] + H+ [cytoplasm] 
+r_1054	dihydroxyacetone phosphate [cytoplasm] 	<=>	glyceraldehyde 3-phosphate [cytoplasm] 
+r_0959	H+ [cytoplasm] + pyruvate [cytoplasm] 	->	acetaldehyde [cytoplasm] + carbon dioxide [cytoplasm] 
+r_2115	acetaldehyde [cytoplasm] + H+ [cytoplasm] + NADH [cytoplasm] 	->	ethanol [cytoplasm] + NAD [cytoplasm] 
+r_0892	1,3-bisphospho-D-glycerate [cytoplasm] + ADP [cytoplasm] 	<=>	3-phosphonato-D-glycerate(3-) [cytoplasm] + ATP [cytoplasm] 
+r_0962	ADP [cytoplasm] + H+ [cytoplasm] + phosphoenolpyruvate [cytoplasm] 	->	ATP [cytoplasm] + pyruvate [cytoplasm] 
+r_0486	glyceraldehyde 3-phosphate [cytoplasm] + NAD [cytoplasm] + phosphate [cytoplasm] 	<=>	1,3-bisphospho-D-glycerate [cytoplasm] + H+ [cytoplasm] + NADH [cytoplasm] 
+r_0893	3-phosphonato-D-glycerate(3-) [cytoplasm] 	<=>	2-phospho-D-glyceric acid [cytoplasm] 
+r_0467	D-glucose 6-phosphate [cytoplasm] 	<=>	D-fructose 6-phosphate [cytoplasm] 
+r_0450	D-fructose 1,6-bisphosphate [cytoplasm] 	<=>	dihydroxyacetone phosphate [cytoplasm] + glyceraldehyde 3-phosphate [cytoplasm] 
+r_0886	ATP [cytoplasm] + D-fructose 6-phosphate [cytoplasm] 	->	ADP [cytoplasm] + D-fructose 1,6-bisphosphate [cytoplasm] + H+ [cytoplasm] 
