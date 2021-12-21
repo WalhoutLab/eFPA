@@ -1,0 +1,173 @@
+library(pheatmap)
+library(RColorBrewer)
+# the annotation of reactions
+# the manual connected pathway was used; pathways with reactions less than 3 were grouped to others; isolated transporters are labeled out (inner and exchange)
+rMat = read.csv('output/crossCorrelation_rMat.csv',row.names = 1)
+FDRmat = read.csv('output/crossCorrelation_FDRMat.csv',row.names = 1)
+
+heatTbl = rMat
+# row-wise normalize 
+heatTbl = t(scale(t(heatTbl),scale = apply(heatTbl, 1, max),center = F))
+sigTbl = ifelse(rMat > 0 & FDRmat < 0.05, '+','')
+dev.off()
+pdf('figures/NoTrack_cross_correlation.pdf',width = 60,height = 60)
+# add annotation
+library(xlsx)
+annTbl = read.xlsx('./pathway_annotations.xlsx','more_info',header = T)
+rownames(annTbl) = annTbl$rxn
+annotationList = c('Purine metabolism','Phenylalanine, tyrosine and tryptophan biosynthesis','Histidine metabolism','Lysine biosynthesis',
+                   'Arginine biosynthesis','Threonine, methionine and cysteine synthesis','Proline biosynthesis','Pyrimidine metabolism',
+                   'Glycolysis','TCA cycle', 'Mannan synthesis',
+                   'UDP-D-glucose metabolism','Fatty acid biosynthesis',
+                   'transporter [inner]','transporter [exchange]','Others')
+annTbl$myAnnotation = annTbl$manual_pathway
+annTbl$myAnnotation[!(annTbl$myAnnotation %in% annotationList)] = 'Others'
+colors = read.csv('figures/simpsons_color.csv',header = F)
+colorList2 = colors$V1[2:(1+length(annotationList))]
+names(colorList2) = annotationList
+colorList2 = list(myAnnotation = colorList2)
+colorList2$myAnnotation = colorList2$myAnnotation[unique(annTbl[,c("myAnnotation")])]
+# assign annotations
+ann2 = annTbl[rownames(heatTbl),"manual_pathway"]
+labels_row0 = paste(rownames(heatTbl),ann2)
+ann3 = annTbl[colnames(heatTbl),"manual_pathway"]
+labels_col0 = paste(colnames(heatTbl),ann3)
+# also add the PCC values (max PCC for each row) in the annotation
+# PCCs = read.csv('output/PCC_titration_all.csv',row.names = 1)
+# maxPCC = rowMaxs(as.matrix(PCCs[rownames(annTbl),3:ncol(PCCs)]))
+# labels_row0 = paste(labels_row0,round(maxPCC,2))
+
+pheatmap(heatTbl, breaks = seq(0,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+                                                                                                      "RdYlBu")))(1000),
+         annotation_row = annTbl[,c("myAnnotation"),drop = F],
+         annotation_colors = colorList2, labels_row = labels_row0, labels_col = labels_col0,
+         border_color = 0,
+         fontsize = 6,fontsize_row = 6, fontsize_col = 6,
+         cellwidth = 6, cellheight = 6,
+         cluster_rows = T,cluster_cols = T,clustering_distance_rows = 'correlation',clustering_distance_cols = 'correlation',
+         display_numbers = sigTbl, number_color = 'Black',fontsize_number = 3
+)
+
+dev.off()
+
+
+
+
+
+# compare the best PCC here with the best PCC in optimal bound FPA
+library(matrixStats)
+boundary = data.frame(Var1 = c(c('base2-boundary6','expression only'), seq(0,40,0.5)))
+FPAtbl = read.csv('output/summary_table_reaction_information.csv',row.names = 1)
+PCCs = read.csv('output/PCC_titration_all.csv',row.names = 1)
+colnames(PCCs) = boundary$Var1
+FPAtbl$maxPCC_FPA = rowMaxs(as.matrix(PCCs[rownames(FPAtbl),3:ncol(PCCs)]))
+FPAtbl$maxPCC_all2all = rowMaxs(as.matrix(rMat[rownames(FPAtbl),]))
+FPAtbl$delta = FPAtbl$maxPCC_FPA - FPAtbl$maxPCC_all2all
+
+plot(FPAtbl$maxPCC_FPA, FPAtbl$maxPCC_all2all, xlim = c(0,1), ylim = c(0,1))
+abline(a = 0, b= 1)
+# ==> FPA underperform for most rxns, except for some transporter that is related to the media settings
+
+
+
+
+
+# we use flux-flux-flux-expression co-correlation matrix to pinpoint potential real regulations among the overfittings 
+rMat = read.csv('output/coCorrelation_rMat.csv',row.names = 1)
+heatTbl = rMat
+# row-wise normalize: row is each ROI flux under consideration; col is each ROI expression
+maxCorr = rowMaxs(as.matrix(heatTbl))
+heatTbl = t(scale(t(heatTbl),scale = apply(heatTbl, 1, max),center = F))
+dev.off()
+pdf('figures/NoTrack_co_correlation.pdf',width = 60,height = 60)
+# add annotation
+library(xlsx)
+annTbl = read.xlsx('./pathway_annotations.xlsx','more_info',header = T)
+rownames(annTbl) = annTbl$rxn
+annotationList = c('Purine metabolism','Phenylalanine, tyrosine and tryptophan biosynthesis','Histidine metabolism','Lysine biosynthesis',
+                   'Arginine biosynthesis','Threonine, methionine and cysteine synthesis','Proline biosynthesis','Pyrimidine metabolism',
+                   'Glycolysis','TCA cycle', 'Mannan synthesis',
+                   'UDP-D-glucose metabolism','Fatty acid biosynthesis',
+                   'transporter [inner]','transporter [exchange]','Others')
+annTbl$myAnnotation = annTbl$manual_pathway
+annTbl$myAnnotation[!(annTbl$myAnnotation %in% annotationList)] = 'Others'
+colors = read.csv('figures/simpsons_color.csv',header = F)
+colorList2 = colors$V1[2:(1+length(annotationList))]
+names(colorList2) = annotationList
+colorList2 = list(myAnnotation = colorList2)
+colorList2$myAnnotation = colorList2$myAnnotation[unique(annTbl[,c("myAnnotation")])]
+# assign annotations
+ann2 = annTbl[rownames(heatTbl),"manual_pathway"]
+labels_row0 = paste(rownames(heatTbl),ann2)
+ann3 = annTbl[colnames(heatTbl),"manual_pathway"]
+labels_col0 = paste(colnames(heatTbl),ann3)
+# also add the PCC values (max PCC for each row) in the annotation
+labels_row0 = paste(labels_row0,round(maxCorr,2))
+
+pheatmap(heatTbl, breaks = seq(0,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+                                                                                    "RdYlBu")))(1000),
+         annotation_row = annTbl[,c("myAnnotation"),drop = F],
+         annotation_colors = colorList2, labels_row = labels_row0, labels_col = labels_col0,
+         border_color = 0,
+         fontsize = 6,fontsize_row = 6, fontsize_col = 6,
+         cellwidth = 6, cellheight = 6,
+         cluster_rows = T,cluster_cols = T,clustering_distance_rows = 'correlation',clustering_distance_cols = 'correlation'
+)
+
+dev.off()
+
+# same code for stringent matrix
+rMat = read.csv('output/coCorrelation_rMat_stringent.csv',row.names = 1)
+heatTbl = rMat
+# row-wise normalize: row is each ROI flux under consideration; col is each ROI expression
+maxCorr = rowMaxs(as.matrix(heatTbl))
+# clean up
+heatTbl = heatTbl[,!colAlls(heatTbl==0)]
+heatTbl = heatTbl[maxCorr > 0.12,]
+maxCorr = maxCorr[maxCorr > 0.12]
+heatTbl = t(scale(t(heatTbl),scale = apply(heatTbl, 1, max),center = F))
+heatTbl = heatTbl[,colMaxs(heatTbl) > 0.5]
+
+dev.off()
+pdf('figures/NoTrack_co_correlation_stringent.pdf',width = 60,height = 60)
+# add annotation
+library(xlsx)
+annTbl = read.xlsx('./pathway_annotations.xlsx','more_info',header = T)
+rownames(annTbl) = annTbl$rxn
+annotationList = c('Purine metabolism','Phenylalanine, tyrosine and tryptophan biosynthesis','Histidine metabolism','Lysine biosynthesis',
+                   'Arginine biosynthesis','Threonine, methionine and cysteine synthesis','Proline biosynthesis','Pyrimidine metabolism',
+                   'Glycolysis','TCA cycle', 'Mannan synthesis',
+                   'UDP-D-glucose metabolism','Fatty acid biosynthesis',
+                   'transporter [inner]','transporter [exchange]','Others')
+annTbl$myAnnotation = annTbl$manual_pathway
+annTbl$myAnnotation[!(annTbl$myAnnotation %in% annotationList)] = 'Others'
+colors = read.csv('figures/simpsons_color.csv',header = F)
+colorList2 = colors$V1[2:(1+length(annotationList))]
+names(colorList2) = annotationList
+colorList2 = list(myAnnotation = colorList2)
+colorList2$myAnnotation = colorList2$myAnnotation[unique(annTbl[,c("myAnnotation")])]
+# assign annotations
+ann2 = annTbl[rownames(heatTbl),"manual_pathway"]
+labels_row0 = paste(rownames(heatTbl),ann2)
+ann3 = annTbl[colnames(heatTbl),"manual_pathway"]
+labels_col0 = paste(colnames(heatTbl),ann3)
+# also add the PCC values (max PCC for each row) in the annotation
+labels_row0 = paste(labels_row0,round(maxCorr,2))
+
+pheatmap(heatTbl, breaks = seq(0,1,0.001),color = colorRampPalette(rev(brewer.pal(n = 7, name =
+                                                                                    "RdYlBu")))(1000),
+         annotation_row = annTbl[,c("myAnnotation"),drop = F],
+         annotation_colors = colorList2, labels_row = labels_row0, labels_col = labels_col0,
+         border_color = 0,
+         fontsize = 6,fontsize_row = 6, fontsize_col = 6,
+         cellwidth = 6, cellheight = 6,
+         cluster_rows = T,cluster_cols = T
+)
+
+dev.off()
+
+
+
+
+
+
