@@ -1,7 +1,90 @@
-# About: analyze the type of prediction and benefit from integration
+# About: visualization of correlated rxns, analyze the type of prediction and benefit from integration
+
+# pathway annotation of correlated rxns
+# also label for each pathway how many are tested
+summaryData = read.csv('output/summary_table_reaction_information.csv',row.names = 1)
+pathwayInfo = xlsx::read.xlsx('pathway_annotations.xlsx','more_info')
+correlatedRxns = pathwayInfo$manual_pathway[pathwayInfo$rxn %in% rownames(summaryData)[summaryData$correlated == 'Yes']]
+correlatedRxnsCount = table(correlatedRxns)
+correlatedRxnsCount = as.data.frame(correlatedRxnsCount)
+allCount = table(pathwayInfo$manual_pathway)
+correlatedRxnsCount$allCount = allCount[as.character(correlatedRxnsCount$correlatedRxns)]
+correlatedRxnsCount$correlatedRxns = factor(as.character(correlatedRxnsCount$correlatedRxns),levels = correlatedRxnsCount$correlatedRxns[order(correlatedRxnsCount$allCount)])
+correlatedRxnsCount$not_correlated = correlatedRxnsCount$allCount-correlatedRxnsCount$Freq
+correlatedRxnsCount = correlatedRxnsCount[,c(1,2,4)]
+colnames(correlatedRxnsCount) = c('pathway','correlated','not correlated')
+correlatedRxnsCount = reshape2::melt(correlatedRxnsCount)
+correlatedRxnsCount$variable = factor(as.character(correlatedRxnsCount$variable),levels = c('not correlated','correlated'))
+library(artyfarty)
+library(ggplot2)
+p = ggplot(correlatedRxnsCount, aes(x= pathway, y=value, fill = variable))+
+  geom_bar(stat="identity",position="stack", size=0.25,colour="black")+
+  ylab("Number of reactions")+
+  coord_flip()+ scale_y_continuous(expand = c(0, 0)) +
+  theme_bw()+
+  theme(text = element_text(size = 7),
+        axis.text.x = element_text(colour ='black'),axis.text.y = element_text(colour ='black'),
+        axis.title.y=element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        #legend.title = element_blank(),
+        axis.line.y.left = element_line(colour = 'black', size = 0.5),
+        axis.line.x.bottom = element_line(colour = 'black', size = 0.5),
+        axis.ticks = element_line(colour = "black", size = 0.5),
+        panel.border = element_blank())
+dev.off()
+pdf('figures/pathway_annotation_correlated_rxns.pdf',width = 5,height = 2)
+print(p)
+dev.off()
+# same for other predictions
+correlatedRxns = pathwayInfo$manual_pathway[pathwayInfo$rxn %in% rownames(summaryData)[summaryData$predicted_by_default_FPA == 'Yes']]
+correlatedRxnsCount = table(correlatedRxns)
+correlatedRxnsCount = as.data.frame(correlatedRxnsCount)
+library(artyfarty)
+library(ggplot2)
+p = ggplot(correlatedRxnsCount, aes(x=reorder(correlatedRxns, -Freq), y=Freq))+
+  geom_bar(stat="identity",position="identity", size=0.25,colour="black")+
+  ylab("Number of reactions")+
+  coord_flip()+ scale_y_continuous(expand = c(0, 0)) +
+  theme_bw()+
+  theme(text = element_text(size = 7),
+        axis.text.x = element_text(colour ='black'),axis.text.y = element_text(colour ='black'),
+        axis.title.y=element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        legend.title = element_blank(),
+        axis.line.y.left = element_line(colour = 'black', size = 0.5),
+        axis.line.x.bottom = element_line(colour = 'black', size = 0.5),
+        axis.ticks = element_line(colour = "black", size = 0.5),
+        panel.border = element_blank())
+dev.off()
+pdf('figures/pathway_annotation_predicted_by_defaultFPA_rxns.pdf',width = 4,height = 2.75)
+print(p)
+dev.off()
+
+correlatedRxns = pathwayInfo$manual_pathway[pathwayInfo$rxn %in% rownames(summaryData)[summaryData$predicted_by_optimal_boundary_FPA == 'Yes']]
+correlatedRxnsCount = table(correlatedRxns)
+correlatedRxnsCount = as.data.frame(correlatedRxnsCount)
+library(artyfarty)
+library(ggplot2)
+p = ggplot(correlatedRxnsCount, aes(x=reorder(correlatedRxns, -Freq), y=Freq))+
+  geom_bar(stat="identity",position="identity", size=0.25,colour="black")+
+  ylab("Number of reactions")+
+  coord_flip()+ scale_y_continuous(expand = c(0, 0)) +
+  theme_bw()+
+  theme(text = element_text(size = 7),
+        axis.text.x = element_text(colour ='black'),axis.text.y = element_text(colour ='black'),
+        axis.title.y=element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        legend.title = element_blank(),
+        axis.line.y.left = element_line(colour = 'black', size = 0.5),
+        axis.line.x.bottom = element_line(colour = 'black', size = 0.5),
+        axis.ticks = element_line(colour = "black", size = 0.5),
+        panel.border = element_blank())
+dev.off()
+pdf('figures/pathway_annotation_predicted_by_optimalBondFPA_rxns.pdf',width = 4,height = 3.25)
+print(p)
+dev.off()
 
 # compare gap filling vs error correcting 
-summaryData = read.csv('output/summary_table_reaction_information.csv',row.names = 1)
 table(summaryData$predicted_by_optimal_boundary_FPA)
 table(summaryData$predicted_by_default_FPA)
 table(summaryData$correlated)

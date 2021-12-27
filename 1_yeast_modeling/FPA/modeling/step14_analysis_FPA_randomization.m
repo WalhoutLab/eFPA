@@ -92,6 +92,16 @@ names = names(~strcmp(names,'rand_1_flexi_FPA.mat'));
 for i = 1:length(names)
     path_flexiFPA{i} = [folders{i},'/',names{i}];
 end
+% only read completed data
+rmInd = [];
+for i = 1:length(path_defaultFPA)
+    mypath = path_defaultFPA{i};
+    mypath = regexprep(mypath, 'default_FPA.mat$','flexi_FPA.mat');
+    if ~any(strcmp(mypath, path_flexiFPA))
+        rmInd = [rmInd; i];
+    end
+end
+path_defaultFPA(rmInd) = [];
 %% evaluate FPA randomization for default FPA
 n2 = 0:0.5:40;
 N_corr_232 = [];
