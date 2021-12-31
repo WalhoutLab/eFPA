@@ -8,3 +8,6 @@ r_0214	carbamoyl phosphate [cytoplasm] + L-aspartate [cytoplasm] 	->	H+ [cytopla
 r_0250	2 ATP [cytoplasm] + bicarbonate [cytoplasm] + H2O [cytoplasm] + L-glutamine [cytoplasm] 	->	2 ADP [cytoplasm] + carbamoyl phosphate [cytoplasm] + 2 H+ [cytoplasm] + L-glutamate [cytoplasm] + phosphate [cytoplasm] 
 r_0216	2-oxoglutarate [cytoplasm] + L-aspartate [cytoplasm] 	<=>	L-glutamate [cytoplasm] + oxaloacetate [cytoplasm] 
 r_0958	ATP [cytoplasm] + bicarbonate [cytoplasm] + pyruvate [cytoplasm] 	->	ADP [cytoplasm] + H+ [cytoplasm] + oxaloacetate [cytoplasm] + phosphate [cytoplasm] 
+cstm_s_1269_TCE	orotate [cytoplasm] 	<=>	s_1269[e] 
+r_0349	(S)-dihydroorotate [cytoplasm] + H2O [cytoplasm] 	<=>	H+ [cytoplasm] + N-carbamoyl-L-aspartate [cytoplasm] 
+r_1115	ammonium [extracellular] 	<=>	ammonium [cytoplasm] 

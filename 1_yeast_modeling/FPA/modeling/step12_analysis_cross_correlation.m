@@ -92,6 +92,45 @@ t = array2table(coCorMat);
 t.Properties.RowNames = rxnLabel(fluxKeep);
 t.Properties.VariableNames = myRxns;
 writetable(t,'output/coCorrelation_rMat.csv','WriteRowNames',1);
+
+%% plot for each cutoff, how many rxns are colinear
+sigCorr = readtable('output/summary_table_reaction_information.csv');
+myRxns = sigCorr.rxnID(strcmp(sigCorr.predicted_by_optimal_boundary_FPA,'Yes'));
+nRxns = [];
+n_all_predicted = [];
+n_coflux_only = [];
+for i = 0:0.01:1
+    nRxns = [nRxns,sum(max(abs(flux_flux_corr_subset),[],1) > i)]; % or 0.99 (which gives 88 vs. 161 here)
+    n_all_predicted = [n_all_predicted,...
+        length(union(rxnLabel(max(abs(flux_flux_corr_subset),[],1) > i),myRxns))];
+    n_coflux_only = [n_coflux_only,...
+        length(setdiff(rxnLabel(max(abs(flux_flux_corr_subset),[],1) > i),myRxns))];
+end
+figure;
+hold on
+plot(0:0.01:1,nRxns,'-k')
+plot(0:0.01:1,n_all_predicted ,'-','Color','#D95319')
+plot(0:0.01:1,n_coflux_only ,'-','Color','#0072BD')
+hold off
+xline(0.8,'-','LineWidth',2,'Color',[0.5 0.5 0.5])
+xlabel('Coflux cutoff');
+ylabel('Number of reactions');
+legend({'coflux reactions','coflux reactions + FPA reactions','coflux reactions - FPA reactions'});
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2, 2];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.LegendLoc = 'SouthEast';
+plt.export(['figures/coflux_nRxns.pdf']);
+
+
+
+
 %% we found we need more constriants to narrow down the real effect
 % we add in constraints on its own flux-expression correlation
 

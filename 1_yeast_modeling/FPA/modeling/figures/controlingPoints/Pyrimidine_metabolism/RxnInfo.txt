@@ -2,6 +2,7 @@ controlling point:
 r_0821	H+ [cytoplasm] + orotidine 5'-(dihydrogen phosphate) [cytoplasm] 	->	carbon dioxide [cytoplasm] + UMP [cytoplasm] 
 
 target rxns:
+r_0821	H+ [cytoplasm] + orotidine 5'-(dihydrogen phosphate) [cytoplasm] 	->	carbon dioxide [cytoplasm] + UMP [cytoplasm] 
 r_1074	PRPP [cytoplasm] + uracil [cytoplasm] 	->	diphosphate [cytoplasm] + UMP [cytoplasm] 
 r_0307	ammonium [cytoplasm] + ATP [cytoplasm] + UTP [cytoplasm] 	->	ADP [cytoplasm] + CTP [cytoplasm] + 2 H+ [cytoplasm] + phosphate [cytoplasm] 
 r_0364	dUTP [cytoplasm] + H2O [cytoplasm] 	->	diphosphate [cytoplasm] + dUMP [cytoplasm] + H+ [cytoplasm] 
@@ -12,3 +13,4 @@ r_0973	UTP [cytoplasm] + TRX1 [cytoplasm] 	->	dUTP [cytoplasm] + H2O [cytoplasm]
 r_1045	5,10-methylenetetrahydrofolate [cytoplasm] + dUMP [cytoplasm] 	->	dihydrofolic acid [cytoplasm] + dTMP [cytoplasm] 
 r_0799	ATP [cytoplasm] + dTDP [cytoplasm] 	->	ADP [cytoplasm] + dTTP [cytoplasm] 
 r_0363	ATP [cytoplasm] + dTMP [cytoplasm] 	->	ADP [cytoplasm] + dTDP [cytoplasm] 
+r_1272	H+ [extracellular] + uracil [extracellular] 	->	H+ [cytoplasm] + uracil [cytoplasm] 

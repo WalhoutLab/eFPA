@@ -22,15 +22,15 @@ labels2 = regexprep(conditions,'_','-');
 
 %% CLEAR: TCA cycle: control point in the middle
 ctrPoint = 'r_1022';
-controlledRxns = {'r_0302','r_0280','r_0961','r_0713','r_0505','r_0451','r_0773','r_0658','r_0832','r_0831','r_1022','r_0300'};
+controlledRxns = {'r_2096','r_0226','r_1245','r_0439','r_1110','r_1696','r_0451','r_0658','r_0505','r_0773','r_0280','r_0302','r_0713','r_0961','r_2034','r_0300','r_1022','r_0832','r_0831','r_1021'};
 plot_func_ctrPoint('TCA',ctrPoint,controlledRxns,normalizedLevel_pro_perPro,valid_rxns_pro_perPro,fluxMat_normalized,rxnLabel,model);
 %% CLEAR: Pyrimidine metabolism: example of competition (with r_1074) and controling (with others): control point at the begining 
 ctrPoint = 'r_0821';
-controlledRxns = {'r_1074','r_0307','r_0364','r_1072','r_0820','r_0811','r_0973','r_1045','r_0799','r_0363'};
+controlledRxns = {'r_0821','r_1074','r_0307','r_0364','r_1072','r_0820','r_0811','r_0973','r_1045','r_0799','r_0363','r_1272'};
 plot_func_ctrPoint('Pyrimidine_metabolism',ctrPoint,controlledRxns,normalizedLevel_pro_perPro,valid_rxns_pro_perPro,fluxMat_normalized,rxnLabel,model);
 %% CLEAR: Dihydroorotate production: control point at the end
 ctrPoint = 'r_0214';
-controlledRxns = {'r_0476','r_1667','r_0214','r_0250','r_0216','r_0958'};
+controlledRxns = {'r_0476','r_1667','r_0214','r_0250','r_0216','r_0958','cstm_s_1269_TCE','r_0349','r_1115'};
 plot_func_ctrPoint('Dihydroorotate_production',ctrPoint,controlledRxns,normalizedLevel_pro_perPro,valid_rxns_pro_perPro,fluxMat_normalized,rxnLabel,model);
 %% CLEAR: glycolysis: dictation or controling? Besides, glycolysis is coexpressed 
 % but r_0959 flux is equal to the glycolysis flux! so may be the flux of
@@ -50,12 +50,12 @@ plot_func_ctrPoint('glycolysis',ctrPoint,controlledRxns,normalizedLevel_pro_perP
 % asp-glu conversion
 % serine (3-phospho-serine)
 % so we may need to reannotate the heatmap
-ctrPoint = 'r_0468';
+ctrPoint = 'r_0468';% and purine rxns
 controlledRxns = {'r_0548','r_1041','r_0800','r_0215','r_0219','r_0547','r_0353','r_0663','r_0016','r_0669','r_0468','r_0473',...
     'r_0957','r_0542','r_0566','r_0027','r_0203','r_0202','r_1055','r_1838','r_0988','r_0545','r_0211','r_0727','r_0989','r_0891','r_0891','r_0918'};%r_0887 was excluded because of low absolute corr
 plot_func_ctrPoint('AA_DEPWTMIKS',ctrPoint,controlledRxns,normalizedLevel_pro_perPro,valid_rxns_pro_perPro,fluxMat_normalized,rxnLabel,model);
-% another co-operating modules of AA: LHR
-% (1a) upstream branch of leucine syn (from pyruvate) with entire Arginine syn
+% another co-operating modules of AA: HR+chorismate
+% (1a) entire Arginine syn
 %     (forms a block) 
 % (1b) downstream branch of leucine syn with histidine syn  
 % (2) Arginine syn with itself and hist syn, same for hist syn (mostly itself) 

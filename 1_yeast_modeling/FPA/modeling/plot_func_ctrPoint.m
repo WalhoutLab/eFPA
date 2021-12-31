@@ -15,6 +15,7 @@ for i = 1:length(controlledRxns)
     fit = fitlm(myLevel,myFluxLevel);
     [r p] = corr(myLevel',myFluxLevel');
     h = plot(fit);
+    ylim1 = ylim;
     lgd = legend();
     set(lgd,'visible','off')
     set(h(1), {'color'},{'k'}) 
@@ -40,10 +41,9 @@ for i = 1:length(controlledRxns)
     plt.YMinorTick = 'off';
     plt.TickDir = 'out';
     plt.Interpreter = 'None';
+    plt.YLim = ylim1;
     plt.export([wd, '/flux_exp_correlation_ctrPoint_',ctrPoint,'_targetRxn_',controlledRxns{i},'.pdf']);
-end
 %% plot flux vs. flux correlation matrix
-for i = 1:length(controlledRxns)
     myLevel = abs(fluxMat_normalized(strcmp(rxnLabel,ctrPoint),:));
     myFluxLevel = abs(fluxMat_normalized(strcmp(rxnLabel,controlledRxns{i}),:));
     figure(1)
@@ -74,5 +74,6 @@ for i = 1:length(controlledRxns)
     plt.YMinorTick = 'off';
     plt.TickDir = 'out';
     plt.Interpreter = 'None';
+    plt.YLim = ylim1;
     plt.export([wd, '/flux_flux_correlation_ctrPoint_',ctrPoint,'_targetRxn_',controlledRxns{i},'.pdf']);
 end

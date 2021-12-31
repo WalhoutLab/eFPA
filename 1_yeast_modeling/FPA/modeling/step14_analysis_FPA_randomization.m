@@ -102,6 +102,9 @@ for i = 1:length(path_defaultFPA)
     end
 end
 path_defaultFPA(rmInd) = [];
+% we only keep the first 1000 randomization
+path_defaultFPA = path_defaultFPA(1:1000);
+path_flexiFPA = path_flexiFPA(1:1000);
 %% evaluate FPA randomization for default FPA
 n2 = 0:0.5:40;
 N_corr_232 = [];
@@ -382,13 +385,13 @@ plt.export(['figures/NoTrack_randomization_flexiFPA_156.pdf']);
 
 figure;
 hold on
-plot(n2,Nmat_corr_232_obs,':','LineWidth',2,'Color','#D95319','MarkerSize', 3)
-plot(n2,Nmat_corr_156_obs ,'-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
+plot(n2,Nmat_corr_232_obs,'-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
+%plot(n2,Nmat_corr_156_obs ,'-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
 for i = 1:length(path_flexiFPA)
-    plot(n2,Nmat_corr_232(i,:) ,':k','LineWidth',2,'MarkerSize', 3)
-    plot(n2,Nmat_corr_156(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
+    plot(n2,Nmat_corr_232(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
+    %plot(n2,Nmat_corr_156(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
 end
-xlabel('Distance order/boundary');
+xlabel('Distance boundary');
 ylabel('Number of significantly correlated reactions ');
 plt = Plot(); % create a Plot object and grab the current figure
 plt.BoxDim = [2.85*2, 2.35*2];
@@ -403,13 +406,13 @@ plt.export(['figures/NoTrack_randomization_flexiFPA_titration.pdf']);
 
 figure;
 hold on
-plot(n2,N_corr_232_cum_obs,':','LineWidth',2,'Color','#D95319','MarkerSize', 3)
-plot(n2,N_corr_156_cum_obs ,'-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
+plot(n2,N_corr_232_cum_obs,'-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
+%plot(n2,N_corr_156_cum_obs ,'-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
 for i = 1:length(path_flexiFPA)
-    plot(n2,N_corr_232_cum(i,:) ,':k','LineWidth',2,'MarkerSize', 3)
-    plot(n2,N_corr_156_cum(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
+    plot(n2,N_corr_232_cum(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
+    %plot(n2,N_corr_156_cum(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
 end
-xlabel('Distance order/boundary');
+xlabel('Distance boundary');
 ylabel('Cummulative number of significantly correlated reactions ');
 plt = Plot(); % create a Plot object and grab the current figure
 plt.BoxDim = [2.85*2, 2.35*2];
