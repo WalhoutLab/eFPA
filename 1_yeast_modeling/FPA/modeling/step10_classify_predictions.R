@@ -7,7 +7,7 @@ pathwayInfo = xlsx::read.xlsx('pathway_annotations.xlsx','more_info')
 correlatedRxns = pathwayInfo$manual_pathway[pathwayInfo$rxn %in% rownames(summaryData)[summaryData$correlated == 'Yes']]
 correlatedRxnsCount = table(correlatedRxns)
 correlatedRxnsCount = as.data.frame(correlatedRxnsCount)
-allCount = table(pathwayInfo$manual_pathway)
+allCount = table(pathwayInfo$manual_pathway[pathwayInfo$rxn %in% rownames(summaryData)[summaryData$expression_type %in% c('Low Diversity','High Diversity','Low Variability')]])
 correlatedRxnsCount$allCount = allCount[as.character(correlatedRxnsCount$correlatedRxns)]
 correlatedRxnsCount$correlatedRxns = factor(as.character(correlatedRxnsCount$correlatedRxns),levels = correlatedRxnsCount$correlatedRxns[order(correlatedRxnsCount$allCount)])
 correlatedRxnsCount$not_correlated = correlatedRxnsCount$allCount-correlatedRxnsCount$Freq

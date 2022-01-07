@@ -290,3 +290,225 @@ plt.TickDir = 'out';
 plt.Interpreter = 'None';
 plt.export(['figures/two_reaction_module_mutually_informing_rate.pdf']);
 
+%% secondly, we check the expression and flux correlation (in addition to the cross-corr above)
+% make the mutual info matrix for expression and flux 
+mutInfoMat_flux = NaN(length(model.rxns), length(model.rxns));
+mutInfoMat_exp = NaN(length(model.rxns), length(model.rxns));
+ExpMeasured = ismember(model.rxns,valid_rxns);
+FluxMeasured = ismember(model.rxns,rxnLabel);
+for i = 1:length(model.rxns)
+    for j = 1:length(model.rxns)
+        mutinformed_flux = [];
+        mutinformed_exp = [];
+        if FluxMeasured(i) && FluxMeasured(j)
+            % calculate for flux 
+            fluxMeasure1 = fluxMat(strcmp(rxnLabel,model.rxns{i}),:);
+            fluxMeasure2 = fluxMat(strcmp(rxnLabel,model.rxns{j}),:);
+            [r0,p_r0] = corr(abs(fluxMeasure1)',abs(fluxMeasure2)','type','Pearson');
+            mutinformed_flux = [mutinformed_flux,-log10(p_r0) * sign(r0)];% we save both pvalue and the direction of correlation
+        end
+        
+        if ExpMeasured(j) && ExpMeasured(i)
+            % calculate for expression
+            expressionMeasure1 = normalizedLevel(strcmp(valid_rxns,model.rxns{j}),:);
+            expressionMeasure2 = normalizedLevel(strcmp(valid_rxns,model.rxns{i}),:);
+            [r0,p_r0] = corr(expressionMeasure2',expressionMeasure1','type','Pearson');
+            mutinformed_exp = [mutinformed_exp,-log10(p_r0) * sign(r0)];
+        end
+        if ~isempty(mutinformed_flux)
+            mutInfoMat_flux(i,j) = max(mutinformed_flux);% the most significant positive correlation we got
+        end
+        if ~isempty(mutinformed_exp)
+            mutInfoMat_exp(i,j) = max(mutinformed_exp);% the most significant positive correlation we got
+        end
+    end
+    i
+end
+t = array2table(mutInfoMat_flux);
+t.Properties.VariableNames = model.rxns;
+t.Properties.RowNames = model.rxns;
+writetable(t,'output/NoTrack_mutInfoMat_flux.csv','WriteRowNames',1);
+
+t = array2table(mutInfoMat_exp);
+t.Properties.VariableNames = model.rxns;
+t.Properties.RowNames = model.rxns;
+writetable(t,'output/NoTrack_mutInfoMat_expression.csv','WriteRowNames',1);
+
+% compare the hubness vs. mutinfo probalilty for all two-reaction modules
+rxnA_flux = {};
+rxnB_flux = {};
+hubness_flux = [];
+mutInformed_flux = [];
+for i = 1:(length(model.rxns)-1)
+    for j = (i+1):length(model.rxns) % all unique two-reaction modules
+        if hubnessMat(i,j) > 1 && ~isnan(mutInfoMat_flux(i,j))% connected and measured
+            rxnA_flux = [rxnA_flux; model.rxns(i)];
+            rxnB_flux = [rxnB_flux; model.rxns(j)];
+            hubness_flux = [hubness_flux; hubnessMat(i,j)];
+            mutInformed_flux = [mutInformed_flux; mutInfoMat_flux(i,j)];
+        end
+    end
+    i
+end
+
+rxnA_exp = {};
+rxnB_exp = {};
+hubness_exp = [];
+mutInformed_exp = [];
+for i = 1:(length(model.rxns)-1)
+    for j = (i+1):length(model.rxns) % all unique two-reaction modules
+        if hubnessMat(i,j) > 1 && ~isnan(mutInfoMat_exp(i,j))% connected and measured
+            rxnA_exp = [rxnA_exp; model.rxns(i)];
+            rxnB_exp = [rxnB_exp; model.rxns(j)];
+            hubness_exp = [hubness_exp; hubnessMat(i,j)];
+            mutInformed_exp = [mutInformed_exp; mutInfoMat_exp(i,j)];
+        end
+    end
+    i
+end
+% calculate for fdr 
+mutInformed_flux = sign(mutInformed_flux) .* mafdr(10.^(-abs(mutInformed_flux)),'BHFDR', true);
+mutInformed_exp = sign(mutInformed_exp) .* mafdr(10.^(-abs(mutInformed_exp)),'BHFDR', true);
+% we consider any reaction pair with significant positive correlation (fdr
+% < 0.05) as mutually informed
+mutInformed_flux = mutInformed_flux > 0 & mutInformed_flux < 0.05; 
+mutInformed_exp = mutInformed_exp > 0 & mutInformed_exp < 0.05; 
+%% calculate and plot - flux
+ValidHubnessVals = sort(unique(hubness_flux)); 
+% counts = tabulate(hubness);
+informRate = []; % for each hubness of bridging metabolite, how many percents of two-reaction modules were mutually informed
+dataCount = [];
+for i = 1:length(ValidHubnessVals)
+    informRate(i) = sum(mutInformed_flux(hubness_flux == ValidHubnessVals(i))) / sum(hubness_flux == ValidHubnessVals(i));
+    dataCount(i) = sum(hubness_flux == ValidHubnessVals(i));
+end
+% we group the hubness when the sample size is too small (since to total
+% measurement are only 232 fluxes and ~600 expressions. not all
+% two-reaction modules were quantified)
+minSample = 20;
+clean = false;
+while ~clean
+    isend = false;
+    i = 1;
+    while ~isend
+        if dataCount(i) < minSample
+            % group with the next hubness val
+            % the new hubness represent the average hubness and new
+            % infoRate is the avergae after we group all these two-reaction
+            % modules
+            informRate(i+1) = (informRate(i) .* dataCount(i) + informRate(i+1) .* dataCount(i+1))/(dataCount(i) + dataCount(i+1));
+            ValidHubnessVals(i+1) = (ValidHubnessVals(i) .* dataCount(i) + ValidHubnessVals(i+1) .* dataCount(i+1))/(dataCount(i) + dataCount(i+1));
+            dataCount(i+1) = dataCount(i) + dataCount(i+1);
+            informRate(i) = [];
+            ValidHubnessVals(i) = [];
+            dataCount(i) = [];
+        else
+            i = i+1;
+        end
+        isend = i == length(dataCount);
+    end
+    clean = ~any(dataCount < minSample);
+end
+median(dataCount)
+% plot(log2(ValidHubnessVals), informRate,'.');
+informRate = informRate .* 100; % convert to percentages for plotting
+
+% save plot
+fit = polyfit(log2(ValidHubnessVals),informRate,4);
+
+x1 = linspace(0.9,0.1+max(log2(ValidHubnessVals)));
+y1 = polyval(fit,x1);
+figure
+h1 = plot(log2(ValidHubnessVals), informRate,'o');
+hold on
+h2 = plot(x1,y1);
+hold off
+set(h1, {'color'},{'k'}) 
+set(h1,'MarkerSize',5)
+set(h1,'LineWidth',1)
+set(h2,'LineWidth',1)
+xlabel('Degree of the bridging metabolite (log2)');
+ylabel('Cross-informing rate (%)');
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2, 1.75];
+plt.FontSize = 7;
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.Interpreter = 'None';
+plt.export(['figures/two_reaction_module_mutually_informing_rate_flux2flux.pdf']);
+
+%% calculate and plot - expression
+ValidHubnessVals = sort(unique(hubness_exp)); 
+% counts = tabulate(hubness);
+informRate = []; % for each hubness of bridging metabolite, how many percents of two-reaction modules were mutually informed
+dataCount = [];
+for i = 1:length(ValidHubnessVals)
+    informRate(i) = sum(mutInformed_exp(hubness_exp == ValidHubnessVals(i))) / sum(hubness_exp == ValidHubnessVals(i));
+    dataCount(i) = sum(hubness_exp == ValidHubnessVals(i));
+end
+% we group the hubness when the sample size is too small (since to total
+% measurement are only 232 fluxes and ~600 expressions. not all
+% two-reaction modules were quantified)
+minSample = 60; % this number is tuned to to make it close to the final median and keep as many datapoints as possible
+clean = false;
+while ~clean
+    isend = false;
+    i = 1;
+    while ~isend
+        if dataCount(i) < minSample
+            % group with the next hubness val
+            % the new hubness represent the average hubness and new
+            % infoRate is the avergae after we group all these two-reaction
+            % modules
+            informRate(i+1) = (informRate(i) .* dataCount(i) + informRate(i+1) .* dataCount(i+1))/(dataCount(i) + dataCount(i+1));
+            ValidHubnessVals(i+1) = (ValidHubnessVals(i) .* dataCount(i) + ValidHubnessVals(i+1) .* dataCount(i+1))/(dataCount(i) + dataCount(i+1));
+            dataCount(i+1) = dataCount(i) + dataCount(i+1);
+            informRate(i) = [];
+            ValidHubnessVals(i) = [];
+            dataCount(i) = [];
+        else
+            i = i+1;
+        end
+        isend = i == length(dataCount);
+    end
+    clean = ~any(dataCount < minSample);
+end
+median(dataCount)
+% plot(log2(ValidHubnessVals), informRate,'.');
+informRate = informRate .* 100; % convert to percentages for plotting
+
+% save plot
+fit = polyfit(log2(ValidHubnessVals),informRate,4);
+
+x1 = linspace(0.9,0.1+max(log2(ValidHubnessVals)));
+y1 = polyval(fit,x1);
+figure
+h1 = plot(log2(ValidHubnessVals), informRate,'o');
+hold on
+h2 = plot(x1,y1);
+hold off
+set(h1, {'color'},{'k'}) 
+set(h1,'MarkerSize',5)
+set(h1,'LineWidth',1)
+set(h2,'LineWidth',1)
+xlabel('Degree of the bridging metabolite (log2)');
+ylabel('Cross-informing rate (%)');
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2, 1.75];
+plt.FontSize = 7;
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.Interpreter = 'None';
+plt.export(['figures/two_reaction_module_mutually_informing_rate_exp2exp.pdf']);
+% PS. we noticed a outlier for high degree (degree = ~26). This is mainly
+% driven by a degree of 26, which has 34 reaction pairs considered and
+% high an extremely high cross-inform rate of ~85%. it is related to
+% multiple hub metabolites such as SAM, GTP and gln. we consider it as an
+% accidental outlier.
+

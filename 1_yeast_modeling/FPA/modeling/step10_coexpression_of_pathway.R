@@ -60,14 +60,13 @@ cmpTbl_excl = cmpTbl[(cmpTbl$pathways %in% excl), ]
 
 # PLOT
 dev.off()
-pdf('figures/co-expression-flux-accordance.pdf',width = 4,height = 4.3)
+pdf('figures/co-expression-flux-accordance.pdf',width = 3.3,height = 3.655)
 fit = lm(median_corr ~median_coexpression, cmpTbl_fit)
-plot(cmpTbl_fit$median_coexpression, cmpTbl_fit$median_corr, ylim = c(-1,1), xlim = c(-0.3,1),
+plot(cmpTbl_fit$median_coexpression, cmpTbl_fit$median_corr, ylim = c(-0.7,1), xlim = c(-0.3,1),
      xlab = 'Pathway-level co-expression',
      ylab = 'Pathway-level flux-expression correlation',
      lwd = 1)
 text(cmpTbl_fit$median_coexpression, cmpTbl_fit$median_corr, labels=rank(cmpTbl_fit$median_coexpression), cex = 0.3)
-
 abline(fit,lwd = 1,lty = 2)
 points(cmpTbl_excl$median_coexpression, cmpTbl_excl$median_corr,col = 'red',pch = 1, lwd = 1)
 a = summary(fit)
@@ -75,6 +74,7 @@ text(0.8, -0.1,paste('r = ',round(sqrt(a$r.squared),2),sep = ''))
 axis(side = 1, lwd = 1)
 axis(side = 2, lwd = 1)
 dev.off()
+
 cmpTbl_fit$numberInFig = rank(cmpTbl_fit$median_coexpression)
 pathwayCounts = data.frame(table(annotation$connected_pathways))
 pathwayCounts$valid = 0
@@ -85,8 +85,82 @@ for (i in 1:nrow(pathwayCounts)){
   pathwayCounts$valid[i]=nrow(subExp)
 }
 
+# next, directly show if coexpression in curated pathway is predictive of flux 
+pathways = cmpTbl$pathways
+FluxTbl = read.csv('output/supp1B_normalizedFlux.csv',row.names = 1)
+FPAtbl$coexpressionPCC = NA
+FPAtbl$coexpressionPval = NA
+for (i in 1:length(pathways)){
+  pathways[i]
+  rxnset = annotation$rxn[which(annotation$connected_pathways == pathways[i])]
+  subExp = ExpMat[rownames(ExpMat) %in% rxnset,]
+  subExp = subExp[!duplicated(subExp),] # we only analyze the coexpression between valid (distinct) genes (GPR)
+  subExp = t(scale(t(subExp)))
+  
+  if (nrow(subExp)>1){# only analyze the valid coexpression (at least two measured rxns [diff genes])
+    trend = colMedians(subExp)
+    for (rxn in rxnset){
+      FPAtbl[rxn, 'coexpressionPCC'] = cor(abs(as.numeric(FluxTbl[rxn,])), as.numeric(trend))
+      tmp = cor.test(abs(as.numeric(FluxTbl[rxn,])), as.numeric(trend))
+      FPAtbl[rxn, 'coexpressionPval'] = tmp$p.value
+    }
+    # cor( t(subExp))
+    # cor(as.numeric(trend), t(subExp))
+    # FPAtbl[rxnset, 'coexpressionPCC'] 
+    # FPAtbl[rxnset, "PCC_by_target_expression"]
+    # FPAtbl[rxnset, "PCC_by_default_FPA"]
+    # FPAtbl[rxnset, "maxPCC"]
+  }
+}
+write.csv(FPAtbl,'output/coexpression_PCC.csv')
+#correlation between coexpression levels and PC1-expression concordance levels
+cmpTbl$median_trend_corr = NA
+for (i in 1:length(pathways)){
+  rxnset = annotation$rxn[which(annotation$connected_pathways == pathways[i])]
+  cmpTbl$median_trend_corr[i] = median(FPAtbl[rxnset,'coexpressionPCC'],na.rm = T)
+}
+excl = c('Leucine and valine biosynthesis')
+cmpTbl_fit = cmpTbl[!(cmpTbl$pathways %in% excl), ]
+cmpTbl_excl = cmpTbl[(cmpTbl$pathways %in% excl), ]
 
-# next, we analyze the pathway level improvement from integration
+# PLOT
+dev.off()
+pdf('figures/co-expression-trend-flux-accordance.pdf',width = 4,height = 4.3)
+fit = lm(median_trend_corr ~median_coexpression, cmpTbl_fit)
+plot(cmpTbl_fit$median_coexpression, cmpTbl_fit$median_trend_corr, ylim = c(-1,1), xlim = c(-0.3,1),
+     xlab = 'Pathway-level co-expression',
+     ylab = 'Pathway-level flux-coexpression correlation',
+     lwd = 1)
+text(cmpTbl_fit$median_coexpression, cmpTbl_fit$median_trend_corr, labels=rank(cmpTbl_fit$median_coexpression), cex = 0.3)
+
+abline(fit,lwd = 1,lty = 2)
+points(cmpTbl_excl$median_coexpression, cmpTbl_excl$median_trend_corr,col = 'red',pch = 1, lwd = 1)
+a = summary(fit)
+text(0.8, -0.1,paste('r = ',round(sqrt(a$r.squared),2),sep = ''))
+axis(side = 1, lwd = 1)
+axis(side = 2, lwd = 1)
+dev.off()
+
+# investigate the integration benefit
+dev.off()
+pdf('figures/co-expression-trend-integration-benefit.pdf',width = 3.3,height = 3.655)
+y = cmpTbl$median_trend_corr - cmpTbl$median_corr
+x = cmpTbl$median_coexpression
+plot(x, y, ylim = c(-0.25,0.4), xlim = c(-0.3,1),
+     xlab = 'Pathway-level co-expression',
+     ylab = 'Pathway-level integration benefit (delta PCC)',
+     lwd = 1)
+text(cmpTbl$median_coexpression, cmpTbl$median_trend_corr - cmpTbl$median_corr, labels=rank(cmpTbl$median_coexpression), cex = 0.3)
+model <- lm(y ~ poly(x,4)) # a simple fitting of trend line
+seq1 = seq(-0.3,0.95, 0.001)
+lines(seq1,predict(model,data.frame(x = seq1)),col='grey',lwd=1)
+abline(h = 0,lty = 2)
+axis(side = 1, lwd = 1)
+axis(side = 2, lwd = 1)
+box(lwd=1)
+dev.off()
+
+# finally, we analyze the pathway level improvement from integration
 cmpTbl2 = cmpTbl
 cmpTbl2 = cmpTbl2[order(cmpTbl2$median_coexpression),]
 dev.off()

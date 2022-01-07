@@ -86,3 +86,170 @@ plot_func_ctrPoint('Sulphate_metabolism',ctrPoint,controlledRxns,normalizedLevel
 ctrPoint = 'r_0091';
 controlledRxns = {'r_0990','r_0091','r_0466','r_1050','r_0889'};
 plot_func_ctrPoint('PPP',ctrPoint,controlledRxns,normalizedLevel_pro_perPro,valid_rxns_pro_perPro,fluxMat_normalized,rxnLabel,model);
+%% more study on the AA controling point 
+% show its coupling to biomass production
+indicatorFlux = fluxMat_normalized(strcmp(rxnLabel,'r_0468'),:);
+hisFlux = fluxMat_normalized(strcmp(rxnLabel,'r_0536'),:);
+argFlux = fluxMat_normalized(strcmp(rxnLabel,'r_0207'),:);
+tbl = readtable('./../input/YeastJoshua/originalDataTbl/aaf2786-Hackett-SM-table-S9.xlsx','Sheet','Boundary Flux');
+% proline
+b = table2array(tbl(strcmp(tbl.Metabolite,'L-proline [cytoplasm]'),2:26));
+b =  b ./ repmat(GRrate.DR_Actual',2,1);
+
+myLevel = indicatorFlux;
+myFluxLevel = b(1,:);
+figure(1)
+fit = fitlm(myLevel,myFluxLevel);
+[r p] = corr(myLevel',myFluxLevel');
+h = plot(fit);
+ylim1 = ylim;
+lgd = legend();
+set(lgd,'visible','off')
+set(h(1), {'color'},{'k'}) 
+set(h(1),'Marker','.')
+set(h(1),'MarkerSize',15)
+set(h(2), {'color'},{'#808080'}) 
+set(h(2), {'LineStyle'},{'--'}) 
+set(h(3), {'visible'},{'off'}) 
+set(h(4), {'visible'},{'off'}) 
+xlabel(['Relative flux of indicator'])
+ylabel(['Relative flux of proline[biomass]'])
+text(max(myLevel)*0.5,max(myFluxLevel)*0.93,['r = ',num2str(r,2)],'FontSize',7)
+text(max(myLevel)*0.5,max(myFluxLevel)*0.85,['p < ',num2str(p,2)],'FontSize',7)
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2, 1.75];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+% plt.XTick = -1:0.2:1;
+plt.LegendLoc = 'NorthWest';
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.Interpreter = 'None';
+plt.YLim = ylim1;
+plt.export(['figures/controlingPoints/AA_DEPWTMIKS/biomass_proline.pdf']);
+
+% isoleucine 
+b = table2array(tbl(strcmp(tbl.Metabolite,'L-isoleucine [cytoplasm]'),2:26));
+b =  b ./ repmat(GRrate.DR_Actual',2,1);
+
+myLevel = indicatorFlux;
+myFluxLevel = b(1,:);
+figure(1)
+fit = fitlm(myLevel,myFluxLevel);
+[r p] = corr(myLevel',myFluxLevel');
+h = plot(fit);
+ylim1 = ylim;
+lgd = legend();
+set(lgd,'visible','off')
+set(h(1), {'color'},{'k'}) 
+set(h(1),'Marker','.')
+set(h(1),'MarkerSize',15)
+set(h(2), {'color'},{'#808080'}) 
+set(h(2), {'LineStyle'},{'--'}) 
+set(h(3), {'visible'},{'off'}) 
+set(h(4), {'visible'},{'off'}) 
+xlabel(['Relative flux of indicator'])
+ylabel(['Relative flux of isoleucine[biomass]'])
+text(max(myLevel)*0.5,max(myFluxLevel)*0.93,['r = ',num2str(r,2)],'FontSize',7)
+text(max(myLevel)*0.5,max(myFluxLevel)*0.85,['p < ',num2str(p,2)],'FontSize',7)
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2, 1.75];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+% plt.XTick = -1:0.2:1;
+plt.LegendLoc = 'NorthWest';
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.Interpreter = 'None';
+plt.YLim = ylim1;
+plt.export(['figures/controlingPoints/AA_DEPWTMIKS/biomass_isoleucine.pdf']);
+
+% histidine 
+b = table2array(tbl(strcmp(tbl.Metabolite,'L-histidine [cytoplasm]'),2:26));
+b =  b ./ repmat(GRrate.DR_Actual',2,1);
+
+myLevel = hisFlux;
+myFluxLevel = b(1,:);
+figure(1)
+fit = fitlm(myLevel,myFluxLevel);
+[r p] = corr(myLevel',myFluxLevel');
+h = plot(fit);
+ylim1 = ylim;
+lgd = legend();
+set(lgd,'visible','off')
+set(h(1), {'color'},{'k'}) 
+set(h(1),'Marker','.')
+set(h(1),'MarkerSize',15)
+set(h(2), {'color'},{'#808080'}) 
+set(h(2), {'LineStyle'},{'--'}) 
+set(h(3), {'visible'},{'off'}) 
+set(h(4), {'visible'},{'off'}) 
+xlabel(['Relative flux of histidine biosynthesis'])
+ylabel(['Relative flux of histidine[biomass]'])
+text(max(myLevel)*0.5,max(myFluxLevel)*0.93,['r = ',num2str(r,2)],'FontSize',7)
+text(max(myLevel)*0.5,max(myFluxLevel)*0.85,['p < ',num2str(p,2)],'FontSize',7)
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2, 1.75];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+% plt.XTick = -1:0.2:1;
+plt.LegendLoc = 'NorthWest';
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.Interpreter = 'None';
+plt.YLim = ylim1;
+plt.export(['figures/controlingPoints/AA_DEPWTMIKS/biomass_histidine.pdf']);
+
+% arginine
+b = table2array(tbl(strcmp(tbl.Metabolite,'L-arginine [cytoplasm]'),2:26));
+b =  b ./ repmat(GRrate.DR_Actual',2,1);
+
+myLevel = argFlux;
+myFluxLevel = b(1,:);
+figure(1)
+fit = fitlm(myLevel,myFluxLevel);
+[r p] = corr(myLevel',myFluxLevel');
+h = plot(fit);
+ylim1 = ylim;
+lgd = legend();
+set(lgd,'visible','off')
+set(h(1), {'color'},{'k'}) 
+set(h(1),'Marker','.')
+set(h(1),'MarkerSize',15)
+set(h(2), {'color'},{'#808080'}) 
+set(h(2), {'LineStyle'},{'--'}) 
+set(h(3), {'visible'},{'off'}) 
+set(h(4), {'visible'},{'off'}) 
+xlabel(['Relative flux of arginine biosynthesis'])
+ylabel(['Relative flux of arginine[biomass]'])
+text(max(myLevel)*0.5,max(myFluxLevel)*0.93,['r = ',num2str(r,2)],'FontSize',7)
+text(max(myLevel)*0.5,max(myFluxLevel)*0.85,['p < ',num2str(p,2)],'FontSize',7)
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2, 1.75];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+% plt.XTick = -1:0.2:1;
+plt.LegendLoc = 'NorthWest';
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.Interpreter = 'None';
+plt.YLim = ylim1;
+plt.export(['figures/controlingPoints/AA_DEPWTMIKS/biomass_arginine.pdf']);
+
+
+
+
+
+
