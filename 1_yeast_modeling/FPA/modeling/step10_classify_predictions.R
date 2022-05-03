@@ -15,6 +15,24 @@ correlatedRxnsCount = correlatedRxnsCount[,c(1,2,4)]
 colnames(correlatedRxnsCount) = c('pathway','correlated','not correlated')
 correlatedRxnsCount = reshape2::melt(correlatedRxnsCount)
 correlatedRxnsCount$variable = factor(as.character(correlatedRxnsCount$variable),levels = c('not correlated','correlated'))
+# add the annotation of enrichment for each pathway 
+# assessible reaction
+validRxns = rownames(summaryData)[summaryData$expression_type %in% c('Low Diversity','High Diversity','Low Variability')]
+allPath = unique(pathwayInfo$manual_pathway[pathwayInfo$rxn %in% validRxns])
+allHits = sum(summaryData$correlated == 'Yes')
+pvalues = c()
+for (i in 1:length(allPath)){
+  hits = length(intersect(pathwayInfo$rxn[pathwayInfo$manual_pathway == allPath[i]], 
+                          rownames(summaryData)[summaryData$correlated == 'Yes']))
+  allIn = length(intersect(pathwayInfo$rxn[pathwayInfo$manual_pathway == allPath[i]], 
+                           validRxns))
+  pvalues[i] = phyper(hits-1, allIn, length(validRxns) - allIn,allHits, lower.tail = F)
+
+}
+pvalues = p.adjust(pvalues,method = 'BH')
+names(pvalues) = allPath
+correlatedRxnsCount$padj = pvalues[as.character(correlatedRxnsCount$pathway)]
+
 library(artyfarty)
 library(ggplot2)
 p = ggplot(correlatedRxnsCount, aes(x= pathway, y=value, fill = variable))+
