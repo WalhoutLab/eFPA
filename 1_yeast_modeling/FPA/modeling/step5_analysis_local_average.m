@@ -245,7 +245,7 @@ end
 dorders_wtd = dorders;
 N_sigCorr_highCV_wtd = N_sigCorr_highCV;
 
-% load the integration result (FPA) 
+% load the integration result (eFPA) 
 load(['output/Titration_relativeExp_wtdDist_expDecay.mat'])
 N_sigCorr = zeros(length(n2),length(base));
 N_sigCorr_highCV = zeros(length(n2),length(base));
@@ -308,10 +308,77 @@ for zz = 1:length(base)
     end
 end
 
-dorders_wtdDist_expDecay1000 = dorders;% 1-dorders/max(dorders);
-N_sigCorr_wtdDist_expDecay1000 = N_sigCorr(:,8);% base =1000
-N_sigCorr_highCV_wtdDist_expDecay1000 = N_sigCorr_highCV(:,8);
-perc_sigCorr_in_highCV_wtdDist_expDecay1000 = perc_sigCorr_in_highCV(:,8);
+% load the integration result (eFPA, simple decay) 
+load(['output/Titration_relativeExp_wtdDist_simpleDecay.mat'])
+N_sigCorr_simDecay = zeros(length(n2),1);
+N_sigCorr_highCV_simDecay = zeros(length(n2),1);
+perc_sigCorr_in_highCV_simDecay = zeros(length(n2),1);
+dorders_simDecay = n2;
+rMat_simDecay = zeros(length(targetRxns),length(dorders_simDecay));
+for nn = 1: length(dorders_simDecay)
+    %%
+    FP = FP_collection_2{nn};
+    relFP = nan(size(FP,1),size(FP,2)-1);%we choose one from f and r as a prediction
+    for i = 1:size(FP,1)
+        for j = 1:(size(FP,2)-1)
+            if  mean(fluxMat(i,:)) > 0 
+                if ~isnan(FP{i,j}(1))
+                    relFP(i,j) = FP{i,j}(1) ./ FP{i,end}(1);
+                elseif ~isnan(FP{i,j}(2))
+                    relFP(i,j) = FP{i,j}(2) ./ FP{i,end}(2);
+                else
+                    fprintf('base = %f, n = %d, i = %d, j = %d, is a failed FPA\n',...
+                        base(zz), dorders(nn),i,j);
+                    warning('check');
+                end
+            else
+                if ~isnan(FP{i,j}(2))
+                    relFP(i,j) = FP{i,j}(2) ./ FP{i,end}(2);
+                elseif ~isnan(FP{i,j}(1))
+                    relFP(i,j) = FP{i,j}(1) ./ FP{i,end}(1);
+                else
+                    error('check');
+                end
+            end
+        end
+    end
+    rmInd = all(isnan(relFP),2) | all(relFP == relFP(:,1),2);
+    relFP = relFP(~rmInd,:);
+    valid_rxns = targetRxns(~rmInd);
+    %Computing the correlation
+    r=[];
+    p_r=[];
+    deltaminmax = [];
+    testedRxn = {};
+    for j = 1:length(rxnLabel)
+        fluxMeasure = fluxMat_normalized(j,:);
+        if any(strcmp(valid_rxns,rxnLabel{j}))
+            testedRxn(end+1) = rxnLabel(j);
+            [r(end+1),p_r(end+1)] = corr(relFP(strcmp(valid_rxns,rxnLabel{j}),:)',abs(fluxMeasure)','type','Pearson');
+            deltaminmax(end+1) = max(relFP(strcmp(valid_rxns,rxnLabel{j}),:)) - min(relFP(strcmp(valid_rxns,rxnLabel{j}),:));
+        end
+    end
+
+    fdr_r = mafdr(p_r,'BHFDR', true);% BHFDR adjustment is chosen to keep strigency (control FDR instead of estimate FDR (which is used in pFDR(qvalue)))
+    fprintf('%d rxns give significant positive correlation by pearson\n',sum(r(fdr_r<0.05 & deltaminmax >0.2)>0));
+
+    [A B] = ismember(testedRxn,targetRxns);
+    rMat_simDecay(B(A),nn) = r;
+    N_sigCorr_simDecay(nn,1) = sum(r(fdr_r<0.05)>0);
+    N_sigCorr_highCV_simDecay(nn,1) = sum(r(fdr_r<0.05 & deltaminmax > 0.2)>0);
+    perc_sigCorr_in_highCV_simDecay(nn,1) = sum(r(fdr_r<0.05 & deltaminmax > 0.2)>0) / sum(deltaminmax > 0.2);
+end
+
+
+% dorders_wtdDist_expDecay1000 = dorders;% 1-dorders/max(dorders);
+% N_sigCorr_wtdDist_expDecay1000 = N_sigCorr(:,8);% base =1000
+% N_sigCorr_highCV_wtdDist_expDecay1000 = N_sigCorr_highCV(:,8);
+% perc_sigCorr_in_highCV_wtdDist_expDecay1000 = perc_sigCorr_in_highCV(:,8);
+
+dorders_wtdDist_simpleDecay = dorders_simDecay;% 1-dorders/max(dorders);
+N_sigCorr_wtdDist_simpleDecay = N_sigCorr_simDecay(:,1);
+N_sigCorr_highCV_wtdDist_simpleDecay = N_sigCorr_highCV_simDecay(:,1);
+perc_sigCorr_in_highCV_wtdDist_simpleDecay = perc_sigCorr_in_highCV_simDecay(:,1);
 
 dorders_wtdDist_expDecay2 = dorders;% 1-dorders/max(dorders);
 N_sigCorr_wtdDist_expDecay2 = N_sigCorr(:,2);% base =2
@@ -321,14 +388,14 @@ perc_sigCorr_in_highCV_wtdDist_expDecay2 = perc_sigCorr_in_highCV(:,2);
 figure;
 hold on
 plot(dorders_wtdDist_expDecay2(1:end),N_sigCorr_highCV_wtdDist_expDecay2(1:end) ,'o-','LineWidth',1,'Color','#D95319','MarkerSize', 3)
-plot(dorders_wtdDist_expDecay1000(1:end),N_sigCorr_highCV_wtdDist_expDecay1000(1:end) ,'o-','LineWidth',1,'Color','#EDB120','MarkerSize', 3)
+plot(dorders_wtdDist_simpleDecay(1:end),N_sigCorr_highCV_wtdDist_simpleDecay(1:end) ,'o-','LineWidth',1,'Color','#EDB120','MarkerSize', 3)
 plot(dorders_wtd(1:end),N_sigCorr_highCV_wtd(1:end) ,'o-','LineWidth',1,'Color','#0072BD','MarkerSize', 3)
 plot(dorders_ori(1:end),N_sigCorr_highCV_ori(1:end) ,'o-','LineWidth',1,'MarkerSize', 3)
 yline(baseline,'--','LineWidth',2,'Color',[0.5 0.5 0.5])
 xlabel('Distance order/boundary');
 ylabel('Number of significantly correlated reactions ');
 ylim([20 80])
-legend({'improved FPA (base = 2)','improved FPA (base = 1000)','local expression average (weighted dist)','local expression average (naive dist)','target expression only'},'FontSize',7);
+legend({'eFPA (base = 2)','eFPA (simple decay)','local expression average (weighted dist)','local expression average (naive dist)','target expression only'},'FontSize',7);
 plt = Plot(); % create a Plot object and grab the current figure
 plt.BoxDim = [2.85, 2.35];
 plt.LineWidth = 1;

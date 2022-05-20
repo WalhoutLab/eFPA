@@ -14,13 +14,13 @@ GRrate = readtable('./../input/YeastJoshua/originalDataTbl/GRrate.xlsx');
 fluxMat_normalized = fluxMat_normalized ./ repmat(GRrate.DR_Actual',size(fluxMat_normalized,1),1);
 model = loadYeatModel();
 %% first extract the contributing rxns
-load('output/Titration_relativeExp_wtdDist_expDecay_FineGrained.mat');
+load('output/Titration_relativeExp_wtdDist_simpleDecay_FineGrained.mat');
 targetRxns = {'r_0722', 'r_0005', 'r_0361', 'r_0902', 'r_0362'};
 optimalBound = [18.5,16 ,21.5, 25, 25.5];
 for kk = 1:length(targetRxns)
     targetRxn = targetRxns{kk};
     %% load the FPA table set 
-    load(['output/fine_titration/base_1000_n_', num2str(optimalBound(kk)),'.mat']);
+    load(['output/fine_titration_simDecay/simpleDecay__n_', num2str(optimalBound(kk)),'.mat']);
     %% clean up the predictions (only keep the relavant directions)
     FPsol = cell(size(FluxPotential_solutions,1),size(FluxPotential_solutions,2));%we choose one from f and r as a prediction
     for i = 1:size(FluxPotential_solutions,1)
@@ -197,7 +197,7 @@ targetRxn = 'r_0362';
 rxnID = 'r_0362';
 dist = 25.5;
 
-load('output/Titration_relativeExp_wtdDist_expDecay_FineGrained.mat');
+load('output/Titration_relativeExp_wtdDist_simpleDecay_FineGrained.mat');
 dorders = n2;
 nn = find(n2==dist); 
 FP = FP_collection_2{nn};
@@ -235,7 +235,7 @@ myLevel = relFP(strcmp(valid_rxns,targetRxn),:);
 figure;
 fit = fitlm(myLevel,myFlux);
 h = plot(fit);
-xlim1 = xlim;
+xlim1 = [0.35, 0.61];
 ylim1 = ylim;
 lgd = legend();
 set(lgd,'visible','off')

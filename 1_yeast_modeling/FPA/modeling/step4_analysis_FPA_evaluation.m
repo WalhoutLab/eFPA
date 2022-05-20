@@ -75,10 +75,17 @@ penalty_pro(strcmp(model.rxns,'r_1654'),11:15) = 10;
 %% the second evaluation set (156 rxns with expression measured)
 mySet = intersect(valid_rxns_pro_perPro, rxnLabel);
 %% evaluate different FPA
-setups = {'oriDist_oriDecay','wtdDist_oriDecay'};
-for zz = 1:2
+setups = {'oriDist_oriDecay','wtdDist_oriDecay','wtdDist_simpleDecay'};
+for zz = 1:3
     %% correlation for 1-d titration
     load(['output/Titration_relativeExp_',setups{zz},'.mat'])
+    % for a historical reason, we need to correct some format issue in
+    % variable
+    if zz == 3
+        n = n2;
+        FP_collection = FP_collection_2;
+    end
+        
     dorders = n;
     rMat = zeros(length(targetRxns),length(dorders));
     N_sigCorr = zeros(length(dorders),1);
@@ -133,7 +140,8 @@ for zz = 1:2
         fdr_r = mafdr(p_r,'BHFDR', true);% BHFDR adjustment is chosen to keep strigency (control FDR instead of estimate FDR (which is used in pFDR(qvalue)))
         fprintf('%d rxns give significant positive correlation by pearson\n',sum(r(fdr_r<0.05 & deltaminmax > 0.2)>0));
 
-        if (dorders(nn) == 1.5)
+        plotcheck = (dorders(nn) == 1.5 & zz < 3) | (dorders(nn) == 4 & zz == 3);
+        if (plotcheck)
             figure;
             hold on
             histogram(r,'FaceColor','#0072BD','BinEdges',-1:0.2:1)
@@ -176,6 +184,12 @@ for zz = 1:2
         N_sigCorr_highCV_wtdDist = N_sigCorr_highCV;
         N_sigCorr_highCV_wtdDist2 = N_sigCorr_highCV2;
         perc_sigCorr_in_highCV_wtdDist = perc_sigCorr_in_highCV;
+    elseif zz ==3
+        dorders_wtdDist_simDecay = dorders;% dorders/max(dorders);
+        N_sigCorr_wtdDist_simDecay = N_sigCorr;
+        N_sigCorr_highCV_wtdDist_simDecay = N_sigCorr_highCV;
+        N_sigCorr_highCV_wtdDist2_simDecay = N_sigCorr_highCV2;
+        perc_sigCorr_in_highCV_wtdDist_simDecay = perc_sigCorr_in_highCV;
     end
 end
 
@@ -399,14 +413,15 @@ baseline = 46; % number of correlated rxns by ROI expression only
 figure;
 hold on
 plot(dorders_wtdDist_expDecay2(1:14),N_sigCorr_highCV_wtdDist_expDecay2(1:14) ,'o-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
-plot(dorders_wtdDist_expDecay1000(1:14),N_sigCorr_highCV_wtdDist_expDecay1000(1:14) ,'o-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
+%plot(dorders_wtdDist_expDecay1000(1:14),N_sigCorr_highCV_wtdDist_expDecay1000(1:14) ,'o-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
+plot(dorders_wtdDist_simDecay(1:14),N_sigCorr_highCV_wtdDist_simDecay(1:14) ,'o-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
 plot(dorders_wtdDist(1:18),N_sigCorr_highCV_wtdDist(1:18) ,'o-','LineWidth',2,'Color','#0072BD','MarkerSize', 3)
 plot(dorders_normal(1:18),N_sigCorr_highCV_normal(1:18) ,'o-k','LineWidth',2,'MarkerSize', 3)
 yline(baseline,'--','LineWidth',2,'Color',[0.5 0.5 0.5])
 xlabel('Distance order/boundary');
 ylabel('Number of significantly correlated reactions ');
 ylim([20 80])
-legend({'improved FPA (base = 2)','improved FPA (base = 1000)','original FPA + weighted distance', 'original FPA','expression only'},'FontSize',7);
+legend({'eFPA (exponential decay)','eFPA (simple decay)','original FPA + weighted distance', 'original FPA','expression only'},'FontSize',7);
 plt = Plot(); % create a Plot object and grab the current figure
 plt.BoxDim = [2.85, 2.35];
 plt.LineWidth = 1;
@@ -424,14 +439,15 @@ baseline = 46; % number of correlated rxns by ROI expression only
 figure;
 hold on
 plot(dorders_wtdDist_expDecay2(1:14),N_sigCorr_highCV_wtdDist_expDecay2_2(1:14) ,'o-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
-plot(dorders_wtdDist_expDecay1000(1:14),N_sigCorr_highCV_wtdDist_expDecay1000_2(1:14) ,'o-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
+plot(dorders_wtdDist_simDecay(1:14),N_sigCorr_highCV_wtdDist2_simDecay(1:14) ,'o-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
+%plot(dorders_wtdDist_expDecay1000(1:14),N_sigCorr_highCV_wtdDist_expDecay1000_2(1:14) ,'o-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
 plot(dorders_wtdDist(1:18),N_sigCorr_highCV_wtdDist2(1:18) ,'o-','LineWidth',2,'Color','#0072BD','MarkerSize', 3)
 plot(dorders_normal(1:18),N_sigCorr_highCV_normal2(1:18) ,'o-k','LineWidth',2,'MarkerSize', 3)
 yline(baseline,'--','LineWidth',2,'Color',[0.5 0.5 0.5])
 xlabel('Distance order/boundary');
 ylabel('Number of significantly correlated reactions ');
 ylim([30 60])
-legend({'improved FPA (base = 2)','improved FPA (base = 1000)','original FPA + weighted distance', 'original FPA','expression only'},'FontSize',7);
+legend({'eFPA (exponential decay)','eFPA (simple decay)','original FPA + weighted distance', 'original FPA','expression only'},'FontSize',7);
 plt = Plot(); % create a Plot object and grab the current figure
 plt.BoxDim = [2.85, 2.35];
 plt.LineWidth = 1;

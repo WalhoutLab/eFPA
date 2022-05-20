@@ -6,6 +6,7 @@
 addpath ./../input/YeastJoshua/
 addpath ./../scripts/
 addpath ./../../bins/
+addpath ./../../../PlotPub/
 %% 1. load the model and prepare the model
 addpath('./../scripts/')
 model = loadYeatModel();
@@ -151,7 +152,7 @@ control_fdr_2 = fdr_r;
 control_testedRxns_2 = testedRxn;
 control_deltaminmax_2 = deltaminmax;
 %% load the distance bound titration and make the heatmap 
-load(['output/Titration_relativeExp_wtdDist_expDecay_FineGrained.mat'])
+load(['output/Titration_relativeExp_wtdDist_simpleDecay_FineGrained.mat'])
 %% calculate correlation
 dorders = n2;
 rMat = zeros(length(targetRxns),length(dorders));
@@ -237,7 +238,7 @@ rMat_valid = [ctrVr2, ctrVr, rMat];
 deltaminmaxmat_valid = [ctrVdeltaminmax2, ctrVdeltaminmax, CVmat];
 t = array2table(rMat_valid);
 t.Properties.RowNames = targetRxns;
-writetable(t,'output/PCC_titration_all.csv','WriteRowNames',1);
+writetable(t,'output/PCC_titration_all_simpleDecay.csv','WriteRowNames',1);
 %% plot the histogram of max PCC (optimal-boundary integration PCC)
 r_max = [];
 r_max_sig = [];
@@ -276,7 +277,7 @@ plt.YMinorTick = 'off';
 plt.ShowBox = 'off';
 plt.LegendLoc = 'NorthWest';
 plt.FontName = 'Arial';
-plt.export('figures/optimal_boundary_FPA_flux_correlation_pearson.pdf');
+plt.export('figures/simple_decay_optimal_boundary_FPA_flux_correlation_pearson.pdf');
 %% filter the PCC matrix and only keep the predicted reactions 
 keep = any(pMat_valid < 0.05 & rMat_valid > 0 & deltaminmaxmat_valid > 0.2,2);
 

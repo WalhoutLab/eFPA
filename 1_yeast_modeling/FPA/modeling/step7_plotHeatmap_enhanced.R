@@ -51,6 +51,7 @@ ann2[ann2 == 'NA'] = annTbl$pathway[ann2 == 'NA']
 labels_row0 = paste(rownames(annTbl),ann2)
 # also add the PCC values (max PCC for each row) in the annotation
 PCCs = read.csv('output/PCC_titration_all.csv',row.names = 1)
+library(matrixStats)
 maxPCC = rowMaxs(as.matrix(PCCs[rownames(annTbl),3:ncol(PCCs)]))
 labels_row0 = paste(labels_row0,round(maxPCC,2))
 
@@ -63,7 +64,8 @@ pheatmap(heatTbl[,1:23], breaks = seq(0,1,0.001),color = colorRampPalette(rev(br
          fontsize = 8,fontsize_row = 6, fontsize_col = 8,
          cellwidth = 12, cellheight = 6,
          cluster_rows = FALSE,cluster_cols = FALSE
-         ,display_numbers = sigTbl[,1:23], number_color = 'Black',fontsize_number = 6
+         #,display_numbers = sigTbl[,1:23], number_color = 'Black',fontsize_number = 6
+         # 05202022 we decided to not show the sig. marker since it decreases the interpretability of the figure
 )
 
 dev.off()
