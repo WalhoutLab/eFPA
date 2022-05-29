@@ -245,71 +245,70 @@ end
 dorders_wtd = dorders;
 N_sigCorr_highCV_wtd = N_sigCorr_highCV;
 
-% load the integration result (eFPA) 
-load(['output/Titration_relativeExp_wtdDist_expDecay.mat'])
+% load the integration result (robust eFPA) 
+load(['output/Titration_relativeExp_wtdDist_expDecay_robustFPA_FineGrained.mat'])
 N_sigCorr = zeros(length(n2),length(base));
 N_sigCorr_highCV = zeros(length(n2),length(base));
 perc_sigCorr_in_highCV = zeros(length(n2),length(base));
-for zz = 1:length(base)
-    dorders = n2;
-    rMat = zeros(length(targetRxns),length(dorders));
-    for nn = 1: length(dorders)
-        %%
-        FP = FP_collection_2{zz}{nn};
-        relFP = nan(size(FP,1),size(FP,2)-1);%we choose one from f and r as a prediction
-        for i = 1:size(FP,1)
-            for j = 1:(size(FP,2)-1)
-                if  mean(fluxMat(i,:)) > 0 
-                    if ~isnan(FP{i,j}(1))
-                        relFP(i,j) = FP{i,j}(1) ./ FP{i,end}(1);
-                    elseif ~isnan(FP{i,j}(2))
-                        relFP(i,j) = FP{i,j}(2) ./ FP{i,end}(2);
-                    else
-                        fprintf('base = %f, n = %d, i = %d, j = %d, is a failed FPA\n',...
-                            base(zz), dorders(nn),i,j);
-                        warning('check');
-                    end
+zz = 1;
+dorders = n2;
+rMat = zeros(length(targetRxns),length(dorders));
+for nn = 1: length(dorders)
+    %%
+    FP = FP_collection_2{nn};
+    relFP = nan(size(FP,1),size(FP,2)-1);%we choose one from f and r as a prediction
+    for i = 1:size(FP,1)
+        for j = 1:(size(FP,2)-1)
+            if  mean(fluxMat(i,:)) > 0 
+                if ~isnan(FP{i,j}(1))
+                    relFP(i,j) = FP{i,j}(1) ./ FP{i,end}(1);
+                elseif ~isnan(FP{i,j}(2))
+                    relFP(i,j) = FP{i,j}(2) ./ FP{i,end}(2);
                 else
-                    if ~isnan(FP{i,j}(2))
-                        relFP(i,j) = FP{i,j}(2) ./ FP{i,end}(2);
-                    elseif ~isnan(FP{i,j}(1))
-                        relFP(i,j) = FP{i,j}(1) ./ FP{i,end}(1);
-                    else
-                        error('check');
-                    end
+                    fprintf('base = %f, n = %d, i = %d, j = %d, is a failed FPA\n',...
+                        base(zz), dorders(nn),i,j);
+                    warning('check');
+                end
+            else
+                if ~isnan(FP{i,j}(2))
+                    relFP(i,j) = FP{i,j}(2) ./ FP{i,end}(2);
+                elseif ~isnan(FP{i,j}(1))
+                    relFP(i,j) = FP{i,j}(1) ./ FP{i,end}(1);
+                else
+                    error('check');
                 end
             end
         end
-        rmInd = all(isnan(relFP),2) | all(relFP == relFP(:,1),2);
-        relFP = relFP(~rmInd,:);
-        valid_rxns = targetRxns(~rmInd);
-        %Computing the correlation
-        r=[];
-        p_r=[];
-        deltaminmax = [];
-        testedRxn = {};
-        for j = 1:length(rxnLabel)
-            fluxMeasure = fluxMat_normalized(j,:);
-            if any(strcmp(valid_rxns,rxnLabel{j}))
-                testedRxn(end+1) = rxnLabel(j);
-                [r(end+1),p_r(end+1)] = corr(relFP(strcmp(valid_rxns,rxnLabel{j}),:)',abs(fluxMeasure)','type','Pearson');
-                deltaminmax(end+1) = max(relFP(strcmp(valid_rxns,rxnLabel{j}),:)) - min(relFP(strcmp(valid_rxns,rxnLabel{j}),:));
-            end
-        end
-
-        fdr_r = mafdr(p_r,'BHFDR', true);% BHFDR adjustment is chosen to keep strigency (control FDR instead of estimate FDR (which is used in pFDR(qvalue)))
-        fprintf('%d rxns give significant positive correlation by pearson\n',sum(r(fdr_r<0.05 & deltaminmax >0.2)>0));
-
-        [A B] = ismember(testedRxn,targetRxns);
-        rMat(B(A),nn) = r;
-        N_sigCorr(nn,zz) = sum(r(fdr_r<0.05)>0);
-        N_sigCorr_highCV(nn,zz) = sum(r(fdr_r<0.05 & deltaminmax > 0.2)>0);
-        perc_sigCorr_in_highCV(nn,zz) = sum(r(fdr_r<0.05 & deltaminmax > 0.2)>0) / sum(deltaminmax > 0.2);
     end
+    rmInd = all(isnan(relFP),2) | all(relFP == relFP(:,1),2);
+    relFP = relFP(~rmInd,:);
+    valid_rxns = targetRxns(~rmInd);
+    %Computing the correlation
+    r=[];
+    p_r=[];
+    deltaminmax = [];
+    testedRxn = {};
+    for j = 1:length(rxnLabel)
+        fluxMeasure = fluxMat_normalized(j,:);
+        if any(strcmp(valid_rxns,rxnLabel{j}))
+            testedRxn(end+1) = rxnLabel(j);
+            [r(end+1),p_r(end+1)] = corr(relFP(strcmp(valid_rxns,rxnLabel{j}),:)',abs(fluxMeasure)','type','Pearson');
+            deltaminmax(end+1) = max(relFP(strcmp(valid_rxns,rxnLabel{j}),:)) - min(relFP(strcmp(valid_rxns,rxnLabel{j}),:));
+        end
+    end
+
+    fdr_r = mafdr(p_r,'BHFDR', true);% BHFDR adjustment is chosen to keep strigency (control FDR instead of estimate FDR (which is used in pFDR(qvalue)))
+    fprintf('%d rxns give significant positive correlation by pearson\n',sum(r(fdr_r<0.05 & deltaminmax >0.2)>0));
+
+    [A B] = ismember(testedRxn,targetRxns);
+    rMat(B(A),nn) = r;
+    N_sigCorr(nn,zz) = sum(r(fdr_r<0.05)>0);
+    N_sigCorr_highCV(nn,zz) = sum(r(fdr_r<0.05 & deltaminmax > 0.2)>0);
+    perc_sigCorr_in_highCV(nn,zz) = sum(r(fdr_r<0.05 & deltaminmax > 0.2)>0) / sum(deltaminmax > 0.2);
 end
 
 % load the integration result (eFPA, simple decay) 
-load(['output/Titration_relativeExp_wtdDist_simpleDecay.mat'])
+load(['output/Titration_relativeExp_wtdDist_simpleDecay_FineGrained.mat'])
 N_sigCorr_simDecay = zeros(length(n2),1);
 N_sigCorr_highCV_simDecay = zeros(length(n2),1);
 perc_sigCorr_in_highCV_simDecay = zeros(length(n2),1);
@@ -381,21 +380,32 @@ N_sigCorr_highCV_wtdDist_simpleDecay = N_sigCorr_highCV_simDecay(:,1);
 perc_sigCorr_in_highCV_wtdDist_simpleDecay = perc_sigCorr_in_highCV_simDecay(:,1);
 
 dorders_wtdDist_expDecay2 = dorders;% 1-dorders/max(dorders);
-N_sigCorr_wtdDist_expDecay2 = N_sigCorr(:,2);% base =2
-N_sigCorr_highCV_wtdDist_expDecay2 = N_sigCorr_highCV(:,2);
-perc_sigCorr_in_highCV_wtdDist_expDecay2 = perc_sigCorr_in_highCV(:,2);
-
+N_sigCorr_wtdDist_expDecay2 = N_sigCorr(:,1);% base =2
+N_sigCorr_highCV_wtdDist_expDecay2 = N_sigCorr_highCV(:,1);
+perc_sigCorr_in_highCV_wtdDist_expDecay2 = perc_sigCorr_in_highCV(:,1);
+%%
 figure;
 hold on
-plot(dorders_wtdDist_expDecay2(1:end),N_sigCorr_highCV_wtdDist_expDecay2(1:end) ,'o-','LineWidth',1,'Color','#D95319','MarkerSize', 3)
-plot(dorders_wtdDist_simpleDecay(1:end),N_sigCorr_highCV_wtdDist_simpleDecay(1:end) ,'o-','LineWidth',1,'Color','#EDB120','MarkerSize', 3)
-plot(dorders_wtd(1:end),N_sigCorr_highCV_wtd(1:end) ,'o-','LineWidth',1,'Color','#0072BD','MarkerSize', 3)
-plot(dorders_ori(1:end),N_sigCorr_highCV_ori(1:end) ,'o-','LineWidth',1,'MarkerSize', 3)
+p1 = plot(dorders_wtdDist_expDecay2(1:end),N_sigCorr_highCV_wtdDist_expDecay2(1:end) ,'-o','LineWidth',1,'Color','#D95319','MarkerSize', 3);
+p1.MarkerEdgeColor = '#D95319';
+p1.MarkerFaceColor = '#D95319';
+p1.MarkerSize = 1;
+p2 = plot(dorders_wtdDist_simpleDecay(1:end),N_sigCorr_highCV_wtdDist_simpleDecay(1:end) ,'-o','LineWidth',1,'Color','#EDB120','MarkerSize', 3);
+p2.MarkerEdgeColor = '#EDB120';
+p2.MarkerFaceColor = '#EDB120';
+p2.MarkerSize = 1;
+p3 = plot(dorders_wtd(1:end),N_sigCorr_highCV_wtd(1:end) ,'-o','LineWidth',1,'Color','#0072BD','MarkerSize', 3);
+p3.MarkerEdgeColor = '#0072BD';
+p3.MarkerFaceColor = '#0072BD';
+p3.MarkerSize = 1;
+p4 = plot(dorders_ori(1:end),N_sigCorr_highCV_ori(1:end) ,'-o','LineWidth',1,'MarkerSize', 3);
+p4.MarkerFaceColor = p4.Color;
+p4.MarkerSize = 1;
 yline(baseline,'--','LineWidth',2,'Color',[0.5 0.5 0.5])
-xlabel('Distance order/boundary');
+xlabel('Distance boundary (in weighted distance)');
 ylabel('Number of significantly correlated reactions ');
-ylim([20 80])
-legend({'eFPA (base = 2)','eFPA (simple decay)','local expression average (weighted dist)','local expression average (naive dist)','target expression only'},'FontSize',7);
+% ylim([20 80])
+legend({'robust eFPA','eFPA','local expression average (weighted dist)','local expression average (naive dist)','target expression only'},'FontSize',7);
 plt = Plot(); % create a Plot object and grab the current figure
 plt.BoxDim = [2.85, 2.35];
 plt.LineWidth = 1;

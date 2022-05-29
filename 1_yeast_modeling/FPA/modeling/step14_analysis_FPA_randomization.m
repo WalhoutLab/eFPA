@@ -4,7 +4,7 @@
 addpath ./../input/YeastJoshua/
 addpath ./../scripts/
 addpath ./../../bins/
-
+addpath ./../../../PlotPub/lib/
 %% 1. load the model and prepare the model
 addpath('./../scripts/')
 model = loadYeatModel();
@@ -75,7 +75,7 @@ penalty_pro(strcmp(model.rxns,'r_1654'),11:15) = 10;
 %% the second evaluation set (156 rxns with expression measured)
 mySet = intersect(valid_rxns_pro_perPro, rxnLabel);
 %% gather the finished randomization files
-allFiles = dir('output/randomization/seed_*/rand_*_default_FPA.mat');
+allFiles = dir('output/randomization_simpleDecay/seed_*/rand_*_default_FPA.mat');
 names = {allFiles.name};
 folders = {allFiles.folder};
 folders = folders(~strcmp(names,'rand_1_default_FPA.mat'));
@@ -84,7 +84,7 @@ for i = 1:length(names)
     path_defaultFPA{i} = [folders{i},'/',names{i}];
 end
 
-allFiles = dir('output/randomization/seed_*/rand_*_flexi_FPA.mat');
+allFiles = dir('output/randomization_simpleDecay/seed_*/rand_*_flexi_FPA.mat');
 names = {allFiles.name};
 folders = {allFiles.folder};
 folders = folders(~strcmp(names,'rand_1_flexi_FPA.mat'));
@@ -279,7 +279,7 @@ for zz = 1:length(path_flexiFPA)
 end
 
 %% the control
-load('output/randomization/seed_1030/rand_1_flexi_FPA.mat') 
+load('output/randomization_simpleDecay/seed_1126/rand_1_flexi_FPA.mat') 
 dorders = n2;
 rMat = zeros(length(targetRxns),length(dorders));
 FDRmat = ones(length(targetRxns),length(dorders));
@@ -477,7 +477,7 @@ for i = 1:size(rMax,2)
     pVals(i) = (sum(rMax(:,i) >= rMax_obs(i))+1) ./ (size(rMax,1)+1);
 end
 sum(pVals < 0.05)
-sum(pVals < 0.1)
+sum(Vals < 0.1)
 sum(pVals < 0.25)
 % we stop overinterpreting this...
 

@@ -156,12 +156,15 @@ fprintf('start job pooling...\n');
 rng shuffle
 tmpDir = ['tmp_',num2str(fix(rand()*100000))];
 mkdir(tmpDir);
+% the randomization often get stuck because of parallel runing, so we add
+% an additional identifier
+uid = tmpDir(5:7);
 environment = getEnvironment();
 save([tmpDir,'/variables.mat'],'model','master_expression','distMat','labels','nSeq','manualDist','maxDist','blockList', 'constantPenalty','parforFlag','penalty','targetRxns','environment','alpha','-v7.3','-nocompression');
 % make the target rxn pools
 splits = 1:fix(length(targetRxns)/jobBatch)+1:length(targetRxns);
 for i = 1:length(splits)-1
-    batchID = ['batch_',num2str(i)];
+    batchID = ['b_',uid,'_',num2str(i)];
     env_cmd = 'module load gurobi/900 && module load matlab/R2019a && ';
     cmd = ['matlab -nodisplay -nosplash -nojvm -r \"FPA2_clusterExecuter_simpleDecay ',tmpDir,' ',num2str(splits(i)),' ',num2str(splits(i+1)-1),' ',batchID,'\"'];
     full_cmd = [env_cmd, cmd, ' > ',tmpDir,'/',batchID,'.log && wait'];
@@ -171,7 +174,7 @@ for i = 1:length(splits)-1
     pause(0.25);
 end
 i = length(splits);
-batchID = ['batch_',num2str(i)];
+batchID = ['b_',uid,'_',num2str(i)];
 env_cmd = 'module load gurobi/900 && module load matlab/R2019a && ';
 cmd = ['matlab -nodisplay -nosplash -nojvm -r \"FPA2_clusterExecuter_simpleDecay ',tmpDir,' ',num2str(splits(i)),' ',num2str(length(targetRxns)),' ',batchID,'\"'];
 full_cmd = [env_cmd, cmd, ' > ',tmpDir,'/',batchID,'.log && wait'];
@@ -184,7 +187,7 @@ pause(30); % wait for all jobs to be submitted
 fprintf('start job monitoring...\n');
 runningBatches = {};
 for i = 1:length(splits)
-    runningBatches{i} = ['batch_',num2str(i)];
+    runningBatches{i} = ['b_',uid,'_',num2str(i)];
 end
 
 while ~isempty(runningBatches)
@@ -197,10 +200,10 @@ while ~isempty(runningBatches)
     allTerms = strsplit(out,' ');
     failedBatches = setdiff(runningBatches,allTerms);
     % resubmit the failed batches 
-    failedBatches = cellfun(@str2num, regexprep(failedBatches,'batch_',''));
+    failedBatches = cellfun(@str2num, regexprep(failedBatches,'^b_..._',''));
     if any(failedBatches == length(splits)) % if last batch needs to be rerun
         i = length(splits);
-        batchID = ['batch_',num2str(i)];
+        batchID = ['b_',uid,'_',num2str(i)];
         env_cmd = 'module load gurobi/900 && module load matlab/R2019a && ';
         cmd = ['matlab -nodisplay -nosplash -nojvm -r \"FPA2_clusterExecuter_simpleDecay ',tmpDir,' ',num2str(splits(i)),' ',num2str(length(targetRxns)),' ',batchID,'\"'];
         full_cmd = [env_cmd, cmd, ' > ',tmpDir,'/',batchID,'.log && wait'];
@@ -212,7 +215,7 @@ while ~isempty(runningBatches)
     failedBatches = setdiff(failedBatches,length(splits));
     for j = 1:length(failedBatches)
         i = failedBatches(j);
-        batchID = ['batch_',num2str(i)];
+        batchID = ['b_',uid,'_',num2str(i)];
         env_cmd = 'module load gurobi/900 && module load matlab/R2019a && ';
         cmd = ['matlab -nodisplay -nosplash -nojvm -r \"FPA2_clusterExecuter_simpleDecay ',tmpDir,' ',num2str(splits(i)),' ',num2str(splits(i+1)-1),' ',batchID,'\"'];
         full_cmd = [env_cmd, cmd, ' > ',tmpDir,'/',batchID,'.log && wait'];
@@ -228,11 +231,11 @@ end
 
 %% write out the final result 
 i = 1;
-batchID = ['batch_',num2str(i)];
+batchID = ['b_',uid,'_',num2str(i)];
 load([tmpDir,'/FP_',batchID,'.mat'],'FP');
 FluxPotentials_2d = FP;
 for i = 2:length(splits)
-    batchID = ['batch_',num2str(i)];
+    batchID = ['b_',uid,'_',num2str(i)];
     load([tmpDir,'/FP_',batchID,'.mat'],'FP');
     bInd = 1;
     for nInd = 1:length(nSeq) 
