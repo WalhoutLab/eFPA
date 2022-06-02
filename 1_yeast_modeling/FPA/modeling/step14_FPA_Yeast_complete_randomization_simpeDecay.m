@@ -86,18 +86,21 @@ n2 = 0:0.5:40;
 alpha = 1;
 nsample = 1000;
 seed = 1126;
-rng(seed);
-mkdir(['output/randomization_simpleDecay/seed_',num2str(seed),'/'])
+rng(seed,'twister');
+mkdir(['output/randomization_simpleDecay_seed_controlled/seed_',num2str(seed),'/'])
 %% complete randomization
 for c = 1:(nsample+1)
     %% load expression levels
     load('output/normalizedLevels_partialExcluded.mat');
+    % print current random status
+    rng
     %% shuffling the gene labels 
     if c == 1
         % dont shuffle as control
     else
         valid_rxns_pro_perPro = valid_rxns_pro_perPro(randperm(length(valid_rxns_pro_perPro)));
     end
+    valid_rxns_pro_perPro_suffled = valid_rxns_pro_perPro;
     %% precalc penalty 
     penalty_pro = ones(length(model.rxns),size(fluxMat,2)+1);
     [A B] = ismember(model.rxns,valid_rxns_pro_perPro);
@@ -112,9 +115,9 @@ for c = 1:(nsample+1)
     penalty_pro(strcmp(model.rxns,'r_1654'),11:15) = 10;
     %% FPA 
     [FP_collection_2] = FPA2_clusterWrapper_multiPara(model,targetRxns,{},distMat_wtd,labels,6, manualPenalty,{},max(distMat_wtd(~isinf(distMat_wtd))),blocklist, {},false,penalty_pro,alpha,2);
-    save(['output/randomization_simpleDecay/seed_',num2str(seed),'/rand_',num2str(c),'_default_FPA.mat'],'FP_collection_2','targetRxns');
+    save(['output/randomization_simpleDecay_seed_controlled/seed_',num2str(seed),'/rand_',num2str(c),'_default_FPA.mat'],'FP_collection_2','targetRxns','valid_rxns_pro_perPro_suffled');
 
     [FP_collection_2] = FPA2_clusterWrapper_simpleDecay(model,targetRxns,{},distMat_wtd,labels,n2, manualPenalty,{},max(distMat_wtd(~isinf(distMat_wtd))),blocklist, {},false,penalty_pro,alpha);
-    save(['output/randomization_simpleDecay/seed_',num2str(seed),'/rand_',num2str(c),'_flexi_FPA.mat'],'FP_collection_2','targetRxns');
+    save(['output/randomization_simpleDecay_seed_controlled/seed_',num2str(seed),'/rand_',num2str(c),'_flexi_FPA.mat'],'FP_collection_2','targetRxns','valid_rxns_pro_perPro_suffled');
 end
 

@@ -75,7 +75,7 @@ penalty_pro(strcmp(model.rxns,'r_1654'),11:15) = 10;
 %% the second evaluation set (156 rxns with expression measured)
 mySet = intersect(valid_rxns_pro_perPro, rxnLabel);
 %% gather the finished randomization files
-allFiles = dir('output/randomization_simpleDecay/seed_*/rand_*_default_FPA.mat');
+allFiles = dir('output/randomization_simpleDecay_seed_controlled/seed_*/rand_*_default_FPA.mat');
 names = {allFiles.name};
 folders = {allFiles.folder};
 folders = folders(~strcmp(names,'rand_1_default_FPA.mat'));
@@ -84,7 +84,7 @@ for i = 1:length(names)
     path_defaultFPA{i} = [folders{i},'/',names{i}];
 end
 
-allFiles = dir('output/randomization_simpleDecay/seed_*/rand_*_flexi_FPA.mat');
+allFiles = dir('output/randomization_simpleDecay_seed_controlled/seed_*/rand_*_flexi_FPA.mat');
 names = {allFiles.name};
 folders = {allFiles.folder};
 folders = folders(~strcmp(names,'rand_1_flexi_FPA.mat'));
@@ -197,7 +197,6 @@ plt.XMinorTick = 'off';
 plt.YMinorTick = 'off';
 plt.TickDir = 'out';
 plt.export(['figures/NoTrack_randomization_defaultFPA_156.pdf']);
-
 %% analyze the randomization of titration
 n2 = 0:0.5:40;
 N_corr_232 = [];
@@ -356,6 +355,7 @@ xlabel('Number of significantly correlated reactions');
 ylabel('Number of permutation');
 plt = Plot(); % create a Plot object and grab the current figure
 plt.BoxDim = [2.85, 2.35];
+plt.XLim = [15, 120]
 plt.LineWidth = 1;
 plt.FontSize = 7;
 plt.FontName = 'Arial';
@@ -385,12 +385,12 @@ plt.export(['figures/NoTrack_randomization_flexiFPA_156.pdf']);
 
 figure;
 hold on
-plot(n2,Nmat_corr_232_obs,'-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
 %plot(n2,Nmat_corr_156_obs ,'-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
 for i = 1:length(path_flexiFPA)
-    plot(n2,Nmat_corr_232(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
+    plot(n2,Nmat_corr_232(i,:) ,'-','LineWidth',2,'MarkerSize', 3,'Color',[0,0,0,0.2])
     %plot(n2,Nmat_corr_156(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
 end
+plot(n2,Nmat_corr_232_obs,'-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
 xlabel('Distance boundary');
 ylabel('Number of significantly correlated reactions ');
 plt = Plot(); % create a Plot object and grab the current figure
@@ -406,12 +406,12 @@ plt.export(['figures/NoTrack_randomization_flexiFPA_titration.pdf']);
 
 figure;
 hold on
-plot(n2,N_corr_232_cum_obs,'-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
 %plot(n2,N_corr_156_cum_obs ,'-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
 for i = 1:length(path_flexiFPA)
-    plot(n2,N_corr_232_cum(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
+    plot(n2,N_corr_232_cum(i,:) ,'-','LineWidth',2,'MarkerSize', 3,'Color',[0,0,0,0.2])
     %plot(n2,N_corr_156_cum(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
 end
+plot(n2,N_corr_232_cum_obs,'-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
 xlabel('Distance boundary');
 ylabel('Cummulative number of significantly correlated reactions ');
 plt = Plot(); % create a Plot object and grab the current figure
@@ -468,7 +468,109 @@ plt.XMinorTick = 'off';
 plt.YMinorTick = 'off';
 plt.TickDir = 'out';
 plt.export(['figures/NoTrack_randomization_glycan_example_r_0485.pdf']);
+%% the increase compared with initial status
+figure;
+hold on
+%plot(n2,Nmat_corr_156_obs ,'-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
+for i = 1:length(path_flexiFPA)
+    plot(n2,(Nmat_corr_232(i,:)-Nmat_corr_232(i,1)) ./ Nmat_corr_232(i,1) ,'-','LineWidth',2,'MarkerSize', 3,'Color',[0,0,0,0.2])
+    %plot(n2,Nmat_corr_156(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
+end
+plot(n2,(Nmat_corr_232_obs - Nmat_corr_232_obs(1)) ./ Nmat_corr_232_obs(1),'-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
+xlabel('Distance boundary');
+ylabel('Proportional increase (% of the starting point)');
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2.85*2, 2.35*2];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.export(['figures/NoTrack_randomization_flexiFPA_proportional_benifit.pdf']);
 
+figure;
+hold on
+%plot(n2,N_corr_156_cum_obs ,'-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
+for i = 1:length(path_flexiFPA)
+    plot(n2,(N_corr_232_cum(i,:) - N_corr_232_cum(i,1))./ N_corr_232_cum(i,1) ,'-','LineWidth',2,'MarkerSize', 3,'Color',[0,0,0,0.2])
+    %plot(n2,N_corr_156_cum(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
+end
+plot(n2,(N_corr_232_cum_obs - N_corr_232_cum_obs(1)) ./ N_corr_232_cum_obs(1),'-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
+xlabel('Distance boundary');
+ylabel('Cummulative proportional increase (% of the starting point)');
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2.85*2, 2.35*2];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.export(['figures/NoTrack_randomization_flexiFPA_cummulative_proportional_benifit.pdf']);
+
+
+figure;
+hold on
+%plot(n2,Nmat_corr_156_obs ,'-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
+for i = 1:length(path_flexiFPA)
+    plot(n2,(Nmat_corr_232(i,:)-Nmat_corr_232(i,1)) ,'-','LineWidth',2,'MarkerSize', 3,'Color',[0,0,0,0.2])
+    %plot(n2,Nmat_corr_156(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
+end
+plot(n2,(Nmat_corr_232_obs - Nmat_corr_232_obs(1)) ,'-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
+xlabel('Distance boundary');
+ylabel('Absolute increase (# of reactions cmpd w/ the starting point)');
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2.85*2, 2.35*2];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.export(['figures/NoTrack_randomization_flexiFPA_absolute_benifit.pdf']);
+
+figure;
+hold on
+%plot(n2,N_corr_156_cum_obs ,'-','LineWidth',2,'Color','#EDB120','MarkerSize', 3)
+for i = 1:length(path_flexiFPA)
+    plot(n2,(N_corr_232_cum(i,:) - N_corr_232_cum(i,1)),'-','LineWidth',2,'MarkerSize', 3,'Color',[0,0,0,0.2])
+    %plot(n2,N_corr_156_cum(i,:) ,'-k','LineWidth',2,'MarkerSize', 3)
+end
+plot(n2,(N_corr_232_cum_obs - N_corr_232_cum_obs(1)),'-','LineWidth',2,'Color','#D95319','MarkerSize', 3)
+xlabel('Distance boundary');
+ylabel('Cummulative absolute increase (# of reactions cmpd w/ the starting point)');
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2.85*2, 2.35*2];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.export(['figures/NoTrack_randomization_flexiFPA_cummulative_absolute_benifit.pdf']);
+
+
+figure;
+hold on
+histogram(N_corr_232)
+xline(baseline1,'-','LineWidth',2,'Color',[0.5 0.5 0.5])
+xlabel('Number of significantly correlated reactions');
+ylabel('Number of permutation');
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2.85, 2.35];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.export(['figures/NoTrack_randomization_defaultFPA_232.pdf']);
 %% get the empirical p-value of each reaction's prediction (reconciled or not by optimal bound FPA)
 % we only consider the PCC for simplicity for now. maybe we will use the
 % same criteria as we define the reconcilitation (PCC > 0, FDR < 0.05 range
@@ -482,5 +584,26 @@ sum(pVals < 0.25)
 % we stop overinterpreting this...
 
 
+%% optional
+% first manually rerun the section "evaluate FPA randomization for default FPA" to reset
+% variables
 
+% also plot the net increase
+figure;
+hold on
+histogram(N_corr_232 - N_corr_232_cum(:,1)')
+xline(baseline1 - 46,'-','LineWidth',2,'Color',[0.5 0.5 0.5])
+xlabel('Number of newly predicted reactions');
+ylabel('Number of permutation');
+title(['p < ',num2str((sum( N_corr_232 - N_corr_232_cum(:,1)' >= baseline1 - 46 )+1) ./ (length(N_corr_232)+1),2)])
+plt = Plot(); % create a Plot object and grab the current figure
+plt.BoxDim = [2.85, 2.35];
+plt.LineWidth = 1;
+plt.FontSize = 7;
+plt.FontName = 'Arial';
+plt.ShowBox = 'off';
+plt.XMinorTick = 'off';
+plt.YMinorTick = 'off';
+plt.TickDir = 'out';
+plt.export(['figures/NoTrack_randomization_defaultFPA_232_absolute_benefit.pdf']);
 

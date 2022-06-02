@@ -156,7 +156,7 @@ end
 
 %% start job pooling
 fprintf('start job pooling...\n');
-rng shuffle
+% rng shuffle
 tmpDir = ['tmp_',num2str(fix(rand()*100000))];
 mkdir(tmpDir);
 environment = getEnvironment();

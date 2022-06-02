@@ -153,8 +153,8 @@ end
 
 %% start job pooling
 fprintf('start job pooling...\n');
-rng shuffle
-tmpDir = ['tmp_',num2str(fix(rand()*100000))];
+% rng shuffle
+tmpDir = ['tmp_',num2str(100+fix(rand()*100000))];
 mkdir(tmpDir);
 % the randomization often get stuck because of parallel runing, so we add
 % an additional identifier
