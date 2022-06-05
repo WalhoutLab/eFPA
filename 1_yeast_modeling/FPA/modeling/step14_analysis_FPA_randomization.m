@@ -553,24 +553,6 @@ plt.XMinorTick = 'off';
 plt.YMinorTick = 'off';
 plt.TickDir = 'out';
 plt.export(['figures/NoTrack_randomization_flexiFPA_cummulative_absolute_benifit.pdf']);
-
-
-figure;
-hold on
-histogram(N_corr_232)
-xline(baseline1,'-','LineWidth',2,'Color',[0.5 0.5 0.5])
-xlabel('Number of significantly correlated reactions');
-ylabel('Number of permutation');
-plt = Plot(); % create a Plot object and grab the current figure
-plt.BoxDim = [2.85, 2.35];
-plt.LineWidth = 1;
-plt.FontSize = 7;
-plt.FontName = 'Arial';
-plt.ShowBox = 'off';
-plt.XMinorTick = 'off';
-plt.YMinorTick = 'off';
-plt.TickDir = 'out';
-plt.export(['figures/NoTrack_randomization_defaultFPA_232.pdf']);
 %% get the empirical p-value of each reaction's prediction (reconciled or not by optimal bound FPA)
 % we only consider the PCC for simplicity for now. maybe we will use the
 % same criteria as we define the reconcilitation (PCC > 0, FDR < 0.05 range
