@@ -140,7 +140,7 @@ pie(as.numeric(predType[2,]), colnames(predType),main = paste('gapfill = ',predT
 dev.off()
 
 # directly compare the PCC for understanding the benefit
-PCC_all = read.csv('output/PCC_titration_all.csv',row.names = 1);
+PCC_all = read.csv('output/PCC_titration_all_simpleDecay.csv',row.names = 1);
 boundary = data.frame(Var1 = c(c('base2-boundary6','expression only'), seq(0,40,0.5)))
 colnames(PCC_all) = boundary$Var1
 infoTbl = read.csv('output/summary_table_reaction_information.csv')
@@ -150,7 +150,7 @@ library(matrixStats)
 PCC_all$max = rowMaxs(as.matrix(PCC_all[,3:ncol(PCC_all)]))
 #plot
 dev.off()
-pdf('figures/PCC_comparison.pdf',width = 7,height = 7)
+pdf('figures/PCC_comparison_simple_decay.pdf',width = 7,height = 7)
 plot(PCC_all$`expression only`, PCC_all$max, col = 'black', lwd = 2,pch =16,
      xlab = 'PCC by target expression',
      ylab = 'PCC by optimal boundary integration')

@@ -2,6 +2,7 @@
 1_yeast_modeling/FPA/input/YeastJoshua/distanceMatrix_weighted.txt
 1_yeast_modeling/FPA/modeling/output/fine_titration/
 1_yeast_modeling/FPA/modeling/output/fine_titration_simDecay/
+1_yeast_modeling/FPA/modeling/output/randomization_simpleDecay_seed_controlled/
 2_C_elegans_modeling/FPA/C.elegansTissue_dataset/newFPA/input/distanceMatrix_weighted.txt
 3_human_modeling/2_FPA/distance_inputs/iHuman1/Smatrix_regular.txt
 3_human_modeling/2_FPA/humanTissue_MERGE/input/distanceMatrix.txt
@@ -11,7 +12,6 @@
 **/*.Rhistory
 1_yeast_modeling/FPA/modeling/.Rproj.user/
 3_human_modeling/2_FPA/humanTissue_MERGE/.Rproj.user/
-**/NoTrack_*
 1_yeast_modeling/FPA/modeling/output/randomization/
 1_yeast_modeling/FPA/modeling/output/randomization_simpleDecay/
 .Rproj.user
