@@ -55,7 +55,7 @@ dev.off()
 library(matrixStats)
 boundary = data.frame(Var1 = c(c('base2-boundary6','expression only'), seq(0,40,0.5)))
 FPAtbl = read.csv('output/summary_table_reaction_information.csv',row.names = 1)
-PCCs = read.csv('output/PCC_titration_all.csv',row.names = 1)
+PCCs = read.csv('output/PCC_titration_all_simpleDecay.csv',row.names = 1)
 colnames(PCCs) = boundary$Var1
 FPAtbl$maxPCC_FPA = rowMaxs(as.matrix(PCCs[rownames(FPAtbl),3:ncol(PCCs)]))
 FPAtbl$maxPCC_all2all = rowMaxs(as.matrix(rMat[rownames(FPAtbl),]))
