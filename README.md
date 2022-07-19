@@ -4,6 +4,11 @@ We developped the enhanced Flux Potential Analysis (eFPA) algorithm, to systemat
 
 The repo includes four parts: (1) data and codes to reproduce the yeast flux analysis (2) data and codes to reproduce the human tissue analysis (3) metabolic distance calculatior for making the distance matrix of a metabolic network model and (4) a tutorial to run eFPA on your own expression data and metabolic network model.
 
+Please note, if you only want to use the eFPA tool for analyzing your own data, you may directly go to [eFPA tutorial](4_eFPA_tutorial) that contains a full tutorial of eFPA analysis. To reproduce our analyses presented in the paper, please refer to the sections 1 and 2. Please be advised that if you are going to run FPA on a model other than the models used in our study, you need to calculate the distance matrix for your model, which can be achieved by instructions in [metabolic distance calculator](3_distance_calculation). This computation may be intensive on large models (i.e., > 2000 rxns x 2000 mets). You may need to use high-performance computation resources or reach out to us for assistance. 
+
+For downloading the human/yeast model and pre-calculated distance matrix (exceeded Github size limit), please visit xxxx(wormflux link to be done)
+
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -21,9 +26,8 @@ This package doesn't require any installation or compiling. Please see the follo
 
 ## Running the tests
 
-The repo includes five independent parts, [yeast modeling](1_yeast_modeling), [C. elegans tissue metabolism modeling](2_C_elegans_modeling), [human tissue modeling](3_human_modeling), [metabolic distance calculator](4_distance_calculation), and [improved FPA tutorial](5_improvedFPA_tutorial). Please see the instruction within each module for running a test.
+The repo includes four independent parts, [yeast modeling](1_yeast_modeling), [human tissue modeling](2_human_modeling), [metabolic distance calculator](3_distance_calculation), and [eFPA tutorial](4_eFPA_tutorial). Please see the instruction within each module for running a test.
 
-Please note, if you only want to use the improved FPA tool for analyzing your own data, you may directly go to [improved FPA tutorial](5_improvedFPA_tutorial) that contains a full tutorial of FPA analysis. To reproduce our analyses presented in the paper, please refer to the sections #1-3. Please be advised that if you are going to run FPA on a model other than the models used in our study, you need to calculate the distance matrix for your model, which can be achieved by instructions in [metabolic distance calculator](4_distance_calculation). This computation may be intensive on large models (i.e., > 2000 rxns x 2000 mets). You may need to use high-performance computation resources or reach out to us for assistance. 
 
 The followings are descriptions on each module (folder) listed.
 
