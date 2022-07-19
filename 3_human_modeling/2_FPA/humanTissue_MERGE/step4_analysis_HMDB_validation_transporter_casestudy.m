@@ -2,6 +2,8 @@
 % compare the transporting flux potential of metabolites with no
 % integration (target transporter expression only) in their predictive
 % power of tissue-enriched metabolites
+addpath input
+addpath ./../scripts/
 %% load environment
 setEnvForAnalysis
 addpath('PlotPub/lib')
@@ -93,6 +95,66 @@ rmInd = all(isnan(relFP),2);
 relFP(rmInd,:) = [];
 rowlabels_allMetDM(rmInd) = [];
 relFP_wtd_allMetDM = relFP;
+
+% RNA prediction (by common genes only)
+load output/FPA_transporter_RNA_TS_common_newFPA_weightedDist_order6_tissueNetwork.mat
+relFP = [relFP_f;relFP_r];
+rowlabels_RNAcomm = [cellfun(@(x) [x,'_f'],targetRxns,'UniformOutput',false);
+              cellfun(@(x) [x,'_r'],targetRxns,'UniformOutput',false)];   
+rmInd = all(isnan(relFP),2);
+relFP(rmInd,:) = [];
+rowlabels_RNAcomm(rmInd) = [];
+relFP_wtd_RNAcomm = relFP;
+load output/FPA_demand_RNA_TS_common_newFPA_weightedDist_order6_tissueNetwork.mat
+relFP = [relFP_f;relFP_r];
+rowlabels_DM_RNAcomm = [cellfun(@(x) [x,'_f'],targetRxns_DM,'UniformOutput',false);
+              cellfun(@(x) [x,'_r'],targetRxns_DM,'UniformOutput',false)];
+rmInd = all(isnan(relFP),2);
+relFP(rmInd,:) = [];
+rowlabels_DM_RNAcomm(rmInd) = [];
+relFP_wtd_DM_RNAcomm = relFP;
+load output/pseudoDM_RNA_TS_common_newFPA_weightedDist_order6_tissueNetwork.mat
+cmpName_nearest_network_RNAcomm = cmpName_nearest;
+relFP_nearest_network_RNAcomm = relFP_nearest;
+load output/FPA_allMetDemand_RNA_TS_common_newFPA_weightedDist_order6_tissueNetwork.mat
+relFP = [relFP_f;relFP_r];
+rowlabels_allMetDM_RNAcomm = [cellfun(@(x) [x,'_f'],targetRxns_allMetDM,'UniformOutput',false);
+                cellfun(@(x) [x,'_r'],targetRxns_allMetDM,'UniformOutput',false)];
+rmInd = all(isnan(relFP),2);
+relFP(rmInd,:) = [];
+rowlabels_allMetDM_RNAcomm(rmInd) = [];
+relFP_wtd_allMetDM_RNAcomm = relFP;
+
+
+% RNA prediction (by all genes)
+load output/FPA_transporter_RNA_TS_all_newFPA_weightedDist_order6_tissueNetwork.mat
+relFP = [relFP_f;relFP_r];
+rowlabels_RNAall = [cellfun(@(x) [x,'_f'],targetRxns,'UniformOutput',false);
+              cellfun(@(x) [x,'_r'],targetRxns,'UniformOutput',false)];   
+rmInd = all(isnan(relFP),2);
+relFP(rmInd,:) = [];
+rowlabels_RNAall(rmInd) = [];
+relFP_wtd_RNAall = relFP;
+load output/FPA_demand_RNA_TS_all_newFPA_weightedDist_order6_tissueNetwork.mat
+relFP = [relFP_f;relFP_r];
+rowlabels_DM_RNAall = [cellfun(@(x) [x,'_f'],targetRxns_DM,'UniformOutput',false);
+              cellfun(@(x) [x,'_r'],targetRxns_DM,'UniformOutput',false)];
+rmInd = all(isnan(relFP),2);
+relFP(rmInd,:) = [];
+rowlabels_DM_RNAall(rmInd) = [];
+relFP_wtd_DM_RNAall = relFP;
+load output/pseudoDM_RNA_TS_all_newFPA_weightedDist_order6_tissueNetwork.mat
+cmpName_nearest_network_RNAall = cmpName_nearest;
+relFP_nearest_network_RNAall = relFP_nearest;
+load output/FPA_allMetDemand_RNA_TS_all_newFPA_weightedDist_order6_tissueNetwork.mat
+relFP = [relFP_f;relFP_r];
+rowlabels_allMetDM_RNAall = [cellfun(@(x) [x,'_f'],targetRxns_allMetDM,'UniformOutput',false);
+                cellfun(@(x) [x,'_r'],targetRxns_allMetDM,'UniformOutput',false)];
+rmInd = all(isnan(relFP),2);
+relFP(rmInd,:) = [];
+rowlabels_allMetDM_RNAall(rmInd) = [];
+relFP_wtd_allMetDM_RNAall = relFP;
+
 
 % control - no network
 load output/FPA_transporter_protein_TS_common_originalFPA_originalDist_order100_naiveNetwork.mat
@@ -199,6 +261,48 @@ for j = 1:length(allCmp_iHumanName)
     end
 end
 
+%% delta rFP matrix - RNA common - transporter FPA
+% first merge the tissues
+relFP_sel_RNAcomm = zeros(size(relFP_wtd_RNAcomm,1),length(measuredTissue));
+relFP_wtd_ctd_RNAcomm = normalize(relFP_wtd_RNAcomm,2,'center','median');
+for i = 1:length(measuredTissue)
+    relFP_sel_RNAcomm(:,i) = max(relFP_wtd_ctd_RNAcomm(:,ismember(conditions,strsplit(TissueAligTbl.FPAtissues{i},'; '))),[],2);
+end
+% then, take max of all associated transporters
+predMat_RNAcomm = [];
+for j = 1:length(allCmp_iHumanName)
+    metInd = strcmp(allCmp_iHumanName{j},metNames);
+    myRxns = model.rxns(any(model.S(metInd,:),1));
+    myInd = ismember(regexprep(rowlabels_RNAcomm,'_.$',''),myRxns);
+
+    if any(myInd)
+        predMat_RNAcomm(j,:) = max(relFP_sel_RNAcomm(myInd,:),[],1);
+    else
+        predMat_RNAcomm(j,:) = zeros(1,size(predMat_RNAcomm,2));
+        warning('%s is not predicted\n',allCmp_iHumanName{j});
+    end
+end
+%% delta rFP matrix - RNA all - transporter FPA
+% first merge the tissues
+relFP_sel_RNAall = zeros(size(relFP_wtd_RNAall,1),length(measuredTissue));
+relFP_wtd_ctd_RNAall = normalize(relFP_wtd_RNAall,2,'center','median');
+for i = 1:length(measuredTissue)
+    relFP_sel_RNAall(:,i) = max(relFP_wtd_ctd_RNAall(:,ismember(conditions,strsplit(TissueAligTbl.FPAtissues{i},'; '))),[],2);
+end
+% then, take max of all associated transporters
+predMat_RNAall = [];
+for j = 1:length(allCmp_iHumanName)
+    metInd = strcmp(allCmp_iHumanName{j},metNames);
+    myRxns = model.rxns(any(model.S(metInd,:),1));
+    myInd = ismember(regexprep(rowlabels_RNAall,'_.$',''),myRxns);
+
+    if any(myInd)
+        predMat_RNAall(j,:) = max(relFP_sel_RNAall(myInd,:),[],1);
+    else
+        predMat_RNAall(j,:) = zeros(1,size(predMat_RNAall,2));
+        warning('%s is not predicted\n',allCmp_iHumanName{j});
+    end
+end
 %% delta rFP matrix - no network integration - transporter
 % same as above
 relFP_sel_noNetwork_tsp = zeros(size(relFP_wtd_noNetwork,1),length(measuredTissue));
@@ -267,14 +371,72 @@ plt.FontSize = 15;
 plt.FontName = 'Arial';
 plt.export('figures/benchmarkIntegrationBenefit_transporterObj.pdf');
 
+%% assessing the result: hypergeometric enrichment - RNA-protein comparison
+cutoffs = -1:0.01:1;
+p_mat =[];
+Overall_p =[];
+Ncall = [];
+
+p_mat_RNAcomm_tsp =[];
+Overall_p_RNAcomm_tsp =[];
+Ncall_RNAcomm_tsp = [];
+
+p_mat_RNAall_tsp =[];
+Overall_p_RNAall_tsp =[];
+Ncall_RNAall_tsp = [];
+for i = 1: length(cutoffs)
+    predictions = predMat >= cutoffs(i) & predMat < 1.01; % filter out numerically problematic predictions
+    % test enrichment
+    x = sum(predictions & refMat,1);
+    M = size(predictions,1);
+    K = sum(refMat,1);
+    N = sum(predictions,1);
+    p_mat(i,:) = hygecdf(x-1,M,K,N,'upper');
+    Overall_p(i) = hygecdf(sum(x)-1,M .* size(predictions,2),sum(K),sum(N),'upper');
+    Ncall(i) = sum(N);
+    
+    predictions = predMat_RNAcomm >= cutoffs(i) & predMat_RNAcomm < 1.01;
+    x = sum(predictions & refMat,1);
+    M = size(predictions,1);
+    K = sum(refMat,1);
+    N = sum(predictions,1);
+    p_mat_RNAcomm_tsp(i,:) = hygecdf(x-1,M,K,N,'upper');
+    Overall_p_RNAcomm_tsp(i) = hygecdf(sum(x)-1,M .* size(predictions,2),sum(K),sum(N),'upper');
+    Ncall_RNAcomm_tsp(i) = sum(N);
+
+    predictions = predMat_RNAall >= cutoffs(i) & predMat_RNAall < 1.01;
+    x = sum(predictions & refMat,1);
+    M = size(predictions,1);
+    K = sum(refMat,1);
+    N = sum(predictions,1);
+    p_mat_RNAall_tsp(i,:) = hygecdf(x-1,M,K,N,'upper');
+    Overall_p_RNAall_tsp(i) = hygecdf(sum(x)-1,M .* size(predictions,2),sum(K),sum(N),'upper');
+    Ncall_RNAall_tsp(i) = sum(N);
+    
+end
+close all
+figure(1)
+hold on
+plot(cutoffs, -log10(Overall_p),'-');
+plot(cutoffs, -log10(Overall_p_noNetwork_tsp),'-');
+plot(cutoffs, -log10(Overall_p_RNAcomm_tsp),'-');
+plot(cutoffs, -log10(Overall_p_RNAall_tsp),'-');
+hold off
+legend({'Protein eFPA','Target expression','RNA eFPA(commom genes)','RNA eFPA(all genes)'});
+xlabel('cutoff')
+ylabel('-log10(P value)')
+xlim([-1 1]);
+plt = Plot(); % create a Plot object and grab the current figure
+plt.LegendLoc = 'NorthWest';
+plt.BoxDim = [5.5, 4.5];
+plt.LineWidth = 2;
+plt.FontSize = 15;
+plt.FontName = 'Arial';
+plt.export('figures/benchmarkRNAvsProtein_transporterObj.pdf');
+
 %% directly assess the delta rFP
 % enrichment of high rFP in the tissue-specific set 
 %% load background delta rFP matrix - transporter FPA - protein
-relFP_sel_allMetDM = zeros(size(relFP_wtd_allMetDM,1),length(measuredTissue));
-relFP_wtd_ctd_allMetDM = normalize(relFP_wtd_allMetDM,2,'center','median');
-for i = 1:length(measuredTissue)
-    relFP_sel_allMetDM(:,i) = max(relFP_wtd_ctd_allMetDM(:,ismember(conditions,strsplit(TissueAligTbl.FPAtissues{i},'; '))),[],2);
-end
 metNames = regexprep(model.metNames,' \[(\w|\s)*\]$','');
 predMat_all = [];
 qryMets = unique(metNames);% all mets
@@ -287,6 +449,34 @@ for j = 1:length(qryMets)
 
     if any(myInd)
         predMat_all = [predMat_all;max(relFP_sel(myInd,:),[],1)];
+    end
+end
+%% load background delta rFP matrix - transporter FPA - RNA comm
+metNames = regexprep(model.metNames,' \[(\w|\s)*\]$','');
+predMat_all_RNAcomm = [];
+rowlabels_ID = regexprep(rowlabels_RNAcomm,'_.$','');
+S_logical = full(logical(model.S~=0));
+for j = 1:length(qryMets)
+    metInd = strcmp(qryMets{j},metNames);
+    myRxns = model.rxns(any(S_logical(metInd,:),1));
+    myInd = ismember(rowlabels_ID,myRxns);
+
+    if any(myInd)
+        predMat_all_RNAcomm = [predMat_all_RNAcomm;max(relFP_sel_RNAcomm(myInd,:),[],1)];
+    end
+end
+%% load background delta rFP matrix - transporter FPA - RNA all
+metNames = regexprep(model.metNames,' \[(\w|\s)*\]$','');
+predMat_all_RNAall = [];
+rowlabels_ID = regexprep(rowlabels_RNAall,'_.$','');
+S_logical = full(logical(model.S~=0));
+for j = 1:length(qryMets)
+    metInd = strcmp(qryMets{j},metNames);
+    myRxns = model.rxns(any(S_logical(metInd,:),1));
+    myInd = ismember(rowlabels_ID,myRxns);
+
+    if any(myInd)
+        predMat_all_RNAall = [predMat_all_RNAall;max(relFP_sel_RNAall(myInd,:),[],1)];
     end
 end
 %% load delta rFP matrix - transporter - no network
@@ -340,3 +530,57 @@ style.Format = 'pdf';
 style.ApplyStyle = '1';
 hgexport(gcf,'test',S,'applystyle',true);
 saveas(gca,'figures/benchmarkIntegrationBenefit_boxplot_transporterObj.pdf');
+
+%% plot the box plots - benchmark RNA protein
+p = [];
+boxData = [];
+boxLabel = [];
+xLabels = {};
+
+enrichedMet_rFP_noNetwork_tsp = predMat_noNetwork_tsp(logical(refMat));
+boxData = [boxData;enrichedMet_rFP_noNetwork_tsp;predMat_all_noNetwork_tsp(:)];
+boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
+boxLabel = [boxLabel;[repmat({'enrich_noNetwork_tsp'},length(enrichedMet_rFP_noNetwork_tsp),1);repmat({'all_noNetwork_tsp'},size(predMat_all_noNetwork_tsp,1)*size(predMat_all_noNetwork_tsp,2),1)]];
+xLabels = [xLabels;{'enriched metabolites^{tranporter expression}';'all metabolites^{tranporter expression}'}];
+p(1) = ranksum(enrichedMet_rFP_noNetwork_tsp,predMat_all_noNetwork_tsp(:),  'Tail','right');
+
+enrichedMet_rFP = predMat(logical(refMat));
+boxData = [boxData;enrichedMet_rFP;predMat_all(:)];
+boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
+boxLabel = [boxLabel;[repmat({'enriched'},length(enrichedMet_rFP),1);repmat({'all'},size(predMat_all,1)*size(predMat_all,2),1)]];
+xLabels = [xLabels;{'enriched metabolites^{Protein eFPA}';'all metabolites^{Protein eFPA}'}];
+p(2) = ranksum(enrichedMet_rFP,predMat_all(:),  'Tail','right');
+
+enrichedMet_rFP_RNAcomm = predMat_RNAcomm(logical(refMat));
+boxData = [boxData;enrichedMet_rFP_RNAcomm;predMat_all_RNAcomm(:)];
+boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
+boxLabel = [boxLabel;[repmat({'enriched_RNAcomm'},length(enrichedMet_rFP_RNAcomm),1);repmat({'all_RNAcomm'},size(predMat_all_RNAcomm,1)*size(predMat_all_RNAcomm,2),1)]];
+xLabels = [xLabels;{'enriched metabolites^{RNA eFPA(common genes)}';'all metabolites^{RNA eFPA(common genes)}'}];
+p(3) = ranksum(enrichedMet_rFP_RNAcomm,predMat_all_RNAcomm(:),  'Tail','right');
+
+enrichedMet_rFP_RNAall = predMat_RNAall(logical(refMat));
+boxData = [boxData;enrichedMet_rFP_RNAall;predMat_all_RNAall(:)];
+boxData(abs(boxData)>1.01) = NaN;% invalid due to numeric error
+boxLabel = [boxLabel;[repmat({'enriched_RNAall'},length(enrichedMet_rFP_RNAall),1);repmat({'all_RNAall'},size(predMat_all_RNAall,1)*size(predMat_all_RNAall,2),1)]];
+xLabels = [xLabels;{'enriched metabolites^{RNA eFPA(all genes)}';'all metabolites^{RNA eFPA(all genes)}'}];
+p(4) = ranksum(enrichedMet_rFP_RNAall,predMat_all_RNAall(:),  'Tail','right');
+
+figure('units','inch','position',[0,0,9,8])
+boxplot(boxData, boxLabel,'Labels',xLabels,'Colors','bkbk','Symbol','ro');
+ylim([-1.1 1.1])
+ylabel('\DeltarFP');
+xlabel('');
+set(gca, 'TickLabelInterpreter', 'tex');
+text(1.3,0.75,['p < ',num2str(p(1),2)],'fontsize', 12,'BackgroundColor','w')
+text(3.3,0.75,['p < ',num2str(p(2),2)],'fontsize', 12,'BackgroundColor','w')
+text(5.3,0.75,['p < ',num2str(p(3),2)],'fontsize', 12,'BackgroundColor','w')
+text(7.3,0.75,['p < ',num2str(p(4),2)],'fontsize', 12,'BackgroundColor','w')
+set(gca, 'fontsize', 14);
+lines = findobj(gcf, 'type', 'line', 'Tag', 'Median');
+set(lines, 'Color', 'r');
+xtickangle(30)
+S = hgexport('readstyle','default_sci');
+style.Format = 'pdf';
+style.ApplyStyle = '1';
+hgexport(gcf,'test',S,'applystyle',true);
+saveas(gca,'figures/benchmarkRNAvsProtein_boxplot_transporterObj.pdf');

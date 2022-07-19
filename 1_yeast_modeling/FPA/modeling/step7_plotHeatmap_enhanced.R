@@ -33,7 +33,7 @@ rownames(annTbl) = annTbl$rxn
 annTbl = annTbl[rownames(annTbl) %in% rownames(heatTbl),]
        
 annotationList = c('Purine metabolism','Phenylalanine, tyrosine and tryptophan biosynthesis','Histidine metabolism','Lysine biosynthesis',
-                   'Arginine biosynthesis','Threonine, methionine and cysteine synthesis','Proline biosynthesis','Pyrimidine metabolism',
+                   'Arginine biosynthesis','Threonine, methionine and cysteine biosynthesis','Proline biosynthesis','Pyrimidine metabolism',
                    'Glycolysis','TCA cycle', 'Mannan synthesis',
                    'UDP-D-glucose metabolism','Fatty acid biosynthesis',
                    'Transporter [inner]','Transporter [exchange]','Others')
