@@ -1,8 +1,8 @@
-# Systematic analysis of the relation between relative enzyme expression, flux, and the metabolic network
-# NOTE: This repo is still under development! Not all functionalities are usable at present! You may encounter missing files as we are in the process of uploading and final reviewing the codes.
-We developped the improved FPA (Flux Potential Analysis) algorithm, to systematically study the quatitative relation between enzyme expression and metabolic flux in terms of their relative levels and in the context of the metabolic network. improved FPA is applicable to any expression dataset as a tool to predict the relative metabolic flux under the principle of the local-pathway proxy role discovered in our study.
+# Predicting flux from enzyme expression and metabolic network architecture
+# NOTE: This repo is still under development! Not all functionalities are usable at present! You may encounter missing files as we are in the process of uploading and cleaning up the codes.
+We developped the enhanced Flux Potential Analysis (eFPA) algorithm, to systematically study the quatitative relation between enzyme expression and metabolic flux in terms of their relative levels and in the context of the metabolic network. eFPA is applicable to any expression dataset as a tool to predict the relative metabolic flux under the principle of the local-pathway enzyme reach discovered in our study.
 
-The repo includes four parts: (1) ...
+The repo includes four parts: (1) data and codes to reproduce the yeast flux analysis (2) data and codes to reproduce the human tissue analysis (3) metabolic distance calculatior for making the distance matrix of a metabolic network model and (4) a tutorial to run eFPA on your own expression data and metabolic network model.
 
 ## Getting Started
 
