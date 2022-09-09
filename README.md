@@ -38,7 +38,7 @@ The followings are descriptions on each module (folder) listed.
 
 [metabolic distance calculator](3_distance_calculation): This folder contains all the input, scripts and example codes for calculating the metabolic distance for any metabolic network model. The output distance matrix is required to run eFPA.
 
-[improved FPA tutorial](4_improvedFPA_tutorial): This folder contains a full tutorial to perform eFPA on a given model and expression dataset.
+[eFPA tutorial](4_eFPA_tutorial): This folder contains a full tutorial to perform eFPA on a given model and expression dataset.
 
 
 ## Contributing
