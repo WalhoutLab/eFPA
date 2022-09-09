@@ -1,4 +1,4 @@
-# Predicting flux from enzyme expression and metabolic network architecture
+# Enzyme levels broadly influence flux throughout the metabolic network
 # NOTE: This repo is still under development! Not all functionalities are usable at present! You may encounter missing files as we are in the process of uploading and cleaning up the codes.
 We developped the enhanced Flux Potential Analysis (eFPA) algorithm, to systematically study the quatitative relation between enzyme expression and metabolic flux in terms of their relative levels and in the context of the metabolic network. eFPA is applicable to any expression dataset as a tool to predict the relative metabolic flux under the principle of the local-pathway enzyme reach discovered in our study.
 
