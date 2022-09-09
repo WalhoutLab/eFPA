@@ -1,5 +1,5 @@
 # Enzyme levels broadly influence flux throughout the metabolic network
-# NOTE: This repo is still under development! You may encounter missing files as we are in the process of uploading and cleaning up the codes.
+# WARINING: This repo is still under development! You may encounter missing files as we are in the process of uploading and cleaning up the codes.
 We developped the enhanced Flux Potential Analysis (eFPA) algorithm, to systematically study the quantitative relation between enzyme expression and metabolic flux in terms of their relative levels and in the context of the metabolic network. eFPA is applicable to any expression dataset as a tool to predict the relative metabolic flux under the principle of enzyme reach discovered in our study.
 
 The repo includes four parts: (1) data and codes to reproduce the yeast analysis (2) data and codes to reproduce the human tissue analysis (3) metabolic distance calculatior for making the distance matrix of a metabolic network model and (4) a tutorial to run eFPA on your own expression data and metabolic network model.
