@@ -1,3 +1,3 @@
-a master function of eFPA that offers various choices of decay function, paralel computing and GPR parsing is being developed! The tutorial will be baseed on the master function
+To facilitate broad application of our eFPA tool for the community, We are in the process of developing a single master function of eFPA that offers various choices of decay function, computing environment and GPR parsing options and more! We will provide a full new tutorial based on the master function soon.
 
-A tutorial similar to https://github.com/WalhoutLab/MERGE/tree/master/3_FPA but with more functionalities is under development
+The tutorial for original FPA can be found at https://github.com/WalhoutLab/MERGE/tree/master/3_FPA.

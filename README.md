@@ -1,13 +1,14 @@
-# Predicting flux from enzyme expression and metabolic network architecture
-# NOTE: This repo is still under development! Not all functionalities are usable at present! You may encounter missing files as we are in the process of uploading and cleaning up the codes.
-We developped the enhanced Flux Potential Analysis (eFPA) algorithm, to systematically study the quatitative relation between enzyme expression and metabolic flux in terms of their relative levels and in the context of the metabolic network. eFPA is applicable to any expression dataset as a tool to predict the relative metabolic flux under the principle of the local-pathway enzyme reach discovered in our study.
+# Enzyme levels broadly influence flux throughout the metabolic network
+# WARINING: This repo is still under development! You may encounter missing files as we are in the process of uploading and cleaning up the codes.
+We developped the enhanced Flux Potential Analysis (eFPA) algorithm, to systematically study the quantitative relation between enzyme expression and metabolic flux in terms of their relative levels and in the context of the metabolic network. eFPA is applicable to any expression dataset as a tool to predict the relative metabolic flux under the principle of enzyme reach discovered in our study.
 
-The repo includes four parts: (1) data and codes to reproduce the yeast flux analysis (2) data and codes to reproduce the human tissue analysis (3) metabolic distance calculatior for making the distance matrix of a metabolic network model and (4) a tutorial to run eFPA on your own expression data and metabolic network model.
+The repo includes four parts: (1) data and codes to reproduce the yeast analysis (2) data and codes to reproduce the human tissue analysis (3) metabolic distance calculatior for making the distance matrix of a metabolic network model and (4) a tutorial to run eFPA on your own expression data and metabolic network model.
 
-Please note, if you only want to use the eFPA tool for analyzing your own data, you may directly go to [eFPA tutorial](4_eFPA_tutorial) that contains a full tutorial of eFPA analysis. To reproduce our analyses presented in the paper, please refer to the sections 1 and 2. Please be advised that if you are going to run FPA on a model other than the models used in our study, you need to calculate the distance matrix for your model, which can be achieved by instructions in [metabolic distance calculator](3_distance_calculation). This computation may be intensive on large models (i.e., > 2000 rxns x 2000 mets). You may need to use high-performance computation resources or reach out to us for assistance. 
+Please note, if you only want to use the eFPA tool for analyzing your own data, you may directly go to [eFPA tutorial](4_eFPA_tutorial) that contains a full tutorial of eFPA analysis. To reproduce our analyses presented in the paper, please refer to the sections 1 and 2. 
 
-For downloading the human/yeast model and pre-calculated distance matrix (exceeded Github size limit), please visit xxxx(wormflux link to be done)
+Please be advised that if you are going to run FPA on a model other than the models used in our study, you need to calculate the distance matrix for your model, which can be done following instructions in [metabolic distance calculator](3_distance_calculation). This computation may be intensive on large models (i.e., over 2000 rxns x 2000 mets). You may need to use high-performance computation resources or reach out to us for assistance. 
 
+For downloading the human/yeast model and pre-calculated distance matrix (exceeded Github size limit), please visit our WormFlux website (link to be constructed)
 
 ## Getting Started
 
@@ -21,7 +22,7 @@ The Linear Program (LP) and Mixed-Integer Linear Problem (MILP) solver used in t
 
 ### Installing
 
-This package doesn't require any installation or compiling. Please see the following section for reproducing the analyses this study, or use the improved FPA as a tool for analyzing your own data.
+This package doesn't require any installation or compiling. Please see the following section for reproducing the analyses this study, or use the eFPA as a tool for analyzing your own data.
 
 
 ## Running the tests
@@ -31,15 +32,13 @@ The repo includes four independent parts, [yeast modeling](1_yeast_modeling), [h
 
 The followings are descriptions on each module (folder) listed.
 
-[yeast modeling](1_yeast_modeling): This folder contains all the input, scripts and example pipelines and results to reproduce our analyses related to the modeling in yeast.
+[yeast modeling](1_yeast_modeling): This folder contains all the input, scripts, example pipelines and results to reproduce our analyses related to the modeling in yeast.
 
-[C. elegans tissue metabolism modeling](2_C_elegans_modeling): This folder contains all the input, scripts and example pipelines and results to reproduce our analyses related to the modeling in C. elegans.
+[human tissue modeling](2_human_modeling): This folder contains all the input, scripts, example pipelines and results to reproduce our analyses related to the modeling in human.
 
-[human tissue modeling](3_human_modeling): This folder contains all the input, scripts and example pipelines and results to reproduce our analyses related to the modeling in human.
+[metabolic distance calculator](3_distance_calculation): This folder contains all the input, scripts and example codes for calculating the metabolic distance for any metabolic network model. The output distance matrix is required to run eFPA.
 
-[metabolic distance calculator](4_distance_calculation): This folder contains all the input, scripts and example codes for calculating the metabolic distance for any metabolic network model. The output distance matrix is required to run FPA.
-
-[improved FPA tutorial](5_improvedFPA_tutorial): This folder contains a full tutorial to perform FPA on a given model and expression dataset.
+[eFPA tutorial](4_eFPA_tutorial): This folder contains a full tutorial to perform eFPA on a given model and expression dataset.
 
 
 ## Contributing
