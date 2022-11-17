@@ -12,4 +12,4 @@ The human tissue eFPA composes of two sections: building the tissue networks and
 
 To reproduce the tissue networks, please go to the [working directory](1_iMAT++/).
 
-To reproduce the eFPA analysis, please go to the [working directory](2_FPA/).
+To reproduce the eFPA analysis, please go to the [working directory](2_FPA/humanTissue_MERGE/).
