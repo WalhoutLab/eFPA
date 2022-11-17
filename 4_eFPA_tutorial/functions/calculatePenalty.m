@@ -40,11 +40,11 @@ function penalty = calculatePenalty(model,master_expression,manualPenalty)
 %% step1: mapping the gene-centric expression levels to reactions
 levels = cell(length(model.rxns),length(master_expression));
 status = -1*ones(length(model.rxns),length(master_expression));
-fprintf('mapping expression levels to penalties...\n');
+fprintf('Info: a pseudocount of 1 was added to the input expression metric...\n');
 fprintf(['\n' repmat('.',1,length(master_expression)) '\n\n']);
 parfor i = 1:length(master_expression)
     expression = master_expression{i};
-    % expression.value = expression.value + 1; % we dont add pseudocount - it will be preprocessing if needed!
+    expression.value = expression.value + 1; % we dont add pseudocount - it will be preprocessing if needed!
     [levels(:,i), status(:,i)] = gene_to_reaction_levels(model, expression.genes, expression.value, @min, @(x,y)(x+y));%GPR parser to convert the expression of genes to levels of "AND" gated blocks
     fprintf('\b|\n');%for simple progress monitor
 end
