@@ -1,4 +1,5 @@
 
+### Running a test
 The entire modeling and interpretation process was splitted into 6 steps. Each step is aimed at a specific analysis and is encoded in one or multiple '.m' file. If you want to reproduce an analysis, please run the corresponding '.m' in MATLAB. 
 
 It is recommended that one runs these scripts in the MATLAB graphical interface, instead of command lines. Many of the analyses are interactive so it is best to open the scripts in MATLAB and follow the comments in the scripts.
