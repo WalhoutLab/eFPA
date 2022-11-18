@@ -4,6 +4,11 @@ This guidance shows how to use MetabolicDistance.py tool to find distances betwe
 
 We only recommend experienced user to calculate the distance matrix on their own, as the calculation can be computationally intensive. However, one only needs to run the calculator once for a given model. Therefore, we aim to provide pre-calculated distance matrix as a resouce for the community. We currently support human, yeast and C. elegans models at [our website](http://wormflux.umassmed.edu/download.php). Please contact us for requesting additional models!
 
+<b>Quick links to download pre-calculated distance matrix:</b>
+- S. cerevisiae model: [yeastGEM_8.3.5.zip](http://wormflux.umassmed.edu/Downloads/yeastGEM_8.3.5.zip)
+- H. sapiens model: [human_1.5.0.zip](http://wormflux.umassmed.edu/Downloads/human_1.5.0.zip)
+- C. elegans model: [Celegans_iCEL1314.zip](http://wormflux.umassmed.edu/Downloads/Celegans_iCEL1314.zip)
+
 ### Finding distance from a reaction of interest to all other reactions
 
 Step-by-step instructions to find distances from a particular reaction of interest (ROI) in the network to all other (reachable) reactions is provided in walkthrough.py. 
