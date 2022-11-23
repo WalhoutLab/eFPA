@@ -12,7 +12,7 @@ The repo includes four parts:
 - metabolic distance calculatior for making the distance matrix from a given metabolic network model
 - a tutorial to run eFPA on your own expression data and metabolic network model.
 
-<I><b>Please note, if you only want to analyze your own data with eFPA, you may directly go to [eFPA tutorial](4_eFPA_tutorial) for a tutorial. To reproduce our analyses presented in the paper, please refer to other sections.</I></b>
+<I><b>ATTENTION: if you only want to analyze your own data with eFPA, you may directly go to [eFPA tutorial](4_eFPA_tutorial) for a tutorial. To reproduce our analyses presented in the paper, please refer to other sections.</I></b>
 
 Please be advised that if you are going to run FPA on a model other than the models used in our study, you need to calculate the distance matrix for your model, which can be done by following instructions in [metabolic distance calculator](3_distance_calculation). This computation may be intensive on large models (i.e., over 2000 rxns x 2000 mets). You may need to use high-performance computation resources or reach out to us for assistance. 
 
@@ -30,7 +30,7 @@ The Linear Program (LP) and Mixed-Integer Linear Problem (MILP) solver used in t
 
 ### Large files
 Several input files (e.g., the distance matrix of human model) are large in size (>100 MB), so they are not included in this repository. If you are interested in reproduce the entire data in our paper, please download the zipped full repository from our website ([eFPA_raw_data_full_11172022.zip
-](http://wormflux.umassmed.edu/Downloads/eFPA_raw_data_full_11172022.zip), WARNING: THE FILE SIZE IS ~10Gb!) to get the missing files. The large files are only required to reproduce our yeast and human analysis, rather than applying eFPA to your custom dataset.
+](http://wormflux.umassmed.edu/Downloads/eFPA_raw_data_full_11172022.zip), WARNING: THE FILE SIZE IS ~10Gb!) to get the missing files (i.e., those in [.gitignore](.gitignore)). The large files are only required to reproduce our yeast and human analysis, rather than applying eFPA to your custom dataset.
 
 ### Installing
 
