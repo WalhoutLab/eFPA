@@ -20,3 +20,6 @@
 1_yeast_modeling/FPA/modeling/figures/robustFPA_optimal_boundary_FPA_flux_correlation_pearson.pdf
 2_human_modeling/2_FPA/NCI_60_test/
 1_yeast_modeling/FPA/modeling/NoTracking_FCA
+2_human_modeling/2_FPA/humanTissue_MERGE/step8_comparision_with_single_cell_result.asv
+2_human_modeling/2_FPA/humanTissue_MERGE/step8_comparision_with_single_cell_result.m
+2_human_modeling/2_FPA/humanTissue_MERGE/input/singlecell_findings_table.xlsx
