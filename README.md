@@ -1,4 +1,4 @@
-# Enzyme levels broadly influence flux throughout the metabolic network
+# Enhanced flux potential analysis links changes in enzyme expression to metabolic flux
 
 ## NOTICE 11/17/2022
 This repo is under constant development. Please let us know if you encounter any problem (email or raising an issue are both welcome). In addition, we are developing a user-friendly version of eFPA. If you are interested, don't forget to Star our repo! We will work harder with the positive feedback!
