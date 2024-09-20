@@ -11,9 +11,11 @@ from MetabolicDistance import *
 #cells=['CTGATCCTCCAGCACG_TSP7_LymphNodes_Inguinal_10X_1_1','TTGAACGAGAAGAGCA_TSP7_Blood_NA_10X_2_1'] #
 rxns=sys.argv[1].split(',') 
 cells=sys.argv[2].split(',')
+fname=sys.argv[3]
 
 # SETTINGS
-report=False
+# see Help in myCobra.mnm.eFPA() and myCobra.mnm.setFPA() for the definitions of these terms
+report=False #Make this true to save the log of eFPA analysis inclusing a table of fluxes, distances, and weights
 dist_boundary=6
 hardBoundary=False
 base=2
@@ -107,7 +109,7 @@ for rxn in rxns:
             con_spc=None;        
         #reporting
         if report:
-            reporter=(outPath,'log','.csv',',')
+            reporter=(outPath,'log_'+fname.split('.')[0]+'_','.csv',',')
         else:
             reporter=None                  
         #eFPA
@@ -116,8 +118,7 @@ for rxn in rxns:
 
 # SAVE
 print('Saving results as dictionary')
-saveobj(Dresults,outPath+'eFPA_cyto_temp.pkl')
-print(Dresults)
+saveobj(Dresults,outPath+fname)
 
 
 
