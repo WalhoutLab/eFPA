@@ -52,7 +52,7 @@ python sc_efpa.py "rxn1,rxn2,rxn3" "cell1,cell2,cell3" "output_filename"
 
 - Replace "rxn1,rxn2,rxn3" with your target reactions.
 - Replace "cell1,cell2,cell3" with your target cell identifiers.
-- "output_filename" is where results will be saved (relative to the Output directory unless specified otherwise).
+- "output_filename" is where results will be saved (relative to the Output directory unless specified otherwise in the sc_efpa.py script by the 'outPath' variable).
 
 ## Example run
 
@@ -66,7 +66,7 @@ This command analyzes specified reactions in selected muscle cells. Adjust the i
 
 ## Output
 
-After running the example command, the results are saved to `"efpa_example.pkl"`. Here's how you can load and view the results:
+After running the example command, the results are saved to `"efpa_example.pkl"` in the output folder. Here's how you can load and view the results:
 
 ```bash
 python
@@ -76,7 +76,9 @@ print(data)
 ```
 
 This script will load and display the results from your eFPA analysis in a Python session. Here is what the output should look like, illustrating the flux potential analysis conducted:
+```bash
 {'MAR05398_f': {'rFP': {'TSP4_Muscle_diaphragm_SS2_B112866_B134045_MuscleStemCell_J19_L002': 0.13324461138208257, 'TSP4_Muscle_rectusabdominus_SS2_B114867_B134050_MuscleStemCell_J2_L004': 0.4027750235549703, 'super_cond': 1.0}, 'FP': {'TSP4_Muscle_diaphragm_SS2_B112866_B134045_MuscleStemCell_J19_L002': 0.008165373471484737, 'TSP4_Muscle_rectusabdominus_SS2_B114867_B134050_MuscleStemCell_J2_L004': 0.02468248778092531, 'super_cond': 0.061281078362488556}}, 'MAR01380_f': {'rFP': {'TSP4_Muscle_diaphragm_SS2_B112866_B134045_MuscleStemCell_J19_L002': 0.37138911367066796, 'TSP4_Muscle_rectusabdominus_SS2_B114867_B134050_MuscleStemCell_J2_L004': 0.33299885201371854, 'super_cond': 1.0}, 'FP': {'TSP4_Muscle_diaphragm_SS2_B112866_B134045_MuscleStemCell_J19_L002': 0.030050699534704923, 'TSP4_Muscle_rectusabdominus_SS2_B114867_B134050_MuscleStemCell_J2_L004': 0.026944377416887808, 'super_cond': 0.08091432524151099}}}
+```
 
 ## Documentation
 
