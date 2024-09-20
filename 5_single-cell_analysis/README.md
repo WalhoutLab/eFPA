@@ -36,7 +36,7 @@ Place the Python files from this folder into your working directory and set up a
 ```
 
 5. **Prepare Input Data:**
-   Download and extract the contents of Input.zip from [Zenodo](https://zenodo.org/records/13801228) into the Input directory. This is an example for Windows users; adjust as necessary for your OS.
+   Download and extract the contents of Input.zip from [Zenodo](https://zenodo.org/records/13801228) into the Input directory. This is an example for Windows users; adjust as necessary for your OS. For reference, the DOI for this dataset is `10.5281/zenodo.13801228`.
    
 ```bash
    unzip Input.zip -d input/
