@@ -23,9 +23,14 @@ try:
 except:
     import pickle
 
+### GLOBAL
 pd.set_option('display.max_columns', None);
+#Set Tolerances for the solver, using tols dictionary
+#feasibility,optimality,integrality=1E-6,1E-6,1E-5; 
+tols={'feasibility':1E-9,'optimality':1E-9,'integrality':1E-9}; #for Gurobi, including mixed integer programming
+#tols={'feasibility':1E-6,'optimality':1E-6,'integrality':1E-5}; #default
 
-
+### CLASSES
 class matrix:
     '''Hashable 2D array object'''
     def __init__(self,array,rows,cols):
@@ -208,9 +213,6 @@ class opt():
         optimality, and integrality defined for this class), use setTolerances()
         function.
         '''
-        #feasibility,optimality,integrality=1E-6,1E-6,1E-5; #default
-        tols={'feasibility':1E-9,'optimality':1E-9,'integrality':1E-9}; #for mixed integer
-        #tols={'feasibility':1E-6,'optimality':1E-6,'integrality':1E-5}
         self.Dcons={};
         self.Dvars={};
         self.rxn2varcoefs={};
@@ -218,7 +220,8 @@ class opt():
         self.var2binvars={};
         self.gene2intvars={};
         self.model=Model(modelname);
-        self.setTolerances(tols);
+        if tols:
+            self.setTolerances(tols);
         self.isIrreversible=irreversible;
         temp_cpd={};
         if not irreversible:
