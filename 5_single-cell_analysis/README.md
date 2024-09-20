@@ -82,4 +82,4 @@ This script will load and display the results from your eFPA analysis in a Pytho
 
 ## Documentation
 
-For detailed usage instructions, refer to the sc_efpa.py script and the myCobra module documentation. A comprehensive tutorial on single-cell analysis will be provided soon.
+For detailed usage instructions, consult the comments in the `sc_efpa.py` script and the docstrings within each function of the `myCobra` module. A comprehensive tutorial on single-cell analysis will be available soon.
