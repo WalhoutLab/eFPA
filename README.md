@@ -1,6 +1,6 @@
 # Enhanced flux potential analysis links changes in enzyme expression to metabolic flux
 
-## NOTICE 11/17/2022
+## NOTICE 10/1/2025
 This repo is under constant development. Please let us know if you encounter any problem (email or raising an issue are both welcome). In addition, we are developing a user-friendly version of eFPA. If you are interested, don't forget to Star our repo! We will work harder with the positive feedback!
 
 ## Introduction
@@ -30,7 +30,7 @@ The Linear Program (LP) and Mixed-Integer Linear Problem (MILP) solver used in t
 
 ### Large files
 Several input files (e.g., the distance matrix of human model) are large in size (>100 MB), so they are not included in this repository. If you are interested in reproduce the entire data in our paper, please download the zipped full repository from our website ([eFPA_raw_data_full_11172022.zip
-](http://wormflux.umassmed.edu/Downloads/eFPA_raw_data_full_11172022.zip), WARNING: THE FILE SIZE IS ~10Gb!) to get the missing files (i.e., those in [.gitignore](.gitignore)). The large files are only required to reproduce our yeast and human analysis, rather than applying eFPA to your custom dataset.
+](https://zenodo.org/records/17246368/files/eFPA_raw_data_full_11172022.zip?download=1), WARNING: THE FILE SIZE IS ~10Gb!) to get the missing files (i.e., those in [.gitignore](.gitignore)). The large files are only required to reproduce our yeast and human analysis, rather than applying eFPA to your custom dataset.
 
 ### Installing
 
