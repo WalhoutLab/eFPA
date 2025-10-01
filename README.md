@@ -4,7 +4,7 @@
 This repo is under constant development. Please let us know if you encounter any problem (email or raising an issue are both welcome). In addition, we are developing a user-friendly version of eFPA. If you are interested, don't forget to Star our repo! We will work harder with the positive feedback!
 
 ## Introduction
-We developped the enhanced Flux Potential Analysis (eFPA) algorithm, to systematically study the quantitative relation between enzyme expression and metabolic flux in terms of their relative levels and in the context of the metabolic network. eFPA is applicable to any expression dataset as a tool to predict the relative metabolic flux under the principle of enzyme reach discovered in our study.
+We developped the enhanced Flux Potential Analysis (eFPA) algorithm, to systematically study the quantitative relation between enzyme expression and metabolic flux in terms of their relative levels and in the context of the metabolic network. eFPA is applicable to any expression dataset as a tool to predict the relative metabolic flux under the principle of enzyme-flux association discovered in our study.
 
 The repo includes four parts: 
 - data and codes to reproduce the yeast analysis
